@@ -3,32 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import re
 import random
-
-DEMO_RENAME = {"USERID": "user_id", "RG_case" : "rg", "CountryName" : "country",
-              "LanguageName" : "language", "Gender" : "gender", "YearofBirth" : "birth_year",
-              "Registration_date" : "registration_date", "First_Deposit_Date" : "first_deposit_date"}
-
-GAMBLING_RENAME = {"UserID": "user_id", "Date" : "date", "ProductType" : "product_type",
-              "Turnover" : "turnover", "Hold" : "hold", "NumberofBets" : "num_bets"}
-
-RG_RENAME = {"UserID": "user_id", "RGsumevents" : "events", "RGFirst_Date" : "first_date", 
-             "Event_type_first" : "event_type_first", 
-             "RGLast_date" : "last_date", "Interventiontype_first" : "inter_type_first"}
-
-HAS_HOLD_DATA = [1,2,4,8,17]
-
-EVENT_CODE_DICT = {1: "Family Intervention", 2 : "acc close/open from RG", 3 : "Cancelled outpayment", 
-                   4: "Manual (Lower?) Limit Change", 6: "Heavy Complainer", 7: "Requested pay method block",
-                   8: "Reported as Minor", 9: "Request partial block", 10: "Reported Problem", 
-                   11: "high deposit", 12 : "Two RG events on the day", 13: "Event unknown"}
-
-INTERVENTION_CODE_DICT = {-1: "Intevention Unknown", 1: "Advice", 2: "Reopen", 
-                          3: "Consumer request not technically possible", 4: "Block (pending invest)",
-                          5: "VIP Deposit Change", 6: "Partial Block (incomplete)", 7: "Advice To 3rd Party",
-                          8: "Partial Block", 9: "Inpayment not blocked", 10 : "Inpayment blocked",
-                          11: "Higher deposit denied", 12 : "Higher Deposit Accepted", 13 : "Daily/weekly deposit changed", 
-                          14: "Full Block", 15 : "Betting Limit Change", 16: "Remains Blocked", 
-                          17 : "Blocked and Reimbursed", 18: "Requested Partial Block Not Possible"}
+from pipeline_constants import (DEMO_RENAME, GAMBLING_RENAME, RG_RENAME, 
+                            HAS_HOLD_DATA, EVENT_CODE_DICT, INTERVENTION_CODE_DICT)
 
 '''DEMOGRAPHIC'''
 def clean_str_series(obj_ser):
@@ -51,6 +27,10 @@ def clean_demographic(df_demo):
         clean_df[obj] = clean_str_series(clean_df[obj])
     clean_df.set_index('user_id', inplace = True)
     return clean_df
+
+def demo_pipeline(demo_path = 'data/raw_1.sas7bdat'):
+    df = pd.read_sas(demo_path)
+    return clean_demographic(df)
 
 '''GAMBLING'''
 def clean_gambling(gam_df):
@@ -79,13 +59,29 @@ def accum_by_date(gam_data, user_id, product_types = HAS_HOLD_DATA, demographic_
     mask = (gam_data['user_id'] == user_id) & (gam_data['product_type'].isin(product_types))
     series = gam_data[mask].groupby('date').sum()
     series = series.drop(["product_type","user_id"], axis = 1)
-    if demographic_df:
-        reg_date = demographic_df.loc[user_id].registration_date
+    min_date = demographic_df.loc[user_id].registration_date if demographic_df is not None else '2000-05-01'
     #last_gamble = series['date'].max()
-    idx = pd.date_range(reg_date, '2010-11-30')
+    idx = pd.date_range(min_date, '2010-11-30')
     series = series.reindex(idx, fill_value=0)
+    series['weekend'] = pd.DatetimeIndex(series.index).dayofweek >= 4
     series['hold_cum'] = series['hold'].cumsum() #Move this out later
     return series.copy()
+
+def add_weighted_bets(gam_df, w_means = None):
+    if not w_means:
+        w_means = gam_df.groupby('product_type')['num_bets'].mean()
+        w_means /= w_means[1]
+    gam_df['weighted_bets'] = 0
+    for product_type in gam_df['product_type'].unique():
+        mask = gam_df['product_type'] == product_type
+        gam_df.loc[mask,'weighted_bets'] = gam_df[mask]['num_bets'] / w_means[product_type]
+    return gam_df
+
+def gambling_pipeline(gam_path = 'data/raw_2.sas7bdat'):
+    df = pd.read_sas(gam_path)
+    df = clean_gambling(df)
+    df = add_weighted_bets(df)
+    return df
 
 '''RG'''
 def clean_rg_info(rg_info):
@@ -107,6 +103,11 @@ def subset_rg(rg_info, events = None, interventions = None):
         intervent_mask = filtered_rg['inter_type_first'].isin(interventions)
         filtered_rg  = filtered_rg[intervent_mask]
     return filtered_rg 
+
+def rg_pipeline(rg_path = 'data/raw_3.sas7bdat'):
+    df = pd.read_sas(rg_path)
+    df = clean_rg_info(df)
+    return df
 
 if __name__ == '__main__':
     pass
