@@ -20,7 +20,7 @@ def clean_str_series(obj_ser):
 def clean_demographic(df_demo):
     clean_df = df_demo.copy()
     clean_df = clean_df.rename(DEMO_RENAME, axis = 1)
-    clean_df = clean_df.fillna({'registration_date' : pd.to_datetime('1900-01-01'), 'birth_year' : 1900})
+    clean_df = clean_df.fillna({'registration_date' : pd.to_datetime('2006-01-01'), 'birth_year' : 1977})
     clean_df[['user_id', 'rg', 'birth_year']] = clean_df[['user_id', 'rg', 'birth_year']].astype(int)
     obj_rows = ['country','language','gender']
     for obj in obj_rows:
@@ -51,7 +51,7 @@ def make_ts(gam_data, user_id, product_type, demographic_df = None):
     series = series.set_index('date')
     series = series.reindex(idx, fill_value=0)
     series = series.replace({"user_id" : {0 : user_id}, "product_type": {0 : product_type}})
-    series['hold_cum'] = series['hold'].cumsum() #Move this out later
+    #series['hold_cum'] = series['hold'].cumsum() #Move this out later
     return series
 
 def accum_by_date(gam_data, user_id, product_types = HAS_HOLD_DATA, demographic_df = None):
@@ -63,9 +63,19 @@ def accum_by_date(gam_data, user_id, product_types = HAS_HOLD_DATA, demographic_
     #last_gamble = series['date'].max()
     idx = pd.date_range(min_date, '2010-11-30')
     series = series.reindex(idx, fill_value=0)
-    series['weekend'] = pd.DatetimeIndex(series.index).dayofweek >= 4
-    series['hold_cum'] = series['hold'].cumsum() #Move this out later
+    # series['weekend'] = pd.DatetimeIndex(series.index).dayofweek >= 4
+    # series['hold_cum'] = series['hold'].cumsum() #Move this out later
     return series.copy()
+
+def add_cumulative(series, col = 'hold', cum_name = None):
+    if not name:
+        name = col + '_cum'
+    series[cum_name] = series[col].cumsum()
+    return series
+
+def add_weekend(series):
+    series['weekend'] = pd.DatetimeIndex(series.index).dayofweek >= 4
+    return series
 
 def add_weighted_bets(gam_df, w_means = None):
     if not w_means:

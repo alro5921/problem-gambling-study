@@ -39,13 +39,22 @@ This table has the gambling behavior of  between May 2000 and November 2010. Eac
 | hold               | Number      | Total amount lost on the given day and product in (Euros). A negative number indicates won money.                                      |
 | num_bets              | Integer      | Number of "bets" placed on the given day and product.                                 |
 
-332091	2008-08-23	1	148.64	148.64	3
-
 Each rows represented a user’s gambling behavior with a product (fixed-odds betting, live action-betting, poker etc) on a given day, and includes #bets placed and the amount gambled&lost (turnover&hold) that day.
 
-The activity level that the "number of bets" implied varied wildly between products; obviously we'd expect more individual "bets" from an online poker player (who could play dozens of hands an hour) than a fixed-odds sports better placing a handful of bets at most on a game. I weight the 
+Five most frequently played products (in terms of at least one bet placed a day):
 
-Unfortunately, many of the products lacked turnover and hold data because of a "data storage" error. This accounted for roughly 20% of the rows lacked actual monetary loss data, although activity was pr
+| Product    | Days Used | Average bets per Day | Average Hold per day (Euros)
+|-------------------|-----------|-----------------|--------------------------------------|
+| Sportsbook: Fixed Odds    | 399,000    | 6.2                        | 7.3
+| Sportsbook: Live Action             | 332,000      | 13.4   | 21.0
+| Poker             | 127,000      | 110.7          | Unknown
+| Casino Chartwell   | 38,000      | 335.6     | 50.0
+| Minigames    | 26,000      | 125.8      | Unknown
+| Casino Boss media 2     | 21,000  | 240.2   | 50.2
+
+The activity level that the "number of bets" implied varied wildly between products; obviously we'd expect more individual "bets" from an online poker player (who could play dozens of hands an hour) than a fixed-odds sports better placing a handful of bets on a game.
+
+Unfortunately, many of the products lacked turnover and hold data because of a "data storage" error. This accounted for roughly 20% of the rows lacked actual monetary loss data, although activity was preserved.
 
 ### Responsible Gaming Intervention Information
 
@@ -60,14 +69,21 @@ This table held the the information on the Responsible Gambling interventions fo
 | event_type_first             | Number      | The ID of the type of RG event.                                  |
 | inter_type_first               | Number      | The ID of the type of intervention from bwin.                       |
 
-Almost half of the record interventions dealt with an appeal to a *prior* RG intervention that happened before November 2008. In other words, the flagged behavior didn't actually happen before 
+Almost half of the record interventions dealt with an appeal to a *prior* RG intervention that happened before November 2008. In other words, the flagged behavior happened prior to the recorded RG. 
 
 Forunately the ban date of the prior could be inferred in many cases (by the sudden lack of activity!):
 
 ![](images/RG_reopen.png)
+
+## Data Analysis
 
 ### Weekend Periodicity
 
 There appears to be weekend periodicity. Both because of the work week and because sports events, Primier Soccer in particular, are scheduled on the weekend. 
 
 ![](images/weekend_period.png)
+
+(Suprisingly not maybe!). Perhaps we think problem gamblers are more likely to play on weekdays, as opposed to weekends?
+
+### EDA 
+
