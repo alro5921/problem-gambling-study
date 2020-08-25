@@ -41,6 +41,8 @@ This table has the gambling behavior of  between May 2000 and November 2010. Eac
 
 Each rows represented a user’s gambling behavior with a product (fixed-odds betting, live action-betting, poker etc) on a given day, and includes #bets placed and the amount gambled&lost (turnover&hold) that day.
 
+The `turnover` is somewhat misleading with multiple bets on 
+
 Five most frequently played products (in terms of at least one bet placed a day):
 
 | Product    | Days Used | Average bets per Day | Average Hold per day (Euros)
@@ -87,3 +89,25 @@ There appears to be weekend periodicity. Both because of the work week and becau
 
 ### EDA 
 
+## Modelling
+
+The goal is to have predictive power given a set of the data.
+
+Our goal is to predict whether there's an RG event a year out, given the previous data.
+
+With the initial data EDA, I made the choice to select the following variables to model loan default risk:
+
+* Summary and Demographic Features
+    * User age
+    * The maximium hold in a single day 
+    * Fixed-Odds to Live-Action Sports betting ratio 
+* Time Series Features
+    * Weekly Hold
+    * Weekly 
+
+Recall that the Responsible Gaming inteventions are only between November 2008 and November 2009. I split this period with 4 cutoffs of three months; if there's an RG event within the next year of that cutoff, the frame is labelled positive. The year itself looks back in
+
+Partially for convinence, but also because it's difficult to make intervention calls without enough data, I restrict my predictions to users who've registered within my lookback window.
+
+
+The profit matrix depends entirely on the planned early interventation. Are we simply sending the subscriber a non-compulsory email about gambling addiction and availiable interventions? There we can accept a relatively large false positive rate. Are we taking a more drastic account action, such as a deposit limit or w/e? We'd want a much lower false positive rate.
