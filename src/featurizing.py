@@ -26,9 +26,9 @@ def featurize(users):
             #len(row)
             #print(len(row))
             #breakpoint() 
-            ex_row = 3 + 104 + 100
-            if(len(row) == ex_row - 2):
-                row = row + [row[-1], row[-1]]
+            ex_row = 3 + 104
+            if(len(row) == ex_row - 1):
+                row = row + [row[-1]] #+[row[-1]]
             elif(len(row) != ex_row):
                 print(f'user_id {user_id} had a weird row of length {len(row)}, discarding')
             rows.append(row)
@@ -48,7 +48,7 @@ def featurize_set(set_ts):
     rolling_hold = weekly_sum['hold'].rolling(5).sum()[4:]
     monthly_sum = set_ts.resample('M').sum()
     m_hold_series = monthly_sum['hold'].values
-    return [*hold_series, *rolling_hold] #*m_hold_series]
+    return [*weight_series] #*m_hold_series]
     
 def featurize_user(user_id):
     rows = []
@@ -78,7 +78,7 @@ def create_sets(user_ts, rg_date, look_back = 24, look_forward = 12, shifts = 3)
     if rg_date == pd.Timestamp('NaT'):
         return []
     sets = []
-    cutoffs = ['2008-02-01', '2008-05-01', '2008-08-01', '2008-11-01', '2009-02-01','2009-05-01','2009-08-01','2009-11-01']
+    cutoffs = ['2008-02-01','2008-05-01','2008-08-01', '2008-11-01', '2009-02-01','2009-05-01','2009-08-01','2009-11-01']
     cutoffs = [np.datetime64(date) for date in cutoffs]
     for cutoff in cutoffs:
         if rg_date:

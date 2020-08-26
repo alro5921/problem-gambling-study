@@ -6,7 +6,9 @@ Problem gambling is sad, I would like to see early warning indicators before peo
 
 ## Dataset
 
-Datasets were provided by the The Transparency Project.  They compiled a sample of 4000 subscribers from European online gambling website bwin. Half of these subscribers were flagged by the company’s Responsible Gambling (RG) system between November 2008 and November 2009, and the other half were controls matched to a flagged subscriber's deposit date. Three tables were provided: Demographic information of the subscribers, the gambling history of each subscriber, and the information associated with the Responsible Gaming intervention on each flagged user.
+Datasets were provided by the The Transparency Project.  They compiled a sample of 4000 subscribers from European online gambling website bwin. Half of these subscribers were flagged by the company’s Responsible Gaming (RG) system between November 2008 and November 2009, and the other half were controls matched to a flagged subscriber's deposit date. Three tables were provided: Demographic information of the subscribers, the gambling history of each subscriber, and the information associated with the Responsible Gaming intervention on each flagged user.
+
+For the sake of brevity, I'll be referring to subscribers who had some Responsible Gaming intervention as *RG Users* and subscribers who haven't as *Non-RG Users*.
 
 (Note: The below tables have my standarization of variable names (lower case, converted camel cases to snake cases etc.) and swaps to appropiate data types)
 
@@ -87,15 +89,28 @@ There appears to be weekend periodicity. Both because of the work week and becau
 
 (Suprisingly not maybe!). Perhaps we think problem gamblers are more likely to play on weekdays, as opposed to weekends?
 
-### EDA 
+## EDA 
+
+### Gambling Quantity
+
+As we would expect, a subscriber with a RG intervention is significantly more active per
+
+### Product Type
+
+Of note is that RG-flagged users played much proportionally more _live-action_ sports betting than _fixed-odds_ betting.
+
+|              | Fixed Odds | Live Action | Fixed-Live Ratio |   |
+|--------------|------------|-------------|-------|---|
+| *RG Users*     | 0.372887   | 0.362723    | **1.03**  |   |
+| *Non RG Users* | 0.568620   | 0.220037    | **2.59**  |   |
+
+So it seems worthwhile to track the Live Action betting specifically, or at least the Fixed-Live ratio.
 
 ## Modelling
 
-The goal is to have predictive power given a set of the data.
+Our ultimate goal is to have useful predictive power of whether a user will experience or request an RG in the future, hopefully in a frame that is useful. is to predict whether there's an RG event a year out, given the previous two years of data.
 
-Our goal is to predict whether there's an RG event a year out, given the previous data.
-
-With the initial data EDA, I made the choice to select the following variables to model loan default risk:
+Our model will be using the following features, seperated into summary features of the user and time series features that use the specific day-to-day/week-to-week features. 
 
 * Summary and Demographic Features
     * User age
@@ -103,11 +118,15 @@ With the initial data EDA, I made the choice to select the following variables t
     * Fixed-Odds to Live-Action Sports betting ratio 
 * Time Series Features
     * Weekly Hold
-    * Weekly 
+    * Rolling Average of the Weekly Hold
 
 Recall that the Responsible Gaming inteventions are only between November 2008 and November 2009. I split this period with 4 cutoffs of three months; if there's an RG event within the next year of that cutoff, the frame is labelled positive. The year itself looks back in
+
+### Balancing
+
+The initial dataset was balanced between RG and non-RG users Note that since we're terminating our frames when 
 
 Partially for convinence, but also because it's difficult to make intervention calls without enough data, I restrict my predictions to users who've registered within my lookback window.
 
 
-The profit matrix depends entirely on the planned early interventation. Are we simply sending the subscriber a non-compulsory email about gambling addiction and availiable interventions? There we can accept a relatively large false positive rate. Are we taking a more drastic account action, such as a deposit limit or w/e? We'd want a much lower false positive rate.
+The profit matrix depends entirely on the planned early intervention. Are we simply sending the subscriber a non-compulsory email about gambling addiction and availiable interventions? There we can accept a relatively large false positive rate. Are we taking a more drastic account action, such as a deposit limit or w/e? We'd want a much lower false positive rate.
