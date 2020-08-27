@@ -26,7 +26,7 @@ This table contained demographic information on each subscriber.
 | registration_date              | Date      | Bank (lender) name                                    |
 | first_deposit_date        | Date      | Bank (lender) state                                   |
 
-Notably, 167 control group subscribers had 
+Notably, 167 control group subscribers lacked a birth year and a registration date. I fill in 
 
 ### Gambling Behavior
 
@@ -73,7 +73,7 @@ This table held the the information on the Responsible Gambling interventions fo
 | event_type_first             | Number      | The ID of the type of RG event.                                  |
 | inter_type_first               | Number      | The ID of the type of intervention from bwin.                       |
 
-Almost half of the record interventions dealt with an appeal to a *prior* RG intervention that happened before November 2008. In other words, the flagged behavior happened prior to the recorded RG. 
+Almost half of the record interventions dealt with an appeal to a *prior* RG intervention that happened before November 2008. In other words, the flagged behavior happened prior to the recorded RG.
 
 Forunately the ban date of the prior could be inferred in many cases (by the sudden lack of activity!):
 
@@ -119,14 +119,35 @@ Our model will be using the following features, seperated into summary features 
 * Time Series Features
     * Weekly Hold
     * Rolling Average of the Weekly Hold
+    * Weekly (Weighted) Bets
+
+### Making the Frames
 
 Recall that the Responsible Gaming inteventions are only between November 2008 and November 2009. I split this period with 4 cutoffs of three months; if there's an RG event within the next year of that cutoff, the frame is labelled positive. The year itself looks back in
 
-### Balancing
+### Sampling
 
-The initial dataset was balanced between RG and non-RG users Note that since we're terminating our frames when 
+The initial dataset was balanced between RG and non-RG users. But the positive and negative frames have become significantly unbalanced:
+
+* We've discarded over half of our RG set because of "Reopen" codes. 
+* All frames created from a non-RG user are going to be negative class, while frames from an RG user are going to be a mix of positive and negative class.
+* We're discarding a frame if it has an RG event in it, further cutting our positive frame.
+
+Naively applying our framing process to all valid entries creates roughly 20000 negative frames and 4000 positive frames. Obviously we want to balance those, so I undersample the negative frames to match the 4000 positive frames.
+
+### Model
+
+With the features and resampled data, I fit a Random Forest Model to . I use a randomized grid search for hyperparameter tuning:
+
+
 
 Partially for convinence, but also because it's difficult to make intervention calls without enough data, I restrict my predictions to users who've registered within my lookback window.
 
+### Interpretation
 
-The profit matrix depends entirely on the planned early intervention. Are we simply sending the subscriber a non-compulsory email about gambling addiction and availiable interventions? There we can accept a relatively large false positive rate. Are we taking a more drastic account action, such as a deposit limit or w/e? We'd want a much lower false positive rate.
+How do we use this model? That depends entirely on what planned early intervention we want to do. Are we simply sending the subscriber a non-compulsory email about gambling addiction and availiable interventions+resources? There we can accept a relatively large false positive rate. Are we taking a more drastic account action, such as a deposit limit or w/e? We'd want a much lower false positive rate.
+
+
+
+
+The profit matrix depends entirely on the planned early intervention. Are we simply sending the subscriber a non-compulsory email about gambling addiction and availiable interventions+resources? There we can accept a relatively large false positive rate. Are we taking a more drastic account action, such as a deposit limit or w/e? We'd want a much lower false positive rate.

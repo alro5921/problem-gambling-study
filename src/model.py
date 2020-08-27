@@ -17,9 +17,12 @@ def train_baseline(X_train,y_train):
     log_model.fit(X_train, y_train)
     return log_model
 
-def train_random_forest(X_train,y_train, defaults = False):
-    if defaults:
-        regressor = RandomForestClassifier()
+GRID_SEARCH_GUESS = {'n_estimators': 100, 'min_samples_split': 4, 'min_samples_leaf': 5,
+                     'max_features': None, 'max_depth': None, 'bootstrap': True} 
+
+def train_random_forest(X_train,y_train, do_grid = False):
+    if not do_grid:
+        regressor = RandomForestClassifier(**GRID_SEARCH_GUESS)
         regressor.fit(X_train, y_train)
         return regressor
     random_forest_grid = {'max_depth': [3, 5, None],
@@ -31,7 +34,7 @@ def train_random_forest(X_train,y_train, defaults = False):
                         'random_state': [1]}
     rf_gridsearch = RandomizedSearchCV(RandomForestClassifier(),
                                 random_forest_grid,
-                                n_iter = 100,
+                                n_iter = 20,
                                 n_jobs=-1,
                                 verbose=True,
                                 scoring='f1')
@@ -59,14 +62,28 @@ if __name__ == '__main__':
     # z = non_appeals.join(demo_df, 'user_id')
     # z = z[z['registration_date'] < '2007-01-01']
     no_rg_ids = list(demo_df[demo_df['rg'] == 0].index)
-    user_ids = list(non_appeals.index) + no_rg_ids[:200]
+    user_ids = list(non_appeals.index) + no_rg_ids[:300]
+    # Random state to preserve same holdout, ideally i'd like put these in a seperate file
+    # TIL you can do this one 1-d arrays too
+    train_ids, holdout_ids = train_test_split(user_ids, random_state = 102, shuffle = True)
     print(len(user_ids))
-    X, y = featurize(user_ids)
+    X, y = featurize(train_ids)
     X_train, X_test, y_train, y_test = train_test_split(X,y)
-    regressor = train_random_forest(X_train, y_train, defaults = True)
+    regressor = train_random_forest(X_train, y_train, do_grid = True)
     y_prob = regressor.predict_proba(X_test)[:,1]
     thres = .5
     y_pred = (y_prob >= thres).astype(int)
     scores(y_test,y_pred)
-    store = pd.DataFrame({"Actual" : y_test, "Prediction" : y_prob})
-    store.to_csv("prediction_results.csv")
+    val_store = pd.DataFrame({"Actual" : y_test, "Prediction" : y_prob})
+    val_store.to_csv("/data/validation_prediction_results.csv")
+    ##
+    run_hold = False
+    if run_hold:
+        X_hold, y_hold = featurize(holdout_ids)
+        y_hold_prob = regressor.predict_proba(X_hold)[:,1]
+        thres = .5
+        y_hold_pred = (y_hold_prob >= thres).astype(int)
+        print("=========")
+        scores(y_hold,y_hold_pred)
+        val_store = pd.DataFrame({"Actual" : y_hold, "Prediction" : y_hold_pred})
+        val_store.to_csv("/data/holdout_prediction_results.csv")

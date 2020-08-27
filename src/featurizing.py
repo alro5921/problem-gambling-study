@@ -10,6 +10,18 @@ rg_info = pipeline.rg_pipeline()
 #lookback = 6 months
 #rg_lookahead = 3 months
 
+class frame:
+
+    def __init__():
+        positive = True
+        self.user_id = -1
+        self.scalar_features = []
+        self.time_series_features = []
+
+    def vectorize():
+        pass
+
+
 
 def add_cumulative(series, col = 'hold', cum_name = None):
     if not name:
@@ -26,9 +38,9 @@ def featurize(users):
             #len(row)
             #print(len(row))
             #breakpoint() 
-            ex_row = 3 + 104
-            if(len(row) == ex_row - 1):
-                row = row + [row[-1]] #+[row[-1]]
+            ex_row = 3 + 104 + 100
+            if(len(row) == ex_row - 2):
+                row = row + [row[-1]] + [row[-1]]
             elif(len(row) != ex_row):
                 print(f'user_id {user_id} had a weird row of length {len(row)}, discarding')
             rows.append(row)
@@ -45,10 +57,10 @@ def featurize_set(set_ts):
     weekly_sum = set_ts.resample('W').sum()
     weight_series = weekly_sum['weighted_bets'].values
     hold_series = weekly_sum['hold'].values
-    rolling_hold = weekly_sum['hold'].rolling(5).sum()[4:]
+    rolling_bets = weekly_sum['weighted_bets'].rolling(5).sum()[4:]
     monthly_sum = set_ts.resample('M').sum()
     m_hold_series = monthly_sum['hold'].values
-    return [*weight_series] #*m_hold_series]
+    return [*weight_series, *rolling_bets]
     
 def featurize_user(user_id):
     rows = []
