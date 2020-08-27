@@ -65,8 +65,8 @@ def featurize_set(set_ts):
         pass
         #print(f'Date {set_ts.index[-1]} is still messing monthly up damn')
     m_hold_series = monthly_sum['hold'].values
-    #return [*weight_series]
-    return [*weight_series, *hold_series, *rolling_bets]
+    return [*weight_series]
+    #return [*weight_series, *hold_series, *rolling_bets]
     
 def featurize_user(user_id):
     rows = []
@@ -76,14 +76,15 @@ def featurize_user(user_id):
         rg_date = rg_info.loc[user_id, 'first_date']
     all_products = list(range(1,30))
     user_ts = pipeline.accum_by_date(gam_df, user_id, product_types = all_products)
-    user_sets = create_sets(user_ts, rg_date)
+    user_sets = create_frames(user_ts, rg_date)
     for ts, rg in user_sets:
         age = 2009 - demo_df.loc[user_id, 'birth_year'] #From a different table than ts
         max_hold = ts['hold'].max()
         total_hold = ts['hold'].sum()
         total_activity = ts['weighted_bets'].sum()
-        #row = [total_activity]
+        row = [total_activity]
         row = [age, max_hold, total_hold, *featurize_set(ts)]
+        row = [*featurize_set(ts)]
         rows.append(row)
         #Target boolean
         upcoming_rg.append(rg)
@@ -93,7 +94,7 @@ def to_weekly(user_ts):
     week = user_ts.resample('W').sum()
     return week
 
-def create_sets(user_ts, rg_date, look_back=24, look_forward=12, shifts=3):
+def create_frames(user_ts, rg_date, look_back=24, look_forward=12, shifts=3):
     if rg_date == pd.Timestamp('NaT'):
         return []
     sets = []
@@ -113,7 +114,7 @@ def create_sets(user_ts, rg_date, look_back=24, look_forward=12, shifts=3):
 if __name__ == '__main__':
     user_id = 3327778
     ts = pipeline.accum_by_date(gam_df, user_id)
-    sets = create_sets(ts, np.datetime64('NaT'))
+    sets = create_frames(ts, np.datetime64('NaT'))
     #breakpoint()
     #print(list(s[1] for s in sets))
     #user_ids = [2062223, 912480, 3789290]

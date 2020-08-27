@@ -3,7 +3,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib import rc, rcParams
 import pipeline
-#from constants import TEAM_CODES
 
 rcParams.update({'figure.autolayout': True})
 plt.style.use('ggplot')

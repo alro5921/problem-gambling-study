@@ -21,6 +21,9 @@ def train_baseline(X_train,y_train):
 GRID_SEARCH_GUESS = {'random_state': 1, 'n_estimators': 200, 'min_samples_split': 2, 'min_samples_leaf': 10,
                      'max_features': None, 'max_depth': None, 'bootstrap': True}
 
+#{'random_state': 1, 'n_estimators': 200, 'min_samples_split': 8, 'min_samples_leaf': 10, 'max_features': 'sqrt', 'max_depth': None, 'bootstrap': False}
+
+
 
 def train_random_forest(X_train,y_train, do_grid = False):
     if not do_grid:
