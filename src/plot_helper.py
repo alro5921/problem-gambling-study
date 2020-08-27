@@ -8,9 +8,9 @@ import pipeline
 rcParams.update({'figure.autolayout': True})
 plt.style.use('ggplot')
 
-def save_image(name, folder_path = 'images'):
+def save_image(name, folder_path = 'images', args = {}):
     file_path = folder_path + f'/{name}.png'
-    plt.savefig(file_path)
+    plt.savefig(file_path, **args)
 
 def plot_ts(ax, ts, plt_column = 'hold_cum', label = None, rg_info = None, user_id = None):
     if not label:

@@ -10,20 +10,28 @@ rg_info = pipeline.rg_pipeline()
 #lookback = 6 months
 #rg_lookahead = 3 months
 
-class frame:
+DEFAULT_CUTOFFS = []
 
-    def __init__():
-        positive = True
-        self.user_id = -1
-        self.scalar_features = []
-        self.time_series_features = []
+class FrameMaker:
 
-    def vectorize():
+    def __init__(self, cutoffs=[], lookback=4):
+        self.scalar_features = {}
+        self.time_series_features = {}
+
+    def add_ts_feature():
+        pass
+
+    def vectorized_frame(self):
+        pass
+
+    def store(self, path):
+        pass
+
+    def a(self):
         pass
 
 
-
-def add_cumulative(series, col = 'hold', cum_name = None):
+def add_cumulative(series, col='hold', cum_name=None):
     if not name:
         name = col + '_cum'
     series[cum_name] = series[col].cumsum()
@@ -35,17 +43,10 @@ def featurize(users):
     for user_id in users:
         user_rows, user_rgs = featurize_user(user_id)
         for row, rg in zip(user_rows, user_rgs):
-            #len(row)
-            #print(len(row))
-            #breakpoint() 
-            ex_row = 3 + 104 + 100
-            if(len(row) == ex_row - 2):
-                row = row + [row[-1]] + [row[-1]]
-            elif(len(row) != ex_row):
-                print(f'user_id {user_id} had a weird row of length {len(row)}, discarding')
             rows.append(row)
             rgs.append(rg)
     print("Done featurizing this chunk")
+    print(f"Vectorized Length: {len(row)}")
     return np.array(rows), np.array(rgs)
 
 #Feature table: df['age', 'max_hold', 'total_hold']
@@ -53,14 +54,19 @@ def featurize(users):
 def featurize_set(set_ts):
     max_hold = set_ts['hold'].max()
     total_hold = set_ts['hold'].sum()
-
     weekly_sum = set_ts.resample('W').sum()
+    if(len(weekly_sum) != 104):
+        print(f'Date {set_ts.index[-1]} is still messing up damn')
     weight_series = weekly_sum['weighted_bets'].values
     hold_series = weekly_sum['hold'].values
     rolling_bets = weekly_sum['weighted_bets'].rolling(5).sum()[4:]
     monthly_sum = set_ts.resample('M').sum()
+    if(len(monthly_sum) != 24):
+        pass
+        #print(f'Date {set_ts.index[-1]} is still messing monthly up damn')
     m_hold_series = monthly_sum['hold'].values
-    return [*weight_series, *rolling_bets]
+    #return [*weight_series]
+    return [*weight_series, *hold_series, *rolling_bets]
     
 def featurize_user(user_id):
     rows = []
@@ -76,6 +82,7 @@ def featurize_user(user_id):
         max_hold = ts['hold'].max()
         total_hold = ts['hold'].sum()
         total_activity = ts['weighted_bets'].sum()
+        #row = [total_activity]
         row = [age, max_hold, total_hold, *featurize_set(ts)]
         rows.append(row)
         #Target boolean
@@ -86,11 +93,11 @@ def to_weekly(user_ts):
     week = user_ts.resample('W').sum()
     return week
 
-def create_sets(user_ts, rg_date, look_back = 24, look_forward = 12, shifts = 3):
+def create_sets(user_ts, rg_date, look_back=24, look_forward=12, shifts=3):
     if rg_date == pd.Timestamp('NaT'):
         return []
     sets = []
-    cutoffs = ['2008-02-01','2008-05-01','2008-08-01', '2008-11-01', '2009-02-01','2009-05-01','2009-08-01','2009-11-01']
+    cutoffs = ['2008-02-01','2008-05-01','2008-08-01', '2008-11-01', '2009-02-05','2009-05-01','2009-08-01']
     cutoffs = [np.datetime64(date) for date in cutoffs]
     for cutoff in cutoffs:
         if rg_date:
