@@ -153,6 +153,8 @@ Our model will be using the following features, seperated into summary features 
 
 Recall that the Responsible Gaming inteventions are only between November 2008 and November 2009. I split this period with 4 cutoffs of three months; if there's an RG event within the next year of that cutoff, the frame is labelled positive. The year itself looks back in
 
+![](images/frame_show.gif)
+
 ### Sampling
 
 The initial dataset was balanced between RG-flagged and non-RG users. But the positive and negative frames have become significantly unbalanced:

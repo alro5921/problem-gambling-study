@@ -6,6 +6,7 @@ import pipeline
 from plot_helper import (save_image, plot_ts, add_intervention, add_inter_rg,
                         highlight_weekend_periodicity)
 from sklearn.metrics import roc_curve
+import imageio
 
 ALL_PRODS = list(range(1,30))
 
@@ -27,6 +28,7 @@ def infer_reopen_plot(ax, user_id):
     save_image("RG_reopen")
 
 def show_weekend_periodicity(ax, user_id):
+    '''Investigate the weekend periodicity (or lack thereof!)'''
     prods = [1,2]
     ts = pipeline.accum_by_date(gam_df, user_id, prods, demographic_df = demo_df)['2005-08-01':'2005-10-01']
     plot_ts(ax, ts, plt_column = 'weighted_bets', rg_info = rg_info)
@@ -37,6 +39,7 @@ def show_weekend_periodicity(ax, user_id):
     save_image("weekend_period")
 
 def show_roc_curve(ax, results_path):
+    '''Makes a roc curve from the model proba results'''
     df = pd.read_csv(results_path)
     actual, prediction = df['Actual'], df['Prediction']
     fpr, tpr, thresholds = roc_curve(actual, prediction)
@@ -49,29 +52,43 @@ def show_roc_curve(ax, results_path):
     ax.legend()
     save_image("roc_curve")
 
-def display_frame_shifts(debug=False):
-    #cutoffs = ['2008-03-01','2008-06-01','2008-09-01', '2008-12-01', '2009-03-05','2009-06-01','2009-09-01']
-    cutoffs = ['2008-02-01', '2008-05-01', '2008-08-01',
-             '2008-11-01', '2009-02-05','2009-05-01','2009-08-01']
+DEF_CUTOFFS = ['2008-02-01', '2008-04-15', '2008-08-01',
+             '2008-11-01', '2009-02-05', '2009-05-15']#, '2009-08-01']   
+
+def make_frame(ax, ts, cutoff):
+    ts.loc[ts['weighted_bets'] > 10,'weighted_bets'] = 10
+    ts_args = {'linewidth' : .7, 'alpha' : .3, 'color': "blue"}
+    plot_ts(ax, ts, plt_column = 'weighted_bets', line_args = ts_args)
+    
+    rg_date = pd.to_datetime('2009-04-28')
+    inter_params = {'linestyle' : "--", 'label' : "RG Event", 'color' : 'black', 'lw' : 2}
+    add_intervention(ax, date=rg_date, line_args = inter_params)
+    ax.set_title(f'Frame with Cutoff Date {cutoff}')
+    ax.set_xlabel("Date")
+    ax.set_ylabel("Weighted Bets")
+    
+    look_color = 'green' if rg_date > cutoff and rg_date < cutoff + + np.timedelta64(360, 'D') else 'red'
+    min_date = max(np.datetime64('2007-01-01'), cutoff - np.timedelta64(540, 'D'))
+    ax.fill_between([min_date,cutoff], [12,12], color='gray', alpha=.6)
+    max_date = min(np.datetime64('2010-03-01'), cutoff + np.timedelta64(360, 'D'))
+    ax.fill_between([cutoff, max_date], [12,12], color=look_color, alpha=.6)
+    ax.legend()
+
+def display_frame_shifts(debug=False, cutoffs=DEF_CUTOFFS, user_id=4523711):
+    '''Makes the images for the frame shifting gif'''
     cutoffs = [np.datetime64(date) for date in cutoffs]
+    images = []
     for cutoff in cutoffs:
-        fig, ax = plt.subplots(1)
-        user_id = 4523711
-        ts = pipeline.accum_by_date(gam_df, user_id, ALL_PRODS)['2007-01-01':'2010-01-01']
-        ts.loc[ts['weighted_bets'] > 10,'weighted_bets'] = 10
-        plot_ts(ax, ts, plt_column = 'weighted_bets')
-        rg_date = pd.to_datetime('2009-04-08')
-        add_intervention(ax, date=rg_date)
-        ax.set_title(f'Frame with Cutoff Date {cutoff}')
-        ax.set_xlabel("Date")
-        ax.set_ylabel("Weighted Bets")
-        window_color = 'green' if rg_date > cutoff and rg_date < cutoff + + np.timedelta64(360, 'D') else 'red'
-        ax.fill_between([cutoff - np.timedelta64(360, 'D'),cutoff], [15,15], color='gray', alpha=.6)
-        ax.fill_between([cutoff, cutoff + np.timedelta64(360, 'D')], [15,15], color=window_color, alpha=.4)
+        fig, ax = plt.subplots(1, figsize = (10,5))
+        ts = pipeline.accum_by_date(gam_df, user_id, ALL_PRODS)['2007-01-01':'2010-03-01']
+        make_frame(ax, ts, cutoff)
         if debug:
             plt.show()
         else:
             save_image(f"frame_gif/frame{cutoff}")
+            images.append(imageio.imread(f"images/frame_gif/frame{cutoff}.png"))
+    if not debug:
+        imageio.mimsave('images/frame_show.gif', images, duration=1)
 
 if __name__ == '__main__':
     reopen_show = False
@@ -94,4 +111,4 @@ if __name__ == '__main__':
         plt.show()
     show_frames = True
     if show_frames:
-        display_frame_shifts(True)
+        display_frame_shifts()

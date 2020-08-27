@@ -11,10 +11,8 @@ def save_image(name, folder_path = 'images', args = {}):
     file_path = folder_path + f'/{name}.png'
     plt.savefig(file_path, **args)
 
-def plot_ts(ax, ts, plt_column = 'hold_cum', label = None, rg_info = None, user_id = None):
-    if not label:
-        label = plt_column
-    ax.plot(ts[plt_column], label = plt_column)
+def plot_ts(ax, ts, plt_column = 'hold_cum', line_args = {}):
+    ax.plot(ts[plt_column], **line_args)
     #ax.bar(ts.index, ts[plt_column], label = plt_column)
 
 def infer_reopen(ts):
