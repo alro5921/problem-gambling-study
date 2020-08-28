@@ -60,11 +60,15 @@ The five most frequently played products, in terms of user days where at least o
 | Poker             | 127,000      | 110.7          | Unknown (see below)
 | Casino Chartwell   | 38,000      | 335.6     | 50.0
 | Minigames    | 26,000      | 125.8      | Unknown (see below)
-| Casino Boss media 2     | 21,000  | 240.2   | 50.2
+| Casino Boss Media 2     | 21,000  | 240.2   | 50.2
 
 Unfortunately, many of the bwin's third party products lacked turnover and hold data due to a data transfer error, most notably Poker. This accounted for roughly 20% of the gambling activity rows, and while monetary patterns are vital I'd like to at least try and catch problematic activity amongst e.g poker players with an activity metric.
 
 Although the activity level "number of bets" implies varies wildly between products; we'd expect more individual "bets" from an online poker player, who could play dozens of hands an hour, than a fixed-odds sports better placing a handful of bets on a game. I attempt to standardize across products by weighting each product to its average bets per day in the dataset, which allows for a more meaningful aggregated activity metric than a sum that'd be dominated by the higher frequency products.
+
+<!---
+Simple activity plot here?
+-->
 
 
 ### Responsible Gaming Intervention Information
@@ -118,6 +122,11 @@ As we would expect, an RG-flagged user is significantly more active per gambling
 Any analysis is going to rely on the time series data of the betting and gambling behavior.
 
 ### Product Type
+
+<!---
+If I can do the pair bar graph that'd be great and seuge into this much better
+(and could mention high freq of poker)
+-->
 
 When RG-flagged users bet on sports, they played proportionally much more _live-action_ betting (where gamblers can trade "shares" of outcomes as the game progresses) than _fixed-odds_ betting relative to non-RG users:
 
