@@ -26,13 +26,13 @@ This table contained demographic information on each subscriber.
 
 | Variable name     | Data type | Value                              |
 |-------------------|-----------|-------------------------------------------------------|
-| user_id    | Integer      | Loan identifier - Primary key                         |
-| rg_case              | Boolean      | Borrower name                                         |
-| country_name              | Text      | Borrower city                                         |
-| language             | Text      | Borrower state                                        |
-| gender               | Text      | Borrower zip code                                     |
-| registration_date              | Date      | Bank (lender) name                                    |
-| first_deposit_date        | Date      | Bank (lender) state                                   |
+| user_id    | Integer      | User ID                        |
+| rg_case              | Boolean      | Whether the subscriber had an RG intervention.                                      |
+| country_name              | Text      | The country the user registered.                                        |
+| language             | Text      | User's Primary Langauge                                    |
+| gender               | Text      | User's gender.                                   |
+| registration_date              | Date      | User's registration date with bwin.                                   |
+| first_deposit_date        | Date      | User's first cash deposit with bwin.                                  |
 
 167 non-RG users subscribers lacked a birth year and a registration date, which I filled in with the average non-RG birth year and registration date.
 
