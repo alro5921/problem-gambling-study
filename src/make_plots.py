@@ -41,8 +41,8 @@ def infer_reopen_plot(ax, user_id, show_infer=False):
     '''Plots an example of a Reopen ticket, and how it could be inferred if possible'''
     ts = pipeline.accum_by_date(gam_df, user_id, ALL_PRODS, demographic_df=demo_df)
     plot_ts(ax, ts, plt_column='weighted_bets')
-    inter_args = {'linestyle' : "--", 'label' : f'RG: Requested Reopen\nIntervention: Remains Closed', 
-                'color' : 'black', 'lw' : 2}
+    inter_args = {'linestyle' : "--", 'label' : f'Recorded Intervention', 
+                'color' : 'black', 'lw' : 2, 'alpha' : .6}
     add_inter_rg(ax, rg_info, user_id, line_args = inter_args)
     ax.set_title(f'Weighted Number of Bets for #{user_id}')
     ax.set_xlabel("Date")
@@ -72,10 +72,11 @@ def show_roc_curve(ax, results_path):
     actual, prediction = df['Actual'], df['Prediction']
     fpr, tpr, thresholds = roc_curve(actual, prediction)
     x = np.linspace(0, 1, 100)
-    ax.plot(fpr, tpr, color='firebrick')
-    ax.plot(x, x, linestyle='--', color ='black', label='Random Guess')
+    ax.plot(fpr, tpr, color='firebrick', label="Random Forest ROC")
+    ax.plot(x, x, linestyle='--', color ='black')
     ax.set_xlabel('False Positive Rate (FPR)', fontsize=16)
     ax.set_ylabel('True Positive Rate (TPR)', fontsize=16)
+    ax.tick_params(axis="both", labelsize=14)
     ax.set_title('ROC Curve for Random Forest Model')
     ax.legend()
     save_image("roc_curve")
@@ -107,7 +108,7 @@ def display_frame_shifts(debug=False, cutoffs=DEFAULT_CUTOFFS, user_id=4523711):
     images = []
     for cutoff in cutoffs:
         fig, ax = plt.subplots(1, figsize = (10,5))
-        ts = pipeline.accum_by_date(gam_df, user_id, ALL_PRODS)['2007-01-01':'2010-03-01']
+        ts = pipeline.accum_by_date(gam_df, user_id, ALL_PRODS)['2006-11-01':'2010-03-01']
         make_frame(ax, ts, cutoff)
         if debug:
             plt.show()
@@ -115,10 +116,10 @@ def display_frame_shifts(debug=False, cutoffs=DEFAULT_CUTOFFS, user_id=4523711):
             save_image(f"frame_gif/frame{cutoff}")
             images.append(imageio.imread(f"images/frame_gif/frame{cutoff}.png"))
     if not debug:
-        imageio.mimsave('images/frame_show.gif', images, duration=1.3)
+        imageio.mimsave('images/frame_show.gif', images, duration=1.5)
 
 if __name__ == '__main__':
-    background = True
+    background = False
     if background:
         user_id = 2062223
         fig, ax = plt.subplots(figsize=(10,6))
@@ -128,7 +129,7 @@ if __name__ == '__main__':
     reopen_show = False
     if reopen_show:
         user_id = 6237129
-        fig, ax = plt.subplots(figsize=(10,6))
+        fig, ax = plt.subplots(figsize=(8,5))
         infer_reopen_plot(ax, user_id, show_infer = True)
         plt.show()
 
@@ -139,10 +140,10 @@ if __name__ == '__main__':
         show_weekend_periodicity(ax, user_id)
         plt.show()
 
-    make_roc = False
+    make_roc = True
     if make_roc:
-        path = 'data/model_results/validation_prediction_results.csv'
-        fig, ax = plt.subplots(figsize=(10,6))
+        path = 'data/model_results/validation_prediction_results2020-08-27 17:44:18.327415.csv'
+        fig, ax = plt.subplots(figsize=(9,5))
         show_roc_curve(ax, path)
         plt.show()
 

@@ -1,12 +1,14 @@
 # problem-gambling-study
+<img src="images/mauirecovery-banner-sports-gambling.jpg" width="850" height="425" />
+<!---
+Credit: https://mauirecovery.com/
+-->
 
 ## Background
 
 The State of Colorado has legalized sports gambling in May 2020, and has already seen over 100 million dollars of bets placed and [59 million in July alone](https://www.colorado.gov/pacific/sites/default/files/Colorado%20Sports%20Betting%20Proceeds%20July%202020.pdf). While gambling in moderation can be an enteraining diversion, online gambling has historically led to problematic gambling in areas (like Europe) where it's been legal for considerably longer. This 2005 subscriber to European sports gambling website bWin, for instance, lost nearly 30,000 Euros over the course of three years before requesting a deposit limit:
 
 ![](images/background_plot.png)
-
-Problem gambling 
 
 I would like to investigate possible early signs of problem gambling, and try and see if a machine learning model can premptively detect these behaviors subscribers lose even larger sums of money or enter a destructive spiral.
 
@@ -96,11 +98,11 @@ The `event_type` describes what triggered the RG intervention, such as a request
  |    Block Partially Done           |        106 |
  |    Requested Block Impossible           |        26 |
 
-The Previous RG appeals are unfortunately problematic for this analysis; they dealt with RG interventions that happened *before* November 2008, and so the user's flagged behavior doesn't actually correspond with the date And in many cases:
+The Previous RG appeals are unfortunately problematic for this analysis; they dealt with RG interventions that happened *before* November 2008, and so the user's flagged behavior doesn't actually correspond with the date. In the cases of a full ban, there's zero activity!
 
 ![](images/RG_reopenFalse.png)
 
-There's not any activity prior to the recorded date, on behalf of being (temporarily) banned! I end up discarding these users, which unfortunately accounts for almost half my RG-flagged users.
+I end up discarding these users, which unfortunately accounts for almost half my RG-flagged users.
 
 ## Further EDA 
 
@@ -108,23 +110,23 @@ There's not any activity prior to the recorded date, on behalf of being (tempora
 
 As we would expect, an RG-flagged user is significantly more active per gambling day, both in bets placed and size, than a non-RG user.
 
-|            |   Turnover |      Hold | Weighted Bets |
+|            |   Turnover (Euros) |      Hold (Euros) | Weighted #Bets |
 |-----------:|-----------:|----------:|--------------:|
-|     Non-RG |  88.747338 |  6.101446 |      2.633354 |
-| RG-Flagged | 390.073958 | 19.300520 |      5.747101 |
+|     Non-RG |  89.0 |  6.1 |      2.6 |
+| RG-Flagged | 390.1 | 19.3 |      5.8 |
 
-Any analysis is going to rely on the time series data of the betting behavior.
+Any analysis is going to rely on the time series data of the betting and gambling behavior.
 
 ### Product Type
 
-Of note is that RG-flagged users played much proportionally more _live-action_ sports betting than _fixed-odds_ betting.
+When RG-flagged users bet on sports, they played proportionally much more _live-action_ betting (where gamblers can trade "shares" of outcomes as the game progresses) than _fixed-odds_ betting relative to non-RG users:
 
-|              | Fixed Odds | Live Action | Fixed-Live Ratio |   |
-|--------------|------------|-------------|-------|---|
-| *RG Users*     | 0.372887   | 0.362723    | **1.03**  |   |
-| *Non RG Users* | 0.568620   | 0.220037    | **2.59**  |   |
+|              | Fixed Odds | Live Action | Fixed-Live Ratio |
+|--------------|------------|-------------|-------|
+| *RG-Flagged Users*     | 0.37   | 0.36    | **1.03**  | 
+| *Non RG Users* | 0.57   | 0.22    | **2.59**  | 
 
-Hence it seems worthwhile to specifically track Live Action time series, or at least keep the summary statistic of how much fixed gambling to live action gambling a patron does. I featurize the latter in my model.
+It seems worthwhile to specifically track the Live Action activity of a user, or at least keep the summary statistic of how much fixed gambling to live action gambling a patron does. I featurize the latter in my model.
 
 ## Modelling
 
@@ -171,7 +173,7 @@ With the features and resampled data, I fit a Random Forest Model to the trainin
   | min_samples_leaf |      5 |    [1, 5, 10, 20] |
  | bootstrap     |       True |            [False, True] |
 
-And when run on the validation set: 
+And get the following metric scores when run on the validation set: 
 
  | Metric        | Score |
 |------------------|--------:|
@@ -183,7 +185,11 @@ And when run on the validation set:
 
 ### Usability
 
-How can we use this model for early interventions? That depends entirely on what planned early intervention we want to do. Are we simply sending the subscriber a non-compulsory email about gambling addiction and availiable interventions+resources? There we can accept a relatively large false positive rate. Are we taking a more drastic account action, such as a deposit limit or an account block? We'd want a substantially lower false positive rate.
+How can we use this model for early interventions? That depends entirely on what planned early intervention we want to do. If we're simply sending the subscriber a non-compulsory email about gambling addiction and availiable resources, we can accept a much larger false positive rate than if we were taking a drastic action like a deposit limit or account block. We can construct an ROC curve from our model's predictions on the validation set, which allows us to fine-tune the trade off between the false positive rate and false negative rate by adjusting the acceptance threshold:
+
+![](images/roc_curve.png)
+
+This curve suggests that an interventionist could, for example, send information to about 60% of eventual RG-flagged users at the cost of unnecessarily sending the same information to 20% of non-flagged users.
 
 ### Test Set Performance
 
