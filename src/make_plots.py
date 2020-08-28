@@ -93,9 +93,9 @@ def make_frame(ax, ts, cutoff):
     ax.set_title(f'Frame with Cutoff Date {cutoff}')
     ax.set_xlabel("Date")
     ax.set_ylabel("Daily Weighted #Bets Placed")
-    ax.set_xlim(left=np.datetime64("2007-01-01"), right=np.datetime64("2010-01-01"))
+    ax.set_xlim(left=np.datetime64("2007-01-01"), right=np.datetime64("2010-03-01"))
     
-    look_color = 'green' if rg_date > cutoff and rg_date < cutoff + + np.timedelta64(360, 'D') else 'red'
+    look_color = 'green' if rg_date > cutoff and rg_date < cutoff + np.timedelta64(360, 'D') else 'red'
     min_date = max(np.datetime64('2007-01-01'), cutoff - np.timedelta64(540, 'D'))
     ax.fill_between([min_date,cutoff], [12,12], color='gray', alpha=.6)
     max_date = min(np.datetime64('2010-03-01'), cutoff + np.timedelta64(360, 'D'))
@@ -116,7 +116,7 @@ def display_frame_shifts(debug=False, cutoffs=DEFAULT_CUTOFFS, user_id=4523711):
             save_image(f"frame_gif/frame{cutoff}")
             images.append(imageio.imread(f"images/frame_gif/frame{cutoff}.png"))
     if not debug:
-        imageio.mimsave('images/frame_show.gif', images, duration=1.5)
+        imageio.mimsave('images/frame_show.gif', images, duration=1.4)
 
 if __name__ == '__main__':
     background = False
@@ -140,13 +140,13 @@ if __name__ == '__main__':
         show_weekend_periodicity(ax, user_id)
         plt.show()
 
-    make_roc = True
+    make_roc = False
     if make_roc:
         path = 'data/model_results/validation_prediction_results2020-08-27 17:44:18.327415.csv'
         fig, ax = plt.subplots(figsize=(9,5))
         show_roc_curve(ax, path)
         plt.show()
 
-    show_frames = True
+    show_frames = False
     if show_frames:
         display_frame_shifts()

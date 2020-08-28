@@ -6,7 +6,7 @@ Credit: https://mauirecovery.com/
 
 ## Background
 
-The State of Colorado has legalized sports gambling in May 2020, and has already seen over 100 million dollars of bets placed and [59 million in July alone](https://www.colorado.gov/pacific/sites/default/files/Colorado%20Sports%20Betting%20Proceeds%20July%202020.pdf). While gambling in moderation can be an enteraining diversion, online gambling has historically led to problematic gambling in areas (like Europe) where it's been legal for considerably longer. This 2005 subscriber to European sports gambling website bWin, for instance, lost nearly 30,000 Euros over the course of three years before requesting a deposit limit:
+The State of Colorado has legalized sports gambling in May 2020, and has already seen over 100 million dollars of bets placed and [59 million in July alone](https://www.colorado.gov/pacific/sites/default/files/Colorado%20Sports%20Betting%20Proceeds%20July%202020.pdf). While gambling in moderation can be an enteraining diversion, online gambling has historically led to problematic gambling in areas (like Europe) where it's been legal for considerably longer. For instance, this 2005 subscriber to European sports gambling website bWin lost nearly 30,000 Euros over the course of three years before personally requesting a deposit limit:
 
 ![](images/background_plot.png)
 
@@ -193,7 +193,7 @@ This curve suggests that an interventionist could, for example, send information
 
 ### Test Set Performance
 
-On the final unseen data, the model (predictably) performed modestly worse.
+On the final unseen data, the model (predictably) performed modestly worse but still seemed to generalize well.
 
  | Metric        | Score |
 |------------------|--------:|
@@ -201,7 +201,7 @@ On the final unseen data, the model (predictably) performed modestly worse.
 | Precision | 0.67
 | F1 | 0.65 |
 
-### Future Work
+## Future Work
 
 * I discarded interventions that were appeals of earlier blocks, which turned out to be almost half of the positive data set. In many cases, the prior ban date can be pretty easily inferred by a sudden drop in activity:
 
@@ -209,5 +209,5 @@ On the final unseen data, the model (predictably) performed modestly worse.
 
 And extracting this information from even a portion of the appeals would substantially increase the sample size.
 
-* My feature engineering was rather limited; I'd like to try varying the size of the lookback window (there's no fundamental reason not to use the enter prior history!), try different granularities of the data. 
-    * I'd particually like to try and featurize [loss chasing](https://www.gamblingtherapy.org/en/chasing-losses), which likely requires finer granularity than a week I used in model (possibly even a day!).
+* My feature engineering was rather limited; I'd like to try varying the size of the lookback window (there's no fundamental reason not to use the enter prior history!), try different granularities of the data, try different rolling windows and different metrics in the rolling windows.
+    * I'd particually like to try and featurize [loss chasing](https://www.gamblingtherapy.org/en/chasing-losses), which likely requires finer granularity than the week-wise I used in the model.
