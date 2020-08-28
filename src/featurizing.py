@@ -12,9 +12,9 @@ rg_info = pipeline.rg_pipeline()
 DEFAULT_CUTOFFS = ['2008-02-01','2008-05-01','2008-08-01', '2008-11-01', '2009-02-05','2009-05-01','2009-08-01']
 DEFAULT_CUTOFFS = [np.datetime64(date) for date in DEFAULT_CUTOFFS]
 
-'''This all needs to be refactored, it's making feature selection and model changing so obnoxious.
+'''This all needs to be refactored, it's completely hamstrung feature selection and model changing
 Part of it is that the frames more complicated than a DF (it's FOUR Dfs oooooo) but still. 
-First thing I'm doing Cap 3 is rewriting this to be not terrible.'''
+First thing I'm doing Cap 3 is rewriting/taring this down to be not terrible.'''
 
 def add_cumulative(series, col='hold', cum_name=None):
     if not name:
@@ -23,6 +23,7 @@ def add_cumulative(series, col='hold', cum_name=None):
     return series
 
 def featurize(users):
+    '''Converts the user_id set into model-ready featurized frames'''
     rows = []
     rgs = []
     for user_id in users:
@@ -34,24 +35,8 @@ def featurize(users):
     print(f"Vectorized Length: {len(row)}")
     return np.array(rows), np.array(rgs)
 
-def featurize_set(set_ts):
-    max_hold = set_ts['hold'].max()
-    total_hold = set_ts['hold'].sum()
-    weekly_sum = set_ts.resample('W').sum()
-    if(len(weekly_sum) != 104):
-        print(f'Date {set_ts.index[-1]} is still messing up damn')
-    weight_series = weekly_sum['weighted_bets'].values
-    hold_series = weekly_sum['hold'].values
-    rolling_bets = weekly_sum['weighted_bets'].rolling(5).sum()[4:]
-    monthly_sum = set_ts.resample('M').sum()
-    if(len(monthly_sum) != 24):
-        pass
-        # print(f'Date {set_ts.index[-1]} is still messing monthly up damn')
-    m_hold_series = monthly_sum['hold'].values
-    # return [*weight_series]
-    return [*weight_series, *hold_series, *rolling_bets]
-    
 def featurize_user(user_id):
+    '''Features a particular user''' 
     rows = []
     upcoming_rg = []
     rg_date = None
@@ -73,11 +58,27 @@ def featurize_user(user_id):
         upcoming_rg.append(rg)
     return rows, upcoming_rg
 
+def featurize_set(set_ts):
+    '''Features a particular frame'''
+    max_hold = set_ts['hold'].max()
+    total_hold = set_ts['hold'].sum()
+    weekly_sum = set_ts.resample('W').sum()
+    if(len(weekly_sum) != 104):
+        print(f'Date {set_ts.index[-1]} is still messing up damn')
+    weight_series = weekly_sum['weighted_bets'].values
+    hold_series = weekly_sum['hold'].values
+    rolling_bets = weekly_sum['weighted_bets'].rolling(5).sum()[4:]
+    return [*weight_series, *hold_series, *rolling_bets]
+
 def to_weekly(user_ts):
     week = user_ts.resample('W').sum()
     return week
 
 def fixed_live_ratio(user_id):
+    '''
+    Calculates fixed bet odds to live bet odds ratio
+    Note: Fairly poorly done and leaky, need to actually restrict to the frame
+    '''
     mask = (gam_df['user_id'] == user_id) & (gam_df['date'] < '2008-11-01')
     user = gam_df[mask]
     holds = user.groupby('product_type').sum()['hold']
@@ -89,6 +90,7 @@ def fixed_live_ratio(user_id):
         return min(15, holds[2]/holds[1])
 
 def create_frames(user_ts, rg_date, look_back=24, look_forward=12, cutoffs = DEFAULT_CUTOFFS):
+    '''Creates the frames from the user's time series data'''
     if rg_date == pd.Timestamp('NaT'):
         return []
     sets = []

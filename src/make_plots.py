@@ -9,12 +9,15 @@ from sklearn.metrics import roc_curve
 import imageio
 
 ALL_PRODS = list(range(1,30))
+DEFAULT_CUTOFFS = ['2008-02-01', '2008-04-15', '2008-08-01',
+             '2008-11-01', '2009-02-05', '2009-05-15'] 
 
-demo_df = pipeline.demo_pipeline()
+demo_df = pipeline.demo_pipeline() # Global vars weee
 gam_df = pipeline.gambling_pipeline()
 rg_info = pipeline.rg_pipeline()
 
 def background_plot(ax, user_id):
+    '''Plots the introductory "Wow people lose a lot on this" graph'''
     ts = pipeline.accum_by_date(gam_df, user_id, ALL_PRODS)
     ts['cumul_hold'] = ts['hold'].cumsum()
     ax.set_title(f'Cumulative Loss for User #{user_id}')
@@ -27,7 +30,15 @@ def background_plot(ax, user_id):
     ax.legend()
     save_image(f"background_plot")
 
+def quick_activity_plot(ax, user_id):
+    ts = pipeline.accum_by_date(gam_df, user_id, ALL_PRODS)
+    plot_ts(ax, ts, plt_column='weighted_bets')
+    ax.set_title(f'Weighted Number of Bets for #{user_id}')
+    ax.set_xlabel("Date")
+    ax.set_ylabel("Daily Weighted #Bets Placed")
+
 def infer_reopen_plot(ax, user_id, show_infer=False):
+    '''Plots an example of a Reopen ticket, and how it could be inferred if possible'''
     ts = pipeline.accum_by_date(gam_df, user_id, ALL_PRODS, demographic_df=demo_df)
     plot_ts(ax, ts, plt_column='weighted_bets')
     inter_args = {'linestyle' : "--", 'label' : f'RG: Requested Reopen\nIntervention: Remains Closed', 
@@ -35,7 +46,7 @@ def infer_reopen_plot(ax, user_id, show_infer=False):
     add_inter_rg(ax, rg_info, user_id, line_args = inter_args)
     ax.set_title(f'Weighted Number of Bets for #{user_id}')
     ax.set_xlabel("Date")
-    ax.set_ylabel("Weighted Bets")
+    ax.set_ylabel("Daily Weighted #Bets Placed")
     ax.set_xlim(left=np.datetime64("2008-04-01"), right=np.datetime64("2009-09-01"))
     if show_infer:
         line_args = {'linestyle' : "--", 'color' : 'green',
@@ -51,7 +62,7 @@ def show_weekend_periodicity(ax, user_id):
     plot_ts(ax, ts, plt_column = 'weighted_bets', rg_info = rg_info)
     ax.set_title(f'Weighted Number of Bets for #{user_id}')
     ax.set_xlabel("Date")
-    ax.set_ylabel("Weighted Bets")
+    ax.set_ylabel("Daily Weighted #Bets Placed")
     highlight_weekend_periodicity(ax, ts)
     save_image("weekend_period")
 
@@ -69,9 +80,6 @@ def show_roc_curve(ax, results_path):
     ax.legend()
     save_image("roc_curve")
 
-DEFAULT_CUTOFFS = ['2008-02-01', '2008-04-15', '2008-08-01',
-             '2008-11-01', '2009-02-05', '2009-05-15'] 
-
 def make_frame(ax, ts, cutoff):
     '''Plots one frame of the framing gif'''
     ts.loc[ts['weighted_bets'] > 10,'weighted_bets'] = 10
@@ -83,7 +91,7 @@ def make_frame(ax, ts, cutoff):
     add_intervention(ax, date=rg_date, line_args = inter_params)
     ax.set_title(f'Frame with Cutoff Date {cutoff}')
     ax.set_xlabel("Date")
-    ax.set_ylabel("Weighted Bets")
+    ax.set_ylabel("Daily Weighted #Bets Placed")
     ax.set_xlim(left=np.datetime64("2007-01-01"), right=np.datetime64("2010-01-01"))
     
     look_color = 'green' if rg_date > cutoff and rg_date < cutoff + + np.timedelta64(360, 'D') else 'red'
@@ -107,8 +115,7 @@ def display_frame_shifts(debug=False, cutoffs=DEFAULT_CUTOFFS, user_id=4523711):
             save_image(f"frame_gif/frame{cutoff}")
             images.append(imageio.imread(f"images/frame_gif/frame{cutoff}.png"))
     if not debug:
-        imageio.mimsave('images/frame_show.gif', images, duration=1)
-
+        imageio.mimsave('images/frame_show.gif', images, duration=1.3)
 
 if __name__ == '__main__':
     background = True
@@ -139,6 +146,6 @@ if __name__ == '__main__':
         show_roc_curve(ax, path)
         plt.show()
 
-    show_frames = False
+    show_frames = True
     if show_frames:
-        display_frame_shifts(debug = True)
+        display_frame_shifts()
