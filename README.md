@@ -2,11 +2,13 @@
 
 ## Background
 
-Colorado has recently legalized sports betting. And while it can be a fun diversion, online gambling has historically led to problem gambling in areas (like Europe) where it's legal. This subscriber to European sports gambling website bWin, for instance, lost nearly 30,000 Euros over the course of three years before requesting a deposit limit:
+The State of Colorado has legalized sports gambling in May 2020, and has already seen over 100 million dollars of bets placed and [59 million in July alone](https://www.colorado.gov/pacific/sites/default/files/Colorado%20Sports%20Betting%20Proceeds%20July%202020.pdf). While gambling in moderation can be an enteraining diversion, online gambling has historically led to problematic gambling in areas (like Europe) where it's been legal for considerably longer. This 2005 subscriber to European sports gambling website bWin, for instance, lost nearly 30,000 Euros over the course of three years before requesting a deposit limit:
 
 ![](images/background_plot.png)
 
-I would like to investigate possible early signs of problem gambling, behaviors that can be detected before subscribers enter a spiral and lose even larger sums of money.
+Problem gambling 
+
+I would like to investigate possible early signs of problem gambling, and try and see if a machine learning model can premptively detect these behaviors subscribers lose even larger sums of money or enter a destructive spiral.
 
 ## Dataset
 
@@ -47,9 +49,7 @@ This table has the gambling behavior of between May 2000 and November 2010. Each
 
 Each rows represented a user’s gambling behavior with a product (fixed-odds betting, live action-betting, poker etc) on a given day, and includes #bets placed and the amount gambled&lost (turnover&hold) that day.
 
-The `turnover` is somewhat misleading when the stakes are not all or nothing and repeated; if a game reports
-
-Five most frequently played products (in terms of at least one bet placed a day):
+The five most frequently played products, in terms of user days where at least one bet was placed, were:
 
 | Product    | Days in Use| Average bets per Day | Average Hold per day (Euros)
 |-------------------|-----------|-----------------|--------------------------------------|
@@ -60,9 +60,10 @@ Five most frequently played products (in terms of at least one bet placed a day)
 | Minigames    | 26,000      | 125.8      | Unknown (see below)
 | Casino Boss media 2     | 21,000  | 240.2   | 50.2
 
-Unfortunately, many of the bwin's third party products lacked turnover and hold data due to a data transfer error. Roughly 20% of the rows lacked monetary loss, mostly coming from Poker, although activity itself was preserved. 
+Unfortunately, many of the bwin's third party products lacked turnover and hold data due to a data transfer error, most notably Poker. This accounted for roughly 20% of the gambling activity rows, and while monetary patterns are vital I'd like to at least try and catch problematic activity amongst e.g poker players with an activity metric.
 
-The activity level "number of bets" implies varies wildly between products; we'd expect more individual "bets" from an online poker player, who could play dozens of hands an hour, than a fixed-odds sports better placing a handful of bets on a game. I attempt standardize across products by weighting each product to its average bets per day, which lets me do a more meaningful total activity metric than something that'd otherwise be dominated by e.g Casino Chartwell or Poker activity.
+Although the activity level "number of bets" implies varies wildly between products; we'd expect more individual "bets" from an online poker player, who could play dozens of hands an hour, than a fixed-odds sports better placing a handful of bets on a game. I attempt to standardize across products by weighting each product to its average bets per day in the dataset, which allows for a more meaningful aggregated activity metric than a sum that'd be dominated by the higher frequency products.
+
 
 ### Responsible Gaming Intervention Information
 
@@ -95,11 +96,11 @@ The `event_type` describes what triggered the RG intervention, such as a request
  |    Block Partially Done           |        106 |
  |    Requested Block Impossible           |        26 |
 
-The Previous RG appeals are unfortunately problematic for this analysis; they dealt with RG interventions that happened *before* November 2008, which means the RG-flagged user's behavior that lead to a ban didn't actually correspond with date in the table (and would often be zero if it was a full ban!):
+The Previous RG appeals are unfortunately problematic for this analysis; they dealt with RG interventions that happened *before* November 2008, and so the user's flagged behavior doesn't actually correspond with the date And in many cases:
 
 ![](images/RG_reopenFalse.png)
 
-I end up discarding these rows, which unfortunately accounts for almost half my RG users.
+There's not any activity prior to the recorded date, on behalf of being (temporarily) banned! I end up discarding these users, which unfortunately accounts for almost half my RG-flagged users.
 
 ## Further EDA 
 
@@ -107,12 +108,12 @@ I end up discarding these rows, which unfortunately accounts for almost half my 
 
 As we would expect, an RG-flagged user is significantly more active per gambling day, both in bets placed and size, than a non-RG user.
 
-|            |   turnover |      hold | weighted_bets |
+|            |   Turnover |      Hold | Weighted Bets |
 |-----------:|-----------:|----------:|--------------:|
 |     Non-RG |  88.747338 |  6.101446 |      2.633354 |
 | RG-Flagged | 390.073958 | 19.300520 |      5.747101 |
 
-Any analysis is going to
+Any analysis is going to rely on the time series data of the betting behavior.
 
 ### Product Type
 
@@ -123,7 +124,7 @@ Of note is that RG-flagged users played much proportionally more _live-action_ s
 | *RG Users*     | 0.372887   | 0.362723    | **1.03**  |   |
 | *Non RG Users* | 0.568620   | 0.220037    | **2.59**  |   |
 
-So it seems worthwhile to specifically track Live Action activity, or at least keep track of how much fixed gambling to live action gambling a patron does.
+Hence it seems worthwhile to specifically track Live Action time series, or at least keep the summary statistic of how much fixed gambling to live action gambling a patron does. I featurize the latter in my model.
 
 ## Modelling
 
@@ -131,20 +132,22 @@ Our ultimate goal is to have useful predictive power about whether a user will e
 
 Our model will be using the following features, seperated into summary features of the user and time series features that use the specific day-to-day/week-to-week features. 
 
-* Summary and Demographic Features
+* **Summary and Demographic Features**
     * User's age at the cutoff
     * The maximium hold seen in a single day 
     * User's Fixed-Odds to Live-Action Sports hold ratio
-* Time Series Features
+* **Time Series Features**
     * Weekly Hold
     * Rolling Average of the Weekly Hold
     * Weekly (Weighted) Bets
 
 ### Making the Frames
 
-Recall that the Responsible Gaming inteventions are only between November 2008 and November 2009. I split this period with 4 cutoffs of three months; if there's an RG event within the next year of that cutoff, the frame is labelled positive. The year itself looks back in
+Recall that the Responsible Gaming inteventions are only between November 2008 and November 2009. To create frames for a model to train and evaluate on, I split that period and the preceding six months with intervals of 3 months; the frame can sees the data from two years before the cutoff and attempts to predict if that subscriber had a Responsible Gaming intervention event in the next year. The frame is labelled positive if that's the case and negative otherwise.
 
 ![](images/frame_show.gif)
+
+We outright discard the frame if an RG event happened _before_ the cutoff (such as the last frame in the slide above), as that's not particually representative of what the model's trying to accomplish.
 
 ### Sampling
 
@@ -158,7 +161,7 @@ Naively applying our framing process to all valid entries creates roughly 20000 
 
 ### Model Performance
 
-With the features and resampled data, I fit a Random Forest Model to the training set. I use a grid search for hyperparameter tuning:
+With the features and resampled data, I fit a Random Forest Model to the training set. I use a grid search for hyperparameter tuning, optimizing on the F1 score: 
 
  | Parameter        | Optimal | Gridsearch Values |
  |------------------|--------:|------------------:|
@@ -168,18 +171,37 @@ With the features and resampled data, I fit a Random Forest Model to the trainin
   | min_samples_leaf |      5 |    [1, 5, 10, 20] |
  | bootstrap     |       True |            [False, True] |
 
-### Interpretation
+And when run on the validation set: 
+
+ | Metric        | Score |
+|------------------|--------:|
+| Recall | 0.66 
+| Precision | 0.71
+| F1 | 0.68 |
+
+## Conclusions
+
+### Usability
 
 How can we use this model for early interventions? That depends entirely on what planned early intervention we want to do. Are we simply sending the subscriber a non-compulsory email about gambling addiction and availiable interventions+resources? There we can accept a relatively large false positive rate. Are we taking a more drastic account action, such as a deposit limit or an account block? We'd want a substantially lower false positive rate.
 
+### Test Set Performance
+
+On the final unseen data, the model (predictably) performed modestly worse.
+
+ | Metric        | Score |
+|------------------|--------:|
+| Recall | 0.63 
+| Precision | 0.67
+| F1 | 0.65 |
+
 ### Future Work
 
-* I discarded the interventions that were appeals of earlier blocks, which turned out to be almost half of an already limited positive data set. But in many cases, the prior ban date can be pretty easily inferred by a sudden drop in activity:
+* I discarded interventions that were appeals of earlier blocks, which turned out to be almost half of the positive data set. In many cases, the prior ban date can be pretty easily inferred by a sudden drop in activity:
 
 ![](images/RG_reopenTrue.png)
 
-I'm confident there's some fairly low hanging fruit in this set.
+And extracting this information from even a portion of the appeals would substantially increase the sample size.
 
-* Try more model types than a Random Forest. The two immediate candidates would be a Boosted Regression model and a recurrent neural network (probably LSTM).
-
-* My feature engineering was rather limited, I'd like to try further things  
+* My feature engineering was rather limited; I'd like to try varying the size of the lookback window (there's no fundamental reason not to use the enter prior history!), try different granularities of the data. 
+    * I'd particually like to try and featurize [loss chasing](https://www.gamblingtherapy.org/en/chasing-losses), which likely requires finer granularity than a week I used in model (possibly even a day!).
