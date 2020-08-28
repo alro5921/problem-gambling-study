@@ -6,7 +6,7 @@ Credit: https://mauirecovery.com/
 
 ## Background
 
-The State of Colorado has legalized sports gambling in May 2020, and has already seen over 100 million dollars of bets placed and [59 million dollars in July alone](https://www.colorado.gov/pacific/sites/default/files/Colorado%20Sports%20Betting%20Proceeds%20July%202020.pdf), for a casino take of roughly 6 million dollars. While gambling in moderation can be an enteraining diversion, online gambling has historically led to problematic gambling in areas (like Europe) where it's been legal for considerably longer. For instance, this 2005 subscriber to European sports gambling website bWin lost nearly 30,000 Euros over the course of three years before personally requesting a deposit limit:
+The State of Colorado legalized sports gambling in May 2020 and has already seen over 100 million dollars of bets placed and [59 million dollars in July alone](https://www.colorado.gov/pacific/sites/default/files/Colorado%20Sports%20Betting%20Proceeds%20July%202020.pdf), for a casino take of roughly 6 million dollars. While gambling in moderation can be an enteraining diversion, online gambling has historically led to problematic gambling in areas (like Europe) where it's been legal for considerably longer. For instance, this 2005 subscriber to European sports gambling website bWin lost nearly 30,000 Euros over the course of three years before personally requesting a deposit limit:
 
 ![](images/background_plot.png)
 
