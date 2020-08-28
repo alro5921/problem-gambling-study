@@ -67,7 +67,7 @@ def accum_by_date(gam_data, user_id, product_types = HAS_HOLD_DATA, demographic_
     # series['hold_cum'] = series['hold'].cumsum() #Move this out later
     return series.copy()
 
-def add_cumulative(series, col = 'hold', cum_name = None):
+def add_cumulative(series, col ='hold', cum_name=None):
     if not name:
         name = col + '_cum'
     series[cum_name] = series[col].cumsum()
@@ -77,7 +77,7 @@ def add_weekend(series):
     series['weekend'] = pd.DatetimeIndex(series.index).dayofweek >= 4
     return series
 
-def add_weighted_bets(gam_df, w_means = None):
+def add_weighted_bets(gam_df, w_means=None):
     if not w_means:
         w_means = gam_df.groupby('product_type')['num_bets'].mean()
         w_means /= w_means[1]
@@ -87,7 +87,7 @@ def add_weighted_bets(gam_df, w_means = None):
         gam_df.loc[mask,'weighted_bets'] = gam_df[mask]['num_bets'] / w_means[product_type]
     return gam_df
 
-def gambling_pipeline(gam_path = 'data/raw_2.sas7bdat'):
+def gambling_pipeline(gam_path='data/raw_2.sas7bdat'):
     df = pd.read_sas(gam_path)
     df = clean_gambling(df)
     df = add_weighted_bets(df)
@@ -104,7 +104,7 @@ def clean_rg_info(rg_info):
     rg_info['inter_desc'] = rg_info['inter_type_first'].replace(INTERVENTION_CODE_DICT)
     return rg_info
 
-def subset_rg(rg_info, events = None, interventions = None):
+def subset_rg(rg_info, events=None, interventions=None):
     filtered_rg = rg_info.copy()
     if events:
         event_mask = filtered_rg['event_type_first'].isin(events)

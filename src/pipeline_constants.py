@@ -13,7 +13,7 @@ RG_RENAME = {"UserID": "user_id", "RGsumevents" : "events", "RGFirst_Date" : "fi
 HAS_HOLD_DATA = [1,2,4,8,17]
 
 EVENT_CODE_DICT = {1: "Family Intervention", 2 : "acc close/open from RG", 3 : "Cancelled outpayment", 
-                   4: "Manual (Lower?) Limit Change", 6: "Heavy Complainer", 7: "Requested pay method block",
+                   4: "Manually Lowered Limit", 6: "Heavy Complainer", 7: "Requested pay method block",
                    8: "Reported as Minor", 9: "Request partial block", 10: "Reported Problem", 
                    11: "high deposit", 12 : "Two RG events on the day", 13: "Event unknown"}
 

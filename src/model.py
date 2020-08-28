@@ -6,26 +6,22 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split, RandomizedSearchCV
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
-#from sklearn.model_selection import RandomizedSearchCV
 import pipeline 
 
 demo_df = pipeline.demo_pipeline()
 rg_df = pipeline.rg_pipeline()
 
 def train_baseline(X_train,y_train):
-    '''A Decision tree on just on the total activity; using this as a baseline'''
+    '''A logistic model just on the total amount o; using this as a baseline'''
     log_model = LogisticRegression()
     log_model.fit(X_train, y_train)
     return log_model
 
-GRID_SEARCH_GUESS = {'random_state': 1, 'n_estimators': 200, 'min_samples_split': 2, 'min_samples_leaf': 10,
-                     'max_features': None, 'max_depth': None, 'bootstrap': True}
+GRID_SEARCH_GUESS = {'random_state': 1, 'n_estimators': 200, 'min_samples_split': 2,
+                     'min_samples_leaf': 5, 'max_features': None, 'max_depth': None, 'bootstrap': True}
 
-#{'random_state': 1, 'n_estimators': 200, 'min_samples_split': 8, 'min_samples_leaf': 10, 'max_features': 'sqrt', 'max_depth': None, 'bootstrap': False}
-
-
-
-def train_random_forest(X_train,y_train, do_grid = False):
+def train_random_forest(X_train,y_train, do_grid=False):
+    '''Trains a random forest model on the training frames, doing grid_search if needed'''
     if not do_grid:
         regressor = RandomForestClassifier(**GRID_SEARCH_GUESS)
         regressor.fit(X_train, y_train)
@@ -58,24 +54,19 @@ def scores(y_test,y_pred):
     print(f'F1: {f1_score(y_test,y_pred)}')
 
 if __name__ == '__main__':
-    look_back = 12
-    look_forward = 6
-
-    #demo_cut = demo_df['registration_date'] < '2007-01-01'
+    look_forward = 12
+    look_back = 24
     n_app_mask = rg_df['event_type_first'] != 2
     non_appeals = rg_df[n_app_mask]
-    # z = non_appeals.join(demo_df, 'user_id')
-    # z = z[z['registration_date'] < '2007-01-01']
     no_rg_ids = list(demo_df[demo_df['rg'] == 0].index)
     user_ids = list(non_appeals.index) + no_rg_ids[:300]
-    # Random state to preserve same holdout, ideally I'd put this whole data in an entirely seperate thing
+    # Random state to preserve same holdout (ideally I'd make MUCH more sure than this)
     # TIL you can do this one 1-d arrays too
-    train_ids, holdout_ids = train_test_split(user_ids, random_state = 104, shuffle = True)
-    print(len(train_ids), len(holdout_ids))
+    train_ids, holdout_ids = train_test_split(user_ids, random_state=104, shuffle=True)
     X, y = featurize(train_ids)
     X_train, X_test, y_train, y_test = train_test_split(X,y)
     #regressor = train_baseline(X_train, y_train)
-    regressor = train_random_forest(X_train, y_train, do_grid = True)
+    regressor = train_random_forest(X_train, y_train, do_grid=False)
     y_prob = regressor.predict_proba(X_test)[:,1]
     thres = .5
     y_pred = (y_prob >= thres).astype(int)
@@ -84,7 +75,7 @@ if __name__ == '__main__':
     now = datetime.now()
     val_store.to_csv(f'data/model_results/validation_prediction_results{now}.csv')
     ##
-    run_hold = False
+    run_hold = True
     if run_hold:
         print("=========")
         X_hold, y_hold = featurize(holdout_ids)

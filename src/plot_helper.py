@@ -7,40 +7,33 @@ import pipeline
 rcParams.update({'figure.autolayout': True})
 plt.style.use('ggplot')
 
-def save_image(name, folder_path = 'images', args = {}):
+def save_image(name, folder_path='images', args={}):
     file_path = folder_path + f'/{name}.png'
     plt.savefig(file_path, **args)
 
-def plot_ts(ax, ts, plt_column = 'hold_cum', line_args = {}):
+def plot_ts(ax, ts, plt_column='hold_cum', line_args={}):
     ax.plot(ts[plt_column], **line_args)
-    #ax.bar(ts.index, ts[plt_column], label = plt_column)
 
-def infer_reopen(ts):
-    pass
-
-def add_intervention(ax, date = None, line_args = None):
+def add_intervention(ax, date=None, line_args=None):
     if not line_args:
         line_args = {'linestyle' : "--", 'label' : "Intervention", 'color' : 'black'}
     ax.axvline(date,**line_args)
 
-def add_inter_rg(ax, rg_info, user_id, line_args = None):
+def add_inter_rg(ax, rg_info, user_id, line_args=None):
     if not user_id in rg_info.index:
         return
     first_rg = rg_info.loc[user_id, 'first_date']
     rg_desc = rg_info.loc[user_id, 'ev_desc']
     inter_desc = rg_info.loc[user_id, 'inter_desc']
     if not line_args:
-        line_args = {'linestyle' : "--", 'label' : f'RG: {rg_desc}\nInt:{inter_desc}',
-                     'color' : 'black'}
+        line_args = {'linestyle' : "--", 'label' : f'RG: {rg_desc}', 'color' : 'black'}
     add_intervention(ax, date = first_rg, line_args = line_args)
 
 def highlight_weekend_periodicity(ax, ts):
     weekends = []
-    #weekends = [i for i, ind in enumerate(ts.index) if ind.weekday()]
     for i, ind in enumerate(ts.index):
         if ind.weekday() >= 4:
             weekends.append(i)
-    #breakpoint()
     for i_day in weekends[:-1]:
         ax.axvspan(ts.index[i_day], ts.index[i_day + 1], facecolor='gray', edgecolor='none', alpha=.3)
 

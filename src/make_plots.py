@@ -14,23 +14,40 @@ demo_df = pipeline.demo_pipeline()
 gam_df = pipeline.gambling_pipeline()
 rg_info = pipeline.rg_pipeline()
 
-def infer_reopen_plot(ax, user_id):
-    ts = pipeline.accum_by_date(gam_df, user_id, ALL_PRODS, demographic_df = demo_df)
-    plot_ts(ax, ts, plt_column = 'weighted_bets', rg_info = rg_info)
+def background_plot(ax, user_id):
+    ts = pipeline.accum_by_date(gam_df, user_id, ALL_PRODS)
+    ts['cumul_hold'] = ts['hold'].cumsum()
+    ax.set_title(f'Cumulative Loss for User #{user_id}')
+    ax.set_xlabel("Date", fontsize=16)
+    ax.set_ylabel("Loss (Euros)", fontsize=16)
+    ax.tick_params(axis="both", labelsize=14)
+    ax.set_xlim(left=np.datetime64("2006-01-01"))
+    add_inter_rg(ax, rg_info, user_id)
+    plot_ts(ax, ts, plt_column='cumul_hold')
+    ax.legend()
+    save_image(f"background_plot")
+
+def infer_reopen_plot(ax, user_id, show_infer=False):
+    ts = pipeline.accum_by_date(gam_df, user_id, ALL_PRODS, demographic_df=demo_df)
+    plot_ts(ax, ts, plt_column='weighted_bets')
+    inter_args = {'linestyle' : "--", 'label' : f'RG: Requested Reopen\nIntervention: Remains Closed', 
+                'color' : 'black', 'lw' : 2}
+    add_inter_rg(ax, rg_info, user_id, line_args = inter_args)
     ax.set_title(f'Weighted Number of Bets for #{user_id}')
     ax.set_xlabel("Date")
     ax.set_ylabel("Weighted Bets")
-    line_args = {'linestyle' : "--", 'color' : 'green',
-                'label' : "Inferred Intervention", 'alpha' : .5}
-    add_intervention(ax, date = pd.to_datetime('2008-09-06'), line_args = line_args)
-    add_inter_rg(ax, rg_info, user_id)
+    ax.set_xlim(left=np.datetime64("2008-04-01"), right=np.datetime64("2009-09-01"))
+    if show_infer:
+        line_args = {'linestyle' : "--", 'color' : 'green',
+                    'label' : "Inferred Intervention", 'lw' : 2}
+        add_intervention(ax, date = pd.to_datetime('2008-09-06'), line_args=line_args)
     ax.legend()
-    save_image("RG_reopen")
+    save_image(f'RG_reopen{show_infer}')
 
 def show_weekend_periodicity(ax, user_id):
     '''Investigate the weekend periodicity (or lack thereof!)'''
     prods = [1,2]
-    ts = pipeline.accum_by_date(gam_df, user_id, prods, demographic_df = demo_df)['2005-08-01':'2005-10-01']
+    ts = pipeline.accum_by_date(gam_df, user_id, prods, demographic_df=demo_df)['2005-08-01':'2005-10-01']
     plot_ts(ax, ts, plt_column = 'weighted_bets', rg_info = rg_info)
     ax.set_title(f'Weighted Number of Bets for #{user_id}')
     ax.set_xlabel("Date")
@@ -46,19 +63,20 @@ def show_roc_curve(ax, results_path):
     x = np.linspace(0, 1, 100)
     ax.plot(fpr, tpr, color='firebrick')
     ax.plot(x, x, linestyle='--', color ='black', label='Random Guess')
-    ax.set_xlabel('False Positive Rate (FPR)', fontsize = 16)
-    ax.set_ylabel('True Positive Rate (TPR)', fontsize = 16)
+    ax.set_xlabel('False Positive Rate (FPR)', fontsize=16)
+    ax.set_ylabel('True Positive Rate (TPR)', fontsize=16)
     ax.set_title('ROC Curve for Random Forest Model')
     ax.legend()
     save_image("roc_curve")
 
-DEF_CUTOFFS = ['2008-02-01', '2008-04-15', '2008-08-01',
-             '2008-11-01', '2009-02-05', '2009-05-15']#, '2009-08-01']   
+DEFAULT_CUTOFFS = ['2008-02-01', '2008-04-15', '2008-08-01',
+             '2008-11-01', '2009-02-05', '2009-05-15'] 
 
 def make_frame(ax, ts, cutoff):
+    '''Plots one frame of the framing gif'''
     ts.loc[ts['weighted_bets'] > 10,'weighted_bets'] = 10
     ts_args = {'linewidth' : .7, 'alpha' : .3, 'color': "blue"}
-    plot_ts(ax, ts, plt_column = 'weighted_bets', line_args = ts_args)
+    plot_ts(ax, ts, plt_column='weighted_bets', line_args=ts_args)
     
     rg_date = pd.to_datetime('2009-04-28')
     inter_params = {'linestyle' : "--", 'label' : "RG Event", 'color' : 'black', 'lw' : 2}
@@ -66,6 +84,7 @@ def make_frame(ax, ts, cutoff):
     ax.set_title(f'Frame with Cutoff Date {cutoff}')
     ax.set_xlabel("Date")
     ax.set_ylabel("Weighted Bets")
+    ax.set_xlim(left=np.datetime64("2007-01-01"), right=np.datetime64("2010-01-01"))
     
     look_color = 'green' if rg_date > cutoff and rg_date < cutoff + + np.timedelta64(360, 'D') else 'red'
     min_date = max(np.datetime64('2007-01-01'), cutoff - np.timedelta64(540, 'D'))
@@ -74,8 +93,8 @@ def make_frame(ax, ts, cutoff):
     ax.fill_between([cutoff, max_date], [12,12], color=look_color, alpha=.6)
     ax.legend()
 
-def display_frame_shifts(debug=False, cutoffs=DEF_CUTOFFS, user_id=4523711):
-    '''Makes the images for the frame shifting gif'''
+def display_frame_shifts(debug=False, cutoffs=DEFAULT_CUTOFFS, user_id=4523711):
+    '''Makes the demonstration gif of the frame shifting'''
     cutoffs = [np.datetime64(date) for date in cutoffs]
     images = []
     for cutoff in cutoffs:
@@ -90,25 +109,36 @@ def display_frame_shifts(debug=False, cutoffs=DEF_CUTOFFS, user_id=4523711):
     if not debug:
         imageio.mimsave('images/frame_show.gif', images, duration=1)
 
+
 if __name__ == '__main__':
+    background = True
+    if background:
+        user_id = 2062223
+        fig, ax = plt.subplots(figsize=(10,6))
+        background_plot(ax, user_id)
+        plt.show()
+
     reopen_show = False
     if reopen_show:
         user_id = 6237129
-        fig, ax = plt.subplots(figsize=(20,12))
-        infer_reopen_plot(ax, user_id)
+        fig, ax = plt.subplots(figsize=(10,6))
+        infer_reopen_plot(ax, user_id, show_infer = True)
         plt.show()
+
     show_weekend = False
     if show_weekend:
         user_id = 1137771
-        fig, ax = plt.subplots(figsize=(20,12))
+        fig, ax = plt.subplots(figsize=(10,6))
         show_weekend_periodicity(ax, user_id)
         plt.show()
+
     make_roc = False
     if make_roc:
         path = 'data/model_results/validation_prediction_results.csv'
         fig, ax = plt.subplots(figsize=(10,6))
         show_roc_curve(ax, path)
         plt.show()
-    show_frames = True
+
+    show_frames = False
     if show_frames:
-        display_frame_shifts()
+        display_frame_shifts(debug = True)
