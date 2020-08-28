@@ -167,11 +167,11 @@ The initial dataset was balanced between RG-flagged and non-RG users. But the po
 * All frames created from a non-RG user are going to be negative class, while frames from an RG user are going to be a mix of positive and negative class.
 * We're discarding a frame if it has an RG event in it, further cutting our positive frame.
 
-Naively applying our framing process to all valid entries creates roughly 20000 negative frames and 4000 positive frames, so I undersample the majority negative frames to get a roughly 50:50 ratio of positive and negative samples.
+Naively applying our framing process to all valid entries creates roughly 20000 negative frames and 4000 positive frames, which is rather unbalanced. I undersample the control users until I had a roughly 50:50 ratio of positive and negative samples, and I end up using about 300 control users to maintain this.
 
 ### Model Performance
 
-With the features and resampled data, I fit a Random Forest Model to the training set. I use a grid search for hyperparameter tuning, optimizing on the F1 score:
+I first created a training and holdout set of user IDs, applied my processing and framing seperately, then fit a Random Forest Model to the training set. I use a grid search for hyperparameter tuning, optimizing on the F1 score:
 
  | Parameter        | Optimal | Gridsearch Values |
  |------------------|--------:|------------------:|
