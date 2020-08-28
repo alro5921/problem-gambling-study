@@ -1,4 +1,4 @@
-# problem-gambling-study
+# Predicting Early Behaviors of Problem Gambling
 <img src="images/mauirecovery-banner-sports-gambling.jpg" width="850" height="425" />
 <!---
 Credit: https://mauirecovery.com/
