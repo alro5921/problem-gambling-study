@@ -17,7 +17,7 @@ def plot_ts(ax, ts, plt_column='hold_cum', line_args={}):
 def add_intervention(ax, date=None, line_args=None):
     if not line_args:
         line_args = {'linestyle' : "--", 'label' : "Intervention", 'color' : 'black'}
-    ax.axvline(date,**line_args)
+    ax.axvline(date, **line_args)
 
 def add_inter_rg(ax, rg_info, user_id, line_args=None):
     if not user_id in rg_info.index:

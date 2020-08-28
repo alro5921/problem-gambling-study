@@ -66,11 +66,10 @@ Unfortunately, many of the bwin's third party products lacked turnover and hold 
 
 Although the activity level "number of bets" implies varies wildly between products; we'd expect more individual "bets" from an online poker player, who could play dozens of hands an hour, than a fixed-odds sports better placing a handful of bets on a game. I attempt to standardize across products by weighting each product to its average bets per day in the dataset, which allows for a more meaningful aggregated activity metric than a sum that'd be dominated by the higher frequency products.
 
+![](images/activity_plot.png)
 <!---
 Simple activity plot here?
 -->
-
-
 ### Responsible Gaming Intervention Information
 
 This table held the the information on the Responsible Gambling interventions for the flagged subscribers.
@@ -145,7 +144,7 @@ Our model will be using the following features, seperated into summary features 
 
 * **Summary and Demographic Features**
     * User's age at the cutoff
-    * The maximium hold seen in a single day 
+    * The maximium hold (loss) in a single day 
     * User's Fixed-Odds to Live-Action Sports hold ratio
 * **Time Series Features**
     * Weekly Hold
@@ -172,7 +171,7 @@ Naively applying our framing process to all valid entries creates roughly 20000 
 
 ### Model Performance
 
-With the features and resampled data, I fit a Random Forest Model to the training set. I use a grid search for hyperparameter tuning, optimizing on the F1 score: 
+With the features and resampled data, I fit a Random Forest Model to the training set. I use a grid search for hyperparameter tuning, optimizing on the F1 score:
 
  | Parameter        | Optimal | Gridsearch Values |
  |------------------|--------:|------------------:|
@@ -182,7 +181,7 @@ With the features and resampled data, I fit a Random Forest Model to the trainin
   | min_samples_leaf |      5 |    [1, 5, 10, 20] |
  | bootstrap     |       True |            [False, True] |
 
-And get the following metric scores when run on the validation set: 
+And performs the following metric scores on the validation set: 
 
  | Metric        | Score |
 |------------------|--------:|

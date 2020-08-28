@@ -1,2 +1,4 @@
+.gitignore
 notebooks/
+__pycache__/
 *.pyc

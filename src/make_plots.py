@@ -36,6 +36,10 @@ def quick_activity_plot(ax, user_id):
     ax.set_title(f'Weighted Number of Bets for #{user_id}')
     ax.set_xlabel("Date")
     ax.set_ylabel("Daily Weighted #Bets Placed")
+    ax.set_xlim(left=np.datetime64("2006-01-01"))
+    add_inter_rg(ax, rg_info, user_id)
+    ax.legend()
+    save_image(f"activity_plot")
 
 def infer_reopen_plot(ax, user_id, show_infer=False):
     '''Plots an example of a Reopen ticket, and how it could be inferred if possible'''
@@ -125,6 +129,12 @@ if __name__ == '__main__':
         fig, ax = plt.subplots(figsize=(10,6))
         background_plot(ax, user_id)
         plt.show()
+
+    activity = True
+    if activity:
+        user_id = 2062223
+        fig, ax = plt.subplots(figsize=(8,5))
+        quick_activity_plot(ax, user_id)
 
     reopen_show = False
     if reopen_show:
