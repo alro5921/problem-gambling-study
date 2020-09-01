@@ -14,7 +14,8 @@ DEFAULT_CUTOFFS = [np.datetime64(date) for date in DEFAULT_CUTOFFS]
 
 '''This all needs to be refactored, it's completely hamstrung feature selection and model changing
 Part of it is that the frames more complicated than a DF (it's FOUR Dfs oooooo) but still. 
-First thing I'm doing Cap 3 is rewriting/taring this down to be not terrible.'''
+First thing I'm doing Cap 3 is rewriting/tearing this down to be not terrible.'''
+
 
 def add_cumulative(series, col='hold', cum_name=None):
     if not name:
