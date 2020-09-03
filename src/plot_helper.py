@@ -30,6 +30,7 @@ def add_inter_rg(ax, rg_info, user_id, line_args=None):
     add_intervention(ax, date = first_rg, line_args = line_args)
 
 def highlight_weekend_periodicity(ax, ts):
+    ##Doesnt' work and possible weekend trend
     weekends = []
     for i, ind in enumerate(ts.index):
         if ind.weekday() >= 4:
