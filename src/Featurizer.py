@@ -6,6 +6,7 @@ from datetime import datetime
 import pipeline
 from itertools import chain
 from collections.abc import Iterable
+from sklearn.preprocessing import scale
 
 # Global variables weeee
 demo_df = pipeline.demo_pipeline()
@@ -16,14 +17,16 @@ class Featurizer:
     def __init__(self):
         self.features = {}
 
-    def vectorize(self, frames, choices=None):
+    def vectorize(self, frames, choices=None, verbose=True):
         if not choices:
             choices = self.get_feature_names()
-        return np.array([self.vectorize_frame(frame, choices) for frame in frames])
+        if verbose:
+            print(f"Making set with features: {', '.join(choices)}")
+        X = np.array([self.vectorize_frame(frame, choices) for frame in frames])
+        return scale(X, axis=1)
 
     def vectorize_frame(self, frame, choices=None):
         vect = []
-        #breakpoint()
         if not choices:
             choices = self.get_feature_names()
         for feat in choices:
@@ -45,6 +48,12 @@ class Featurizer:
 
     def get_feature_names(self):
         return list(self.features.keys())
+
+class FeaturizerDF:
+    def __init__(self):
+        #self.features =  
+        self.raws = {} 
+
 
 # import pickle
 
@@ -105,7 +114,7 @@ if __name__ == "__main__":
     featurizer.add_feature("weekly_hold", weekly_hold, {"lookback" : 26})
 
     gam_df = pipeline.gambling_pipeline()
-    user_ts = pipeline.accum_by_date(gam_df, user_id)
+    user_ts = pipeline.to_daily_ts(gam_df, user_id)
     features_to_use = ["total_hold", "max_hold", "weekly_hold"]
     x = featurizer.vectorize_user(user_ts, features_to_use)
     print(len(x))

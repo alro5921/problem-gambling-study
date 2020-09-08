@@ -5,11 +5,14 @@ from datetime import datetime
 import pipeline
 from Featurizer import Featurizer
 
+DEFAULT_CUTOFFS = ['2008-02-01','2008-05-01','2008-08-01', '2008-11-01', '2009-02-05','2009-05-01','2009-08-01']
+DEFAULT_CUTOFFS = [np.datetime64(date) for date in DEFAULT_CUTOFFS]
+
 demo_df = pipeline.demo_pipeline()
 gam_df = pipeline.gambling_pipeline()
 rg_info = pipeline.rg_pipeline()
 
-'''Functions that convert the daily trend into features'''
+'''FEATURE MAKERS'''
 def total_hold(frame):
     return frame['hold'].sum()
 
@@ -21,32 +24,55 @@ def total_activity(frame):
 
 def weekly_hold(frame, lookback):
     weekly_sum = frame.resample('W').sum()
-    if len(weekly_sum) < lookback:
-        pad_length = lookback - len(weekly_sum)
-        weekly_sum.append(weekly_sum.iloc[[-1]*pad_length])
+    weekly_sum = pad_lookback(weekly_sum, lookback)
     return weekly_sum['hold'].values[-lookback:]
 
 def rolling_hold(frame, lookback):
-    '''Doesn't actually use lookback yet l'''
     weekly_sum = frame.resample('W').sum()
-    return weekly_sum['weighted_bets'].rolling(5).sum()[4:]
+    pad_lookback(weekly_sum, lookback)
+    return weekly_sum['weighted_bets'].rolling(5).sum()[4:][-lookback:]
 
-featurizer = Featurizer()
-featurizer.add_feature("total_hold", total_hold)
-featurizer.add_feature("max_hold", max_hold)
-featurizer.add_feature("rolling_hold", rolling_hold)
-featurizer.add_feature("weekly_hold", weekly_hold, {"lookback" : 26})
-featurizer.add_feature("rolling_hold", weekly_hold, {"lookback" : 26})
+def daily_rolling_hold(frame, lookback):
+    frame = pad_lookback(frame, lookback)
+    return frame['hold'].rolling(5).sum()[4:][-lookback:]
 
-# def to_weekly(user_ts, lookback=None):
-#     week = user_ts.resample('W').sum()
-#     return week
+def total_fixed_live_ratio(frame):
+    fixed_hold, live_action_hold = frame['hold_1'].sum(), frame['hold_2'].sum()
+    if fixed_hold == 0:
+        return 10
+    return min(live_action_hold/fixed_hold, 10)
 
-def featurize(user_ids, features=None):
+def weekly_fixed_live_ratio(frame, lookback):
+    weekly_sum = frame.resample('M').sum()
+    weekly_sum = pad_lookback(weekly_sum, lookback)
+    return weekly_sum['turnover_2']/(1+weekly_sum['turnover'])
+
+def pad_lookback(aggregate, lookback):
+    pad = lookback - len(aggregate)
+    if pad > 0:
+        aggregate.append(aggregate.iloc[[-1]*pad])
+    return aggregate
+
+def make_default_featurizer():
+    featurizer = Featurizer()
+    featurizer.add_feature("total_hold", total_hold)
+    featurizer.add_feature("max_hold", max_hold)
+    featurizer.add_feature("rolling_hold", rolling_hold)
+    featurizer.add_feature("weekly_hold", weekly_hold, {"lookback" : 52})
+    featurizer.add_feature("rolling_hold", rolling_hold, {"lookback" : 52})
+    featurizer.add_feature("daily_rolling_hold", daily_rolling_hold, {"lookback" : 180})
+    featurizer.add_feature("weekly_fixed_live_ratio", weekly_fixed_live_ratio, {"lookback" : 52})
+    featurizer.add_feature("total_fixed_live_ratio", total_fixed_live_ratio)
+    return featurizer
+
+def featurize(user_ids, featurizer=None, features=None):
+    if not featurizer:
+        featurizer = make_default_featurizer()
     frames, rgs = [], []
     for user_id in user_ids:
-        all_products = list(range(1,30))
-        user_ts = pipeline.accum_by_date(gam_df, user_id, product_types = all_products)
+        products = [1,2,4]
+        user_ts = pipeline.to_daily_ts(gam_df, user_id, product_types = products)
+        user_ts = user_ts.fillna(0)
         rg_date = get_rg_date(user_id, demo_df, rg_info)
         for frame, rg in create_frames(user_ts, rg_date):
             frames.append(frame), rgs.append(rg)
@@ -58,8 +84,8 @@ def get_rg_date(user_id, demo_info, rg_info):
         rg_date = rg_info.loc[user_id, 'first_date']
     return rg_date
 
-DEFAULT_CUTOFFS = ['2008-02-01','2008-05-01','2008-08-01', '2008-11-01', '2009-02-05','2009-05-01','2009-08-01']
-DEFAULT_CUTOFFS = [np.datetime64(date) for date in DEFAULT_CUTOFFS]
+def create_timeframe(user_ids, has_rg, look_forward=3):
+   pass     
 
 def create_frames(user_ts, rg_date, look_back=24, look_forward=12, cutoffs = DEFAULT_CUTOFFS):
     '''Creates the frames from the user's time series data'''
@@ -78,6 +104,7 @@ def create_frames(user_ts, rg_date, look_back=24, look_forward=12, cutoffs = DEF
     return frames
 
 if __name__ == '__main__':
+    featurizer = make_default_featurizer()
     user_ids = [2062223, 912480, 3789290, 5313473, 5296662]
-    vector, rgs = featurize(user_ids, features=["total_hold", "weekly_hold"])
+    vector, rgs = featurize(user_ids, featurizer, features=["total_hold", "weekly_hold", "daily_rolling_hold"])
     print(len(vector), len(rgs), len(vector[0]))

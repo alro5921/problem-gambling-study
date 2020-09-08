@@ -3,10 +3,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import re
 import random
+import pickle
 from pipeline_constants import (DEMO_RENAME, GAMBLING_RENAME, RG_RENAME, 
                             HAS_HOLD_DATA, EVENT_CODE_DICT, INTERVENTION_CODE_DICT)
+from sklearn.model_selection import train_test_split
 
 '''DEMOGRAPHIC'''
+
 def clean_str_series(obj_ser):
     rep = lambda m: m.group(1)
     clean_ser = obj_ser.astype(str)
@@ -41,37 +44,43 @@ def clean_gambling(gam_df):
     gam_clean[int_rows] = gam_clean[int_rows].astype(int)
     return gam_clean
 
-def make_ts(gam_data, user_id, product_type, demographic_df = None):
-    mask = (gam_data['user_id'] == user_id) & (gam_data['product_type'] == product_type)
-    series = gam_data[mask].copy()
+def user_product_ts(gam_df, user_id, product_type, demographic_df = None):
+    mask = (gam_df['user_id'] == user_id) & (gam_df['product_type'] == product_type)
+    user_ts = gam_df[mask].copy()
+    reg_date = '2000-05-01'
     if demographic_df:
         reg_date = demographic_df.loc[user_id].registration_date
-    #last_gamble = series['date'].max()
     idx = pd.date_range(reg_date, '2010-11-30')
-    series = series.set_index('date')
-    series = series.reindex(idx, fill_value=0)
-    series = series.replace({"user_id" : {0 : user_id}, "product_type": {0 : product_type}})
-    #series['hold_cum'] = series['hold'].cumsum() #Move this out later
-    return series
+    user_ts = user_ts.set_index('date')
+    user_ts = user_ts[~user_ts.index.duplicated(keep='first')]
+    user_ts = user_ts.reindex(idx, fill_value=0)
+    user_ts = user_ts.replace({"user_id" : {0 : user_id}, "product_type": {0 : product_type}})
+    return user_ts
 
-def accum_by_date(gam_data, user_id, product_types = HAS_HOLD_DATA, demographic_df = None):
+def to_daily_ts(gam_df, user_id, product_types = HAS_HOLD_DATA, demographic_df=None):
     '''Accumulates the turnover+hold across all product_types'''
-    mask = (gam_data['user_id'] == user_id) & (gam_data['product_type'].isin(product_types))
-    series = gam_data[mask].groupby('date').sum()
-    series = series.drop(["product_type","user_id"], axis = 1)
-    min_date = demographic_df.loc[user_id].registration_date if demographic_df is not None else '2000-05-01'
-    #last_gamble = series['date'].max()
-    idx = pd.date_range(min_date, '2010-11-30')
-    series = series.reindex(idx, fill_value=0)
-    # series['weekend'] = pd.DatetimeIndex(series.index).dayofweek >= 4
-    # series['hold_cum'] = series['hold'].cumsum() #Move this out later
-    return series.copy()
+    mask = (gam_df['user_id'] == user_id) & (gam_df['product_type'].isin(product_types))
+    user_ts = gam_df[mask].groupby('date').sum()
 
-def add_cumulative(series, col ='hold', cum_name=None):
+    # Creating product specific columns
+    prod_dict = {product : user_product_ts(gam_df, user_id, product) 
+                    for product in product_types}
+    for prod, prod_df in prod_dict.items():
+        prod_cols = ['turnover', 'hold', 'num_bets']
+        user_ts = user_ts.join(prod_df[prod_cols], rsuffix = f'_{prod}')
+    user_ts = user_ts.fillna(0)
+
+    min_date = demographic_df.loc[user_id].registration_date if demographic_df is not None else '2000-05-01'
+    user_ts = user_ts.drop(["product_type"], axis = 1)
+    idx = pd.date_range(min_date, '2010-11-30')
+    user_ts = user_ts.reindex(idx, fill_value=0)
+    return user_ts.copy()
+
+def add_cumulative(user_ts, col, cum_name=None):
     if not name:
         name = col + '_cum'
-    series[cum_name] = series[col].cumsum()
-    return series
+    user_ts[cum_name] = user_ts[col].cumsum()
+    return user_ts
 
 def add_weekend(series):
     series['weekend'] = pd.DatetimeIndex(series.index).dayofweek >= 4
@@ -119,5 +128,27 @@ def rg_pipeline(rg_path = 'data/raw_3.sas7bdat'):
     df = clean_rg_info(df)
     return df
 
+def user_ts_dict(user_ids):
+    user_dict = {}
+    for user_id in user_ids:
+        user_dict[user_id] = to_daily_ts(gam_df, user_id, product_types=HAS_HOLD_DATA)
+    return user_dict
+
+def filter_inactive(user_dict):
+    for id, df in user_dict.items():
+
 if __name__ == '__main__':
-    pass
+    demo_df = demo_pipeline()
+    gam_df = gambling_pipeline()
+    # user_id = 912480
+    # use_df = to_daily_ts(gam_df, user_id, demographic_df=demo_df)
+    # # print(use_df.head())
+    # # print(use_df.columns)
+    user_ids = list(demo_df.index)
+    user_dict = user_ts_dict(user_ids[:10])
+    path = 'data/user_id_test.pkl'
+    pickle.dump(user_dict, open(path, 'wb'))
+    dict_2 = pickle.load(open(path,'rb'))
+    for id, df in dict_2.items():
+        print(id)
+        print(df[['hold', 'weighted_bets']].sum())
