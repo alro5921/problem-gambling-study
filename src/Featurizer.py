@@ -7,6 +7,7 @@ import pipeline
 from itertools import chain
 from collections.abc import Iterable
 from sklearn.preprocessing import scale
+from features import total_hold, max_hold, weekly_hold, weekly_rolling_hold
 
 # Global variables weeee
 demo_df = pipeline.demo_pipeline()
@@ -23,7 +24,7 @@ class Featurizer:
         if verbose:
             print(f"Making set with features: {', '.join(choices)}")
         X = np.array([self.vectorize_frame(frame, choices) for frame in frames])
-        return scale(X, axis=1)
+        return X
 
     def vectorize_frame(self, frame, choices=None):
         vect = []
@@ -40,8 +41,10 @@ class Featurizer:
     def _calc_feature(self, frame, feat_name):
         return self.features[feat](frame)
 
-    def add_feature(self, feat_name, prod_function, prod_args={}):
-        self.features[feat_name] = lambda x: prod_function(x, **prod_args)
+    def add_feature(self, prod_function, feat_name=None, args={}):
+        if not feat_name:
+            feat_name = prod_function.__name__
+        self.features[feat_name] = lambda x: prod_function(x, **args)
 
     def delete_feature(self, feat_name):
         del self.features[feat_name]
@@ -93,25 +96,11 @@ class FeaturizerDF:
 if __name__ == "__main__":
     user_id = 3327778
 
-    def total_hold(set_ts):
-        return set_ts['hold'].sum()
-
-    def max_hold(set_ts):
-        return set_ts['hold'].max()
-
-    def weekly_hold(set_ts, lookback=52):
-        weekly_sum = set_ts.resample('W').sum()
-        return weekly_sum['hold'].values[-lookback:]
-
-    def rolling_hold(set_ts, lookback=52):
-        weekly_sum = set_ts.resample('W').sum()
-        return weekly_sum['weighted_bets'].rolling(5).sum()[4:]
-
     featurizer = Featurizer()
     featurizer.add_feature("total_hold", total_hold)
-    featurizer.add_feature("max_hold", max_hold)
-    featurizer.add_feature("rolling_hold", rolling_hold)
-    featurizer.add_feature("weekly_hold", weekly_hold, {"lookback" : 26})
+    featurizer.add_feature(max_hold)
+    featurizer.add_feature(weekly_hold, {"lookback" : 26})
+    featurizer.add_feature(weekly_rolling_hold, {"lookback" : 26})
 
     gam_df = pipeline.gambling_pipeline()
     user_ts = pipeline.to_daily_ts(gam_df, user_id)

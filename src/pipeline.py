@@ -57,9 +57,19 @@ def user_product_ts(gam_df, user_id, product_type, demographic_df = None):
     user_ts = user_ts.replace({"user_id" : {0 : user_id}, "product_type": {0 : product_type}})
     return user_ts
 
+def add_weighted_bets(gam_df, w_means=None):
+    if not w_means:
+        w_means = gam_df.groupby('product_type')['num_bets'].mean()
+        w_means /= w_means[1]
+    gam_df['weighted_bets'] = 0
+    for product_type in gam_df['product_type'].unique():
+        mask = gam_df['product_type'] == product_type
+        gam_df.loc[mask,'weighted_bets'] = gam_df[mask]['num_bets'] / w_means[product_type]
+    return gam_df
+
 def to_daily_ts(gam_df, user_id, product_types = HAS_HOLD_DATA, demographic_df=None):
     '''Accumulates the turnover+hold across all product_types'''
-    mask = (gam_df['user_id'] == user_id) & (gam_df['product_type'].isin(product_types))
+    mask = (gam_df['user_id'] == user_id) #& (gam_df['product_type'].isin(product_types))
     user_ts = gam_df[mask].groupby('date').sum()
 
     # Creating product specific columns
@@ -76,25 +86,9 @@ def to_daily_ts(gam_df, user_id, product_types = HAS_HOLD_DATA, demographic_df=N
     user_ts = user_ts.reindex(idx, fill_value=0)
     return user_ts.copy()
 
-def add_cumulative(user_ts, col, cum_name=None):
-    if not name:
-        name = col + '_cum'
-    user_ts[cum_name] = user_ts[col].cumsum()
-    return user_ts
-
 def add_weekend(series):
     series['weekend'] = pd.DatetimeIndex(series.index).dayofweek >= 4
     return series
-
-def add_weighted_bets(gam_df, w_means=None):
-    if not w_means:
-        w_means = gam_df.groupby('product_type')['num_bets'].mean()
-        w_means /= w_means[1]
-    gam_df['weighted_bets'] = 0
-    for product_type in gam_df['product_type'].unique():
-        mask = gam_df['product_type'] == product_type
-        gam_df.loc[mask,'weighted_bets'] = gam_df[mask]['num_bets'] / w_means[product_type]
-    return gam_df
 
 def gambling_pipeline(gam_path='data/raw_2.sas7bdat'):
     df = pd.read_sas(gam_path)
@@ -121,31 +115,55 @@ def subset_rg(rg_info, events=None, interventions=None):
     if interventions:
         intervent_mask = filtered_rg['inter_type_first'].isin(interventions)
         filtered_rg  = filtered_rg[intervent_mask]
-    return filtered_rg 
+    return filtered_rg
 
 def rg_pipeline(rg_path = 'data/raw_3.sas7bdat'):
     df = pd.read_sas(rg_path)
     df = clean_rg_info(df)
     return df
 
-def user_ts_dict(user_ids):
+def user_ts_dict(user_ids, gam_df=None):
+    if gam_df is None:
+        gam_df = gambling_pipeline()
     user_dict = {}
     for user_id in user_ids:
         user_dict[user_id] = to_daily_ts(gam_df, user_id, product_types=HAS_HOLD_DATA)
     return user_dict
 
-def filter_inactive(user_dict):
-    for id, df in user_dict.items():
+def filter_appeals(users, rg_df=None):
+    if rg_df is None:
+        rg_df = rg_pipeline()
+    appeals = rg_df['event_type_first'] == 2
+    return rg_df[~appeals].index
+
+def filter_low_activity(users, gam_df=None, activity_thres = 50):
+    if gam_df is None:
+        gam_df = gambling_pipeline()
+    user_dict = user_ts_dict(users, gam_df)
+    user_list = []
+    for user, df in user_dict.items():
+        act = df['weighted_bets'].sum()
+        if (act > activity_thres):
+            user_list.append(user)
+    return user_list
+
+def filter_users(users, gam_df=None, rg_df=None):
+    users = filter_appeals(users, rg_df)
+    users = filter_low_activity(users, gam_df)
+    return users
 
 if __name__ == '__main__':
     demo_df = demo_pipeline()
     gam_df = gambling_pipeline()
+    rg_df = rg_pipeline()
     # user_id = 912480
     # use_df = to_daily_ts(gam_df, user_id, demographic_df=demo_df)
     # # print(use_df.head())
     # # print(use_df.columns)
     user_ids = list(demo_df.index)
-    user_dict = user_ts_dict(user_ids[:10])
+    user_ids = filter_appeals(user_ids, rg_df)
+    user_ids = filter_low_activity(user_ids)
+    user_dict = user_ts_dict(user_ids[:10], gam_df)
     path = 'data/user_id_test.pkl'
     pickle.dump(user_dict, open(path, 'wb'))
     dict_2 = pickle.load(open(path,'rb'))

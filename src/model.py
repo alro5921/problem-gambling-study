@@ -1,16 +1,17 @@
 import numpy as np
 import pandas as pd
 from datetime import datetime
-from featurizing import featurize
+from featurizing import featurize, featurize_forward
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.model_selection import train_test_split, RandomizedSearchCV
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
 import pipeline 
+import random
 
 demo_df = pipeline.demo_pipeline()
+gam_df = pipeline.gambling_pipeline()
 rg_df = pipeline.rg_pipeline()
-
 
 def train_grad_boost(X_train, y_train, do_grid=False):
     grad_boost_grid = {'learning_rate': [0.05, 0.02, 0.01, 0.005],
@@ -30,8 +31,7 @@ def train_grad_boost(X_train, y_train, do_grid=False):
     regressor = gb_gridsearch.best_estimator_
     return regressor
 
-
-def train_baseline(X_train,y_train):
+def train_baseline(X_train,y_train, do_grid=True):
     '''A logistic model just on the total amount o; using this as a baseline'''
     log_model = LogisticRegression(max_iter=500)
     log_model.fit(X_train, y_train)
@@ -51,7 +51,7 @@ def train_random_forest(X_train, y_train, do_grid=False):
                         'min_samples_split': [2, 4, 8],
                         'min_samples_leaf': [1, 5, 10, 20],
                         'bootstrap': [True, False],
-                        'n_estimators': [100, 200],
+                        'n_estimators': [50, 100, 200],
                         'random_state': [1]}
     rf_gridsearch = RandomizedSearchCV(RandomForestClassifier(),
                                 random_forest_grid,
@@ -84,26 +84,21 @@ def predict_and_store(model, X_test, y_test, store_name="", verbose=True, thres=
         scores(y_test,y_pred)
     return y_prob
 
-def filter_appeals(users):
-    n_app_mask = rg_df['event_type_first'] != 2
-    return rg_df[n_app_mask]
-
-def filter_low_hold(users):
-    pass
-
-
 if __name__ == '__main__':
-    n_app_mask = rg_df['event_type_first'] != 2
-    non_appeals = rg_df[n_app_mask]
+    #user_ids = list(demo_df.index)
+    #user_ids = pipeline.filter_users(user_ids, gam_df, rg_df)
+    rg_ids = list(demo_df[demo_df['rg'] == 1].index)
+    rg_ids = pipeline.filter_low_activity(rg_ids, gam_df)
     no_rg_ids = list(demo_df[demo_df['rg'] == 0].index)
-    user_ids = list(non_appeals.index) + no_rg_ids[:300]
+    no_rg_ids = pipeline.filter_low_activity(no_rg_ids, gam_df)
+    user_ids = rg_ids + random.choices(no_rg_ids, k=2000)
+    print(len(rg_ids))
+    print(len(no_rg_ids))
     # Random state to preserve same holdout (ideally I'd make MUCH more sure than this)
-    # TIL you can do this one 1-d arrays too
     train_ids, holdout_ids = train_test_split(user_ids, random_state=104, shuffle=True)
     #features = ["total_hold"]
-    features = ["total_hold", "weekly_hold", "rolling_hold", "total_fixed_live_ratio"]
-    X, y = featurize(train_ids, features=features)
-    #breakpoint()
+    features = ["total_hold", "weekly_hold", "weekly_activity", "total_fixed_live_ratio"]
+    X, y = featurize_forward(train_ids, features=features, look_forward=6)
     X_train, X_test, y_train, y_test = train_test_split(X,y)
     regressor = train_random_forest(X_train, y_train, do_grid=True)
     predict_and_store(regressor, X_test, y_test, store_name="validation")
