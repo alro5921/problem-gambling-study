@@ -15,41 +15,46 @@ demo_df = pipeline.demo_pipeline()
 gam_df = pipeline.gambling_pipeline()
 rg_info = pipeline.rg_pipeline()
 
-def make_default_featurizer():
+def make_default_featurizer(look_back=12):
     featurizer = Featurizer()
     featurizer.add_feature(total_hold)
     featurizer.add_feature(max_hold)
     featurizer.add_feature(total_activity)
-    featurizer.add_feature(weekly_activity, args={"lookback" : 25})
-    featurizer.add_feature(weekly_hold, args={"lookback" : 25})
-    featurizer.add_feature(weekly_rolling_hold, args={"lookback" : 25})
-    featurizer.add_feature(daily_rolling_hold, args={"lookback" : 150})
-    featurizer.add_feature(weekly_fixed_live_ratio, args={"lookback" : 25})
     featurizer.add_feature(total_fixed_live_ratio)
+    featurizer.add_feature(weekly_activity, args={"lookback" : look_back*4})
+    featurizer.add_feature(weekly_hold, args={"lookback" : look_back*4})
+    featurizer.add_feature(weekly_rolling_hold, args={"lookback" : look_back*4})
+    featurizer.add_feature(daily_rolling_hold, args={"lookback" : look_back*30})
+    featurizer.add_feature(weekly_fixed_live_ratio, args={"lookback" : look_back*4})
     return featurizer
 
-def featurize(user_ids, featurizer=None, features=None):
-    print("Starting frame making")
+def featurize_backward(user_ids, user_dict=None, featurizer=None, features=None):
     if not featurizer:
         featurizer = make_default_featurizer()
     frames, rgs = [], []
     for user_id in user_ids:
         products = [1,2,8,10,16]
-        user_ts = pipeline.to_daily_ts(gam_df, user_id, product_types=products)
+        if not user_dict:
+            user_ts = pipeline.to_daily_ts(gam_df, user_id, product_types=products)
+        else:
+            user_ts = user_dict[user_id]
         user_ts = user_ts.fillna(0)
         rg_date = get_rg_date(user_id, demo_df, rg_info)
         for frame, rg in create_frames(user_ts, rg_date):
             frames.append(frame), rgs.append(rg)
     return featurizer.vectorize(frames, features), rgs
 
-def featurize_forward(user_ids, featurizer=None, features=None, look_forward=12):
+def featurize_forward(user_ids, user_dict=None, featurizer=None, features=None, look_forward=12):
     print("Starting frame making")
     if not featurizer:
-        featurizer = make_default_featurizer()
+        featurizer = make_default_featurizer(look_back=look_forward)
     frames, rgs = [], []
     for user_id in user_ids:
-        products = [1,2,8,10,16]
-        user_ts = pipeline.to_daily_ts(gam_df, user_id, product_types=products)
+        if not user_dict:
+            products = [1,2,8,10,16]
+            user_ts = pipeline.to_daily_ts(gam_df, user_id, product_types=products)
+        else:
+            user_ts = user_dict[user_id]
         user_ts = user_ts.fillna(0)
         frame, rg = create_timeframe(user_ts, user_id, look_forward)
         frames.append(frame)
@@ -67,7 +72,6 @@ def create_timeframe(user_ts, user_id, look_forward=12):
     first_deposit = demo_df.loc[user_id, 'first_deposit_date']
     frame = user_ts[first_deposit : first_deposit + np.timedelta64(look_forward * 30, 'D')]
     return frame, demo_df.loc[user_id, 'rg'] == 1
-
 
 def create_frames(user_ts, rg_date, look_back=24, look_forward=12, cutoffs = DEFAULT_CUTOFFS):
     '''Creates the frames from the user's time series data'''

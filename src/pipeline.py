@@ -7,7 +7,6 @@ import pickle
 from pipeline_constants import (DEMO_RENAME, GAMBLING_RENAME, RG_RENAME, 
                             HAS_HOLD_DATA, EVENT_CODE_DICT, INTERVENTION_CODE_DICT)
 from sklearn.model_selection import train_test_split
-
 '''DEMOGRAPHIC'''
 
 def clean_str_series(obj_ser):
@@ -122,12 +121,12 @@ def rg_pipeline(rg_path = 'data/raw_3.sas7bdat'):
     df = clean_rg_info(df)
     return df
 
-def user_ts_dict(user_ids, gam_df=None):
+def user_ts_dict(user_ids, gam_df=None, product_types=HAS_HOLD_DATA):
     if gam_df is None:
         gam_df = gambling_pipeline()
     user_dict = {}
     for user_id in user_ids:
-        user_dict[user_id] = to_daily_ts(gam_df, user_id, product_types=HAS_HOLD_DATA)
+        user_dict[user_id] = to_daily_ts(gam_df, user_id, product_types=product_types)
     return user_dict
 
 def filter_appeals(users, rg_df=None):
@@ -136,12 +135,13 @@ def filter_appeals(users, rg_df=None):
     appeals = rg_df['event_type_first'] == 2
     return rg_df[~appeals].index
 
-def filter_low_activity(users, gam_df=None, activity_thres = 50):
+def filter_low_activity(user_info, gam_df=None, activity_thres=50):
+    if not isinstance(user_info, dict):
+        user_info = user_ts_dict(users, gam_df)
     if gam_df is None:
         gam_df = gambling_pipeline()
-    user_dict = user_ts_dict(users, gam_df)
     user_list = []
-    for user, df in user_dict.items():
+    for user, df in user_info.items():
         act = df['weighted_bets'].sum()
         if (act > activity_thres):
             user_list.append(user)

@@ -1,13 +1,14 @@
 import numpy as np
 import pandas as pd
 from datetime import datetime
-from featurizing import featurize, featurize_forward
+from featurizing import featurize_backward, featurize_forward
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.model_selection import train_test_split, RandomizedSearchCV
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
 import pipeline 
 import random
+import time
 
 demo_df = pipeline.demo_pipeline()
 gam_df = pipeline.gambling_pipeline()
@@ -39,6 +40,10 @@ def train_baseline(X_train,y_train, do_grid=True):
 
 GRID_SEARCH_GUESS = {'random_state': 1, 'n_estimators': 200, 'min_samples_split': 2,
                      'min_samples_leaf': 5, 'max_features': None, 'max_depth': None, 'bootstrap': True}
+
+LOOKFORWARD_GUESS = {'random_state': 1, 'n_estimators': 200, 'min_samples_split': 4, 
+                    'min_samples_leaf': 1, 'max_features': 'sqrt', 'max_depth': None, 'bootstrap': False}
+
 
 def train_random_forest(X_train, y_train, do_grid=False):
     '''Trains a random forest model on the training frames, doing grid_search if needed'''
@@ -73,9 +78,9 @@ def scores(y_test,y_pred):
     print(f'Precision: {precision_score(y_test,y_pred)}')
     print(f'F1: {f1_score(y_test,y_pred)}')
 
-def predict_and_store(model, X_test, y_test, store_name="", verbose=True, thres=.5):
+def predict_and_store(model, user_ids, X_test, y_test, store_name="", verbose=True, thres=.5):
     y_prob = model.predict_proba(X_test)[:,1]
-    val_store = pd.DataFrame({"Actual" : y_test, "Prediction" : y_prob})
+    val_store = pd.DataFrame({"id": user_ids, "actual" : y_test, "prediction" : y_prob})
     now = datetime.now()
     val_store.to_csv(f'data/model_results/{store_name}_prediction_results{now}.csv')
 
@@ -84,27 +89,37 @@ def predict_and_store(model, X_test, y_test, store_name="", verbose=True, thres=
         scores(y_test,y_pred)
     return y_prob
 
+def create_user_set(user_dict, demo_df, gam_df):
+    print("Entering set creation")
+    ids = pipeline.filter_low_activity(user_dict, gam_df=gam_df)
+    demo_filt = demo_df[demo_df.index.isin(ids)]
+    rg_ids = list(demo_filt[demo_filt['rg'] == 1].index)
+    no_rg_ids = list(demo_filt[demo_filt['rg'] == 0].index)
+    return rg_ids, no_rg_ids
+
 if __name__ == '__main__':
-    #user_ids = list(demo_df.index)
-    #user_ids = pipeline.filter_users(user_ids, gam_df, rg_df)
-    rg_ids = list(demo_df[demo_df['rg'] == 1].index)
-    rg_ids = pipeline.filter_low_activity(rg_ids, gam_df)
-    no_rg_ids = list(demo_df[demo_df['rg'] == 0].index)
-    no_rg_ids = pipeline.filter_low_activity(no_rg_ids, gam_df)
+    user_ids = list(demo_df.index)
+    print("Making user dict")
+    product_types = [1, 2, 10]
+    user_dict = pipeline.user_ts_dict(user_ids, gam_df, product_types=product_types)
+    rg_ids, no_rg_ids = create_user_set(user_dict, demo_df=demo_df, gam_df=gam_df)
     user_ids = rg_ids + random.choices(no_rg_ids, k=2000)
     print(len(rg_ids))
     print(len(no_rg_ids))
+    print(len(user_ids))
     # Random state to preserve same holdout (ideally I'd make MUCH more sure than this)
     train_ids, holdout_ids = train_test_split(user_ids, random_state=104, shuffle=True)
     #features = ["total_hold"]
     features = ["total_hold", "weekly_hold", "weekly_activity", "total_fixed_live_ratio"]
-    X, y = featurize_forward(train_ids, features=features, look_forward=6)
-    X_train, X_test, y_train, y_test = train_test_split(X,y)
-    regressor = train_random_forest(X_train, y_train, do_grid=True)
-    predict_and_store(regressor, X_test, y_test, store_name="validation")
+    for look_forward in [1,3,6,9,12]:
+        print(f"Beginning model with {look_forward} month look forward")
+        X, y = featurize_forward(train_ids, user_dict=user_dict, features=features, look_forward=look_forward)
+        X_train, X_test, y_train, y_test, user_train, user_test = train_test_split(X, y, train_ids)
+        regressor = train_random_forest(X_train, y_train, do_grid=True)
+        predict_and_store(regressor, user_test, X_test, y_test, store_name="validation")
     ##
     run_hold = False
     if run_hold:
         print("=========")
         X_hold, y_hold = featurize(holdout_ids)
-        predict_and_store(model, X_hold, y_hold, store_name="holdout")
+        predict_and_store(regressor, X_hold, y_hold, store_name="holdout")
