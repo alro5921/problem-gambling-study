@@ -10,9 +10,9 @@ from sklearn.preprocessing import scale
 from features import total_hold, max_hold, weekly_hold, weekly_rolling_hold
 
 # Global variables weeee
-demo_df = pipeline.demo_pipeline()
-gam_df = pipeline.gambling_pipeline()
-rg_info = pipeline.rg_pipeline()
+demo_df = pipeline.get_demo_df()
+gam_df = pipeline.get_gam_df()
+rg_info = pipeline.get_rg_df()
 
 class Featurizer:
     def __init__(self):
@@ -102,9 +102,11 @@ if __name__ == "__main__":
     featurizer.add_feature(weekly_hold, {"lookback" : 26})
     featurizer.add_feature(weekly_rolling_hold, {"lookback" : 26})
 
-    gam_df = pipeline.gambling_pipeline()
-    user_ts = pipeline.to_daily_ts(gam_df, user_id)
+    mask = (gam_df['user_id'] == user_id)
+    user_daily = daily_gam_df[mask]
+    first_deposit = demo_df.loc[user_id, 'first_deposit_date']
+    user_frame = sparse_to_ts(user_daily, date_start=first_deposit, window=180)
     features_to_use = ["total_hold", "max_hold", "weekly_hold"]
-    x = featurizer.vectorize_user(user_ts, features_to_use)
+    x = featurizer.vectorize_user(user_ts, user_frame)
     print(len(x))
     print(x[:30])

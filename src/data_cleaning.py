@@ -1,13 +1,11 @@
 '''The initial processing from the raw data into the analytic form'''
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 import re
 import random
 import pickle
-from pipeline_constants import (DEMO_RENAME, GAMBLING_RENAME, RG_RENAME, 
+from pipeline_constants import (DEMO_RENAME, GAMBLING_RENAME, RG_RENAME, ALL_PRODUCTS, 
                             HAS_HOLD_DATA, EVENT_CODE_DICT, INTERVENTION_CODE_DICT)
-from sklearn.model_selection import train_test_split
 
 '''DEMOGRAPHIC'''
 def clean_str_series(obj_ser):
@@ -61,18 +59,8 @@ def clean_gambling(gam_df):
     gam_clean[int_rows] = gam_clean[int_rows].astype(int)
     return gam_clean
 
-def add_weighted_bets(gam_df, w_means=None):
-    if not w_means:
-        w_means = gam_df.groupby('product_type')['num_bets'].mean()
-        w_means /= w_means[1]
-    gam_df['weighted_bets'] = 0
-    for product_type in gam_df['product_type'].unique():
-        mask = gam_df['product_type'] == product_type
-        gam_df.loc[mask,'weighted_bets'] = gam_df[mask]['num_bets'] / w_means[product_type]
-    return gam_df
-
-def to_daily(gam_df, product_types = HAS_HOLD_DATA, demographic_df=None):
-    '''Converts a (date sparse) [user,product,date] DF into a (date sparse) [user,date] DF,
+def to_daily(gam_df, product_types = ALL_PRODUCTS):
+    '''Converts the (date sparse) [user,product,date] DF into a (date sparse) [user,date] DF,
     creating new columns to mantain specific product info as desired in product_types.
     '''
     for product in product_types:
@@ -82,7 +70,7 @@ def to_daily(gam_df, product_types = HAS_HOLD_DATA, demographic_df=None):
             prod_cols = ['num_bets']
         new_cols = [col + f'_{product}' for col in prod_cols]
         for new_col in new_cols:
-            gam_df[new_col] = 0
+            gam_df[new_col] = 0 # Surprised you can't do this all at once
         prod_mask = gam_df["product_type"] == product
         gam_df.loc[prod_mask, new_cols] = gam_df.loc[prod_mask, prod_cols].values
 
@@ -94,10 +82,20 @@ def to_daily(gam_df, product_types = HAS_HOLD_DATA, demographic_df=None):
 def create_gam_df(gam_path='data/raw_2.sas7bdat'):
     df = pd.read_sas(gam_path)
     df = clean_gambling(df)
+    df = to_daily(df)
     df = add_weighted_bets(df)
-    products = [1,2,4,8,10,17]
-    df = to_daily(df,products)
     return df
+
+def add_weighted_bets(gam_df, w_means=None, products=ALL_PRODUCTS):
+    '''Creates a weighted activity thingy'''
+    if not w_means:
+        mean_1 = gam_df['num_bets_1'].mean()
+        w_means = {prod: gam_df[f'num_bets_{prod}'].mean()/mean_1 
+                    for prod in products}
+    gam_df['weighted_bets'] = 0
+    for prod in products:
+        gam_df['weighted_bets'] += gam_df[f'num_bets_{prod}'] / w_means[prod]
+    return gam_df
 
 def sparse_to_ts(user_daily, date_start=None, date_end=None, window=None):
     '''Converts the user's sparse, daily data into a time series over a specified time window'''
@@ -114,14 +112,36 @@ def sparse_to_ts(user_daily, date_start=None, date_end=None, window=None):
     user_ts = date_indexed.reindex(idx, fill_value=0)
     return user_ts
 
+def subset_users(user_ids, df):
+    return df[df.index.isin(user_ids)]
+
+def filter_low_activity(frames, activity_thres=10):
+    '''I'm deferring on a activity-based prediction
+    until a certain level of activity is actually seen'''
+    return [frame for frame in frames 
+            if frame['weighted_bets'].sum() > activity_thres]
+
+def filter_users(users, gam_df=None, rg_df=None):
+    users = filter_appeals(users, rg_df)
+    users = filter_low_activity(users, gam_df)
+    return users
+
+def filter_low_activity(frames, activity_thres=10):
+    '''I'm deferring on a activity-based prediction
+    until a certain level of activity is actually seen'''
+    return [frame for frame in frames 
+            if frame['weighted_bets'].sum() > activity_thres]
+
+def filter_users(users, gam_df=None, rg_df=None):
+    users = filter_appeals(users, rg_df)
+    users = filter_low_activity(users, gam_df)
+    return users
+
 if __name__ == "__main__":
-    from datetime import datetime
-    print(datetime.now().time())
     df = create_gam_df()
-    print(datetime.now().time())
+    print(df.head())
     for user_id in df['user_id'].unique():
         mask = (df['user_id'] == user_id)
         user_daily = df[mask]
         ts = sparse_to_ts(user_daily, date_start='2008-05-07', window=60)
-    print(datetime.now().time())
     print(ts.head(), ts.tail())

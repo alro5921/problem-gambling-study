@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 from datetime import datetime
-from featurizing import featurize_backward, featurize_forward
+from featurizing import featurize
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.model_selection import train_test_split, RandomizedSearchCV
 from sklearn.linear_model import LogisticRegression
@@ -9,11 +9,11 @@ from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, r
 import pipeline 
 import random
 import time
-from data_cleaning import create_gam_df, sparse_to_ts
+from pipeline import get_demo_df, get_gam_df, get_rg_df
+from pipeline import sparse_to_ts
 
-demo_df = pipeline.demo_pipeline()
-#gam_df = pipeline.gambling_pipeline()
-rg_df = pipeline.rg_pipeline()
+demo_df = get_demo_df()
+rg_df = get_rg_df()
 
 def train_grad_boost(X_train, y_train, do_grid=False):
     grad_boost_grid = {'learning_rate': [0.05, 0.02, 0.01, 0.005],
@@ -34,7 +34,6 @@ def train_grad_boost(X_train, y_train, do_grid=False):
     return regressor
 
 def train_baseline(X_train,y_train, do_grid=True):
-    '''A logistic model just on the total amount o; using this as a baseline'''
     log_model = LogisticRegression(max_iter=500)
     log_model.fit(X_train, y_train)
     return log_model
@@ -97,14 +96,12 @@ def create_user_set(user_dict, demo_df, gam_df):
     rg_ids = list(demo_filt[demo_filt['rg'] == 1].index)
     no_rg_ids = list(demo_filt[demo_filt['rg'] == 0].index)
     return rg_ids, no_rg_ids
-
-import time
-# your code here    
+   
 if __name__ == '__main__':
     user_ids = list(demo_df.index)
     print("Using new stuff")
     start = time.process_time()
-    gam_df = create_gam_df()
+    gam_df = get_gam_df()
     #rg_ids, no_rg_ids = create_user_set(user_dict, demo_df=demo_df, gam_df=gam_df)
     #user_ids = rg_ids + random.choices(no_rg_ids, k=2000)
     #print(len(rg_ids))
@@ -114,11 +111,9 @@ if __name__ == '__main__':
     train_ids, holdout_ids = train_test_split(user_ids, random_state=104, shuffle=True)
     #features = ["total_hold"]
     features = ["total_hold", "weekly_hold", "weekly_activity", "total_fixed_live_ratio"]
-    for look_forward in [1,3,6,9,12,24]:
+    for look_forward in [1,3,6,9,12]:
         print(f"Beginning model with {look_forward} month look forward")
-        start = time.process_time()
-        X, y = featurize_forward(train_ids, gam_df, features=features, look_forward=look_forward)
-        print(time.process_time() - start)
+        X, y = featurize(train_ids, gam_df, features=features, look_forward=look_forward)
         X_train, X_test, y_train, y_test, user_train, user_test = train_test_split(X, y, train_ids)
         regressor = train_random_forest(X_train, y_train, do_grid=False)
         predict_and_store(regressor, user_test, X_test, y_test, store_name="validation")
