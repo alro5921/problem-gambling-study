@@ -5,7 +5,7 @@ from datetime import datetime
 import pipeline
 from Featurizer import Featurizer
 from features import (total_hold, max_hold, total_activity, weekly_activity,
-                    weekly_hold, weekly_rolling_hold, daily_rolling_hold,
+                    weekly_hold, daily_rolling_hold,
                     total_fixed_live_ratio)
 from pipeline import get_demo_df, get_gam_df, get_rg_df 
 from pipeline import sparse_to_ts
@@ -22,7 +22,6 @@ def make_default_featurizer(look_back=12):
     featurizer.add_feature(total_fixed_live_ratio)
     featurizer.add_feature(weekly_activity, args={"lookback" : look_back*4})
     featurizer.add_feature(weekly_hold, args={"lookback" : look_back*4})
-    featurizer.add_feature(weekly_rolling_hold, args={"lookback" : look_back*4})
     featurizer.add_feature(daily_rolling_hold, args={"lookback" : look_back*30})
     return featurizer
 

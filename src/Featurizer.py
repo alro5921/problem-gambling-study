@@ -7,7 +7,7 @@ import pipeline
 from itertools import chain
 from collections.abc import Iterable
 from sklearn.preprocessing import scale
-from features import total_hold, max_hold, weekly_hold, weekly_rolling_hold
+from features import total_hold, max_hold, weekly_hold
 
 # Global variables weeee
 demo_df = pipeline.get_demo_df()

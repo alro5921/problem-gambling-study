@@ -111,19 +111,16 @@ if __name__ == '__main__':
     # print("Using new stuff")
     # start = time.process_time()
     gam_df = get_gam_df()
-    # rg_ids, no_rg_ids = create_user_set(user_ids, demo_df=demo_df, gam_df=gam_df)
-    # user_ids = rg_ids + random.choices(no_rg_ids, k=len(rg_ids))
-    #print(len(rg_ids))
-    #print(len(no_rg_ids))
-    #print(len(user_ids))
-    # Random state to preserve same holdout (ideally I'd make MUCH more sure than this)
-    train_ids = user_ids
+    rg_ids, no_rg_ids = create_user_set(user_ids, demo_df=demo_df, gam_df=gam_df)
+    user_ids = rg_ids + random.choices(no_rg_ids, k=len(rg_ids))
+    print(len(rg_ids))
+    print(len(no_rg_ids))
+    print(len(user_ids))
     #features = ["total_hold"]
-    features = ["total_hold", "weekly_hold", "weekly_activity", 
-                "daily_rolling_hold", "total_fixed_live_ratio"]
+    features = ["total_hold", "weekly_hold", "weekly_activity", "total_fixed_live_ratio"]
     for look_forward in [6,12]:
         print(f"Beginning model with {look_forward} month look forward")
-        X, y = featurize(train_ids, gam_df, features=features, look_forward=look_forward)
-        X_train, X_test, y_train, y_test, user_train, user_test = train_test_split(X, y, train_ids)
+        X, y = featurize(user_ids, gam_df, features=features, look_forward=look_forward)
+        X_train, X_test, y_train, y_test, user_train, user_test = train_test_split(X, y, user_ids)
         regressor = train_random_forest(X_train, y_train, do_grid=True)
         predict_and_store(regressor, user_test, X_test, y_test, store_name="validation")
