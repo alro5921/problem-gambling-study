@@ -9,9 +9,10 @@ from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, r
 import pipeline 
 import random
 import time
+from data_cleaning import create_gam_df, sparse_to_ts
 
 demo_df = pipeline.demo_pipeline()
-gam_df = pipeline.gambling_pipeline()
+#gam_df = pipeline.gambling_pipeline()
 rg_df = pipeline.rg_pipeline()
 
 def train_grad_boost(X_train, y_train, do_grid=False):
@@ -97,23 +98,27 @@ def create_user_set(user_dict, demo_df, gam_df):
     no_rg_ids = list(demo_filt[demo_filt['rg'] == 0].index)
     return rg_ids, no_rg_ids
 
+
+import time
+# your code here    
 if __name__ == '__main__':
     user_ids = list(demo_df.index)
-    print("Making user dict")
-    product_types = [1, 2, 10]
-    user_dict = pipeline.user_ts_dict(user_ids, gam_df, product_types=product_types)
-    rg_ids, no_rg_ids = create_user_set(user_dict, demo_df=demo_df, gam_df=gam_df)
-    user_ids = rg_ids + random.choices(no_rg_ids, k=2000)
-    print(len(rg_ids))
-    print(len(no_rg_ids))
-    print(len(user_ids))
+    print("Using new stuff")
+    start = time.process_time()
+    gam_df = create_gam_df()
+    #rg_ids, no_rg_ids = create_user_set(user_dict, demo_df=demo_df, gam_df=gam_df)
+    #user_ids = rg_ids + random.choices(no_rg_ids, k=2000)
+    #print(len(rg_ids))
+    #print(len(no_rg_ids))
+    #print(len(user_ids))
     # Random state to preserve same holdout (ideally I'd make MUCH more sure than this)
     train_ids, holdout_ids = train_test_split(user_ids, random_state=104, shuffle=True)
     #features = ["total_hold"]
     features = ["total_hold", "weekly_hold", "weekly_activity", "total_fixed_live_ratio"]
-    for look_forward in [1,3,6,9,12]:
+    for look_forward in [3]:
         print(f"Beginning model with {look_forward} month look forward")
-        X, y = featurize_forward(train_ids, user_dict=user_dict, features=features, look_forward=look_forward)
+        X, y = featurize_forward(train_ids, gam_df, features=features, look_forward=look_forward)
+        print(time.process_time() - start)
         X_train, X_test, y_train, y_test, user_train, user_test = train_test_split(X, y, train_ids)
         regressor = train_random_forest(X_train, y_train, do_grid=True)
         predict_and_store(regressor, user_test, X_test, y_test, store_name="validation")

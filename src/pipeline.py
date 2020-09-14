@@ -7,8 +7,8 @@ import pickle
 from pipeline_constants import (DEMO_RENAME, GAMBLING_RENAME, RG_RENAME, 
                             HAS_HOLD_DATA, EVENT_CODE_DICT, INTERVENTION_CODE_DICT)
 from sklearn.model_selection import train_test_split
-'''DEMOGRAPHIC'''
 
+'''DEMOGRAPHIC'''
 def clean_str_series(obj_ser):
     rep = lambda m: m.group(1)
     clean_ser = obj_ser.astype(str)
@@ -105,16 +105,6 @@ def clean_rg_info(rg_info):
     rg_info['ev_desc'] = rg_info['event_type_first'].replace(EVENT_CODE_DICT)
     rg_info['inter_desc'] = rg_info['inter_type_first'].replace(INTERVENTION_CODE_DICT)
     return rg_info
-
-def subset_rg(rg_info, events=None, interventions=None):
-    filtered_rg = rg_info.copy()
-    if events:
-        event_mask = filtered_rg['event_type_first'].isin(events)
-        filtered_rg  = filtered_rg[event_mask]
-    if interventions:
-        intervent_mask = filtered_rg['inter_type_first'].isin(interventions)
-        filtered_rg  = filtered_rg[intervent_mask]
-    return filtered_rg
 
 def rg_pipeline(rg_path = 'data/raw_3.sas7bdat'):
     df = pd.read_sas(rg_path)

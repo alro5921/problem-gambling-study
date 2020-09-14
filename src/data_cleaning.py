@@ -37,7 +37,6 @@ def create_demo_df(demo_path = 'data/raw_1.sas7bdat'):
     return df
 
 '''RG INFO'''
-
 def clean_rg_info(rg_info):
     rg_info = rg_info.rename(RG_RENAME, axis = 1)
     int_cols = ['event_type_first', 'events', 'user_id']
@@ -86,9 +85,10 @@ def to_daily(gam_df, product_types = HAS_HOLD_DATA, demographic_df=None):
             gam_df[new_col] = 0
         prod_mask = gam_df["product_type"] == product
         gam_df.loc[prod_mask, new_cols] = gam_df.loc[prod_mask, prod_cols].values
+
     gb_user_date = gam_df.groupby(['user_id', 'date']).sum()
     gb_user_date.drop("product_type", inplace=True, axis = 1)
-    # Currently returning as a flattened thing for legacy sake, but should possibly keep as a multiindex? Hmm.
+    # Currently returning as a flattened thing for legacy sake, but maybe should keep as a multiindex? Hmm.
     return gb_user_date.reset_index(drop=False)
 
 def create_gam_df(gam_path='data/raw_2.sas7bdat'):
@@ -99,9 +99,29 @@ def create_gam_df(gam_path='data/raw_2.sas7bdat'):
     df = to_daily(df,products)
     return df
 
-def sparse_to_ts(user_daily, date_start, date_end):
-    
+def sparse_to_ts(user_daily, date_start=None, date_end=None, window=None):
+    '''Converts the user's sparse, daily data into a time series over a specified time window'''
+    if not date_start and not date_end:
+        print("Need to specify an anchor point if using a gap")
+        return -1
+    if date_start and not date_end:
+        date_end = np.datetime64(date_start) + np.timedelta64(window, 'D')
+    if not date_start and date_end:
+        date_start = np.datetime64(date_end) - np.timedelta64(window, 'D')
+
+    date_indexed = user_daily.set_index('date',drop=True)
+    idx = pd.date_range(date_start, date_end)
+    user_ts = date_indexed.reindex(idx, fill_value=0)
+    return user_ts
 
 if __name__ == "__main__":
+    from datetime import datetime
+    print(datetime.now().time())
     df = create_gam_df()
-    print(df.head())
+    print(datetime.now().time())
+    for user_id in df['user_id'].unique():
+        mask = (df['user_id'] == user_id)
+        user_daily = df[mask]
+        ts = sparse_to_ts(user_daily, date_start='2008-05-07', window=60)
+    print(datetime.now().time())
+    print(ts.head(), ts.tail())

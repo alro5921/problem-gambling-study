@@ -7,6 +7,7 @@ from Featurizer import Featurizer
 from features import (total_hold, max_hold, total_activity, weekly_activity,
                     weekly_hold, weekly_rolling_hold, daily_rolling_hold,
                     total_fixed_live_ratio, weekly_fixed_live_ratio)
+from data_cleaning import create_gam_df, sparse_to_ts
 
 DEFAULT_CUTOFFS = ['2008-02-01','2008-05-01','2008-08-01', '2008-11-01', '2009-02-05','2009-05-01','2009-08-01']
 DEFAULT_CUTOFFS = [np.datetime64(date) for date in DEFAULT_CUTOFFS]
@@ -44,21 +45,18 @@ def featurize_backward(user_ids, user_dict=None, featurizer=None, features=None)
             frames.append(frame), rgs.append(rg)
     return featurizer.vectorize(frames, features), rgs
 
-def featurize_forward(user_ids, user_dict=None, featurizer=None, features=None, look_forward=12):
+def featurize_forward(user_ids, daily_gam_df, featurizer=None, features=None, look_forward=12):
     print("Starting frame making")
     if not featurizer:
         featurizer = make_default_featurizer(look_back=look_forward)
     frames, rgs = [], []
     for user_id in user_ids:
-        if not user_dict:
-            products = [1,2,8,10,16]
-            user_ts = pipeline.to_daily_ts(gam_df, user_id, product_types=products)
-        else:
-            user_ts = user_dict[user_id]
-        user_ts = user_ts.fillna(0)
-        frame, rg = create_timeframe(user_ts, user_id, look_forward)
-        frames.append(frame)
-        rgs.append(rg)
+        mask = (daily_gam_df['user_id'] == user_id)
+        user_daily = daily_gam_df[mask]
+        first_deposit = demo_df.loc[user_id, 'first_deposit_date']
+        user_frame = sparse_to_ts(user_daily, date_start=first_deposit, window=30*look_forward)
+        frames.append(user_frame)
+        rgs.append(demo_df.loc[user_id,'rg'] == 1)
     return featurizer.vectorize(frames, features), rgs
 
 def get_rg_date(user_id, demo_info, rg_info):
@@ -66,12 +64,6 @@ def get_rg_date(user_id, demo_info, rg_info):
     if demo_info.loc[user_id, 'rg'] == 1:
         rg_date = rg_info.loc[user_id, 'first_date']
     return rg_date
-
-#TODO: Just get the user from the ts
-def create_timeframe(user_ts, user_id, look_forward=12):
-    first_deposit = demo_df.loc[user_id, 'first_deposit_date']
-    frame = user_ts[first_deposit : first_deposit + np.timedelta64(look_forward * 30, 'D')]
-    return frame, demo_df.loc[user_id, 'rg'] == 1
 
 def create_frames(user_ts, rg_date, look_back=24, look_forward=12, cutoffs = DEFAULT_CUTOFFS):
     '''Creates the frames from the user's time series data'''
