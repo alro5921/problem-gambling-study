@@ -100,7 +100,6 @@ def create_user_set(user_dict, demo_df, gam_df):
 import time
 if __name__ == '__main__':
     user_ids = list(demo_df.index)
-    start = time.process_time()
     print("Making user dict")
     product_types = [1, 2, 10]
     user_dict = pipeline.user_ts_dict(user_ids, gam_df, product_types=product_types)
@@ -115,6 +114,7 @@ if __name__ == '__main__':
     features = ["total_hold", "weekly_hold", "weekly_activity", "total_fixed_live_ratio"]
     for look_forward in [3]:
         print(f"Beginning model with {look_forward} month look forward")
+        start = time.process_time()
         X, y = featurize_forward(train_ids, user_dict=user_dict, features=features, look_forward=look_forward)
         print(time.process_time() - start)
         X_train, X_test, y_train, y_test, user_train, user_test = train_test_split(X, y, train_ids)
