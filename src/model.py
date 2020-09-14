@@ -110,7 +110,7 @@ if __name__ == '__main__':
     user_ids = list(demo_df.index)
     # print("Using new stuff")
     # start = time.process_time()
-    # gam_df = get_gam_df()
+    gam_df = get_gam_df()
     # rg_ids, no_rg_ids = create_user_set(user_ids, demo_df=demo_df, gam_df=gam_df)
     # user_ids = rg_ids + random.choices(no_rg_ids, k=len(rg_ids))
     #print(len(rg_ids))
@@ -119,8 +119,8 @@ if __name__ == '__main__':
     # Random state to preserve same holdout (ideally I'd make MUCH more sure than this)
     train_ids = user_ids
     #features = ["total_hold"]
-    #features = ["total_hold", "weekly_hold", "weekly_activity", "total_fixed_live_ratio"]
-    features = None
+    features = ["total_hold", "weekly_hold", "weekly_activity", 
+                "daily_rolling_hold", "total_fixed_live_ratio"]
     for look_forward in [6,12]:
         print(f"Beginning model with {look_forward} month look forward")
         X, y = featurize(train_ids, gam_df, features=features, look_forward=look_forward)

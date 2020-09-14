@@ -34,10 +34,10 @@ def total_fixed_live_ratio(frame):
         return 10
     return min(live_action_hold/fixed_hold, 10)
 
-def weekly_fixed_live_ratio(frame, lookback):
-    weekly_sum = frame.resample('M').sum()
-    weekly_sum = pad_lookback(weekly_sum, lookback)
-    return weekly_sum['turnover_2']/(1+weekly_sum['turnover'])
+# def weekly_fixed_live_ratio(frame, lookback):
+#     weekly_sum = frame.resample('M').sum()
+#     weekly_sum = pad_lookback(weekly_sum, lookback)
+#     return weekly_sum['turnover_2']/(1+weekly_sum['turnover'])
 
 def pad_lookback(aggregate, lookback):
     pad = lookback - len(aggregate)
