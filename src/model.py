@@ -64,7 +64,7 @@ def train_random_forest(X_train, y_train, do_grid=False, save=False):
                         'random_state': [1]}
     rf_gridsearch = RandomizedSearchCV(RandomForestClassifier(),
                                 random_forest_grid,
-                                n_iter = 100,
+                                n_iter = 200,
                                 n_jobs=-1,
                                 verbose=True,
                                 scoring='f1',
@@ -130,8 +130,8 @@ if __name__ == '__main__':
     # features = ["total_hold", "weekly_hold", "weekly_activity", 
     #             "daily_rolling_hold", "total_fixed_live_ratio"]
     #features = SUMMARY_NAMES + WEEKLY_NAMES[0]
-    features = SUMMARY_NAMES + ["weekly_activity", "weekly_hold"]
-    for months in [1,3,6,12]:
+    features = ALL_NAMES
+    for months in [6]:
         print(f"Constructing model with {months} months of information")
         print(f"Features being used: {features}")
         X, y = featurize(user_ids, gam_df, features=features, month_window=months)
