@@ -106,23 +106,32 @@ def filter_low_activity(user_ids, activity=20):
             filt_users.append(user_id)
     return filt_users
 
-def in_rg(users_ids):
-    filt_users = []
-    rg_ids = list(demo_filt[demo_filt['rg'] == 1].index)
-    for user_id in rg_ids:
-        if user_daily['weighted_bets'].sum() > activity:
-            filt_users.append(user_id)
-    return filt_users
+def filter_rg_in_frame(users_ids, days_ahead):
+    print("Filtering out RGs with event in frame")
+    df = demo_df.join(rg_df)
+    df['registration_date'] = pd.to_datetime(df['registration_date'])
+    df['first_date'] = pd.to_datetime(df['first_date'])
+    df['diff'] = df['first_date'] - df['registration_date']
+    mask = (df['rg'] == 1) & (df['diff'] < np.timedelta64(days_ahead, 'D'))
+    print("Rebalancing classes with oversampling")
+    return list(df[~mask].index)
 
-def filter_users(user_ids, demo_df, gam_df):
-    print("Filtering low activity")
-    ids = filter_low_activity(user_ids)
-    demo_filt = demo_df[demo_df.index.isin(ids)]
+def oversample(user_ids):
+    demo_filt = demo_df[demo_df.index.isin(user_ids)]
     rg_ids = list(demo_filt[demo_filt['rg'] == 1].index)
     no_rg_ids = list(demo_filt[demo_filt['rg'] == 0].index)
-    print("Rebalancing classes with oversampling")
-    user_ids = rg_ids + random.choices(no_rg_ids, k=len(rg_ids))
+    diff = len(rg_ids) - len(no_rg_ids)
+    if diff > 0:
+        user_ids += random.choices(no_rg_ids, k=diff)
+    else:
+        user_ids += random.choices(rg_ids, k=-diff)
     return user_ids
+    
+def filter_users(user_ids, demo_df, gam_df):
+    ids = filter_low_activity(user_ids)
+    ids = filter_rg_in_frame(ids)
+    oversample(ids)
+    return ids
 
 from itertools import chain, combinations
 def feature_tuples(feature_names):
@@ -137,21 +146,27 @@ def feature_tuples(feature_names):
 if __name__ == '__main__':
     user_ids = list(demo_df.index)
     gam_df = get_gam_df()
-    filt = False
+    months = 6
+    filt = True
     if filt:
-        user_ids = filter_users(user_ids, demo_df=demo_df, gam_df=gam_df)
+        print("Applying prefilters")
+        user_ids = filter_rg_in_frame(user_ids, months*30)
+        user_ids = oversample(user_ids)
+        #user_ids = filter_users(user_ids, demo_df=demo_df, gam_df=gam_df)
     else:
         print("No user pre-filtering")
     # features = ["total_hold", "weekly_hold", "weekly_activity", 
     #             "daily_rolling_hold", "total_fixed_live_ratio"]
     #features = SUMMARY_NAMES + WEEKLY_NAMES[0]
-    months = 6
-    feat_combs = feature_tuples(DAILY_NAMES+WEEKLY_NAMES)
+
+    #feat_combs = feature_tuples(DAILY_NAMES+WEEKLY_NAMES)
+    #weekly_hold, weekly_activity, weekly_rolling_hold, weekly_activity_hold, weekly_fixed_live_ratio
+    feat_combs = [SUMMARY_NAMES + ['weekly_hold', 'weekly_rolling_activity']]
     print(f"Constructing model with {months} months of information")
     for feats in feat_combs:
         print(f"Non-Summary Features being used: {feats}")
         features = SUMMARY_NAMES + feats
         X, y = featurize(user_ids, gam_df, features=features, month_window=months)
         X_train, X_test, y_train, y_test, user_train, user_test = train_test_split(X, y, user_ids)
-        regressor = train_random_forest(X_train, y_train, do_grid=False)
+        regressor = train_random_forest(X_train, y_train, do_grid=True)
         predict_and_store(regressor, user_test, X_test, y_test, store_name="validation")

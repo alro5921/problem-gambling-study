@@ -39,6 +39,10 @@ def weekly_activity(frame):
 
 def weekly_rolling_hold(frame):
     weekly_sum = to_weekly(frame)
+    return weekly_sum['hold'].rolling(5).sum()[4:].values
+
+def weekly_rolling_activity(frame):
+    weekly_sum = to_weekly(frame)
     return weekly_sum['weighted_bets'].rolling(5).sum()[4:].values
 
 def weekly_fixed_live_ratio(frame):
@@ -51,7 +55,7 @@ SUMMARY_NAMES = [feat.__name__ for feat in SUMMARY_FEATURES]
 DAILY_FEATURES = [daily_hold, daily_rolling_hold]
 DAILY_NAMES = [feat.__name__ for feat in DAILY_FEATURES]
 
-WEEKLY_FEATURES = [weekly_hold, weekly_activity, weekly_rolling_hold, weekly_fixed_live_ratio]
+WEEKLY_FEATURES = [weekly_hold, weekly_activity, weekly_rolling_hold, weekly_rolling_activity, weekly_fixed_live_ratio]
 WEEKLY_NAMES = [feat.__name__ for feat in WEEKLY_FEATURES]
 
 ALL_FEATURES = SUMMARY_FEATURES + DAILY_FEATURES + WEEKLY_FEATURES

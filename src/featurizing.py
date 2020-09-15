@@ -35,13 +35,7 @@ def make_frame(user_id, gam_df, month_window):
     user_frame = sparse_to_ts(user_daily, date_start=first_deposit, window=30*month_window)
     return user_frame
 
-def get_rg_date(user_id, demo_info, rg_df):
-    rg_date = None
-    if demo_info.loc[user_id, 'rg'] == 1:
-        rg_date = rg_df.loc[user_id, 'first_date']
-    return rg_date
-
 if __name__ == '__main__':
-    user_ids = [912480, 3789290, 5313473, 5296662]
-    vector, rgs = featurize(user_ids, gam_df, features=["weekly_hold"])
-    print(len(vector), len(rgs), len(vector[0]))
+    user_ids = list(demo_df.index)
+    print(len(user_ids))
+    #print(len(filter_rg_in_frame(user_ids, 180)))
