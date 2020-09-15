@@ -20,9 +20,9 @@ def make_default_featurizer(look_back=12):
     featurizer.add_feature(max_hold)
     featurizer.add_feature(total_activity)
     featurizer.add_feature(total_fixed_live_ratio)
-    featurizer.add_feature(weekly_activity, args={"lookback" : look_back*4})
-    featurizer.add_feature(weekly_hold, args={"lookback" : look_back*4})
-    featurizer.add_feature(daily_rolling_hold, args={"lookback" : look_back*30})
+    featurizer.add_feature(weekly_activity)
+    featurizer.add_feature(weekly_hold)
+    featurizer.add_feature(daily_rolling_hold)
     return featurizer
 
 def featurize(user_ids, gam_df, featurizer=None, features=None, look_forward=12):

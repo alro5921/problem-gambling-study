@@ -9,26 +9,29 @@ def max_hold(frame):
 def total_activity(frame):
     return frame['weighted_bets'].sum()
 
-def weekly_hold(frame, lookback):
-    weekly_sum = frame.resample('W').sum()
-    weekly_sum = pad_lookback(weekly_sum, lookback)
-    return weekly_sum['hold'].values[-lookback:]
+import math
 
-def weekly_activity(frame, lookback):
-    weekly_sum = frame.resample('W').sum()
-    weekly_sum = pad_lookback(weekly_sum, lookback)
-    return weekly_sum['weighted_bets'].values[-lookback:]
+def to_weekly(frame):
+        # Can have a week "chopped off" or not depending on the exact start date
+        # Just imput with the last value if so
+    weekly_sum = frame.resample('7D').sum()
+    return weekly_sum
 
-# def weekly_rolling_hold(frame, lookback):
-#     weekly_sum = frame.resample('W').sum()
-#     pad_lookback(weekly_sum, lookback)
-#     w_sum = weekly_sum['weighted_bets'].rolling(5).sum()[4:][-lookback:]
-#     breakpoint()
-#     return w_sum
+def weekly_hold(frame):
+    weekly_sum = to_weekly(frame)
+    return weekly_sum['hold'].values
 
-def daily_rolling_hold(frame, lookback):
-    frame = pad_lookback(frame, lookback)
-    frame['hold'].rolling(5).sum()[4:][-lookback:]
+def weekly_activity(frame):
+    weekly_sum = to_weekly(frame)
+    return weekly_sum['weighted_bets'].values
+
+def weekly_rolling_hold(frame):
+    weekly_sum = to_weekly(frame)
+    return weekly_sum['weighted_bets'].rolling(5).sum()[4:].values
+
+def daily_rolling_hold(frame):
+    #frame = pad_lookback(frame, lookback)
+    return frame['hold'].rolling(5).sum()[4:].values
 
 def total_fixed_live_ratio(frame):
     fixed_hold, live_action_hold = frame['hold_1'].sum(), frame['hold_2'].sum()

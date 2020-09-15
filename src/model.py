@@ -60,10 +60,11 @@ def train_random_forest(X_train, y_train, do_grid=False):
                         'random_state': [1]}
     rf_gridsearch = RandomizedSearchCV(RandomForestClassifier(),
                                 random_forest_grid,
-                                n_iter = 100,
+                                n_iter = 500,
                                 n_jobs=-1,
                                 verbose=True,
-                                scoring='f1')
+                                scoring='f1',
+                                cv=3)
     rf_gridsearch.fit(X_train, y_train)
     print("Random Forest RGS parameters:", rf_gridsearch.best_params_)
     regressor = rf_gridsearch.best_estimator_
@@ -117,7 +118,7 @@ if __name__ == '__main__':
     print(len(no_rg_ids))
     print(len(user_ids))
     #features = ["total_hold"]
-    features = ["total_hold", "weekly_hold", "weekly_activity", "total_fixed_live_ratio"]
+    features = None
     for look_forward in [6,12]:
         print(f"Beginning model with {look_forward} month look forward")
         X, y = featurize(user_ids, gam_df, features=features, look_forward=look_forward)
