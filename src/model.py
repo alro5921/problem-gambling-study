@@ -11,7 +11,7 @@ from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, r
 
 from featurizing import featurize
 from Featurizer import Featurizer
-from features import SUMMARY_NAMES, WEEKLY_NAMES
+from features import SUMMARY_NAMES, DAILY_NAMES, WEEKLY_NAMES
 
 from pipeline import get_demo_df, get_gam_df, get_rg_df
 from pipeline import sparse_to_ts
@@ -42,13 +42,10 @@ def train_baseline(X_train,y_train, do_grid=True):
     log_model.fit(X_train, y_train)
     return log_model
 
-GRID_SEARCH_GUESS = {'random_state': 1, 'n_estimators': 200, 'min_samples_split': 2,
-                     'min_samples_leaf': 5, 'max_features': None, 'max_depth': None, 'bootstrap': True}
-
 LOOKFORWARD_GUESS = {'random_state': 1, 'n_estimators': 200, 'min_samples_split': 4, 
                     'min_samples_leaf': 1, 'max_features': 'sqrt', 'max_depth': None, 'bootstrap': False}
 
-def train_random_forest(X_train, y_train, do_grid=False, save=False):
+def train_random_forest(X_train, y_train, do_grid=False, save=False, verbose=True):
     '''Trains a random forest model on the training frames, doing grid_search if needed'''
     if not do_grid:
         print("Not doing grid search, just using a prior model's GS")
@@ -60,13 +57,13 @@ def train_random_forest(X_train, y_train, do_grid=False, save=False):
                         'min_samples_split': [2, 4, 8],
                         'min_samples_leaf': [1, 5, 10, 20],
                         'bootstrap': [True, False],
-                        'n_estimators': [50, 100, 200],
+                        'n_estimators': [100, 200, 400],
                         'random_state': [1]}
     rf_gridsearch = RandomizedSearchCV(RandomForestClassifier(),
                                 random_forest_grid,
-                                n_iter = 200,
+                                n_iter = 100,
                                 n_jobs=-1,
-                                verbose=True,
+                                verbose=verbose,
                                 scoring='f1',
                                 cv=3)
     rf_gridsearch.fit(X_train, y_train)
@@ -118,6 +115,16 @@ def filter_users(user_ids, demo_df, gam_df):
     print("Rebalancing classes with oversampling")
     user_ids = rg_ids + random.choices(no_rg_ids, k=len(rg_ids))
     return user_ids
+
+from itertools import chain, combinations
+def feature_tuples(feature_names):
+    lst = []
+    for r in range(3):
+        #breakpoint()
+        combs = list(combinations(feature_names, r))
+        lst = lst + combs
+    lst = [list(tup) for tup in lst]
+    return lst
    
 if __name__ == '__main__':
     user_ids = list(demo_df.index)
@@ -130,11 +137,13 @@ if __name__ == '__main__':
     # features = ["total_hold", "weekly_hold", "weekly_activity", 
     #             "daily_rolling_hold", "total_fixed_live_ratio"]
     #features = SUMMARY_NAMES + WEEKLY_NAMES[0]
-    features = ALL_NAMES
-    for months in [6]:
-        print(f"Constructing model with {months} months of information")
-        print(f"Features being used: {features}")
+    months = 6
+    feat_combs = feature_tuples(DAILY_NAMES+WEEKLY_NAMES)
+    print(f"Constructing model with {months} months of information")
+    for feats in feat_combs:
+        print(f"Non-Summary Features being used: {feats}")
+        features = SUMMARY_NAMES + feats
         X, y = featurize(user_ids, gam_df, features=features, month_window=months)
         X_train, X_test, y_train, y_test, user_train, user_test = train_test_split(X, y, user_ids)
-        regressor = train_random_forest(X_train, y_train, do_grid=True)
+        regressor = train_random_forest(X_train, y_train, do_grid=False)
         predict_and_store(regressor, user_test, X_test, y_test, store_name="validation")
