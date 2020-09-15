@@ -99,7 +99,7 @@ def create_holdout(demo_df, gam_df, rg_df, random_state=104, test_size=.15):
     train_gam = gam_df[gam_df['user_id'].isin(train_ids)]
     test_gam = gam_df[gam_df['user_id'].isin(holdout_ids)] 
     train_rg, test_rg = subset_users(train_ids, rg_df), subset_users(holdout_ids, rg_df)
-    train_demo.to_csv(f'data/demographic.csv', orient='table')
+    train_demo.to_csv(f'data/demographic.csv')
     train_gam.to_csv(f'data/gambling.csv')
     train_rg.to_csv(f'data/rg_information.csv')
     test_demo.to_csv(f'data/holdout/demographic.csv')

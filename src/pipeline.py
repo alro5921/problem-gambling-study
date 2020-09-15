@@ -17,6 +17,7 @@ def get_user_ids(demo_df):
 def get_gam_df(gam_path=GAM_PATH):
     df = pd.read_csv(gam_path)
     df = add_weighted_bets(df)
+    # Writing to csv reverts the datetime cast
     df['date'] = pd.to_datetime(df['date'])
     return df
 
@@ -24,7 +25,6 @@ def get_rg_df(rg_path=RG_PATH):
     return pd.read_csv(rg_path, index_col='user_id')
 
 #1305631
-
 def sparse_to_ts(user_daily, date_start=None, date_end=None, window=None):
     '''Converts the user's sparse, daily data into a time series over a specified time window'''
     if not date_start and not date_end:
@@ -41,7 +41,8 @@ def sparse_to_ts(user_daily, date_start=None, date_end=None, window=None):
     return user_ts
 
 def add_weighted_bets(gam_df, w_means=None, products=ALL_PRODUCTS):
-    '''Creates a weighted activity thingy'''
+    '''Aggregates the 'num_bets' across activities into a weighted one
+    reflecting their actual activity implied'''
     if not w_means:
         mean_1 = gam_df['num_bets_1'].mean()
         w_means = {prod: gam_df[f'num_bets_{prod}'].mean()/mean_1 

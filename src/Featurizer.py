@@ -7,7 +7,7 @@ import pipeline
 from itertools import chain
 from collections.abc import Iterable
 from sklearn.preprocessing import scale
-from features import total_hold, max_hold, weekly_hold
+from features import total_hold, max_hold, weekly_hold, weekly_rolling_hold
 
 # Global variables weeee
 demo_df = pipeline.get_demo_df()
@@ -18,7 +18,7 @@ class Featurizer:
     def __init__(self):
         self.features = {}
 
-    def vectorize(self, frames, choices=None, verbose=True):
+    def vectorize(self, frames, choices=None, verbose=False):
         if not choices:
             choices = self.get_feature_names()
         if verbose:
@@ -38,9 +38,6 @@ class Featurizer:
                 vect += [feat_val]
         return vect
 
-    def _calc_feature(self, frame, feat_name):
-        return self.features[feat](frame)
-
     def add_feature(self, prod_function, feat_name=None, args={}):
         if not feat_name:
             feat_name = prod_function.__name__
@@ -52,55 +49,14 @@ class Featurizer:
     def get_feature_names(self):
         return list(self.features.keys())
 
-class FeaturizerDF:
-    def __init__(self):
-        #self.features =  
-        self.raws = {} 
-
-
-# import pickle
-
-# class FeatureCache:
-#     def __init__(self, store_path=None):
-#         self.featurizer = Featurizer()
-#         self.store_path = store_path if store_path else 'data/featurized.pkl'
-#         self.cache = pd.DataFrame()
-
-#     def _load_csv(self):
-#         try:
-#             self.cache = pickle.load(open(self.store_path,'rb'))
-#         except FileNotFoundError:
-#             print(f"No pkl cache found at {self.store_path}, making its own")
-#             pickle.dump(self.cache, open(self.store_path, 'wb'))
-
-#     def store(self):
-#         pickle.dump(self.cache, open(self.store_path, 'wb'))
-
-#     def add_feature(self, feat_name, prod_function, prod_args = {}, overwrite=True):
-#         if not overwrite and feat_name in self.features:
-#             return
-#         raw_ts = self.cache['raw_ts']
-#         self.cache[feat_name] = [prod_function(row, **prod_args) for row in raw_ts]
-
-#     def vectorize(self, features=None): 
-#         if not features:
-#             features = self.get_feature_names()
-
-#     def get_feature_names(self):
-#         return self.featurizer.get_feature_names()
-
-#     # def set_df(self, feature_name, overwrite = False):
-#     #     X = 
-#     #     df[feature_name] = self.featurizer.calc_feature(feature_name, user)
-
 if __name__ == "__main__":
     user_id = 3327778
 
     featurizer = Featurizer()
     featurizer.add_feature("total_hold", total_hold)
     featurizer.add_feature(max_hold)
-    featurizer.add_feature(weekly_hold, {"lookback" : 26})
-    featurizer.add_feature(weekly_rolling_hold, {"lookback" : 26})
+    featurizer.add_feature(weekly_hold)
+    featurizer.add_feature(weekly_rolling_hold)
 
     mask = (gam_df['user_id'] == user_id)
     user_daily = daily_gam_df[mask]
