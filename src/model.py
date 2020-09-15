@@ -42,14 +42,14 @@ def train_baseline(X_train,y_train, do_grid=True):
     log_model.fit(X_train, y_train)
     return log_model
 
-LOOKFORWARD_GUESS = {'random_state': 1, 'n_estimators': 200, 'min_samples_split': 4, 
+GS_GUESS = {'random_state': 1, 'n_estimators': 200, 'min_samples_split': 4, 
                     'min_samples_leaf': 1, 'max_features': 'sqrt', 'max_depth': None, 'bootstrap': False}
 
 def train_random_forest(X_train, y_train, do_grid=False, save=False, verbose=True):
     '''Trains a random forest model on the training frames, doing grid_search if needed'''
     if not do_grid:
         print("Not doing grid search, just using a prior model's GS")
-        regressor = RandomForestClassifier(**GRID_SEARCH_GUESS)
+        regressor = RandomForestClassifier(**GS_GUESS)
         regressor.fit(X_train, y_train)
         return regressor
     random_forest_grid = {'max_depth': [3, 5, None],
@@ -57,7 +57,7 @@ def train_random_forest(X_train, y_train, do_grid=False, save=False, verbose=Tru
                         'min_samples_split': [2, 4, 8],
                         'min_samples_leaf': [1, 5, 10, 20],
                         'bootstrap': [True, False],
-                        'n_estimators': [100, 200, 400],
+                        'n_estimators': [50, 100, 200, 400],
                         'random_state': [1]}
     rf_gridsearch = RandomizedSearchCV(RandomForestClassifier(),
                                 random_forest_grid,
@@ -102,6 +102,14 @@ def filter_low_activity(user_ids, activity=20):
     for user_id in user_ids:
         mask = (gam_df['user_id'] == user_id)
         user_daily = gam_df[mask]
+        if user_daily['weighted_bets'].sum() > activity:
+            filt_users.append(user_id)
+    return filt_users
+
+def in_rg(users_ids):
+    filt_users = []
+    rg_ids = list(demo_filt[demo_filt['rg'] == 1].index)
+    for user_id in rg_ids:
         if user_daily['weighted_bets'].sum() > activity:
             filt_users.append(user_id)
     return filt_users
