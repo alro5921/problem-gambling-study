@@ -17,6 +17,18 @@ def total_fixed_live_ratio(frame):
         return 10
     return min(live_action_hold/fixed_hold, 10)
 
+def total_nonzero_hold_std(frame):
+    ''' Gambling behavior is relatively sparse,
+    it seems more useful to look at variance in 
+    the bets thesmelves'''
+    frame_nonzero = frame[frame['hold'] > 0]
+    if len(frame_nonzero) == 0:
+        return 0
+    stdev = frame_nonzero['hold'].std()
+    if not isinstance(stdev, float):
+        breakpoint()
+    return max(10000, frame_nonzero['hold'].std())
+
 '''Features on a daily granularity'''
 def daily_hold(frame):
     return frame['hold'].values
@@ -49,7 +61,7 @@ def weekly_fixed_live_ratio(frame):
     weekly_sum = to_weekly(frame)
     return weekly_sum['num_bets_2']/(1+weekly_sum['num_bets_1'])
 
-SUMMARY_FEATURES = [total_hold, max_hold, total_activity, total_fixed_live_ratio]
+SUMMARY_FEATURES = [total_hold, max_hold, total_activity, total_fixed_live_ratio, total_nonzero_hold_std]
 SUMMARY_NAMES = [feat.__name__ for feat in SUMMARY_FEATURES]
 
 DAILY_FEATURES = [daily_hold, daily_rolling_hold]

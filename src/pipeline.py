@@ -7,25 +7,24 @@ from pipeline_constants import ALL_PRODUCTS, HAS_HOLD_DATA
 from pipeline_constants import DEMO_PATH, RG_PATH, GAM_PATH
 from sklearn.model_selection import train_test_split
 
-def get_demo_df(demo_path=DEMO_PATH):
-    df = pd.read_csv(demo_path, index_col='user_id')
+def get_demo_df(path=DEMO_PATH):
+    df = pd.read_csv(path, index_col='user_id')
     # date_cols = ['registration_date', 'first_deposit_date']
     # df[date_cols] = pd.to_datetime(df[date_cols])
     return df
 
-def get_gam_df(gam_path=GAM_PATH):
-    df = pd.read_csv(gam_path)
+def get_gam_df(path=GAM_PATH):
+    df = pd.read_csv(path)
     df = add_weighted_bets(df)
     # Writing to csv reverts the datetime cast
     df['date'] = pd.to_datetime(df['date'])
     return df
 
-def get_rg_df(rg_path=RG_PATH):
-    df = pd.read_csv(rg_path, index_col='user_id')
+def get_rg_df(path=RG_PATH):
+    df = pd.read_csv(path, index_col='user_id')
     # date_cols = ['first_date', 'last_date']
     # df[date_cols] = pd.to_datetime(df[date_cols])
     return df
-
 
 def get_user_ids(demo_df):
     return list(demo_df.index)

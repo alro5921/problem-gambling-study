@@ -16,157 +16,125 @@ from features import SUMMARY_NAMES, DAILY_NAMES, WEEKLY_NAMES
 from pipeline import get_demo_df, get_gam_df, get_rg_df
 from pipeline import sparse_to_ts
 
-demo_df = get_demo_df()
-rg_df = get_rg_df()
+from preprocessing import filter_preprocess
 
-def train_grad_boost(X_train, y_train, do_grid=False):
-    grad_boost_grid = {'learning_rate': [0.01, 0.001, 0.0001],
+RF_GRID = {'max_depth': [3, 5, None],
+                'max_features': ['sqrt', 'log2', None],
+                'min_samples_split': [2, 4, 8],
+                'min_samples_leaf': [1, 5, 10, 20],
+                'bootstrap': [True, False],
+                'n_estimators': [50, 100, 200, 400],
+                'random_state': [1]}
+
+GRAD_BOOST_GRID = {'learning_rate': [0.01, 0.001, 0.0001],
                                 'max_depth': [3, 5],
                                 'min_samples_leaf': [5, 10, 50, 100, 200],
                                 'max_features': [2, 3, 5, 10],
                                 'n_estimators': [150, 300, 500],
                                 'random_state': [1]}
-    gb_gridsearch = RandomizedSearchCV(GradientBoostingClassifier(),
-                                grad_boost_grid,
-                                n_iter = 400,
-                                n_jobs=-1,
-                                verbose=True,
-                                scoring='f1')
-    gb_gridsearch.fit(X_train, y_train)
-    print("GB RGS parameters:", gb_gridsearch.best_params_)
-    regressor = gb_gridsearch.best_estimator_
-    return regressor
 
-def train_baseline(X_train,y_train, do_grid=True):
-    log_model = LogisticRegression(max_iter=500)
-    log_model.fit(X_train, y_train)
-    return log_model
+GRAD_GS_GUESS = {'learning_rate': .001, 'n_estimators': 300, 
+                'min_samples_leaf': 5, 'max_features': 5}
 
-GS_GUESS = {'random_state': 1, 'n_estimators': 200, 'min_samples_split': 4, 
-                    'min_samples_leaf': 1, 'max_features': 'sqrt', 'max_depth': None, 'bootstrap': False}
+RF_GS_GUESS = {'random_state': 1, 'n_estimators': 200, 'min_samples_split': 4, 
+                    'min_samples_leaf': 1, 'max_features': 'sqrt', 'max_depth': None}
 
-def train_random_forest(X_train, y_train, do_grid=False, save=False, verbose=True):
-    '''Trains a random forest model on the training frames, doing grid_search if needed'''
+def preprocessing(months, user_ids=None, featurizer=None, features=None, prefilter=True, dfs=None):
+    if not featurizer and not features:
+        print("Need at least one way to get featurizing context!")
+        raise ValueError
+    if not dfs:
+        demo_df = get_demo_df()
+        rg_df = get_rg_df()
+        gam_df = get_gam_df()
+    else:
+        demo_df, rg_df, gam_df = dfs
+    if not user_ids:
+        user_ids = list(demo_df.index)
+
+    days = months * 30
+    if(prefilter):
+        print("Applying prefilters")
+        user_ids = filter_preprocess(user_ids, months*30, demo_df, rg_df)
+    print(f"Constructing model with {months} months of information")
+    print(f"Features being used: {features}")
+    X, y = featurize(user_ids, gam_df, featurizer=featurizer, features=features, month_window=months)
+    return X, y, user_ids
+
+def train(X, y, base_model, do_grid=True, grid=None, search_params=None, save=False, verbose=True):
     if not do_grid:
-        print("Not doing grid search, just using a prior model's GS")
-        regressor = RandomForestClassifier(**GS_GUESS)
-        regressor.fit(X_train, y_train)
-        return regressor
-    random_forest_grid = {'max_depth': [3, 5, None],
-                        'max_features': ['sqrt', 'log2', None],
-                        'min_samples_split': [2, 4, 8],
-                        'min_samples_leaf': [1, 5, 10, 20],
-                        'bootstrap': [True, False],
-                        'n_estimators': [50, 100, 200, 400],
-                        'random_state': [1]}
-    rf_gridsearch = RandomizedSearchCV(RandomForestClassifier(),
-                                random_forest_grid,
-                                n_iter = 100,
-                                n_jobs=-1,
-                                verbose=verbose,
-                                scoring='f1',
-                                cv=3)
-    rf_gridsearch.fit(X_train, y_train)
+        print("Not doing a grid search, just using a prior model's hyperparameters.")
+        regressor = RandomForestClassifier(**RF_GS_GUESS)
+        regressor.fit(X, y)
+        return regressor, None
+    if not search_params:
+        search_params = {'n_iter' : 100, 'n_jobs' : -1, 'cv' : 5}
+    gridsearch = RandomizedSearchCV(base_model, grid, scoring='f1', verbose=verbose, **search_params)
+    gridsearch.fit(X, y)
+    
+    regressor = gridsearch.best_estimator_
     if save:
-        now = datetime.now().strftime("%m-%d-%H:%M")
-        gs_path = f'model/rf_rgrid_output_{now}.pkl'
+        now = datetime.now().strftime("%m-%d-%H-%M")
+        #name = base_model.__name__ 
+        gs_path = f'model/grid_results{now}.pkl'
         with open(gs_path, 'wb') as f:
-            pickle.dump(rf_gridsearch, f)
-    #print("Random Forest RGS parameters:", rf_gridsearch.best_params_)
-    regressor = rf_gridsearch.best_estimator_
-    #print(regressor.feature_importances_)
-    return regressor
+            pickle.dump(gridsearch, f)
+        model_path = f'model/model{now}.pkl'
+        with open(model_path, 'wb') as f:
+            pickle.dump(regressor, f)
+    print(f'Model CV Score: {gridsearch.best_score_:.3f}')
+    return regressor, gridsearch
+    
+def predict(model, X, y=None, user_ids=None, store_name="", thres=.5, verbose=True, store=True):
+    y_prob = model.predict_proba(X)[:,1]
+    if store:
+        val_store = pd.DataFrame({"prediction" : y_prob})
+        if y:
+            val_store["actual"] = y
+        if user_ids:
+            val_store["id"] = user_ids
+        now = datetime.now()
+        val_store.to_csv(f'data/model_results/{store_name}_prediction_results{now}.csv')
+    if verbose and y:
+        y_pred = (y_prob >= thres).astype(int)
+        scores(y,y_pred)
+    return y_prob
 
 def scores(y_test,y_pred):
     confus = confusion_matrix(y_test,y_pred)
     tn, fp, fn, tp = confus.ravel()
     print(f'True Neg {tn}, False Pos {fp}, False Neg {fn}, True Positive {tp}')
-    print(f'Accuracy: {accuracy_score(y_test,y_pred):03}')
-    print(f'Recall: {recall_score(y_test, y_pred):03}')
-    print(f'Precision: {precision_score(y_test,y_pred):03}')
-    print(f'F1: {f1_score(y_test,y_pred):03}')
+    print(f'Accuracy: {accuracy_score(y_test,y_pred):.3f}')
+    print(f'Recall: {recall_score(y_test, y_pred):.3f}')
+    print(f'Precision: {precision_score(y_test,y_pred):.3f}')
+    print(f'F1: {f1_score(y_test,y_pred):.3f}')
 
-def predict_and_store(model, user_ids, X_test, y_test, store_name="", verbose=True, thres=.5):
-    y_prob = model.predict_proba(X_test)[:,1]
-    val_store = pd.DataFrame({"id": user_ids, "actual" : y_test, "prediction" : y_prob})
-    now = datetime.now()
-    val_store.to_csv(f'data/model_results/{store_name}_prediction_results{now}.csv')
-
-    y_pred = (y_prob >= thres).astype(int)
-    if verbose:
-        scores(y_test,y_pred)
-    return y_prob
-
-def filter_low_activity(user_ids, activity=20):
-    filt_users = []
-    for user_id in user_ids:
-        mask = (gam_df['user_id'] == user_id)
-        user_daily = gam_df[mask]
-        if user_daily['weighted_bets'].sum() > activity:
-            filt_users.append(user_id)
-    return filt_users
-
-def filter_rg_in_frame(users_ids, days_ahead):
-    print("Filtering out RGs with event in frame")
-    df = demo_df.join(rg_df)
-    df['registration_date'] = pd.to_datetime(df['registration_date'])
-    df['first_date'] = pd.to_datetime(df['first_date'])
-    df['diff'] = df['first_date'] - df['registration_date']
-    mask = (df['rg'] == 1) & (df['diff'] < np.timedelta64(days_ahead, 'D'))
-    print("Rebalancing classes with oversampling")
-    return list(df[~mask].index)
-
-def oversample(user_ids):
-    demo_filt = demo_df[demo_df.index.isin(user_ids)]
-    rg_ids = list(demo_filt[demo_filt['rg'] == 1].index)
-    no_rg_ids = list(demo_filt[demo_filt['rg'] == 0].index)
-    diff = len(rg_ids) - len(no_rg_ids)
-    if diff > 0:
-        user_ids += random.choices(no_rg_ids, k=diff)
-    else:
-        user_ids += random.choices(rg_ids, k=-diff)
-    return user_ids
-    
-def filter_users(user_ids, demo_df, gam_df):
-    ids = filter_low_activity(user_ids)
-    ids = filter_rg_in_frame(ids)
-    oversample(ids)
-    return ids
-
-from itertools import chain, combinations
-def feature_tuples(feature_names):
-    lst = []
-    for r in range(3):
-        #breakpoint()
-        combs = list(combinations(feature_names, r))
-        lst = lst + combs
-    lst = [list(tup) for tup in lst]
-    return lst
-   
 if __name__ == '__main__':
-    user_ids = list(demo_df.index)
-    gam_df = get_gam_df()
     months = 6
-    filt = True
-    if filt:
-        print("Applying prefilters")
-        user_ids = filter_rg_in_frame(user_ids, months*30)
-        user_ids = oversample(user_ids)
-        #user_ids = filter_users(user_ids, demo_df=demo_df, gam_df=gam_df)
-    else:
-        print("No user pre-filtering")
-    # features = ["total_hold", "weekly_hold", "weekly_activity", 
-    #             "daily_rolling_hold", "total_fixed_live_ratio"]
-    #features = SUMMARY_NAMES + WEEKLY_NAMES[0]
+    features = SUMMARY_NAMES + ['weekly_hold', 'weekly_activity']
+    X, y, user_ids = preprocessing(months, features = features)
+    model, gs = train(X, y, RandomForestClassifier(), do_grid=True, grid=RF_GRID)
+    #model, gs = train(X, y, GradientBoostingClassifier(), do_grid=True, grid=GRAD_BOOST_GRID)
+    # Looks like weekly_hold + weekly_activity is doing well
 
-    #feat_combs = feature_tuples(DAILY_NAMES+WEEKLY_NAMES)
-    #weekly_hold, weekly_activity, weekly_rolling_hold, weekly_activity_hold, weekly_fixed_live_ratio
-    feat_combs = [SUMMARY_NAMES + ['weekly_hold', 'weekly_rolling_activity']]
-    print(f"Constructing model with {months} months of information")
-    for feats in feat_combs:
-        print(f"Non-Summary Features being used: {feats}")
-        features = SUMMARY_NAMES + feats
-        X, y = featurize(user_ids, gam_df, features=features, month_window=months)
-        X_train, X_test, y_train, y_test, user_train, user_test = train_test_split(X, y, user_ids)
-        regressor = train_random_forest(X_train, y_train, do_grid=True)
-        predict_and_store(regressor, user_test, X_test, y_test, store_name="validation")
+    # SUMMARY_FEATURES = [total_hold, max_hold, total_activity, total_fixed_live_ratio, total_nonzero_hold_std]
+    # DAILY_FEATURES = [daily_hold, daily_rolling_hold]
+    # WEEKLY_FEATURES = [weekly_hold, weekly_activity, weekly_rolling_hold, weekly_rolling_activity, weekly_fixed_live_ratio]
+    # ALL_FEATURES = SUMMARY_FEATURES + DAILY_FEATURES + WEEKLY_FEATURES
+
+    # feat_combs = power_set(NON_DAILY)
+    # print(f"Constructing model with {months} months of information")
+    # for feats in feat_combs:
+
+    run_holdout = False
+    seriously = False
+    if run_holdout and seriously:
+        HOLD_DEMO_PATH = 'data/holdout/demographic.csv'
+        HOLD_RG_PATH = 'data/holdout/rg_information.csv'
+        HOLD_GAM_PATH = 'data/holdout/gambling.csv'
+        hold_demo = get_demo_df(HOLD_DEMO_PATH)
+        hold_rg = get_rg_df(HOLD_RG_PATH)
+        hold_gam = get_gam_df(HOLD_GAM_PATH)
+        dfs = [hold_demo, hold_rg, hold_gam]
+        X, y, user_ids = preprocessing(months=months, features=features, dfs=dfs)
+        predict(model, X, y, user_ids)
