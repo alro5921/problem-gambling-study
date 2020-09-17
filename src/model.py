@@ -89,7 +89,7 @@ def scores(y_test,y_pred):
 if __name__ == '__main__':
     months = 6
     train_model = True
-    features = SUMMARY_NAMES + ['weekly_hold', 'weekly_activity', 'weekly_max']
+    features = SUMMARY_NAMES + ['weekly_hold', 'weekly_max', 'weekly_rolling_activity']
     if train_model:
         print("Trying just summary variables")
         X, y, user_ids = preprocessing(months, features=SUMMARY_NAMES)
@@ -100,8 +100,8 @@ if __name__ == '__main__':
         #df = pd.DataFrame(gs.cv_results_)
 
 
-    run_holdout = False
-    seriously = False
+    run_holdout = True
+    seriously = True
     if run_holdout and seriously:
         print("!!!!Running on holdout!!!!")
         HOLD_DEMO_PATH = 'data/holdout/demographic.csv'
