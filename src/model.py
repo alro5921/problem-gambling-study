@@ -89,13 +89,14 @@ def scores(y_test,y_pred):
 if __name__ == '__main__':
     months = 6
     train_model = True
-    feature_sets = [SUMMARY_NAMES, SUMMARY_NAMES + ['weekly_activity', 'weekly_max'], SUMMARY_NAMES + ['weekly_activity', 'weekly_hold']]
-    features = SUMMARY_NAMES + ['weekly_activity', 'weekly_max']
+    feature_sets = [SUMMARY_NAMES, SUMMARY_NAMES + ['weekly_activity', 'weekly_max'], 
+                    SUMMARY_NAMES + ['weekly_activity', 'weekly_hold']]
+    #features = SUMMARY_NAMES + ['weekly_activity', 'weekly_max']
     for features in feature_sets:
-        X, y, user_ids = preprocessing(months, features=feature_sets)
-        model, gs = train(X, y, RandomForestClassifier(), do_grid=True, grid=RF_GRID, save=True)
-        print("Main event")
         X, y, user_ids = preprocessing(months, features=features)
+        model, gs = train(X, y, RandomForestClassifier(), do_grid=True, grid=RF_GRID, save=True)
+        #print("Main event")
+        #X, y, user_ids = preprocessing(months, features=features)
         #model, gs = train(X, y, RandomForestClassifier(), do_grid=True, grid=RF_GRID, save=True)
         #df = pd.DataFrame(gs.cv_results_)
         print("!!!!Running on holdout!!!!")
