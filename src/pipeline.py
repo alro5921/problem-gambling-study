@@ -7,7 +7,7 @@ from pipeline_constants import ALL_PRODUCTS, HAS_HOLD_DATA
 from pipeline_constants import DEMO_PATH, RG_PATH, GAM_PATH
 from sklearn.model_selection import train_test_split
 
-WEIGHTS = {1: 1.0, 2: 1.9, 3: 1.6735638473207348, 4: 31.13842146476165, 5: 0.37584047124601383, 6: 11.056054972301116, 7: 8.64537708901529, 8: 47.617995276059325, 9: 0.527813110874204, 10: 15.031850760307305, 14: 7.697540618623065, 15: 18.24468154334213, 16: 1.1159477201340313, 17: 14.374133782112049, 19: 2.4441030442308227, 20: 2.8551162436493667, 21: 0.16649220018128694, 22: 0.4018520349820394, 23: 1.0120550412810625, 24: 0.20724743373917726, 25: 15.583412806157366}
+WEIGHTS = {1: 1.0, 2: 1.8293792046408552, 3: 0.03651375851416145, 4: 1.8820888336251267, 5: 0.0006019609096146426, 6: 0.438983651931958, 7: 0.04849395136604638, 8: 5.319030501466609, 9: 6.829378229015394e-05, 10: 5.552475722779929, 14: 0.17252082594500304, 15: 1.4943747874965794, 16: 3.902501845151654e-06, 17: 0.018900304248800105, 19: 0.04700904941396618, 20: 0.0030951717759359052, 21: 1.8049071033826397e-05, 22: 0.00021219853783012118, 23: 0.002884436676297716, 24: 2.536626199348575e-05, 25: 0.0003814695553635742}
 
 def get_demo_df(path=DEMO_PATH):
     df = pd.read_csv(path, index_col='user_id')
@@ -17,7 +17,7 @@ def get_demo_df(path=DEMO_PATH):
 
 def get_gam_df(path=GAM_PATH):
     df = pd.read_csv(path)
-    df = apply_weighted_bets(df, w_means=WEIGHTS)
+    df = apply_weighted_bets(df, weights=WEIGHTS)
     # Writing to csv reverts the datetime cast
     df['date'] = pd.to_datetime(df['date'])
     return df
@@ -50,18 +50,18 @@ def sparse_to_ts(user_daily, date_start=None, date_end=None, window=None):
 def learn_weighted_bets(gam_df, products=ALL_PRODUCTS):
     '''Aggregates the 'num_bets' across activities into a weighted one
     reflecting their actual activity implied'''
-    mask = gam_df['num_bets_1'] > 0
+    mask = gam_df['num_bets_1'] > -1
     mean_1 = gam_df[mask]['num_bets_1'].mean()
     w_means = {1: mean_1}
     for prod in products:
-        mask = gam_df[f'num_bets_{prod}'] > 0
+        mask = gam_df[f'num_bets_{prod}'] > -1
         w_means[prod] = gam_df[mask][f'num_bets_{prod}'].mean()/mean_1
     return w_means
 
-def apply_weighted_bets(gam_df, w_means, products=ALL_PRODUCTS):
+def apply_weighted_bets(gam_df, weights, products=ALL_PRODUCTS):
     gam_df['weighted_bets'] = 0
     for prod in products:
-        gam_df['weighted_bets'] += gam_df[f'num_bets_{prod}'] / w_means[prod]
+        gam_df['weighted_bets'] += gam_df[f'num_bets_{prod}'] / weights[prod]
     return gam_df
 
 def add_weighted_bets(gam_df, w_means=None, products=ALL_PRODUCTS):
