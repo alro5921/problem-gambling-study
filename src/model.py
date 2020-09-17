@@ -46,7 +46,7 @@ def train(X, y, base_model, do_grid=True, grid=None, search_params=None, save=Fa
         regressor.fit(X, y)
         return regressor, None
     if not search_params:
-        search_params = {'n_iter' : 100, 'n_jobs' : -1, 'cv' : 5}
+        search_params = {'n_iter' : 200, 'n_jobs' : -1, 'cv' : 5}
     gridsearch = RandomizedSearchCV(base_model, grid, scoring='f1', verbose=verbose, **search_params)
     gridsearch.fit(X, y)
 
