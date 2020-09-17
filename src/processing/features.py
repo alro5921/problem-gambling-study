@@ -12,6 +12,7 @@ def total_activity(frame):
     return frame['weighted_bets'].sum()
 
 def max_diff(frame):
+    '''The max difference between two (non-zero) days'''
     non_zero = frame[frame.hold > 0]
     hold_diff = non_zero['hold'].diff().dropna()
     if len(hold_diff) == 0:
@@ -43,13 +44,17 @@ def daily_hold(frame):
 def daily_rolling_hold(frame):
     return frame['hold'].rolling(5).sum()[4:].values
 
+'''Features on a weekly granularity'''
 def agg(frame, d):
-    resamp = weekly_sum = frame.resample(f'{d}D').sum()
+    resamp = frame.resample(f'{d}D').sum()
     return resamp
 
-'''Features on a weekly granularity'''
 def to_weekly(frame):
     return agg(frame, 7)
+
+def weekly_max(frame):
+    weekly_max = frame.resample(f'7D').max()
+    return weekly_sum['hold'].values
 
 def weekly_hold(frame):
     weekly_sum = to_weekly(frame)
@@ -78,7 +83,7 @@ SUMMARY_NAMES = [feat.__name__ for feat in SUMMARY_FEATURES]
 DAILY_FEATURES = [daily_hold, daily_rolling_hold]
 DAILY_NAMES = [feat.__name__ for feat in DAILY_FEATURES]
 
-WEEKLY_FEATURES = [weekly_hold, weekly_activity, weekly_rolling_hold, weekly_rolling_activity, weekly_fixed_live_ratio]
+WEEKLY_FEATURES = [weekly_hold, weekly_activity, weekly_max, weekly_rolling_hold, weekly_rolling_activity, weekly_fixed_live_ratio]
 WEEKLY_NAMES = [feat.__name__ for feat in WEEKLY_FEATURES]
 
 ALL_FEATURES = SUMMARY_FEATURES + DAILY_FEATURES + WEEKLY_FEATURES

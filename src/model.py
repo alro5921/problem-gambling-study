@@ -91,33 +91,14 @@ if __name__ == '__main__':
     train_model = True
     features = SUMMARY_NAMES + ['weekly_hold', 'weekly_activity']
     if train_model:
-        X, y, user_ids = preprocessing(months, features = features)
+        X, y, user_ids = preprocessing(months, features=features)
         model, gs = train(X, y, RandomForestClassifier(), do_grid=True, grid=RF_GRID, save=True)
         df = pd.DataFrame(gs.cv_results_)
-        sorted_df = df.sort_values(by='rank_test_score')[:20]
-        print(sorted_df[['mean_test_score', 'std_test_score']])
-        breakpoint()
-        #print(model.feature_importances_)
-        #predict(model, X, y, store=False)
-    #model, gs = train(X, y, GradientBoostingClassifier(), do_grid=True, grid=GRAD_BOOST_GRID)
-    # Looks like weekly_hold + weekly_activity is doing well
-
-    # SUMMARY_FEATURES = [total_hold, max_hold, total_activity, total_fixed_live_ratio, total_nonzero_hold_std]
-    # DAILY_FEATURES = [daily_hold, daily_rolling_hold]
-    # WEEKLY_FEATURES = [weekly_hold, weekly_activity, weekly_rolling_hold, weekly_rolling_activity, weekly_fixed_live_ratio]
-    # ALL_FEATURES = SUMMARY_FEATURES + DAILY_FEATURES + WEEKLY_FEATURES
-
-    # feat_combs = power_set(NON_DAILY)
-    # print(f"Constructing model with {months} months of information")
-    # for feats in feat_combs:
 
     run_holdout = False
     seriously = False
     if run_holdout and seriously:
         print("!!!!Running on holdout!!!!")
-        # model_path = ''
-        # with open(model_path, 'rb') as f:
-        #     model = pickle.load(f)
         HOLD_DEMO_PATH = 'data/holdout/demographic.csv'
         HOLD_RG_PATH = 'data/holdout/rg_information.csv'
         HOLD_GAM_PATH = 'data/holdout/gambling.csv'
