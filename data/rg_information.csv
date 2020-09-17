@@ -1,0 +1,1767 @@
+user_id,events,first_date,last_date,event_type_first,inter_type_first,ev_desc,inter_desc
+2169867,1,2009-11-19,2009-11-19,9,18,Request partial block,Requested Partial Block Not Possible
+7035862,1,2009-11-15,2009-11-15,9,18,Request partial block,Requested Partial Block Not Possible
+5911218,1,2009-11-08,2009-11-08,9,18,Request partial block,Requested Partial Block Not Possible
+5872708,1,2009-11-03,2009-11-03,9,18,Request partial block,Requested Partial Block Not Possible
+5746942,2,2009-10-18,2009-11-03,9,18,Request partial block,Requested Partial Block Not Possible
+2787151,1,2009-10-27,2009-10-27,9,18,Request partial block,Requested Partial Block Not Possible
+8804356,1,2009-10-25,2009-10-25,9,18,Request partial block,Requested Partial Block Not Possible
+4622241,1,2009-09-29,2009-09-29,9,18,Request partial block,Requested Partial Block Not Possible
+2637579,1,2009-09-16,2009-09-16,9,18,Request partial block,Requested Partial Block Not Possible
+6408147,1,2009-09-02,2009-09-02,9,18,Request partial block,Requested Partial Block Not Possible
+1376503,1,2009-08-31,2009-08-31,9,18,Request partial block,Requested Partial Block Not Possible
+5554333,1,2009-08-31,2009-08-31,9,18,Request partial block,Requested Partial Block Not Possible
+1321102,1,2009-08-27,2009-08-27,9,18,Request partial block,Requested Partial Block Not Possible
+2369090,1,2009-08-27,2009-08-27,9,18,Request partial block,Requested Partial Block Not Possible
+5854655,1,2009-08-20,2009-08-20,9,18,Request partial block,Requested Partial Block Not Possible
+3517053,1,2009-08-13,2009-08-13,9,18,Request partial block,Requested Partial Block Not Possible
+6745993,1,2009-08-09,2009-08-09,9,18,Request partial block,Requested Partial Block Not Possible
+9147789,1,2009-08-09,2009-08-09,9,18,Request partial block,Requested Partial Block Not Possible
+5233791,1,2009-04-14,2009-04-14,9,18,Request partial block,Requested Partial Block Not Possible
+6528968,2,2009-03-10,2009-04-14,9,18,Request partial block,Requested Partial Block Not Possible
+5194256,1,2009-02-27,2009-02-27,9,18,Request partial block,Requested Partial Block Not Possible
+5105138,2,2008-12-19,2009-01-13,9,18,Request partial block,Requested Partial Block Not Possible
+5560128,1,2008-11-27,2008-11-27,9,18,Request partial block,Requested Partial Block Not Possible
+4008596,1,2009-02-17,2009-02-17,2,18,acc close/open from RG,Requested Partial Block Not Possible
+9678591,2,2009-11-01,2009-11-01,10,17,Reported Problem,Blocked and Reimbursed
+3665378,1,2009-09-16,2009-09-16,10,16,Reported Problem,Remains Blocked
+3577635,1,2009-03-25,2009-03-25,10,16,Reported Problem,Remains Blocked
+4590533,1,2009-11-03,2009-11-03,8,16,Reported as Minor,Remains Blocked
+5250620,1,2009-07-07,2009-07-07,8,16,Reported as Minor,Remains Blocked
+3458841,1,2009-01-22,2009-01-22,8,16,Reported as Minor,Remains Blocked
+1690828,1,2009-01-13,2009-01-13,8,16,Reported as Minor,Remains Blocked
+7976490,1,2009-11-25,2009-11-25,2,16,acc close/open from RG,Remains Blocked
+4888078,1,2009-11-20,2009-11-20,2,16,acc close/open from RG,Remains Blocked
+6600062,1,2009-11-17,2009-11-17,2,16,acc close/open from RG,Remains Blocked
+9377459,1,2009-11-17,2009-11-17,2,16,acc close/open from RG,Remains Blocked
+618006,1,2009-11-15,2009-11-15,2,16,acc close/open from RG,Remains Blocked
+3479664,2,2009-01-12,2009-11-08,2,16,acc close/open from RG,Remains Blocked
+1110869,1,2009-11-05,2009-11-05,2,16,acc close/open from RG,Remains Blocked
+5919839,1,2009-11-05,2009-11-05,2,16,acc close/open from RG,Remains Blocked
+1467698,1,2009-11-03,2009-11-03,2,16,acc close/open from RG,Remains Blocked
+3980898,1,2009-11-03,2009-11-03,2,16,acc close/open from RG,Remains Blocked
+921652,1,2009-10-29,2009-10-29,2,16,acc close/open from RG,Remains Blocked
+3142810,1,2009-10-27,2009-10-27,2,16,acc close/open from RG,Remains Blocked
+4211279,1,2009-10-27,2009-10-27,2,16,acc close/open from RG,Remains Blocked
+1528877,1,2009-10-25,2009-10-25,2,16,acc close/open from RG,Remains Blocked
+2031783,1,2009-10-21,2009-10-21,2,16,acc close/open from RG,Remains Blocked
+1053169,1,2009-10-19,2009-10-19,2,16,acc close/open from RG,Remains Blocked
+6788013,1,2009-10-15,2009-10-15,2,16,acc close/open from RG,Remains Blocked
+8850404,1,2009-10-14,2009-10-14,2,16,acc close/open from RG,Remains Blocked
+2035245,1,2009-10-08,2009-10-08,2,16,acc close/open from RG,Remains Blocked
+1055097,1,2009-10-06,2009-10-06,2,16,acc close/open from RG,Remains Blocked
+4236352,1,2009-10-06,2009-10-06,2,16,acc close/open from RG,Remains Blocked
+4111713,1,2009-10-01,2009-10-01,2,16,acc close/open from RG,Remains Blocked
+852596,1,2009-09-30,2009-09-30,2,16,acc close/open from RG,Remains Blocked
+1316554,1,2009-09-30,2009-09-30,2,16,acc close/open from RG,Remains Blocked
+2732649,1,2009-09-30,2009-09-30,2,16,acc close/open from RG,Remains Blocked
+1269446,1,2009-09-24,2009-09-24,2,16,acc close/open from RG,Remains Blocked
+1540796,2,2009-08-27,2009-09-24,2,16,acc close/open from RG,Remains Blocked
+2907188,2,2008-11-07,2009-09-24,2,16,acc close/open from RG,Remains Blocked
+5351172,2,2009-02-05,2009-09-21,2,16,acc close/open from RG,Remains Blocked
+1125602,1,2009-09-20,2009-09-20,2,16,acc close/open from RG,Remains Blocked
+762613,1,2009-09-17,2009-09-17,2,16,acc close/open from RG,Remains Blocked
+3211029,1,2009-09-13,2009-09-13,2,16,acc close/open from RG,Remains Blocked
+2108076,2,2009-02-16,2009-09-13,2,16,acc close/open from RG,Remains Blocked
+7355155,1,2009-09-09,2009-09-09,2,16,acc close/open from RG,Remains Blocked
+3524836,1,2009-09-07,2009-09-07,2,16,acc close/open from RG,Remains Blocked
+7701111,1,2009-09-07,2009-09-07,2,16,acc close/open from RG,Remains Blocked
+7223699,1,2009-09-02,2009-09-02,2,16,acc close/open from RG,Remains Blocked
+954936,1,2009-08-31,2009-08-31,2,16,acc close/open from RG,Remains Blocked
+3542327,1,2009-08-31,2009-08-31,2,16,acc close/open from RG,Remains Blocked
+4444971,1,2009-08-25,2009-08-25,2,16,acc close/open from RG,Remains Blocked
+7938906,1,2009-08-25,2009-08-25,2,16,acc close/open from RG,Remains Blocked
+1671815,1,2009-08-24,2009-08-24,2,16,acc close/open from RG,Remains Blocked
+2789254,1,2009-08-23,2009-08-23,2,16,acc close/open from RG,Remains Blocked
+2403003,1,2009-08-20,2009-08-20,2,16,acc close/open from RG,Remains Blocked
+4051960,1,2009-08-17,2009-08-17,2,16,acc close/open from RG,Remains Blocked
+654455,1,2009-08-11,2009-08-11,2,16,acc close/open from RG,Remains Blocked
+1280671,1,2009-08-10,2009-08-10,2,16,acc close/open from RG,Remains Blocked
+4764719,1,2009-08-10,2009-08-10,2,16,acc close/open from RG,Remains Blocked
+1102239,1,2009-08-06,2009-08-06,2,16,acc close/open from RG,Remains Blocked
+6600359,1,2009-08-06,2009-08-06,2,16,acc close/open from RG,Remains Blocked
+9140876,1,2009-08-06,2009-08-06,2,16,acc close/open from RG,Remains Blocked
+2141713,1,2009-08-04,2009-08-04,2,16,acc close/open from RG,Remains Blocked
+695820,1,2009-07-28,2009-07-28,2,16,acc close/open from RG,Remains Blocked
+1307000,1,2009-07-27,2009-07-27,2,16,acc close/open from RG,Remains Blocked
+1178665,1,2009-07-24,2009-07-24,2,16,acc close/open from RG,Remains Blocked
+6951493,1,2009-07-24,2009-07-24,2,16,acc close/open from RG,Remains Blocked
+1556993,1,2009-07-23,2009-07-23,2,16,acc close/open from RG,Remains Blocked
+4733608,1,2009-07-23,2009-07-23,2,16,acc close/open from RG,Remains Blocked
+2018397,1,2009-07-20,2009-07-20,2,16,acc close/open from RG,Remains Blocked
+5386219,1,2009-07-17,2009-07-17,2,16,acc close/open from RG,Remains Blocked
+4970372,3,2009-01-27,2009-07-17,2,16,acc close/open from RG,Remains Blocked
+2610717,1,2009-07-15,2009-07-15,2,16,acc close/open from RG,Remains Blocked
+1602071,1,2009-07-14,2009-07-14,2,16,acc close/open from RG,Remains Blocked
+5070927,1,2009-07-14,2009-07-14,2,16,acc close/open from RG,Remains Blocked
+713486,1,2009-07-07,2009-07-07,2,16,acc close/open from RG,Remains Blocked
+3987134,1,2009-07-07,2009-07-07,2,16,acc close/open from RG,Remains Blocked
+6865325,1,2009-07-07,2009-07-07,2,16,acc close/open from RG,Remains Blocked
+1398079,5,2009-01-27,2009-07-06,2,16,acc close/open from RG,Remains Blocked
+5799772,1,2009-06-30,2009-06-30,2,16,acc close/open from RG,Remains Blocked
+6913897,1,2009-06-30,2009-06-30,2,16,acc close/open from RG,Remains Blocked
+651781,1,2009-06-29,2009-06-29,2,16,acc close/open from RG,Remains Blocked
+1614409,1,2009-06-24,2009-06-24,2,16,acc close/open from RG,Remains Blocked
+2187527,1,2009-06-24,2009-06-24,2,16,acc close/open from RG,Remains Blocked
+6550161,1,2009-06-24,2009-06-24,2,16,acc close/open from RG,Remains Blocked
+6517045,1,2009-06-22,2009-06-22,2,16,acc close/open from RG,Remains Blocked
+4693383,1,2009-06-16,2009-06-16,2,16,acc close/open from RG,Remains Blocked
+5373487,1,2009-06-16,2009-06-16,2,16,acc close/open from RG,Remains Blocked
+5798136,1,2009-06-16,2009-06-16,2,16,acc close/open from RG,Remains Blocked
+1646641,1,2009-06-09,2009-06-09,2,16,acc close/open from RG,Remains Blocked
+4874828,1,2009-06-09,2009-06-09,2,16,acc close/open from RG,Remains Blocked
+5571695,1,2009-06-03,2009-06-03,2,16,acc close/open from RG,Remains Blocked
+1579804,1,2009-05-28,2009-05-28,2,16,acc close/open from RG,Remains Blocked
+3300769,1,2009-05-28,2009-05-28,2,16,acc close/open from RG,Remains Blocked
+5296024,1,2009-05-27,2009-05-27,2,16,acc close/open from RG,Remains Blocked
+1791179,1,2009-05-25,2009-05-25,2,16,acc close/open from RG,Remains Blocked
+4514270,1,2009-05-25,2009-05-25,2,16,acc close/open from RG,Remains Blocked
+3910295,1,2009-05-13,2009-05-13,2,16,acc close/open from RG,Remains Blocked
+7967147,1,2009-05-13,2009-05-13,2,16,acc close/open from RG,Remains Blocked
+2188068,1,2009-05-12,2009-05-12,2,16,acc close/open from RG,Remains Blocked
+5299312,1,2009-05-12,2009-05-12,2,16,acc close/open from RG,Remains Blocked
+5343080,1,2009-05-12,2009-05-12,2,16,acc close/open from RG,Remains Blocked
+1766392,1,2009-05-11,2009-05-11,2,16,acc close/open from RG,Remains Blocked
+3578832,1,2009-05-11,2009-05-11,2,16,acc close/open from RG,Remains Blocked
+3324091,1,2009-05-07,2009-05-07,2,16,acc close/open from RG,Remains Blocked
+6237129,1,2009-05-04,2009-05-04,2,16,acc close/open from RG,Remains Blocked
+7996728,1,2009-05-04,2009-05-04,2,16,acc close/open from RG,Remains Blocked
+1345978,1,2009-04-29,2009-04-29,2,16,acc close/open from RG,Remains Blocked
+1986069,1,2009-04-29,2009-04-29,2,16,acc close/open from RG,Remains Blocked
+6619645,1,2009-04-27,2009-04-27,2,16,acc close/open from RG,Remains Blocked
+4456261,1,2009-04-20,2009-04-20,2,16,acc close/open from RG,Remains Blocked
+4602219,1,2009-04-15,2009-04-15,2,16,acc close/open from RG,Remains Blocked
+4218661,1,2009-04-10,2009-04-10,2,16,acc close/open from RG,Remains Blocked
+1755673,1,2009-03-31,2009-03-31,2,16,acc close/open from RG,Remains Blocked
+5716289,1,2009-03-25,2009-03-25,2,16,acc close/open from RG,Remains Blocked
+1104232,1,2009-03-24,2009-03-24,2,16,acc close/open from RG,Remains Blocked
+2626074,1,2009-03-24,2009-03-24,2,16,acc close/open from RG,Remains Blocked
+3749821,1,2009-03-24,2009-03-24,2,16,acc close/open from RG,Remains Blocked
+3918664,1,2009-03-23,2009-03-23,2,16,acc close/open from RG,Remains Blocked
+6029485,1,2009-03-23,2009-03-23,2,16,acc close/open from RG,Remains Blocked
+6660207,1,2009-03-17,2009-03-17,2,16,acc close/open from RG,Remains Blocked
+1522618,1,2009-03-16,2009-03-16,2,16,acc close/open from RG,Remains Blocked
+8068361,1,2009-03-16,2009-03-16,2,16,acc close/open from RG,Remains Blocked
+3942982,1,2009-03-13,2009-03-13,2,16,acc close/open from RG,Remains Blocked
+4693834,1,2009-03-13,2009-03-13,2,16,acc close/open from RG,Remains Blocked
+4917155,1,2009-03-11,2009-03-11,2,16,acc close/open from RG,Remains Blocked
+863069,1,2009-03-09,2009-03-09,2,16,acc close/open from RG,Remains Blocked
+3041605,1,2009-03-09,2009-03-09,2,16,acc close/open from RG,Remains Blocked
+6098935,1,2009-03-09,2009-03-09,2,16,acc close/open from RG,Remains Blocked
+5042290,1,2009-03-06,2009-03-06,2,16,acc close/open from RG,Remains Blocked
+7953847,1,2009-03-06,2009-03-06,2,16,acc close/open from RG,Remains Blocked
+4821096,1,2009-03-05,2009-03-05,2,16,acc close/open from RG,Remains Blocked
+2697251,1,2009-03-04,2009-03-04,2,16,acc close/open from RG,Remains Blocked
+1066905,1,2009-03-02,2009-03-02,2,16,acc close/open from RG,Remains Blocked
+5604384,1,2009-03-02,2009-03-02,2,16,acc close/open from RG,Remains Blocked
+1776887,1,2009-02-27,2009-02-27,2,16,acc close/open from RG,Remains Blocked
+4699296,1,2009-02-25,2009-02-25,2,16,acc close/open from RG,Remains Blocked
+6779845,1,2009-02-24,2009-02-24,2,16,acc close/open from RG,Remains Blocked
+2109792,1,2009-02-23,2009-02-23,2,16,acc close/open from RG,Remains Blocked
+4805410,1,2009-02-23,2009-02-23,2,16,acc close/open from RG,Remains Blocked
+6862150,1,2009-02-23,2009-02-23,2,16,acc close/open from RG,Remains Blocked
+1285959,1,2009-02-20,2009-02-20,2,16,acc close/open from RG,Remains Blocked
+3214045,1,2009-02-19,2009-02-19,2,16,acc close/open from RG,Remains Blocked
+841112,1,2009-02-17,2009-02-17,2,16,acc close/open from RG,Remains Blocked
+4939096,1,2009-02-17,2009-02-17,2,16,acc close/open from RG,Remains Blocked
+5348916,1,2009-02-17,2009-02-17,2,16,acc close/open from RG,Remains Blocked
+6050005,1,2009-02-17,2009-02-17,2,16,acc close/open from RG,Remains Blocked
+3641589,1,2009-02-13,2009-02-13,2,16,acc close/open from RG,Remains Blocked
+7563763,1,2009-02-13,2009-02-13,2,16,acc close/open from RG,Remains Blocked
+600062,1,2009-02-11,2009-02-11,2,16,acc close/open from RG,Remains Blocked
+2795050,1,2009-02-11,2009-02-11,2,16,acc close/open from RG,Remains Blocked
+5851917,1,2009-02-11,2009-02-11,2,16,acc close/open from RG,Remains Blocked
+640126,1,2009-02-10,2009-02-10,2,16,acc close/open from RG,Remains Blocked
+2780775,1,2009-02-10,2009-02-10,2,16,acc close/open from RG,Remains Blocked
+4653627,1,2009-02-10,2009-02-10,2,16,acc close/open from RG,Remains Blocked
+7869102,1,2009-02-10,2009-02-10,2,16,acc close/open from RG,Remains Blocked
+1486136,1,2009-02-09,2009-02-09,2,16,acc close/open from RG,Remains Blocked
+1865113,1,2009-02-09,2009-02-09,2,16,acc close/open from RG,Remains Blocked
+2098018,1,2009-02-06,2009-02-06,2,16,acc close/open from RG,Remains Blocked
+3101778,1,2009-02-06,2009-02-06,2,16,acc close/open from RG,Remains Blocked
+4503325,1,2009-02-05,2009-02-05,2,16,acc close/open from RG,Remains Blocked
+1343436,1,2009-02-04,2009-02-04,2,16,acc close/open from RG,Remains Blocked
+3262791,1,2009-02-04,2009-02-04,2,16,acc close/open from RG,Remains Blocked
+4621436,1,2009-02-04,2009-02-04,2,16,acc close/open from RG,Remains Blocked
+1475836,1,2009-02-03,2009-02-03,2,16,acc close/open from RG,Remains Blocked
+1592977,1,2009-02-02,2009-02-02,2,16,acc close/open from RG,Remains Blocked
+6148174,1,2009-02-02,2009-02-02,2,16,acc close/open from RG,Remains Blocked
+1284616,1,2009-01-30,2009-01-30,2,16,acc close/open from RG,Remains Blocked
+3593395,1,2009-01-30,2009-01-30,2,16,acc close/open from RG,Remains Blocked
+4607869,1,2009-01-30,2009-01-30,2,16,acc close/open from RG,Remains Blocked
+1529711,1,2009-01-29,2009-01-29,2,16,acc close/open from RG,Remains Blocked
+1333978,1,2009-01-28,2009-01-28,2,16,acc close/open from RG,Remains Blocked
+691215,1,2009-01-27,2009-01-27,2,16,acc close/open from RG,Remains Blocked
+3742803,1,2009-01-27,2009-01-27,2,16,acc close/open from RG,Remains Blocked
+1402736,1,2009-01-26,2009-01-26,2,16,acc close/open from RG,Remains Blocked
+6407477,1,2009-01-26,2009-01-26,2,16,acc close/open from RG,Remains Blocked
+4811008,1,2009-01-23,2009-01-23,2,16,acc close/open from RG,Remains Blocked
+1425148,1,2009-01-20,2009-01-20,2,16,acc close/open from RG,Remains Blocked
+3201228,1,2009-01-20,2009-01-20,2,16,acc close/open from RG,Remains Blocked
+6114396,1,2009-01-20,2009-01-20,2,16,acc close/open from RG,Remains Blocked
+2912319,1,2009-01-19,2009-01-19,2,16,acc close/open from RG,Remains Blocked
+1446979,1,2009-01-16,2009-01-16,2,16,acc close/open from RG,Remains Blocked
+3337667,1,2009-01-16,2009-01-16,2,16,acc close/open from RG,Remains Blocked
+5171821,1,2009-01-16,2009-01-16,2,16,acc close/open from RG,Remains Blocked
+5385439,1,2009-01-14,2009-01-14,2,16,acc close/open from RG,Remains Blocked
+1371692,1,2009-01-13,2009-01-13,2,16,acc close/open from RG,Remains Blocked
+6587044,1,2009-01-12,2009-01-12,2,16,acc close/open from RG,Remains Blocked
+4172003,1,2009-01-09,2009-01-09,2,16,acc close/open from RG,Remains Blocked
+4273908,1,2009-01-09,2009-01-09,2,16,acc close/open from RG,Remains Blocked
+5781728,1,2009-01-09,2009-01-09,2,16,acc close/open from RG,Remains Blocked
+411101,1,2009-01-08,2009-01-08,2,16,acc close/open from RG,Remains Blocked
+1692544,1,2009-01-07,2009-01-07,2,16,acc close/open from RG,Remains Blocked
+3687077,1,2009-01-07,2009-01-07,2,16,acc close/open from RG,Remains Blocked
+5376766,1,2009-01-07,2009-01-07,2,16,acc close/open from RG,Remains Blocked
+5524866,1,2009-01-07,2009-01-07,2,16,acc close/open from RG,Remains Blocked
+6732186,1,2009-01-05,2009-01-05,2,16,acc close/open from RG,Remains Blocked
+1560193,1,2009-01-01,2009-01-01,2,16,acc close/open from RG,Remains Blocked
+2775461,1,2009-01-01,2009-01-01,2,16,acc close/open from RG,Remains Blocked
+5112671,1,2009-01-01,2009-01-01,2,16,acc close/open from RG,Remains Blocked
+1613727,1,2008-12-31,2008-12-31,2,16,acc close/open from RG,Remains Blocked
+6434840,1,2008-12-31,2008-12-31,2,16,acc close/open from RG,Remains Blocked
+6584848,1,2008-12-31,2008-12-31,2,16,acc close/open from RG,Remains Blocked
+1306998,1,2008-12-30,2008-12-30,2,16,acc close/open from RG,Remains Blocked
+2190858,1,2008-12-30,2008-12-30,2,16,acc close/open from RG,Remains Blocked
+5516276,1,2008-12-29,2008-12-29,2,16,acc close/open from RG,Remains Blocked
+4239077,1,2008-12-22,2008-12-22,2,16,acc close/open from RG,Remains Blocked
+5925043,1,2008-12-22,2008-12-22,2,16,acc close/open from RG,Remains Blocked
+610990,1,2008-12-18,2008-12-18,2,16,acc close/open from RG,Remains Blocked
+1549759,1,2008-12-18,2008-12-18,2,16,acc close/open from RG,Remains Blocked
+1766299,1,2008-12-18,2008-12-18,2,16,acc close/open from RG,Remains Blocked
+1926155,1,2008-12-18,2008-12-18,2,16,acc close/open from RG,Remains Blocked
+3703970,1,2008-12-18,2008-12-18,2,16,acc close/open from RG,Remains Blocked
+4694966,1,2008-12-18,2008-12-18,2,16,acc close/open from RG,Remains Blocked
+5317415,2,2008-11-06,2008-12-18,2,16,acc close/open from RG,Remains Blocked
+1260523,1,2008-12-17,2008-12-17,2,16,acc close/open from RG,Remains Blocked
+1290225,1,2008-12-17,2008-12-17,2,16,acc close/open from RG,Remains Blocked
+3176447,1,2008-12-17,2008-12-17,2,16,acc close/open from RG,Remains Blocked
+4724793,1,2008-12-17,2008-12-17,2,16,acc close/open from RG,Remains Blocked
+1342111,1,2008-12-16,2008-12-16,2,16,acc close/open from RG,Remains Blocked
+5097506,1,2008-12-16,2008-12-16,2,16,acc close/open from RG,Remains Blocked
+4863608,1,2008-12-12,2008-12-12,2,16,acc close/open from RG,Remains Blocked
+3614179,1,2008-12-01,2008-12-01,2,16,acc close/open from RG,Remains Blocked
+1516508,1,2008-11-25,2008-11-25,2,16,acc close/open from RG,Remains Blocked
+6332215,1,2008-11-24,2008-11-24,2,16,acc close/open from RG,Remains Blocked
+689277,1,2008-11-21,2008-11-21,2,16,acc close/open from RG,Remains Blocked
+1177425,1,2008-11-20,2008-11-20,2,16,acc close/open from RG,Remains Blocked
+4587239,1,2008-11-20,2008-11-20,2,16,acc close/open from RG,Remains Blocked
+1398948,1,2008-11-19,2008-11-19,2,16,acc close/open from RG,Remains Blocked
+513616,1,2008-11-17,2008-11-17,2,16,acc close/open from RG,Remains Blocked
+2024125,1,2008-11-17,2008-11-17,2,16,acc close/open from RG,Remains Blocked
+2302227,1,2008-11-13,2008-11-13,2,16,acc close/open from RG,Remains Blocked
+6690894,1,2008-11-13,2008-11-13,2,16,acc close/open from RG,Remains Blocked
+2027653,1,2008-11-12,2008-11-12,2,16,acc close/open from RG,Remains Blocked
+2613968,1,2008-11-12,2008-11-12,2,16,acc close/open from RG,Remains Blocked
+4273613,1,2008-11-06,2008-11-06,2,16,acc close/open from RG,Remains Blocked
+1143257,1,2008-11-04,2008-11-04,2,16,acc close/open from RG,Remains Blocked
+2077486,1,2008-11-04,2008-11-04,2,16,acc close/open from RG,Remains Blocked
+847728,1,2008-11-03,2008-11-03,2,16,acc close/open from RG,Remains Blocked
+4411724,1,2008-11-03,2008-11-03,2,16,acc close/open from RG,Remains Blocked
+6396582,1,2009-01-30,2009-01-30,1,16,Family Intervention,Remains Blocked
+2064874,2,2008-12-19,2009-04-16,4,15,Manually Lowered Limit,Betting Limit Change
+1129130,1,2008-11-19,2008-11-19,4,15,Manually Lowered Limit,Betting Limit Change
+9858876,1,2009-11-27,2009-11-27,10,14,Reported Problem,Full Block
+3776825,1,2009-11-26,2009-11-26,10,14,Reported Problem,Full Block
+878190,2,2009-11-19,2009-11-19,10,14,Reported Problem,Full Block
+6582950,1,2009-11-18,2009-11-18,10,14,Reported Problem,Full Block
+8534251,1,2009-11-18,2009-11-18,10,14,Reported Problem,Full Block
+2182157,2,2009-07-09,2009-11-18,10,14,Reported Problem,Full Block
+9616886,2,2009-11-12,2009-11-12,10,14,Reported Problem,Full Block
+8769784,1,2009-11-12,2009-11-12,10,14,Reported Problem,Full Block
+9742498,1,2009-11-12,2009-11-12,10,14,Reported Problem,Full Block
+9625061,1,2009-11-08,2009-11-08,10,14,Reported Problem,Full Block
+3566841,1,2009-11-03,2009-11-03,10,14,Reported Problem,Full Block
+5650434,1,2009-11-03,2009-11-03,10,14,Reported Problem,Full Block
+6832274,1,2009-11-03,2009-11-03,10,14,Reported Problem,Full Block
+9673702,1,2009-11-03,2009-11-03,10,14,Reported Problem,Full Block
+484593,1,2009-10-27,2009-10-27,10,14,Reported Problem,Full Block
+6176615,1,2009-10-27,2009-10-27,10,14,Reported Problem,Full Block
+6813779,1,2009-10-27,2009-10-27,10,14,Reported Problem,Full Block
+9344425,1,2009-10-27,2009-10-27,10,14,Reported Problem,Full Block
+9476328,1,2009-10-27,2009-10-27,10,14,Reported Problem,Full Block
+4152808,1,2009-10-22,2009-10-22,10,14,Reported Problem,Full Block
+8050741,1,2009-10-20,2009-10-20,10,14,Reported Problem,Full Block
+6463723,1,2009-10-19,2009-10-19,10,14,Reported Problem,Full Block
+9214450,1,2009-10-16,2009-10-16,10,14,Reported Problem,Full Block
+4701220,2,2009-10-14,2009-10-15,10,14,Reported Problem,Full Block
+8733735,1,2009-10-13,2009-10-13,10,14,Reported Problem,Full Block
+671003,1,2009-10-12,2009-10-12,10,14,Reported Problem,Full Block
+9154812,1,2009-10-12,2009-10-12,10,14,Reported Problem,Full Block
+7637533,2,2009-03-26,2009-10-12,10,14,Reported Problem,Full Block
+7574499,1,2009-10-11,2009-10-11,10,14,Reported Problem,Full Block
+8745352,1,2009-10-11,2009-10-11,10,14,Reported Problem,Full Block
+9342226,1,2009-10-08,2009-10-08,10,14,Reported Problem,Full Block
+2398820,1,2009-10-07,2009-10-07,10,14,Reported Problem,Full Block
+4909756,2,2009-09-24,2009-10-04,10,14,Reported Problem,Full Block
+7050418,3,2009-01-27,2009-10-02,10,14,Reported Problem,Full Block
+528696,1,2009-10-01,2009-10-01,10,14,Reported Problem,Full Block
+6002495,1,2009-10-01,2009-10-01,10,14,Reported Problem,Full Block
+9174350,2,2009-09-16,2009-09-30,10,14,Reported Problem,Full Block
+5833888,1,2009-09-28,2009-09-28,10,14,Reported Problem,Full Block
+8689302,1,2009-09-27,2009-09-27,10,14,Reported Problem,Full Block
+4940917,1,2009-09-24,2009-09-24,10,14,Reported Problem,Full Block
+6430963,1,2009-09-24,2009-09-24,10,14,Reported Problem,Full Block
+5250607,2,2008-11-23,2009-09-24,10,14,Reported Problem,Full Block
+4017465,1,2009-09-22,2009-09-22,10,14,Reported Problem,Full Block
+8687064,1,2009-09-22,2009-09-22,10,14,Reported Problem,Full Block
+5330769,1,2009-09-17,2009-09-17,10,14,Reported Problem,Full Block
+6021643,1,2009-09-17,2009-09-17,10,14,Reported Problem,Full Block
+7476569,1,2009-09-16,2009-09-16,10,14,Reported Problem,Full Block
+3439198,1,2009-09-15,2009-09-15,10,14,Reported Problem,Full Block
+1839746,2,2009-02-06,2009-09-15,10,14,Reported Problem,Full Block
+1753291,1,2009-09-14,2009-09-14,10,14,Reported Problem,Full Block
+1951951,1,2009-09-09,2009-09-09,10,14,Reported Problem,Full Block
+4549204,2,2008-12-10,2009-09-09,10,14,Reported Problem,Full Block
+9155990,1,2009-09-03,2009-09-03,10,14,Reported Problem,Full Block
+2929192,1,2009-08-26,2009-08-26,10,14,Reported Problem,Full Block
+8988808,1,2009-08-24,2009-08-24,10,14,Reported Problem,Full Block
+6818258,3,2009-01-20,2009-08-24,10,14,Reported Problem,Full Block
+2829998,1,2009-08-18,2009-08-18,10,14,Reported Problem,Full Block
+4723797,1,2009-08-18,2009-08-18,10,14,Reported Problem,Full Block
+1610754,1,2009-08-14,2009-08-14,10,14,Reported Problem,Full Block
+5961595,2,2009-02-10,2009-08-14,10,14,Reported Problem,Full Block
+9087156,1,2009-08-11,2009-08-11,10,14,Reported Problem,Full Block
+5105551,2,2009-02-10,2009-08-11,10,14,Reported Problem,Full Block
+9090597,1,2009-08-10,2009-08-10,10,14,Reported Problem,Full Block
+3804873,1,2009-08-09,2009-08-09,10,14,Reported Problem,Full Block
+6412008,2,2009-08-02,2009-08-06,10,14,Reported Problem,Full Block
+2547501,1,2009-08-04,2009-08-04,10,14,Reported Problem,Full Block
+7973162,1,2009-08-04,2009-08-04,10,14,Reported Problem,Full Block
+9120241,1,2009-08-04,2009-08-04,10,14,Reported Problem,Full Block
+2952717,1,2009-08-03,2009-08-03,10,14,Reported Problem,Full Block
+5436914,1,2009-07-30,2009-07-30,10,14,Reported Problem,Full Block
+1427115,1,2009-07-29,2009-07-29,10,14,Reported Problem,Full Block
+3001919,1,2009-07-27,2009-07-27,10,14,Reported Problem,Full Block
+5895179,1,2009-07-27,2009-07-27,10,14,Reported Problem,Full Block
+109445,1,2009-07-24,2009-07-24,10,14,Reported Problem,Full Block
+1790848,1,2009-07-23,2009-07-23,10,14,Reported Problem,Full Block
+8536533,1,2009-07-21,2009-07-21,10,14,Reported Problem,Full Block
+7074951,1,2009-07-16,2009-07-16,10,14,Reported Problem,Full Block
+8741557,1,2009-07-16,2009-07-16,10,14,Reported Problem,Full Block
+1092942,1,2009-07-15,2009-07-15,10,14,Reported Problem,Full Block
+7806831,1,2009-07-15,2009-07-15,10,14,Reported Problem,Full Block
+7792953,2,2009-07-01,2009-07-14,10,14,Reported Problem,Full Block
+7657199,3,2009-02-24,2009-07-14,10,14,Reported Problem,Full Block
+6243517,1,2009-07-12,2009-07-12,10,14,Reported Problem,Full Block
+1662632,1,2009-07-08,2009-07-08,10,14,Reported Problem,Full Block
+8986807,1,2009-07-07,2009-07-07,10,14,Reported Problem,Full Block
+969529,1,2009-07-01,2009-07-01,10,14,Reported Problem,Full Block
+5143155,1,2009-07-01,2009-07-01,10,14,Reported Problem,Full Block
+8891684,2,2009-06-29,2009-06-30,10,14,Reported Problem,Full Block
+8753552,2,2009-06-15,2009-06-29,10,14,Reported Problem,Full Block
+2312644,3,2009-06-06,2009-06-29,10,14,Reported Problem,Full Block
+2925134,1,2009-06-28,2009-06-28,10,14,Reported Problem,Full Block
+2614721,1,2009-06-25,2009-06-25,10,14,Reported Problem,Full Block
+8678580,1,2009-06-25,2009-06-25,10,14,Reported Problem,Full Block
+6571050,2,2009-04-14,2009-06-24,10,14,Reported Problem,Full Block
+5178879,1,2009-06-21,2009-06-21,10,14,Reported Problem,Full Block
+8536222,1,2009-06-18,2009-06-18,10,14,Reported Problem,Full Block
+614867,1,2009-06-16,2009-06-16,10,14,Reported Problem,Full Block
+3335713,1,2009-06-08,2009-06-08,10,14,Reported Problem,Full Block
+7057540,2,2008-12-22,2009-06-02,10,14,Reported Problem,Full Block
+4700436,1,2009-05-31,2009-05-31,10,14,Reported Problem,Full Block
+8662139,1,2009-05-31,2009-05-31,10,14,Reported Problem,Full Block
+8498146,1,2009-05-25,2009-05-25,10,14,Reported Problem,Full Block
+8745888,1,2009-05-22,2009-05-22,10,14,Reported Problem,Full Block
+5396402,1,2009-05-13,2009-05-13,10,14,Reported Problem,Full Block
+3700434,4,2009-04-05,2009-05-13,10,14,Reported Problem,Full Block
+4817579,1,2009-05-11,2009-05-11,10,14,Reported Problem,Full Block
+7817217,1,2009-05-11,2009-05-11,10,14,Reported Problem,Full Block
+669759,1,2009-05-10,2009-05-10,10,14,Reported Problem,Full Block
+4039888,1,2009-05-10,2009-05-10,10,14,Reported Problem,Full Block
+5630001,1,2009-05-10,2009-05-10,10,14,Reported Problem,Full Block
+7192150,2,2009-04-29,2009-05-06,10,14,Reported Problem,Full Block
+6219557,1,2009-04-29,2009-04-29,10,14,Reported Problem,Full Block
+3471973,1,2009-04-28,2009-04-28,10,14,Reported Problem,Full Block
+3842441,1,2009-04-27,2009-04-27,10,14,Reported Problem,Full Block
+1812446,1,2009-03-25,2009-03-25,10,14,Reported Problem,Full Block
+8139470,1,2009-03-25,2009-03-25,10,14,Reported Problem,Full Block
+7737396,1,2009-03-24,2009-03-24,10,14,Reported Problem,Full Block
+6892607,1,2009-03-23,2009-03-23,10,14,Reported Problem,Full Block
+838424,1,2009-03-20,2009-03-20,10,14,Reported Problem,Full Block
+4132830,1,2009-03-20,2009-03-20,10,14,Reported Problem,Full Block
+8083856,1,2009-03-16,2009-03-16,10,14,Reported Problem,Full Block
+7878680,1,2009-03-13,2009-03-13,10,14,Reported Problem,Full Block
+2865324,1,2009-03-11,2009-03-11,10,14,Reported Problem,Full Block
+5962652,2,2009-02-10,2009-03-10,10,14,Reported Problem,Full Block
+7978198,1,2009-03-09,2009-03-09,10,14,Reported Problem,Full Block
+8002364,1,2009-03-09,2009-03-09,10,14,Reported Problem,Full Block
+7167104,1,2009-03-06,2009-03-06,10,14,Reported Problem,Full Block
+921177,1,2009-02-27,2009-02-27,10,14,Reported Problem,Full Block
+6385334,1,2009-02-25,2009-02-25,10,14,Reported Problem,Full Block
+6907191,2,2009-02-15,2009-02-20,10,14,Reported Problem,Full Block
+2674431,1,2009-02-17,2009-02-17,10,14,Reported Problem,Full Block
+1832172,1,2009-02-16,2009-02-16,10,14,Reported Problem,Full Block
+7636650,1,2009-02-12,2009-02-12,10,14,Reported Problem,Full Block
+4100320,1,2009-02-11,2009-02-11,10,14,Reported Problem,Full Block
+5772420,1,2009-02-11,2009-02-11,10,14,Reported Problem,Full Block
+7447994,1,2009-02-11,2009-02-11,10,14,Reported Problem,Full Block
+7802822,1,2009-02-06,2009-02-06,10,14,Reported Problem,Full Block
+5022200,1,2009-02-05,2009-02-05,10,14,Reported Problem,Full Block
+5160540,1,2009-02-04,2009-02-04,10,14,Reported Problem,Full Block
+2239045,1,2009-02-03,2009-02-03,10,14,Reported Problem,Full Block
+6507118,1,2009-02-03,2009-02-03,10,14,Reported Problem,Full Block
+3327778,2,,2009-02-03,10,14,Reported Problem,Full Block
+3333830,1,2009-01-29,2009-01-29,10,14,Reported Problem,Full Block
+5549778,1,2009-01-29,2009-01-29,10,14,Reported Problem,Full Block
+3976253,1,2009-01-27,2009-01-27,10,14,Reported Problem,Full Block
+5458401,2,2009-01-13,2009-01-22,10,14,Reported Problem,Full Block
+1561422,1,2009-01-20,2009-01-20,10,14,Reported Problem,Full Block
+4871462,1,2009-01-19,2009-01-19,10,14,Reported Problem,Full Block
+7513684,1,2009-01-19,2009-01-19,10,14,Reported Problem,Full Block
+1794523,1,2009-01-14,2009-01-14,10,14,Reported Problem,Full Block
+3279457,1,2009-01-09,2009-01-09,10,14,Reported Problem,Full Block
+2956360,1,2009-01-07,2009-01-07,10,14,Reported Problem,Full Block
+4368709,1,2009-01-07,2009-01-07,10,14,Reported Problem,Full Block
+3579257,1,2009-01-05,2009-01-05,10,14,Reported Problem,Full Block
+6956571,1,2008-12-30,2008-12-30,10,14,Reported Problem,Full Block
+3075642,1,2008-12-22,2008-12-22,10,14,Reported Problem,Full Block
+5151648,1,2008-12-22,2008-12-22,10,14,Reported Problem,Full Block
+7253727,1,2008-12-19,2008-12-19,10,14,Reported Problem,Full Block
+7339267,1,2008-12-18,2008-12-18,10,14,Reported Problem,Full Block
+7575369,1,2008-12-18,2008-12-18,10,14,Reported Problem,Full Block
+6704803,1,2008-12-16,2008-12-16,10,14,Reported Problem,Full Block
+2486182,1,2008-12-11,2008-12-11,10,14,Reported Problem,Full Block
+2130822,1,2008-12-03,2008-12-03,10,14,Reported Problem,Full Block
+7394752,2,2008-11-21,2008-11-24,10,14,Reported Problem,Full Block
+4387346,1,2008-11-23,2008-11-23,10,14,Reported Problem,Full Block
+5737882,1,2008-11-21,2008-11-21,10,14,Reported Problem,Full Block
+2578609,2,2008-11-12,2008-11-19,10,14,Reported Problem,Full Block
+1759481,1,2008-11-10,2008-11-10,10,14,Reported Problem,Full Block
+7087750,1,2008-11-07,2008-11-07,10,14,Reported Problem,Full Block
+1701187,1,2008-11-03,2008-11-03,10,14,Reported Problem,Full Block
+7061385,1,,,10,14,Reported Problem,Full Block
+1511812,1,2009-10-20,2009-10-20,8,14,Reported as Minor,Full Block
+7635171,1,2009-10-01,2009-10-01,8,14,Reported as Minor,Full Block
+8650996,1,2009-05-15,2009-05-15,8,14,Reported as Minor,Full Block
+4263629,1,2009-04-09,2009-04-09,8,14,Reported as Minor,Full Block
+7798419,1,2009-02-18,2009-02-18,8,14,Reported as Minor,Full Block
+4903969,1,2008-12-19,2008-12-19,8,14,Reported as Minor,Full Block
+1804765,1,2008-12-12,2008-12-12,8,14,Reported as Minor,Full Block
+8960628,1,2009-07-21,2009-07-21,6,14,Heavy Complainer,Full Block
+6119321,1,2009-07-08,2009-07-08,6,14,Heavy Complainer,Full Block
+5320445,1,2009-02-19,2009-02-19,6,14,Heavy Complainer,Full Block
+2832999,1,2009-02-10,2009-02-10,6,14,Heavy Complainer,Full Block
+5400239,1,2009-02-19,2009-02-19,3,14,Cancelled outpayment,Full Block
+1152572,2,2009-04-27,2009-11-22,2,14,acc close/open from RG,Full Block
+9093813,1,2009-11-19,2009-11-19,2,14,acc close/open from RG,Full Block
+9651241,1,2009-11-11,2009-11-11,2,14,acc close/open from RG,Full Block
+8151566,2,2009-10-13,2009-11-11,2,14,acc close/open from RG,Full Block
+5696556,2,2009-05-11,2009-11-11,2,14,acc close/open from RG,Full Block
+4775512,1,2009-11-09,2009-11-09,2,14,acc close/open from RG,Full Block
+38386,1,2009-10-14,2009-10-14,2,14,acc close/open from RG,Full Block
+5592984,1,2009-10-14,2009-10-14,2,14,acc close/open from RG,Full Block
+4866582,1,2009-10-09,2009-10-09,2,14,acc close/open from RG,Full Block
+1387581,1,2009-09-28,2009-09-28,2,14,acc close/open from RG,Full Block
+9350871,1,2009-09-20,2009-09-20,2,14,acc close/open from RG,Full Block
+9143296,1,2009-09-10,2009-09-10,2,14,acc close/open from RG,Full Block
+3279540,1,2009-09-09,2009-09-09,2,14,acc close/open from RG,Full Block
+8932180,1,2009-09-07,2009-09-07,2,14,acc close/open from RG,Full Block
+5005168,1,2009-09-02,2009-09-02,2,14,acc close/open from RG,Full Block
+9077856,2,2009-08-24,2009-09-01,2,14,acc close/open from RG,Full Block
+1282148,1,2009-08-17,2009-08-17,2,14,acc close/open from RG,Full Block
+6979052,1,2009-07-14,2009-07-14,2,14,acc close/open from RG,Full Block
+8922102,1,2009-07-07,2009-07-07,2,14,acc close/open from RG,Full Block
+6936355,1,2009-07-01,2009-07-01,2,14,acc close/open from RG,Full Block
+2251981,1,2009-06-19,2009-06-19,2,14,acc close/open from RG,Full Block
+1339503,1,2009-06-10,2009-06-10,2,14,acc close/open from RG,Full Block
+1717071,1,2009-06-03,2009-06-03,2,14,acc close/open from RG,Full Block
+7848271,1,2009-05-29,2009-05-29,2,14,acc close/open from RG,Full Block
+3159911,1,2009-05-27,2009-05-27,2,14,acc close/open from RG,Full Block
+8663789,1,2009-05-25,2009-05-25,2,14,acc close/open from RG,Full Block
+2747243,1,2009-05-20,2009-05-20,2,14,acc close/open from RG,Full Block
+1866579,1,2009-05-19,2009-05-19,2,14,acc close/open from RG,Full Block
+6770567,1,2009-04-30,2009-04-30,2,14,acc close/open from RG,Full Block
+2313963,1,2009-04-23,2009-04-23,2,14,acc close/open from RG,Full Block
+6628312,1,2009-04-22,2009-04-22,2,14,acc close/open from RG,Full Block
+7611469,1,2009-04-22,2009-04-22,2,14,acc close/open from RG,Full Block
+4882865,3,2009-02-16,2009-04-21,2,14,acc close/open from RG,Full Block
+6005561,1,2009-04-16,2009-04-16,2,14,acc close/open from RG,Full Block
+3630907,2,2009-04-10,2009-04-14,2,14,acc close/open from RG,Full Block
+7019325,1,2009-04-09,2009-04-09,2,14,acc close/open from RG,Full Block
+8150245,1,2009-04-07,2009-04-07,2,14,acc close/open from RG,Full Block
+6867140,1,2009-04-06,2009-04-06,2,14,acc close/open from RG,Full Block
+5101193,1,2009-04-05,2009-04-05,2,14,acc close/open from RG,Full Block
+1723411,1,2009-04-02,2009-04-02,2,14,acc close/open from RG,Full Block
+2824913,1,2009-03-27,2009-03-27,2,14,acc close/open from RG,Full Block
+1336326,1,2009-03-24,2009-03-24,2,14,acc close/open from RG,Full Block
+1951934,1,2009-03-09,2009-03-09,2,14,acc close/open from RG,Full Block
+7411986,1,2009-03-09,2009-03-09,2,14,acc close/open from RG,Full Block
+6556687,1,2009-02-27,2009-02-27,2,14,acc close/open from RG,Full Block
+7875912,1,2009-02-23,2009-02-23,2,14,acc close/open from RG,Full Block
+7772353,1,2009-02-20,2009-02-20,2,14,acc close/open from RG,Full Block
+4606378,1,2009-01-27,2009-01-27,2,14,acc close/open from RG,Full Block
+4388436,1,2009-01-11,2009-01-11,2,14,acc close/open from RG,Full Block
+2631959,1,2008-12-31,2008-12-31,2,14,acc close/open from RG,Full Block
+5471987,1,2008-12-31,2008-12-31,2,14,acc close/open from RG,Full Block
+4527767,1,2008-12-24,2008-12-24,2,14,acc close/open from RG,Full Block
+4321851,1,2008-12-23,2008-12-23,2,14,acc close/open from RG,Full Block
+1033839,1,2008-12-21,2008-12-21,2,14,acc close/open from RG,Full Block
+2486108,1,2008-12-18,2008-12-18,2,14,acc close/open from RG,Full Block
+355882,1,2008-12-02,2008-12-02,2,14,acc close/open from RG,Full Block
+1444218,1,2008-12-02,2008-12-02,2,14,acc close/open from RG,Full Block
+5644752,1,2008-12-01,2008-12-01,2,14,acc close/open from RG,Full Block
+7331786,1,2008-11-27,2008-11-27,2,14,acc close/open from RG,Full Block
+6753866,1,2008-11-20,2008-11-20,2,14,acc close/open from RG,Full Block
+6253459,1,2008-11-13,2008-11-13,2,14,acc close/open from RG,Full Block
+1886970,1,2008-11-06,2008-11-06,2,14,acc close/open from RG,Full Block
+7235291,1,2008-11-06,2008-11-06,2,14,acc close/open from RG,Full Block
+6805097,1,2008-11-05,2008-11-05,2,14,acc close/open from RG,Full Block
+5344620,1,2008-11-17,2008-11-17,1,14,Family Intervention,Full Block
+6703614,1,2009-09-21,2009-09-21,11,13,high deposit,Daily/weekly deposit changed
+4407380,2,2008-12-12,2008-12-19,11,13,high deposit,Daily/weekly deposit changed
+1337767,1,2009-11-30,2009-11-30,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2395168,1,2009-11-30,2009-11-30,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+6834446,1,2009-11-30,2009-11-30,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+9758033,1,2009-11-30,2009-11-30,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+6923889,1,2009-11-29,2009-11-29,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4608302,7,2009-07-27,2009-11-29,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1560024,1,2009-11-27,2009-11-27,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8936443,1,2009-11-27,2009-11-27,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+9822065,1,2009-11-27,2009-11-27,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+5723033,2,2009-10-15,2009-11-27,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+912480,2,2009-11-03,2009-11-26,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2196540,2,2009-11-25,2009-11-25,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8722594,1,2009-11-25,2009-11-25,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3474698,1,2009-11-24,2009-11-24,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+5605210,1,2009-11-24,2009-11-24,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3905925,1,2009-11-23,2009-11-23,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+9464003,1,2009-11-23,2009-11-23,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2678522,2,2009-10-15,2009-11-23,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3276027,1,2009-11-19,2009-11-19,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+6465687,4,2009-09-09,2009-11-19,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4812626,1,2009-11-18,2009-11-18,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+9332547,1,2009-11-18,2009-11-18,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3658329,1,2009-11-17,2009-11-17,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+9471827,1,2009-11-17,2009-11-17,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+5596445,2,2009-11-08,2009-11-17,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+5326898,2,2009-05-13,2009-11-17,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1745411,1,2009-11-16,2009-11-16,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7178510,1,2009-11-15,2009-11-15,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7796899,1,2009-11-15,2009-11-15,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+9454181,1,2009-11-15,2009-11-15,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4808882,2,2009-10-11,2009-11-15,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2589710,4,2009-10-08,2009-11-15,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4477271,1,2009-11-13,2009-11-13,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8770288,1,2009-11-12,2009-11-12,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7505656,1,2009-11-11,2009-11-11,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+596939,1,2009-11-09,2009-11-09,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1921204,1,2009-11-09,2009-11-09,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4213940,2,2009-11-08,2009-11-09,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8827960,2,2009-11-05,2009-11-09,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1034626,1,2009-11-08,2009-11-08,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+6210682,1,2009-11-08,2009-11-08,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8025018,3,2009-03-04,2009-11-08,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3777776,1,2009-11-05,2009-11-05,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8986951,1,2009-11-05,2009-11-05,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7339107,3,2009-08-04,2009-11-05,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2803911,3,2009-02-13,2009-11-05,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4486087,2,2009-11-03,2009-11-03,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2315978,1,2009-11-03,2009-11-03,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+9405319,1,2009-11-03,2009-11-03,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+9622454,1,2009-11-03,2009-11-03,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3057677,2,2009-10-05,2009-11-03,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+5472147,2,2009-09-21,2009-11-03,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3315310,2,2009-08-26,2009-11-03,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+9619356,2,2009-10-25,2009-10-29,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+859526,1,2009-10-27,2009-10-27,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1851270,1,2009-10-27,2009-10-27,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+9531528,1,2009-10-27,2009-10-27,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+5779301,2,2009-10-14,2009-10-27,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2798232,5,2009-07-15,2009-10-27,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2299626,1,2009-10-25,2009-10-25,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+9531463,1,2009-10-25,2009-10-25,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8600820,5,2009-07-30,2009-10-21,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1269295,1,2009-10-20,2009-10-20,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+6462869,1,2009-10-20,2009-10-20,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+9106822,1,2009-10-19,2009-10-19,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8495659,3,2009-09-02,2009-10-16,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7213503,1,2009-10-14,2009-10-14,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7559222,1,2009-10-14,2009-10-14,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7999920,1,2009-10-14,2009-10-14,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8933678,1,2009-10-13,2009-10-13,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1560599,1,2009-10-12,2009-10-12,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1630590,1,2009-10-12,2009-10-12,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+6158120,3,2009-09-16,2009-10-11,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7037523,4,2009-06-30,2009-10-11,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8148005,1,2009-10-06,2009-10-06,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+708122,4,2009-06-04,2009-10-06,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+734038,1,2009-10-05,2009-10-05,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7606420,1,2009-10-05,2009-10-05,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1696904,2,2009-10-04,2009-10-05,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3543480,3,2009-06-30,2009-10-05,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1741128,2,2009-06-26,2009-10-05,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8002134,2,2009-06-12,2009-10-05,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7270272,4,2009-07-29,2009-10-04,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1362042,1,2009-10-02,2009-10-02,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4259441,1,2009-10-02,2009-10-02,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+5747107,1,2009-10-02,2009-10-02,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7066755,1,2009-10-01,2009-10-01,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1269588,1,2009-09-30,2009-09-30,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2732585,1,2009-09-30,2009-09-30,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+9415459,1,2009-09-30,2009-09-30,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+5986101,5,2009-01-28,2009-09-30,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+9353702,2,2009-09-10,2009-09-27,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3461699,1,2009-09-22,2009-09-22,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+6144218,1,2009-09-22,2009-09-22,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+9303388,1,2009-09-22,2009-09-22,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2367866,1,2009-09-21,2009-09-21,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7076627,1,2009-09-21,2009-09-21,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+9209255,1,2009-09-21,2009-09-21,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+9206426,2,2009-09-02,2009-09-21,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4734610,1,2009-09-20,2009-09-20,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+5701306,1,2009-09-17,2009-09-17,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8037545,1,2009-09-17,2009-09-17,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+9231906,1,2009-09-17,2009-09-17,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4532357,1,2009-09-15,2009-09-15,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7403363,1,2009-09-15,2009-09-15,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+5975827,1,2009-09-15,2009-09-15,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7139334,1,2009-09-14,2009-09-14,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3547929,2,2009-01-19,2009-09-11,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+9248197,1,2009-09-10,2009-09-10,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1873384,1,2009-09-09,2009-09-09,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2999207,1,2009-09-09,2009-09-09,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+9198271,1,2009-09-09,2009-09-09,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1221797,1,2009-09-08,2009-09-08,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+5716084,1,2009-09-07,2009-09-07,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4806066,1,2009-09-04,2009-09-04,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+5780761,1,2009-09-03,2009-09-03,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8485173,1,2009-09-03,2009-09-03,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2952806,1,2009-09-02,2009-09-02,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1059479,1,2009-09-01,2009-09-01,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4754125,1,2009-09-01,2009-09-01,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+9200696,1,2009-09-01,2009-09-01,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+829363,2,2009-08-28,2009-09-01,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7114388,2,2009-01-21,2009-09-01,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4717806,1,2009-08-31,2009-08-31,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3020285,2,2009-08-24,2009-08-31,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+6804999,1,2009-08-28,2009-08-28,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+9200366,1,2009-08-28,2009-08-28,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2327108,1,2009-08-27,2009-08-27,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3217526,1,2009-08-27,2009-08-27,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3334747,1,2009-08-27,2009-08-27,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2947836,4,2009-06-30,2009-08-24,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1073054,1,2009-08-19,2009-08-19,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8235410,1,2009-08-18,2009-08-18,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2669121,1,2009-08-17,2009-08-17,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3810030,3,2009-06-21,2009-08-17,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1353206,1,2009-08-14,2009-08-14,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3321251,1,2009-08-13,2009-08-13,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2710254,1,2009-08-12,2009-08-12,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2704382,4,2009-01-08,2009-08-12,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7165714,1,2009-08-11,2009-08-11,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8977004,1,2009-08-10,2009-08-10,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4971957,1,2009-08-09,2009-08-09,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7282685,1,2009-08-06,2009-08-06,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8861859,1,2009-08-04,2009-08-04,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1522428,1,2009-07-31,2009-07-31,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3531155,2,2009-07-10,2009-07-29,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+6865482,1,2009-07-27,2009-07-27,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8182233,2,2009-07-01,2009-07-27,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+5071663,2,2009-04-09,2009-07-27,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1161759,1,2009-07-24,2009-07-24,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+5312173,1,2009-07-24,2009-07-24,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8979850,1,2009-07-23,2009-07-23,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+6217359,2,2009-07-12,2009-07-23,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+5826900,1,2009-07-21,2009-07-21,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8769919,1,2009-07-21,2009-07-21,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8956370,1,2009-07-21,2009-07-21,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1853602,1,2009-07-20,2009-07-20,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4796476,1,2009-07-20,2009-07-20,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+5275259,1,2009-07-20,2009-07-20,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1969410,2,2009-05-07,2009-07-15,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7939242,2,2009-07-06,2009-07-14,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+5833825,1,2009-07-12,2009-07-12,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8432380,1,2009-07-12,2009-07-12,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8872029,1,2009-07-09,2009-07-09,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8869608,1,2009-07-08,2009-07-08,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1679490,2,2009-07-02,2009-07-08,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+5028144,1,2009-07-02,2009-07-02,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+6216479,1,2009-07-02,2009-07-02,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8916255,1,2009-07-02,2009-07-02,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+191415,2,2009-04-22,2009-07-02,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8815127,1,2009-07-01,2009-07-01,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1065910,1,2009-06-30,2009-06-30,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4256504,2,2009-01-20,2009-06-29,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7875229,1,2009-06-28,2009-06-28,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1430272,2,2009-04-14,2009-06-28,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+375779,1,2009-06-25,2009-06-25,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1453530,1,2009-06-25,2009-06-25,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4896650,1,2009-06-25,2009-06-25,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3835056,1,2009-06-24,2009-06-24,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8549120,1,2009-06-24,2009-06-24,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2064756,2,2009-03-30,2009-06-21,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8281635,1,2009-06-19,2009-06-19,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2685297,3,2009-03-03,2009-06-19,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8781245,1,2009-06-18,2009-06-18,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8728876,1,2009-06-16,2009-06-16,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8656794,1,2009-06-15,2009-06-15,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4444055,1,2009-06-14,2009-06-14,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4573657,2,2009-06-02,2009-06-08,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4932146,2,2009-05-07,2009-06-08,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7857150,1,2009-06-05,2009-06-05,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8381655,1,2009-06-03,2009-06-03,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+6209782,2,2009-04-30,2009-06-03,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3294931,1,2009-05-29,2009-05-29,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8555135,1,2009-05-29,2009-05-29,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7831028,3,2009-04-27,2009-05-28,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3458145,1,2009-05-27,2009-05-27,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4550348,1,2009-05-27,2009-05-27,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7038917,1,2009-05-24,2009-05-24,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8263131,1,2009-05-22,2009-05-22,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3669466,2,2009-04-16,2009-05-19,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2769016,1,2009-05-18,2009-05-18,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1711860,1,2009-05-13,2009-05-13,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2804406,1,2009-05-13,2009-05-13,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7181265,1,2009-05-12,2009-05-12,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2143609,1,2009-05-07,2009-05-07,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1236874,1,2009-05-04,2009-05-04,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+6603527,1,2009-05-04,2009-05-04,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+5215521,1,2009-04-28,2009-04-28,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7868666,1,2009-04-28,2009-04-28,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+6254611,1,2009-04-27,2009-04-27,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1402673,3,2009-03-17,2009-04-27,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4717280,4,2009-02-23,2009-04-27,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2179252,1,2009-04-22,2009-04-22,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2780351,2,2009-04-20,2009-04-20,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7090155,2,2009-03-17,2009-04-20,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8203281,1,2009-04-17,2009-04-17,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+6024784,1,2009-04-15,2009-04-15,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2143770,3,2009-02-25,2009-04-15,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+455766,2,2009-02-12,2009-04-15,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+815193,1,2009-04-14,2009-04-14,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1110796,1,2009-04-10,2009-04-10,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8132486,2,2009-03-18,2009-04-09,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4807417,1,2009-04-06,2009-04-06,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7779301,2,2009-02-04,2009-04-06,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2344763,1,2009-04-05,2009-04-05,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3438352,1,2009-04-02,2009-04-02,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1121270,1,2009-04-01,2009-04-01,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8211085,1,2009-03-27,2009-03-27,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+6923050,1,2009-03-25,2009-03-25,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7951137,1,2009-03-25,2009-03-25,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7894479,1,2009-03-24,2009-03-24,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8073792,1,2009-03-23,2009-03-23,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4029860,1,2009-03-20,2009-03-20,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8130721,1,2009-03-20,2009-03-20,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+8234572,1,2009-03-19,2009-03-19,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7700493,1,2009-03-10,2009-03-10,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7528655,1,2009-03-09,2009-03-09,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+893392,2,2009-02-19,2009-03-06,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3495839,1,2009-03-05,2009-03-05,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7361310,1,2009-03-04,2009-03-04,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3177629,1,2009-02-20,2009-02-20,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+6271391,1,2009-02-16,2009-02-16,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2015501,1,2009-02-13,2009-02-13,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3032087,1,2009-02-12,2009-02-12,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1575816,1,2009-02-11,2009-02-11,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4541490,4,2009-01-13,2009-02-11,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3419034,1,2009-02-10,2009-02-10,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+5962099,2,2009-02-04,2009-02-10,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7820328,2,2009-02-01,2009-02-10,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4579343,3,2009-01-07,2009-02-08,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7700119,1,2009-02-05,2009-02-05,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1362354,1,2009-01-28,2009-01-28,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+6055979,1,2009-01-28,2009-01-28,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7829655,1,2009-01-28,2009-01-28,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+5164417,1,2009-01-22,2009-01-22,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2048423,1,2009-01-20,2009-01-20,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+5698470,1,2009-01-19,2009-01-19,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1780205,1,2009-01-16,2009-01-16,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4994531,1,2009-01-15,2009-01-15,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7404711,1,2009-01-14,2009-01-14,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+2836309,1,2009-01-13,2009-01-13,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+6809437,2,2008-12-04,2009-01-07,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+452829,1,2009-01-01,2009-01-01,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7111851,1,2009-01-01,2009-01-01,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7272696,1,2008-12-12,2008-12-12,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+1887198,1,2008-12-11,2008-12-11,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+7113989,1,2008-12-03,2008-12-03,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+4963002,1,2008-11-04,2008-11-04,4,13,Manually Lowered Limit,Daily/weekly deposit changed
+3833071,1,2009-03-09,2009-03-09,2,13,acc close/open from RG,Daily/weekly deposit changed
+3787839,1,2009-03-06,2009-03-06,2,13,acc close/open from RG,Daily/weekly deposit changed
+986088,1,2009-02-24,2009-02-24,2,13,acc close/open from RG,Daily/weekly deposit changed
+1175809,1,2009-08-21,2009-08-21,11,12,high deposit,Higher Deposit Accepted
+9678195,1,2009-11-27,2009-11-27,11,11,high deposit,Higher deposit denied
+4394754,2,2009-11-19,2009-11-26,11,11,high deposit,Higher deposit denied
+5622189,1,2009-11-23,2009-11-23,11,11,high deposit,Higher deposit denied
+9693096,1,2009-11-23,2009-11-23,11,11,high deposit,Higher deposit denied
+5785051,1,2009-11-19,2009-11-19,11,11,high deposit,Higher deposit denied
+9593498,1,2009-11-19,2009-11-19,11,11,high deposit,Higher deposit denied
+9300212,2,2009-10-13,2009-11-19,11,11,high deposit,Higher deposit denied
+832139,2,2009-11-16,2009-11-17,11,11,high deposit,Higher deposit denied
+9648676,1,2009-11-15,2009-11-15,11,11,high deposit,Higher deposit denied
+5061924,1,2009-11-12,2009-11-12,11,11,high deposit,Higher deposit denied
+3663169,1,2009-11-11,2009-11-11,11,11,high deposit,Higher deposit denied
+6532147,1,2009-11-09,2009-11-09,11,11,high deposit,Higher deposit denied
+6175402,1,2009-11-03,2009-11-03,11,11,high deposit,Higher deposit denied
+3964007,5,2009-09-22,2009-11-03,11,11,high deposit,Higher deposit denied
+6585349,1,2009-10-25,2009-10-25,11,11,high deposit,Higher deposit denied
+2137863,2,2009-10-22,2009-10-22,11,11,high deposit,Higher deposit denied
+6649792,1,2009-10-22,2009-10-22,11,11,high deposit,Higher deposit denied
+6884788,1,2009-10-22,2009-10-22,11,11,high deposit,Higher deposit denied
+9450603,1,2009-10-20,2009-10-20,11,11,high deposit,Higher deposit denied
+2085469,1,2009-10-15,2009-10-15,11,11,high deposit,Higher deposit denied
+7728951,1,2009-10-15,2009-10-15,11,11,high deposit,Higher deposit denied
+3680952,1,2009-10-14,2009-10-14,11,11,high deposit,Higher deposit denied
+4022654,2,2009-02-19,2009-10-14,11,11,high deposit,Higher deposit denied
+6504842,1,2009-10-12,2009-10-12,11,11,high deposit,Higher deposit denied
+5670707,1,2009-10-02,2009-10-02,11,11,high deposit,Higher deposit denied
+6721658,1,2009-10-02,2009-10-02,11,11,high deposit,Higher deposit denied
+8525546,1,2009-10-02,2009-10-02,11,11,high deposit,Higher deposit denied
+5699878,1,2009-10-01,2009-10-01,11,11,high deposit,Higher deposit denied
+6237966,1,2009-10-01,2009-10-01,11,11,high deposit,Higher deposit denied
+5659487,1,2009-09-30,2009-09-30,11,11,high deposit,Higher deposit denied
+9225017,1,2009-09-22,2009-09-22,11,11,high deposit,Higher deposit denied
+8903787,1,2009-09-21,2009-09-21,11,11,high deposit,Higher deposit denied
+9384716,1,2009-09-15,2009-09-15,11,11,high deposit,Higher deposit denied
+8747247,2,2009-09-07,2009-09-07,11,11,high deposit,Higher deposit denied
+4946392,1,2009-09-07,2009-09-07,11,11,high deposit,Higher deposit denied
+113136,2,2009-03-16,2009-08-24,11,11,high deposit,Higher deposit denied
+9099550,1,2009-08-20,2009-08-20,11,11,high deposit,Higher deposit denied
+5825306,1,2009-08-17,2009-08-17,11,11,high deposit,Higher deposit denied
+6562237,1,2009-08-17,2009-08-17,11,11,high deposit,Higher deposit denied
+8139534,1,2009-08-12,2009-08-12,11,11,high deposit,Higher deposit denied
+5313810,1,2009-07-21,2009-07-21,11,11,high deposit,Higher deposit denied
+2836222,1,2009-07-17,2009-07-17,11,11,high deposit,Higher deposit denied
+217121,1,2009-07-16,2009-07-16,11,11,high deposit,Higher deposit denied
+2121263,1,2009-07-16,2009-07-16,11,11,high deposit,Higher deposit denied
+8165234,1,2009-07-03,2009-07-03,11,11,high deposit,Higher deposit denied
+3208357,1,2009-06-22,2009-06-22,11,11,high deposit,Higher deposit denied
+2314911,1,2009-06-12,2009-06-12,11,11,high deposit,Higher deposit denied
+4006708,1,2009-06-12,2009-06-12,11,11,high deposit,Higher deposit denied
+2070894,1,2009-06-04,2009-06-04,11,11,high deposit,Higher deposit denied
+4683871,1,2009-05-25,2009-05-25,11,11,high deposit,Higher deposit denied
+2155065,1,2009-05-19,2009-05-19,11,11,high deposit,Higher deposit denied
+7729448,4,2009-03-30,2009-05-19,11,11,high deposit,Higher deposit denied
+7940016,1,2009-05-08,2009-05-08,11,11,high deposit,Higher deposit denied
+2580478,1,2009-05-05,2009-05-05,11,11,high deposit,Higher deposit denied
+1477587,1,2009-05-04,2009-05-04,11,11,high deposit,Higher deposit denied
+1195259,1,2009-04-17,2009-04-17,11,11,high deposit,Higher deposit denied
+8053150,1,2009-04-17,2009-04-17,11,11,high deposit,Higher deposit denied
+1457496,1,2009-04-14,2009-04-14,11,11,high deposit,Higher deposit denied
+6549218,1,2009-04-09,2009-04-09,11,11,high deposit,Higher deposit denied
+1894098,1,2009-04-08,2009-04-08,11,11,high deposit,Higher deposit denied
+6283338,1,2009-04-06,2009-04-06,11,11,high deposit,Higher deposit denied
+7821179,1,2009-04-05,2009-04-05,11,11,high deposit,Higher deposit denied
+3726963,1,2009-04-02,2009-04-02,11,11,high deposit,Higher deposit denied
+1054028,1,2009-03-30,2009-03-30,11,11,high deposit,Higher deposit denied
+6226264,1,2009-03-23,2009-03-23,11,11,high deposit,Higher deposit denied
+7515133,1,2009-03-23,2009-03-23,11,11,high deposit,Higher deposit denied
+1630307,1,2009-03-20,2009-03-20,11,11,high deposit,Higher deposit denied
+6206370,1,2009-03-16,2009-03-16,11,11,high deposit,Higher deposit denied
+4315528,1,2009-03-06,2009-03-06,11,11,high deposit,Higher deposit denied
+7318774,1,2009-02-17,2009-02-17,11,11,high deposit,Higher deposit denied
+3789713,1,2009-02-06,2009-02-06,11,11,high deposit,Higher deposit denied
+3222322,1,2009-01-29,2009-01-29,11,11,high deposit,Higher deposit denied
+6698316,1,2009-01-21,2009-01-21,11,11,high deposit,Higher deposit denied
+402872,1,2009-01-19,2009-01-19,11,11,high deposit,Higher deposit denied
+6433107,1,2009-01-19,2009-01-19,11,11,high deposit,Higher deposit denied
+1967044,1,2009-01-01,2009-01-01,11,11,high deposit,Higher deposit denied
+6985339,1,2008-12-31,2008-12-31,11,11,high deposit,Higher deposit denied
+7038212,1,2008-12-30,2008-12-30,11,11,high deposit,Higher deposit denied
+5313713,1,2008-12-21,2008-12-21,11,11,high deposit,Higher deposit denied
+7114723,1,2008-12-01,2008-12-01,11,11,high deposit,Higher deposit denied
+9349574,2,2009-09-14,2009-09-22,10,9,Reported Problem,Inpayment not blocked
+3738958,1,2009-09-08,2009-09-08,7,9,Requested pay method block,Inpayment not blocked
+1292648,1,2009-07-29,2009-07-29,7,9,Requested pay method block,Inpayment not blocked
+3033642,1,2009-07-19,2009-07-19,7,9,Requested pay method block,Inpayment not blocked
+652803,1,2009-04-10,2009-04-10,7,9,Requested pay method block,Inpayment not blocked
+572029,1,2008-11-24,2008-11-24,7,9,Requested pay method block,Inpayment not blocked
+6262149,1,2008-11-17,2008-11-17,7,9,Requested pay method block,Inpayment not blocked
+3789290,1,2008-11-07,2008-11-07,7,9,Requested pay method block,Inpayment not blocked
+4136365,1,2009-07-15,2009-07-15,1,9,Family Intervention,Inpayment not blocked
+2091973,1,2009-11-30,2009-11-30,9,8,Request partial block,Partial Block
+943528,1,2009-11-22,2009-11-22,9,8,Request partial block,Partial Block
+4026291,3,2009-10-23,2009-11-20,9,8,Request partial block,Partial Block
+3474653,1,2009-11-19,2009-11-19,9,8,Request partial block,Partial Block
+1467720,2,2009-11-13,2009-11-19,9,8,Request partial block,Partial Block
+1538409,1,2009-11-18,2009-11-18,9,8,Request partial block,Partial Block
+3914576,1,2009-11-08,2009-11-08,9,8,Request partial block,Partial Block
+4882145,2,2009-10-08,2009-11-08,9,8,Request partial block,Partial Block
+2715739,2,2009-10-20,2009-11-03,9,8,Request partial block,Partial Block
+4996838,2,2009-05-06,2009-10-23,9,8,Request partial block,Partial Block
+5106620,1,2009-10-22,2009-10-22,9,8,Request partial block,Partial Block
+8706063,1,2009-10-22,2009-10-22,9,8,Request partial block,Partial Block
+4863920,2,2009-01-22,2009-10-22,9,8,Request partial block,Partial Block
+2673382,1,2009-10-20,2009-10-20,9,8,Request partial block,Partial Block
+2130908,2,2009-10-19,2009-10-20,9,8,Request partial block,Partial Block
+4980745,2,2009-07-28,2009-10-16,9,8,Request partial block,Partial Block
+8935727,1,2009-10-13,2009-10-13,9,8,Request partial block,Partial Block
+8120498,1,2009-10-12,2009-10-12,9,8,Request partial block,Partial Block
+2083227,1,2009-10-01,2009-10-01,9,8,Request partial block,Partial Block
+8258467,1,2009-10-01,2009-10-01,9,8,Request partial block,Partial Block
+5917254,2,2008-11-07,2009-09-27,9,8,Request partial block,Partial Block
+1995745,1,2009-09-20,2009-09-20,9,8,Request partial block,Partial Block
+7612328,2,2009-06-02,2009-09-10,9,8,Request partial block,Partial Block
+1862652,1,2009-09-07,2009-09-07,9,8,Request partial block,Partial Block
+1819339,3,2009-07-19,2009-09-07,9,8,Request partial block,Partial Block
+8876590,1,2009-09-02,2009-09-02,9,8,Request partial block,Partial Block
+2258689,1,2009-08-27,2009-08-27,9,8,Request partial block,Partial Block
+4579060,1,2009-08-26,2009-08-26,9,8,Request partial block,Partial Block
+4741334,1,2009-08-25,2009-08-25,9,8,Request partial block,Partial Block
+5438659,1,2009-08-25,2009-08-25,9,8,Request partial block,Partial Block
+1834053,1,2009-08-18,2009-08-18,9,8,Request partial block,Partial Block
+4675453,1,2009-08-17,2009-08-17,9,8,Request partial block,Partial Block
+7414920,1,2009-08-17,2009-08-17,9,8,Request partial block,Partial Block
+2053042,1,2009-08-12,2009-08-12,9,8,Request partial block,Partial Block
+5266116,1,2009-08-12,2009-08-12,9,8,Request partial block,Partial Block
+5844572,1,2009-08-06,2009-08-06,9,8,Request partial block,Partial Block
+5800871,1,2009-08-03,2009-08-03,9,8,Request partial block,Partial Block
+1533580,1,2009-08-02,2009-08-02,9,8,Request partial block,Partial Block
+1261993,1,2009-07-24,2009-07-24,9,8,Request partial block,Partial Block
+1864071,1,2009-07-16,2009-07-16,9,8,Request partial block,Partial Block
+2059854,1,2009-07-16,2009-07-16,9,8,Request partial block,Partial Block
+332091,1,2009-07-15,2009-07-15,9,8,Request partial block,Partial Block
+6795757,1,2009-07-12,2009-07-12,9,8,Request partial block,Partial Block
+717922,1,2009-07-09,2009-07-09,9,8,Request partial block,Partial Block
+380006,1,2009-07-07,2009-07-07,9,8,Request partial block,Partial Block
+1089300,2,2008-12-29,2009-07-06,9,8,Request partial block,Partial Block
+5313336,1,2009-06-26,2009-06-26,9,8,Request partial block,Partial Block
+7335300,1,2009-06-26,2009-06-26,9,8,Request partial block,Partial Block
+3805497,1,2009-06-19,2009-06-19,9,8,Request partial block,Partial Block
+6541481,2,2009-01-13,2009-06-15,9,8,Request partial block,Partial Block
+6424006,1,2009-06-08,2009-06-08,9,8,Request partial block,Partial Block
+6860191,4,2009-02-19,2009-06-08,9,8,Request partial block,Partial Block
+4359774,1,2009-05-29,2009-05-29,9,8,Request partial block,Partial Block
+349493,1,2009-05-28,2009-05-28,9,8,Request partial block,Partial Block
+378707,1,2009-05-22,2009-05-22,9,8,Request partial block,Partial Block
+5508867,1,2009-05-19,2009-05-19,9,8,Request partial block,Partial Block
+2544602,1,2009-05-18,2009-05-18,9,8,Request partial block,Partial Block
+6549874,1,2009-05-18,2009-05-18,9,8,Request partial block,Partial Block
+6263708,1,2009-05-12,2009-05-12,9,8,Request partial block,Partial Block
+8639424,1,2009-05-08,2009-05-08,9,8,Request partial block,Partial Block
+3424027,1,2009-04-29,2009-04-29,9,8,Request partial block,Partial Block
+8499668,1,2009-04-24,2009-04-24,9,8,Request partial block,Partial Block
+1782215,1,2009-04-20,2009-04-20,9,8,Request partial block,Partial Block
+4427998,1,2009-04-14,2009-04-14,9,8,Request partial block,Partial Block
+1489176,1,2009-04-10,2009-04-10,9,8,Request partial block,Partial Block
+6538146,1,2009-04-06,2009-04-06,9,8,Request partial block,Partial Block
+1444690,1,2009-04-02,2009-04-02,9,8,Request partial block,Partial Block
+2455322,1,2009-03-27,2009-03-27,9,8,Request partial block,Partial Block
+2530627,1,2009-03-23,2009-03-23,9,8,Request partial block,Partial Block
+348381,1,2009-03-20,2009-03-20,9,8,Request partial block,Partial Block
+8069918,1,2009-03-16,2009-03-16,9,8,Request partial block,Partial Block
+6363863,1,2009-03-11,2009-03-11,9,8,Request partial block,Partial Block
+1519947,1,2009-03-10,2009-03-10,9,8,Request partial block,Partial Block
+5826958,1,2009-03-04,2009-03-04,9,8,Request partial block,Partial Block
+5848734,1,2009-03-03,2009-03-03,9,8,Request partial block,Partial Block
+816423,1,2009-03-02,2009-03-02,9,8,Request partial block,Partial Block
+3724040,1,2009-03-02,2009-03-02,9,8,Request partial block,Partial Block
+7282163,1,2009-02-27,2009-02-27,9,8,Request partial block,Partial Block
+8015920,1,2009-02-27,2009-02-27,9,8,Request partial block,Partial Block
+3879168,1,2009-02-24,2009-02-24,9,8,Request partial block,Partial Block
+1516433,1,2009-02-16,2009-02-16,9,8,Request partial block,Partial Block
+3068010,1,2009-02-16,2009-02-16,9,8,Request partial block,Partial Block
+5566333,1,2009-02-15,2009-02-15,9,8,Request partial block,Partial Block
+626970,1,2009-02-13,2009-02-13,9,8,Request partial block,Partial Block
+3847660,1,2009-02-12,2009-02-12,9,8,Request partial block,Partial Block
+5013004,1,2009-02-11,2009-02-11,9,8,Request partial block,Partial Block
+5405914,1,2009-02-10,2009-02-10,9,8,Request partial block,Partial Block
+3474092,1,2009-02-04,2009-02-04,9,8,Request partial block,Partial Block
+6656467,1,2009-02-03,2009-02-03,9,8,Request partial block,Partial Block
+4101116,1,2009-01-29,2009-01-29,9,8,Request partial block,Partial Block
+5672160,1,2009-01-28,2009-01-28,9,8,Request partial block,Partial Block
+6778625,1,2009-01-28,2009-01-28,9,8,Request partial block,Partial Block
+7264701,1,2009-01-28,2009-01-28,9,8,Request partial block,Partial Block
+3494737,1,2009-01-27,2009-01-27,9,8,Request partial block,Partial Block
+4361017,1,2009-01-27,2009-01-27,9,8,Request partial block,Partial Block
+5599403,1,2009-01-27,2009-01-27,9,8,Request partial block,Partial Block
+7600109,1,2009-01-23,2009-01-23,9,8,Request partial block,Partial Block
+6126648,1,2009-01-21,2009-01-21,9,8,Request partial block,Partial Block
+7752021,1,2009-01-16,2009-01-16,9,8,Request partial block,Partial Block
+2017170,1,2009-01-13,2009-01-13,9,8,Request partial block,Partial Block
+7610555,1,2009-01-13,2009-01-13,9,8,Request partial block,Partial Block
+5374667,1,2009-01-09,2009-01-09,9,8,Request partial block,Partial Block
+7498966,1,2009-01-08,2009-01-08,9,8,Request partial block,Partial Block
+6329514,1,2009-01-06,2009-01-06,9,8,Request partial block,Partial Block
+1226683,1,2008-12-31,2008-12-31,9,8,Request partial block,Partial Block
+1663129,1,2008-12-31,2008-12-31,9,8,Request partial block,Partial Block
+5991366,1,2008-12-31,2008-12-31,9,8,Request partial block,Partial Block
+7257578,1,2008-12-31,2008-12-31,9,8,Request partial block,Partial Block
+1866785,1,2008-12-30,2008-12-30,9,8,Request partial block,Partial Block
+727358,1,2008-12-29,2008-12-29,9,8,Request partial block,Partial Block
+3704921,1,2008-12-28,2008-12-28,9,8,Request partial block,Partial Block
+4111916,1,2008-12-22,2008-12-22,9,8,Request partial block,Partial Block
+5046922,1,2008-12-22,2008-12-22,9,8,Request partial block,Partial Block
+4890437,1,2008-12-12,2008-12-12,9,8,Request partial block,Partial Block
+5618421,1,2008-12-10,2008-12-10,9,8,Request partial block,Partial Block
+7289279,1,2008-12-01,2008-12-01,9,8,Request partial block,Partial Block
+1825093,1,2008-11-25,2008-11-25,9,8,Request partial block,Partial Block
+6179226,1,2008-11-21,2008-11-21,9,8,Request partial block,Partial Block
+4639641,1,2008-11-12,2008-11-12,9,8,Request partial block,Partial Block
+31965,1,2009-03-04,2009-03-04,2,8,acc close/open from RG,Partial Block
+9559120,1,2009-10-16,2009-10-16,10,6,Reported Problem,Partial Block (incomplete)
+36916,1,2009-10-01,2009-10-01,10,6,Reported Problem,Partial Block (incomplete)
+4455380,1,2009-11-30,2009-11-30,9,6,Request partial block,Partial Block (incomplete)
+8725279,1,2009-11-30,2009-11-30,9,6,Request partial block,Partial Block (incomplete)
+6353364,1,2009-11-25,2009-11-25,9,6,Request partial block,Partial Block (incomplete)
+3482637,2,2009-11-20,2009-11-23,9,6,Request partial block,Partial Block (incomplete)
+9013172,1,2009-11-17,2009-11-17,9,6,Request partial block,Partial Block (incomplete)
+2260208,1,2009-11-10,2009-11-10,9,6,Request partial block,Partial Block (incomplete)
+9723694,1,2009-11-09,2009-11-09,9,6,Request partial block,Partial Block (incomplete)
+9444688,1,2009-11-05,2009-11-05,9,6,Request partial block,Partial Block (incomplete)
+1996750,1,2009-11-03,2009-11-03,9,6,Request partial block,Partial Block (incomplete)
+1747125,1,2009-10-29,2009-10-29,9,6,Request partial block,Partial Block (incomplete)
+3957159,1,2009-10-25,2009-10-25,9,6,Request partial block,Partial Block (incomplete)
+9637937,1,2009-10-25,2009-10-25,9,6,Request partial block,Partial Block (incomplete)
+9417518,1,2009-10-23,2009-10-23,9,6,Request partial block,Partial Block (incomplete)
+740719,1,2009-10-22,2009-10-22,9,6,Request partial block,Partial Block (incomplete)
+4348335,1,2009-10-13,2009-10-13,9,6,Request partial block,Partial Block (incomplete)
+2150296,1,2009-10-11,2009-10-11,9,6,Request partial block,Partial Block (incomplete)
+9440523,1,2009-10-11,2009-10-11,9,6,Request partial block,Partial Block (incomplete)
+6395575,1,2009-10-04,2009-10-04,9,6,Request partial block,Partial Block (incomplete)
+1689908,1,2009-10-01,2009-10-01,9,6,Request partial block,Partial Block (incomplete)
+5709219,1,2009-10-01,2009-10-01,9,6,Request partial block,Partial Block (incomplete)
+5164325,1,2009-09-29,2009-09-29,9,6,Request partial block,Partial Block (incomplete)
+5355263,1,2009-09-29,2009-09-29,9,6,Request partial block,Partial Block (incomplete)
+9393666,1,2009-09-28,2009-09-28,9,6,Request partial block,Partial Block (incomplete)
+9446628,1,2009-09-27,2009-09-27,9,6,Request partial block,Partial Block (incomplete)
+8582643,1,2009-09-24,2009-09-24,9,6,Request partial block,Partial Block (incomplete)
+9442290,1,2009-09-24,2009-09-24,9,6,Request partial block,Partial Block (incomplete)
+910143,1,2009-09-21,2009-09-21,9,6,Request partial block,Partial Block (incomplete)
+9414096,1,2009-09-21,2009-09-21,9,6,Request partial block,Partial Block (incomplete)
+4307903,1,2009-09-20,2009-09-20,9,6,Request partial block,Partial Block (incomplete)
+464507,3,2009-03-06,2009-09-20,9,6,Request partial block,Partial Block (incomplete)
+2229692,2,2009-09-14,2009-09-17,9,6,Request partial block,Partial Block (incomplete)
+7079265,1,2009-09-16,2009-09-16,9,6,Request partial block,Partial Block (incomplete)
+668204,1,2009-09-11,2009-09-11,9,6,Request partial block,Partial Block (incomplete)
+7190095,2,2009-09-09,2009-09-11,9,6,Request partial block,Partial Block (incomplete)
+4029771,1,2009-09-10,2009-09-10,9,6,Request partial block,Partial Block (incomplete)
+4738703,1,2009-09-10,2009-09-10,9,6,Request partial block,Partial Block (incomplete)
+2288380,1,2009-09-07,2009-09-07,9,6,Request partial block,Partial Block (incomplete)
+4600997,2,2009-08-28,2009-09-04,9,6,Request partial block,Partial Block (incomplete)
+8577660,1,2009-09-02,2009-09-02,9,6,Request partial block,Partial Block (incomplete)
+627907,2,2009-09-01,2009-09-02,9,6,Request partial block,Partial Block (incomplete)
+8824256,2,2009-09-01,2009-09-02,9,6,Request partial block,Partial Block (incomplete)
+4086589,1,2009-09-01,2009-09-01,9,6,Request partial block,Partial Block (incomplete)
+5457785,1,2009-08-31,2009-08-31,9,6,Request partial block,Partial Block (incomplete)
+7260144,1,2009-08-27,2009-08-27,9,6,Request partial block,Partial Block (incomplete)
+8744503,1,2009-08-20,2009-08-20,9,6,Request partial block,Partial Block (incomplete)
+3153898,1,2009-08-13,2009-08-13,9,6,Request partial block,Partial Block (incomplete)
+3220319,1,2009-08-13,2009-08-13,9,6,Request partial block,Partial Block (incomplete)
+7598795,1,2009-08-13,2009-08-13,9,6,Request partial block,Partial Block (incomplete)
+6720318,1,2009-08-12,2009-08-12,9,6,Request partial block,Partial Block (incomplete)
+6797147,1,2009-08-09,2009-08-09,9,6,Request partial block,Partial Block (incomplete)
+2354456,1,2009-08-04,2009-08-04,9,6,Request partial block,Partial Block (incomplete)
+9029366,1,2009-08-03,2009-08-03,9,6,Request partial block,Partial Block (incomplete)
+4921552,1,2009-07-29,2009-07-29,9,6,Request partial block,Partial Block (incomplete)
+731018,1,2009-06-26,2009-06-26,9,6,Request partial block,Partial Block (incomplete)
+6198425,1,2009-06-19,2009-06-19,9,6,Request partial block,Partial Block (incomplete)
+7044145,1,2009-06-08,2009-06-08,9,6,Request partial block,Partial Block (incomplete)
+8749288,1,2009-06-04,2009-06-04,9,6,Request partial block,Partial Block (incomplete)
+6116403,2,2009-05-04,2009-05-11,9,6,Request partial block,Partial Block (incomplete)
+1852623,1,2009-04-20,2009-04-20,9,6,Request partial block,Partial Block (incomplete)
+8022974,1,2009-04-17,2009-04-17,9,6,Request partial block,Partial Block (incomplete)
+8276165,1,2009-03-30,2009-03-30,9,6,Request partial block,Partial Block (incomplete)
+1267246,1,2009-03-23,2009-03-23,9,6,Request partial block,Partial Block (incomplete)
+5746142,1,2009-03-18,2009-03-18,9,6,Request partial block,Partial Block (incomplete)
+7744142,1,2009-03-11,2009-03-11,9,6,Request partial block,Partial Block (incomplete)
+8012174,1,2009-03-04,2009-03-04,9,6,Request partial block,Partial Block (incomplete)
+8056321,1,2009-02-27,2009-02-27,9,6,Request partial block,Partial Block (incomplete)
+8000341,1,2009-02-25,2009-02-25,9,6,Request partial block,Partial Block (incomplete)
+5419513,1,2009-02-18,2009-02-18,9,6,Request partial block,Partial Block (incomplete)
+984545,1,2009-02-17,2009-02-17,9,6,Request partial block,Partial Block (incomplete)
+2229447,1,2009-02-17,2009-02-17,9,6,Request partial block,Partial Block (incomplete)
+7196221,1,2009-02-06,2009-02-06,9,6,Request partial block,Partial Block (incomplete)
+6796228,1,2009-01-26,2009-01-26,9,6,Request partial block,Partial Block (incomplete)
+1202145,1,2009-01-20,2009-01-20,9,6,Request partial block,Partial Block (incomplete)
+4609592,1,2009-01-19,2009-01-19,9,6,Request partial block,Partial Block (incomplete)
+2388325,1,2009-01-13,2009-01-13,9,6,Request partial block,Partial Block (incomplete)
+2512616,1,2009-01-13,2009-01-13,9,6,Request partial block,Partial Block (incomplete)
+5410988,1,2009-01-08,2009-01-08,9,6,Request partial block,Partial Block (incomplete)
+6727436,1,2009-01-05,2009-01-05,9,6,Request partial block,Partial Block (incomplete)
+1825523,1,2008-12-31,2008-12-31,9,6,Request partial block,Partial Block (incomplete)
+535025,1,2008-12-19,2008-12-19,9,6,Request partial block,Partial Block (incomplete)
+4901809,1,2008-12-01,2008-12-01,9,6,Request partial block,Partial Block (incomplete)
+6485628,1,2008-11-20,2008-11-20,9,6,Request partial block,Partial Block (incomplete)
+5740712,2,2009-02-27,2009-03-11,2,6,acc close/open from RG,Partial Block (incomplete)
+4597571,1,2009-09-30,2009-09-30,11,5,high deposit,VIP Deposit Change
+6055498,1,2009-09-16,2009-09-16,11,5,high deposit,VIP Deposit Change
+1922517,2,2009-06-25,2009-10-23,6,4,Heavy Complainer,Block (pending invest)
+7912483,1,2009-09-28,2009-09-28,6,4,Heavy Complainer,Block (pending invest)
+8156850,1,2009-09-24,2009-09-24,6,4,Heavy Complainer,Block (pending invest)
+8145391,1,2009-09-21,2009-09-21,6,4,Heavy Complainer,Block (pending invest)
+4258756,1,2009-06-24,2009-06-24,6,4,Heavy Complainer,Block (pending invest)
+1411743,3,2009-08-13,2009-11-19,3,3,Cancelled outpayment,Consumer request not technically possible
+3852889,2,2009-08-06,2009-08-17,3,3,Cancelled outpayment,Consumer request not technically possible
+9142202,1,2009-08-11,2009-08-11,3,3,Cancelled outpayment,Consumer request not technically possible
+2267078,1,2009-07-13,2009-07-13,3,3,Cancelled outpayment,Consumer request not technically possible
+1205205,1,2009-06-08,2009-06-08,3,3,Cancelled outpayment,Consumer request not technically possible
+4267114,1,2009-03-31,2009-03-31,3,3,Cancelled outpayment,Consumer request not technically possible
+5660719,1,2009-03-31,2009-03-31,3,3,Cancelled outpayment,Consumer request not technically possible
+934074,1,2009-02-10,2009-02-10,3,3,Cancelled outpayment,Consumer request not technically possible
+4251068,1,2009-02-10,2009-02-10,3,3,Cancelled outpayment,Consumer request not technically possible
+5308271,1,2009-01-07,2009-01-07,3,3,Cancelled outpayment,Consumer request not technically possible
+1329184,1,2008-12-31,2008-12-31,3,3,Cancelled outpayment,Consumer request not technically possible
+5678031,1,2008-12-11,2008-12-11,3,3,Cancelled outpayment,Consumer request not technically possible
+6793650,1,2008-11-02,2008-11-02,3,3,Cancelled outpayment,Consumer request not technically possible
+4793332,1,2009-11-12,2009-11-12,9,2,Request partial block,Reopen
+2262246,1,2009-08-04,2009-08-04,9,2,Request partial block,Reopen
+4301894,1,2009-06-04,2009-06-04,9,2,Request partial block,Reopen
+3916577,1,2008-12-29,2008-12-29,9,2,Request partial block,Reopen
+2970714,1,2009-02-13,2009-02-13,4,2,Manually Lowered Limit,Reopen
+5807457,3,2009-05-05,2009-11-29,2,2,acc close/open from RG,Reopen
+403944,5,2009-04-10,2009-11-29,2,2,acc close/open from RG,Reopen
+2791284,1,2009-11-27,2009-11-27,2,2,acc close/open from RG,Reopen
+5591502,1,2009-11-27,2009-11-27,2,2,acc close/open from RG,Reopen
+420681,1,2009-11-26,2009-11-26,2,2,acc close/open from RG,Reopen
+441202,1,2009-11-26,2009-11-26,2,2,acc close/open from RG,Reopen
+8605256,1,2009-11-26,2009-11-26,2,2,acc close/open from RG,Reopen
+1567292,1,2009-11-22,2009-11-22,2,2,acc close/open from RG,Reopen
+3472036,4,2009-08-27,2009-11-22,2,2,acc close/open from RG,Reopen
+5217668,1,2009-11-19,2009-11-19,2,2,acc close/open from RG,Reopen
+3898314,1,2009-11-18,2009-11-18,2,2,acc close/open from RG,Reopen
+4803731,3,2009-03-20,2009-11-18,2,2,acc close/open from RG,Reopen
+3222999,2,2009-11-17,2009-11-17,2,2,acc close/open from RG,Reopen
+3443815,2,2009-04-10,2009-11-17,2,2,acc close/open from RG,Reopen
+1715092,3,2009-02-23,2009-11-17,2,2,acc close/open from RG,Reopen
+1815916,1,2009-11-16,2009-11-16,2,2,acc close/open from RG,Reopen
+3125143,1,2009-11-16,2009-11-16,2,2,acc close/open from RG,Reopen
+2909924,1,2009-11-13,2009-11-13,2,2,acc close/open from RG,Reopen
+3145000,1,2009-11-13,2009-11-13,2,2,acc close/open from RG,Reopen
+5428519,1,2009-11-12,2009-11-12,2,2,acc close/open from RG,Reopen
+4599005,1,2009-11-11,2009-11-11,2,2,acc close/open from RG,Reopen
+1365118,1,2009-11-09,2009-11-09,2,2,acc close/open from RG,Reopen
+2145324,4,2009-04-09,2009-11-08,2,2,acc close/open from RG,Reopen
+2421731,2,2008-11-12,2009-11-08,2,2,acc close/open from RG,Reopen
+3512289,1,2009-11-05,2009-11-05,2,2,acc close/open from RG,Reopen
+3858441,1,2009-11-05,2009-11-05,2,2,acc close/open from RG,Reopen
+4326454,1,2009-11-05,2009-11-05,2,2,acc close/open from RG,Reopen
+4324456,1,2009-11-03,2009-11-03,2,2,acc close/open from RG,Reopen
+5392477,3,2009-10-29,2009-11-01,2,2,acc close/open from RG,Reopen
+3762986,1,2009-10-29,2009-10-29,2,2,acc close/open from RG,Reopen
+5135681,1,2009-10-29,2009-10-29,2,2,acc close/open from RG,Reopen
+3007415,2,2009-10-28,2009-10-28,2,2,acc close/open from RG,Reopen
+809647,1,2009-10-28,2009-10-28,2,2,acc close/open from RG,Reopen
+1121292,2,2009-10-27,2009-10-27,2,2,acc close/open from RG,Reopen
+3158347,1,2009-10-27,2009-10-27,2,2,acc close/open from RG,Reopen
+2229823,1,2009-10-25,2009-10-25,2,2,acc close/open from RG,Reopen
+3455439,1,2009-10-22,2009-10-22,2,2,acc close/open from RG,Reopen
+5659562,1,2009-10-22,2009-10-22,2,2,acc close/open from RG,Reopen
+1494069,3,2009-03-03,2009-10-22,2,2,acc close/open from RG,Reopen
+4031908,2,2009-10-21,2009-10-21,2,2,acc close/open from RG,Reopen
+5550432,2,2009-10-21,2009-10-21,2,2,acc close/open from RG,Reopen
+4391886,1,2009-10-21,2009-10-21,2,2,acc close/open from RG,Reopen
+7340853,1,2009-10-21,2009-10-21,2,2,acc close/open from RG,Reopen
+644434,2,2009-10-20,2009-10-20,2,2,acc close/open from RG,Reopen
+2873157,2,2009-10-20,2009-10-20,2,2,acc close/open from RG,Reopen
+1447394,2,2009-09-10,2009-10-20,2,2,acc close/open from RG,Reopen
+1128557,2,2009-10-19,2009-10-19,2,2,acc close/open from RG,Reopen
+3920385,2,2009-10-19,2009-10-19,2,2,acc close/open from RG,Reopen
+1531097,1,2009-10-19,2009-10-19,2,2,acc close/open from RG,Reopen
+5327108,1,2009-10-19,2009-10-19,2,2,acc close/open from RG,Reopen
+2983951,3,2009-04-10,2009-10-19,2,2,acc close/open from RG,Reopen
+3001494,1,2009-10-16,2009-10-16,2,2,acc close/open from RG,Reopen
+562883,2,2009-10-15,2009-10-15,2,2,acc close/open from RG,Reopen
+3389381,1,2009-10-14,2009-10-14,2,2,acc close/open from RG,Reopen
+4210605,1,2009-10-14,2009-10-14,2,2,acc close/open from RG,Reopen
+2658193,2,2009-10-13,2009-10-13,2,2,acc close/open from RG,Reopen
+1325647,1,2009-10-13,2009-10-13,2,2,acc close/open from RG,Reopen
+4564194,1,2009-10-13,2009-10-13,2,2,acc close/open from RG,Reopen
+1390642,1,2009-10-12,2009-10-12,2,2,acc close/open from RG,Reopen
+3687392,1,2009-10-12,2009-10-12,2,2,acc close/open from RG,Reopen
+4326263,2,2009-06-22,2009-10-12,2,2,acc close/open from RG,Reopen
+1119951,2,2009-10-11,2009-10-11,2,2,acc close/open from RG,Reopen
+6801388,1,2009-10-11,2009-10-11,2,2,acc close/open from RG,Reopen
+1418087,1,2009-10-08,2009-10-08,2,2,acc close/open from RG,Reopen
+8737010,1,2009-10-08,2009-10-08,2,2,acc close/open from RG,Reopen
+1367719,1,2009-10-07,2009-10-07,2,2,acc close/open from RG,Reopen
+4124215,1,2009-10-07,2009-10-07,2,2,acc close/open from RG,Reopen
+5377519,1,2009-10-06,2009-10-06,2,2,acc close/open from RG,Reopen
+1320903,2,2009-10-05,2009-10-05,2,2,acc close/open from RG,Reopen
+1869318,1,2009-10-05,2009-10-05,2,2,acc close/open from RG,Reopen
+2799291,1,2009-10-05,2009-10-05,2,2,acc close/open from RG,Reopen
+2504528,1,2009-10-04,2009-10-04,2,2,acc close/open from RG,Reopen
+623222,2,2009-10-01,2009-10-01,2,2,acc close/open from RG,Reopen
+4813899,2,2009-10-01,2009-10-01,2,2,acc close/open from RG,Reopen
+2109844,1,2009-10-01,2009-10-01,2,2,acc close/open from RG,Reopen
+4136902,1,2009-10-01,2009-10-01,2,2,acc close/open from RG,Reopen
+4659410,2,2009-09-30,2009-09-30,2,2,acc close/open from RG,Reopen
+6296284,1,2009-09-30,2009-09-30,2,2,acc close/open from RG,Reopen
+119406,1,2009-09-29,2009-09-29,2,2,acc close/open from RG,Reopen
+3744808,1,2009-09-29,2009-09-29,2,2,acc close/open from RG,Reopen
+2336892,1,2009-09-27,2009-09-27,2,2,acc close/open from RG,Reopen
+1052452,1,2009-09-24,2009-09-24,2,2,acc close/open from RG,Reopen
+2340708,1,2009-09-24,2009-09-24,2,2,acc close/open from RG,Reopen
+3585210,1,2009-09-24,2009-09-24,2,2,acc close/open from RG,Reopen
+5469148,3,2009-09-23,2009-09-24,2,2,acc close/open from RG,Reopen
+6026635,2,2009-09-23,2009-09-23,2,2,acc close/open from RG,Reopen
+1289020,2,2009-09-22,2009-09-22,2,2,acc close/open from RG,Reopen
+4043584,1,2009-09-22,2009-09-22,2,2,acc close/open from RG,Reopen
+4778231,1,2009-09-22,2009-09-22,2,2,acc close/open from RG,Reopen
+3618875,2,2009-08-26,2009-09-22,2,2,acc close/open from RG,Reopen
+6901733,2,2009-09-21,2009-09-21,2,2,acc close/open from RG,Reopen
+4023500,1,2009-09-21,2009-09-21,2,2,acc close/open from RG,Reopen
+2437022,1,2009-09-18,2009-09-18,2,2,acc close/open from RG,Reopen
+1019680,2,2009-09-16,2009-09-16,2,2,acc close/open from RG,Reopen
+2842825,1,2009-09-16,2009-09-16,2,2,acc close/open from RG,Reopen
+3286859,2,2009-09-15,2009-09-15,2,2,acc close/open from RG,Reopen
+4214808,3,2009-09-11,2009-09-15,2,2,acc close/open from RG,Reopen
+3762415,2,2009-05-22,2009-09-14,2,2,acc close/open from RG,Reopen
+951260,1,2009-09-11,2009-09-11,2,2,acc close/open from RG,Reopen
+1545811,1,2009-09-11,2009-09-11,2,2,acc close/open from RG,Reopen
+1307421,2,2009-02-03,2009-09-11,2,2,acc close/open from RG,Reopen
+2976931,1,2009-09-10,2009-09-10,2,2,acc close/open from RG,Reopen
+4304688,1,2009-09-10,2009-09-10,2,2,acc close/open from RG,Reopen
+1323207,1,2009-09-09,2009-09-09,2,2,acc close/open from RG,Reopen
+3204628,1,2009-09-09,2009-09-09,2,2,acc close/open from RG,Reopen
+3243610,1,2009-09-09,2009-09-09,2,2,acc close/open from RG,Reopen
+4526190,1,2009-09-09,2009-09-09,2,2,acc close/open from RG,Reopen
+6677158,1,2009-09-09,2009-09-09,2,2,acc close/open from RG,Reopen
+7207688,1,2009-09-09,2009-09-09,2,2,acc close/open from RG,Reopen
+1539371,1,2009-09-08,2009-09-08,2,2,acc close/open from RG,Reopen
+2032749,1,2009-09-08,2009-09-08,2,2,acc close/open from RG,Reopen
+2657008,1,2009-09-08,2009-09-08,2,2,acc close/open from RG,Reopen
+576509,3,2009-03-02,2009-09-08,2,2,acc close/open from RG,Reopen
+5470090,2,2009-09-07,2009-09-07,2,2,acc close/open from RG,Reopen
+2444971,1,2009-09-07,2009-09-07,2,2,acc close/open from RG,Reopen
+4432630,1,2009-09-07,2009-09-07,2,2,acc close/open from RG,Reopen
+1186045,1,2009-09-04,2009-09-04,2,2,acc close/open from RG,Reopen
+2652607,1,2009-09-04,2009-09-04,2,2,acc close/open from RG,Reopen
+3912148,1,2009-09-04,2009-09-04,2,2,acc close/open from RG,Reopen
+1388917,2,2009-09-02,2009-09-04,2,2,acc close/open from RG,Reopen
+3127806,1,2009-09-03,2009-09-03,2,2,acc close/open from RG,Reopen
+2015746,2,2009-09-02,2009-09-02,2,2,acc close/open from RG,Reopen
+1298980,1,2009-09-02,2009-09-02,2,2,acc close/open from RG,Reopen
+4157690,1,2009-09-02,2009-09-02,2,2,acc close/open from RG,Reopen
+1594233,1,2009-08-31,2009-08-31,2,2,acc close/open from RG,Reopen
+5212669,5,2009-03-11,2009-08-31,2,2,acc close/open from RG,Reopen
+1776268,1,2009-08-28,2009-08-28,2,2,acc close/open from RG,Reopen
+2514092,1,2009-08-28,2009-08-28,2,2,acc close/open from RG,Reopen
+1217527,1,2009-08-27,2009-08-27,2,2,acc close/open from RG,Reopen
+3302342,1,2009-08-27,2009-08-27,2,2,acc close/open from RG,Reopen
+2215644,3,2009-02-02,2009-08-27,2,2,acc close/open from RG,Reopen
+4504778,1,2009-08-26,2009-08-26,2,2,acc close/open from RG,Reopen
+5474804,1,2009-08-25,2009-08-25,2,2,acc close/open from RG,Reopen
+1211034,2,2009-01-28,2009-08-25,2,2,acc close/open from RG,Reopen
+4342173,2,2009-08-24,2009-08-24,2,2,acc close/open from RG,Reopen
+1752640,1,2009-08-24,2009-08-24,2,2,acc close/open from RG,Reopen
+1609008,2,2009-08-20,2009-08-20,2,2,acc close/open from RG,Reopen
+2846231,1,2009-08-20,2009-08-20,2,2,acc close/open from RG,Reopen
+1423249,1,2009-08-18,2009-08-18,2,2,acc close/open from RG,Reopen
+5175043,1,2009-08-18,2009-08-18,2,2,acc close/open from RG,Reopen
+1928220,2,2009-02-03,2009-08-18,2,2,acc close/open from RG,Reopen
+4812422,1,2009-08-13,2009-08-13,2,2,acc close/open from RG,Reopen
+1817630,2,2009-08-11,2009-08-11,2,2,acc close/open from RG,Reopen
+7466884,1,2009-08-11,2009-08-11,2,2,acc close/open from RG,Reopen
+793809,2,2009-08-10,2009-08-10,2,2,acc close/open from RG,Reopen
+693201,1,2009-08-10,2009-08-10,2,2,acc close/open from RG,Reopen
+1677908,1,2009-08-10,2009-08-10,2,2,acc close/open from RG,Reopen
+3604982,3,2009-04-05,2009-08-10,2,2,acc close/open from RG,Reopen
+6772264,1,2009-08-06,2009-08-06,2,2,acc close/open from RG,Reopen
+1285995,1,2009-08-04,2009-08-04,2,2,acc close/open from RG,Reopen
+6614616,1,2009-08-02,2009-08-02,2,2,acc close/open from RG,Reopen
+1842142,1,2009-07-29,2009-07-29,2,2,acc close/open from RG,Reopen
+1929576,1,2009-07-28,2009-07-28,2,2,acc close/open from RG,Reopen
+2517866,2,2009-07-21,2009-07-21,2,2,acc close/open from RG,Reopen
+4808150,1,2009-07-21,2009-07-21,2,2,acc close/open from RG,Reopen
+1217347,2,2009-07-20,2009-07-20,2,2,acc close/open from RG,Reopen
+894982,3,2008-11-18,2009-07-19,2,2,acc close/open from RG,Reopen
+893855,1,2009-07-17,2009-07-17,2,2,acc close/open from RG,Reopen
+5179708,2,2009-07-15,2009-07-15,2,2,acc close/open from RG,Reopen
+1397690,1,2009-07-15,2009-07-15,2,2,acc close/open from RG,Reopen
+2838112,1,2009-07-15,2009-07-15,2,2,acc close/open from RG,Reopen
+3675396,1,2009-07-15,2009-07-15,2,2,acc close/open from RG,Reopen
+7168329,1,2009-07-14,2009-07-14,2,2,acc close/open from RG,Reopen
+3859961,1,2009-07-10,2009-07-10,2,2,acc close/open from RG,Reopen
+716725,1,2009-07-08,2009-07-08,2,2,acc close/open from RG,Reopen
+638301,1,2009-07-07,2009-07-07,2,2,acc close/open from RG,Reopen
+2114144,1,2009-07-07,2009-07-07,2,2,acc close/open from RG,Reopen
+5841593,1,2009-07-07,2009-07-07,2,2,acc close/open from RG,Reopen
+1015042,2,2008-11-20,2009-07-07,2,2,acc close/open from RG,Reopen
+1548547,1,2009-07-06,2009-07-06,2,2,acc close/open from RG,Reopen
+1626239,1,2009-07-06,2009-07-06,2,2,acc close/open from RG,Reopen
+6537180,1,2009-07-06,2009-07-06,2,2,acc close/open from RG,Reopen
+2510850,5,2009-06-06,2009-07-06,2,2,acc close/open from RG,Reopen
+1495100,1,2009-07-03,2009-07-03,2,2,acc close/open from RG,Reopen
+2518485,1,2009-06-30,2009-06-30,2,2,acc close/open from RG,Reopen
+4235877,1,2009-06-29,2009-06-29,2,2,acc close/open from RG,Reopen
+4556197,1,2009-06-29,2009-06-29,2,2,acc close/open from RG,Reopen
+1368497,1,2009-06-28,2009-06-28,2,2,acc close/open from RG,Reopen
+3047650,1,2009-06-28,2009-06-28,2,2,acc close/open from RG,Reopen
+8175063,2,2009-06-25,2009-06-26,2,2,acc close/open from RG,Reopen
+377204,1,2009-06-25,2009-06-25,2,2,acc close/open from RG,Reopen
+962369,1,2009-06-24,2009-06-24,2,2,acc close/open from RG,Reopen
+2781022,1,2009-06-24,2009-06-24,2,2,acc close/open from RG,Reopen
+3648924,2,2009-06-22,2009-06-24,2,2,acc close/open from RG,Reopen
+4165995,1,2009-06-23,2009-06-23,2,2,acc close/open from RG,Reopen
+4437506,1,2009-06-22,2009-06-22,2,2,acc close/open from RG,Reopen
+4972981,2,2009-06-15,2009-06-21,2,2,acc close/open from RG,Reopen
+221079,1,2009-06-19,2009-06-19,2,2,acc close/open from RG,Reopen
+2463390,1,2009-06-19,2009-06-19,2,2,acc close/open from RG,Reopen
+3189501,2,2009-06-18,2009-06-18,2,2,acc close/open from RG,Reopen
+3007767,1,2009-06-18,2009-06-18,2,2,acc close/open from RG,Reopen
+3837155,1,2009-06-17,2009-06-17,2,2,acc close/open from RG,Reopen
+4986792,1,2009-06-16,2009-06-16,2,2,acc close/open from RG,Reopen
+2615726,1,2009-06-15,2009-06-15,2,2,acc close/open from RG,Reopen
+4909878,1,2009-06-15,2009-06-15,2,2,acc close/open from RG,Reopen
+1481182,1,2009-06-14,2009-06-14,2,2,acc close/open from RG,Reopen
+1862422,1,2009-06-12,2009-06-12,2,2,acc close/open from RG,Reopen
+2724141,1,2009-06-12,2009-06-12,2,2,acc close/open from RG,Reopen
+1669496,1,2009-06-10,2009-06-10,2,2,acc close/open from RG,Reopen
+3517409,1,2009-06-09,2009-06-09,2,2,acc close/open from RG,Reopen
+3707323,1,2009-06-09,2009-06-09,2,2,acc close/open from RG,Reopen
+2025088,2,2009-06-08,2009-06-08,2,2,acc close/open from RG,Reopen
+3496350,2,2009-06-08,2009-06-08,2,2,acc close/open from RG,Reopen
+405981,1,2009-06-08,2009-06-08,2,2,acc close/open from RG,Reopen
+1342688,1,2009-06-08,2009-06-08,2,2,acc close/open from RG,Reopen
+2804574,1,2009-06-08,2009-06-08,2,2,acc close/open from RG,Reopen
+5084881,1,2009-06-08,2009-06-08,2,2,acc close/open from RG,Reopen
+4504325,1,2009-06-06,2009-06-06,2,2,acc close/open from RG,Reopen
+4588003,1,2009-06-06,2009-06-06,2,2,acc close/open from RG,Reopen
+4608680,1,2009-06-06,2009-06-06,2,2,acc close/open from RG,Reopen
+4780579,1,2009-06-03,2009-06-03,2,2,acc close/open from RG,Reopen
+275466,3,2009-05-13,2009-06-02,2,2,acc close/open from RG,Reopen
+4252031,3,2009-03-09,2009-06-02,2,2,acc close/open from RG,Reopen
+2460804,1,2009-05-29,2009-05-29,2,2,acc close/open from RG,Reopen
+1220034,2,2009-05-26,2009-05-28,2,2,acc close/open from RG,Reopen
+999018,1,2009-05-27,2009-05-27,2,2,acc close/open from RG,Reopen
+6122343,1,2009-05-27,2009-05-27,2,2,acc close/open from RG,Reopen
+2811791,2,2009-05-26,2009-05-26,2,2,acc close/open from RG,Reopen
+7062960,1,2009-05-26,2009-05-26,2,2,acc close/open from RG,Reopen
+3479874,1,2009-05-25,2009-05-25,2,2,acc close/open from RG,Reopen
+3522326,1,2009-05-25,2009-05-25,2,2,acc close/open from RG,Reopen
+5294697,1,2009-05-25,2009-05-25,2,2,acc close/open from RG,Reopen
+5469767,1,2009-05-25,2009-05-25,2,2,acc close/open from RG,Reopen
+2389448,3,2009-03-23,2009-05-25,2,2,acc close/open from RG,Reopen
+5617435,1,2009-05-22,2009-05-22,2,2,acc close/open from RG,Reopen
+662035,1,2009-05-19,2009-05-19,2,2,acc close/open from RG,Reopen
+4901925,1,2009-05-19,2009-05-19,2,2,acc close/open from RG,Reopen
+2631482,1,2009-05-18,2009-05-18,2,2,acc close/open from RG,Reopen
+1504337,1,2009-05-17,2009-05-17,2,2,acc close/open from RG,Reopen
+1521035,1,2009-05-17,2009-05-17,2,2,acc close/open from RG,Reopen
+6083523,1,2009-05-17,2009-05-17,2,2,acc close/open from RG,Reopen
+1191525,1,2009-05-15,2009-05-15,2,2,acc close/open from RG,Reopen
+1824860,1,2009-05-15,2009-05-15,2,2,acc close/open from RG,Reopen
+1179202,1,2009-05-14,2009-05-14,2,2,acc close/open from RG,Reopen
+2764251,1,2009-05-14,2009-05-14,2,2,acc close/open from RG,Reopen
+3105888,1,2009-05-14,2009-05-14,2,2,acc close/open from RG,Reopen
+4916704,1,2009-05-14,2009-05-14,2,2,acc close/open from RG,Reopen
+4685809,1,2009-05-13,2009-05-13,2,2,acc close/open from RG,Reopen
+6388195,1,2009-05-13,2009-05-13,2,2,acc close/open from RG,Reopen
+715823,1,2009-05-12,2009-05-12,2,2,acc close/open from RG,Reopen
+1431358,1,2009-05-12,2009-05-12,2,2,acc close/open from RG,Reopen
+676437,1,2009-05-11,2009-05-11,2,2,acc close/open from RG,Reopen
+1086610,1,2009-05-11,2009-05-11,2,2,acc close/open from RG,Reopen
+2963327,3,2009-04-01,2009-05-07,2,2,acc close/open from RG,Reopen
+2180684,1,2009-05-06,2009-05-06,2,2,acc close/open from RG,Reopen
+1177014,1,2009-05-05,2009-05-05,2,2,acc close/open from RG,Reopen
+3621498,1,2009-05-05,2009-05-05,2,2,acc close/open from RG,Reopen
+1068512,2,2009-04-28,2009-05-05,2,2,acc close/open from RG,Reopen
+1218000,1,2009-05-04,2009-05-04,2,2,acc close/open from RG,Reopen
+4667915,1,2009-05-04,2009-05-04,2,2,acc close/open from RG,Reopen
+860767,1,2009-04-30,2009-04-30,2,2,acc close/open from RG,Reopen
+4070702,1,2009-04-30,2009-04-30,2,2,acc close/open from RG,Reopen
+2700081,2,2009-04-28,2009-04-30,2,2,acc close/open from RG,Reopen
+1376313,2,2009-04-27,2009-04-30,2,2,acc close/open from RG,Reopen
+1069718,1,2009-04-29,2009-04-29,2,2,acc close/open from RG,Reopen
+2578415,1,2009-04-29,2009-04-29,2,2,acc close/open from RG,Reopen
+5218179,1,2009-04-29,2009-04-29,2,2,acc close/open from RG,Reopen
+5806905,2,2009-02-10,2009-04-29,2,2,acc close/open from RG,Reopen
+1124617,1,2009-04-27,2009-04-27,2,2,acc close/open from RG,Reopen
+1516266,1,2009-04-27,2009-04-27,2,2,acc close/open from RG,Reopen
+3759236,1,2009-04-27,2009-04-27,2,2,acc close/open from RG,Reopen
+2686509,1,2009-04-23,2009-04-23,2,2,acc close/open from RG,Reopen
+1298752,1,2009-04-22,2009-04-22,2,2,acc close/open from RG,Reopen
+3418331,1,2009-04-22,2009-04-22,2,2,acc close/open from RG,Reopen
+3556967,1,2009-04-22,2009-04-22,2,2,acc close/open from RG,Reopen
+963330,1,2009-04-21,2009-04-21,2,2,acc close/open from RG,Reopen
+1145088,1,2009-04-20,2009-04-20,2,2,acc close/open from RG,Reopen
+891132,1,2009-04-17,2009-04-17,2,2,acc close/open from RG,Reopen
+1411882,1,2009-04-17,2009-04-17,2,2,acc close/open from RG,Reopen
+1730948,1,2009-04-17,2009-04-17,2,2,acc close/open from RG,Reopen
+1837597,1,2009-04-17,2009-04-17,2,2,acc close/open from RG,Reopen
+2267199,1,2009-04-17,2009-04-17,2,2,acc close/open from RG,Reopen
+2454635,1,2009-04-17,2009-04-17,2,2,acc close/open from RG,Reopen
+3141820,1,2009-04-17,2009-04-17,2,2,acc close/open from RG,Reopen
+4487329,1,2009-04-17,2009-04-17,2,2,acc close/open from RG,Reopen
+4255332,1,2009-04-16,2009-04-16,2,2,acc close/open from RG,Reopen
+4785430,1,2009-04-16,2009-04-16,2,2,acc close/open from RG,Reopen
+876092,1,2009-04-14,2009-04-14,2,2,acc close/open from RG,Reopen
+1511327,1,2009-04-14,2009-04-14,2,2,acc close/open from RG,Reopen
+1649239,1,2009-04-14,2009-04-14,2,2,acc close/open from RG,Reopen
+2346130,1,2009-04-14,2009-04-14,2,2,acc close/open from RG,Reopen
+3485383,1,2009-04-14,2009-04-14,2,2,acc close/open from RG,Reopen
+1615173,1,2009-04-10,2009-04-10,2,2,acc close/open from RG,Reopen
+5410743,1,2009-04-10,2009-04-10,2,2,acc close/open from RG,Reopen
+1884126,1,2009-04-09,2009-04-09,2,2,acc close/open from RG,Reopen
+3551338,2,2009-04-06,2009-04-06,2,2,acc close/open from RG,Reopen
+1846776,2,2009-04-05,2009-04-05,2,2,acc close/open from RG,Reopen
+660104,1,2009-04-05,2009-04-05,2,2,acc close/open from RG,Reopen
+960009,1,2009-04-05,2009-04-05,2,2,acc close/open from RG,Reopen
+3501612,1,2009-04-02,2009-04-02,2,2,acc close/open from RG,Reopen
+5673729,1,2009-04-02,2009-04-02,2,2,acc close/open from RG,Reopen
+5417704,1,2009-04-01,2009-04-01,2,2,acc close/open from RG,Reopen
+5957978,1,2009-04-01,2009-04-01,2,2,acc close/open from RG,Reopen
+2230789,1,2009-03-30,2009-03-30,2,2,acc close/open from RG,Reopen
+2742218,1,2009-03-30,2009-03-30,2,2,acc close/open from RG,Reopen
+4046258,1,2009-03-30,2009-03-30,2,2,acc close/open from RG,Reopen
+4894302,1,2009-03-30,2009-03-30,2,2,acc close/open from RG,Reopen
+1286507,1,2009-03-27,2009-03-27,2,2,acc close/open from RG,Reopen
+2652627,1,2009-03-27,2009-03-27,2,2,acc close/open from RG,Reopen
+3154500,1,2009-03-27,2009-03-27,2,2,acc close/open from RG,Reopen
+165335,1,2009-03-26,2009-03-26,2,2,acc close/open from RG,Reopen
+908460,1,2009-03-25,2009-03-25,2,2,acc close/open from RG,Reopen
+1305661,1,2009-03-25,2009-03-25,2,2,acc close/open from RG,Reopen
+2061805,1,2009-03-25,2009-03-25,2,2,acc close/open from RG,Reopen
+2613991,1,2009-03-25,2009-03-25,2,2,acc close/open from RG,Reopen
+1393636,1,2009-03-23,2009-03-23,2,2,acc close/open from RG,Reopen
+607958,1,2009-03-20,2009-03-20,2,2,acc close/open from RG,Reopen
+1180532,1,2009-03-20,2009-03-20,2,2,acc close/open from RG,Reopen
+4857484,1,2009-03-20,2009-03-20,2,2,acc close/open from RG,Reopen
+1444638,1,2009-03-19,2009-03-19,2,2,acc close/open from RG,Reopen
+1394702,1,2009-03-18,2009-03-18,2,2,acc close/open from RG,Reopen
+2441127,1,2009-03-17,2009-03-17,2,2,acc close/open from RG,Reopen
+4223135,1,2009-03-17,2009-03-17,2,2,acc close/open from RG,Reopen
+4501072,1,2009-03-17,2009-03-17,2,2,acc close/open from RG,Reopen
+2713872,1,2009-03-16,2009-03-16,2,2,acc close/open from RG,Reopen
+4921336,1,2009-03-16,2009-03-16,2,2,acc close/open from RG,Reopen
+5425402,1,2009-03-16,2009-03-16,2,2,acc close/open from RG,Reopen
+1038912,1,2009-03-13,2009-03-13,2,2,acc close/open from RG,Reopen
+1551158,1,2009-03-12,2009-03-12,2,2,acc close/open from RG,Reopen
+3797443,1,2009-03-12,2009-03-12,2,2,acc close/open from RG,Reopen
+1578866,1,2009-03-11,2009-03-11,2,2,acc close/open from RG,Reopen
+2563714,1,2009-03-11,2009-03-11,2,2,acc close/open from RG,Reopen
+4124780,1,2009-03-11,2009-03-11,2,2,acc close/open from RG,Reopen
+1273875,1,2009-03-10,2009-03-10,2,2,acc close/open from RG,Reopen
+1960205,1,2009-03-06,2009-03-06,2,2,acc close/open from RG,Reopen
+3732545,1,2009-03-06,2009-03-06,2,2,acc close/open from RG,Reopen
+5303756,1,2009-03-06,2009-03-06,2,2,acc close/open from RG,Reopen
+1383267,1,2009-03-05,2009-03-05,2,2,acc close/open from RG,Reopen
+3522511,1,2009-03-05,2009-03-05,2,2,acc close/open from RG,Reopen
+1476815,1,2009-03-04,2009-03-04,2,2,acc close/open from RG,Reopen
+1903663,1,2009-03-04,2009-03-04,2,2,acc close/open from RG,Reopen
+3205721,1,2009-03-04,2009-03-04,2,2,acc close/open from RG,Reopen
+1829131,1,2009-03-03,2009-03-03,2,2,acc close/open from RG,Reopen
+2141867,1,2009-03-02,2009-03-02,2,2,acc close/open from RG,Reopen
+4970800,1,2009-03-02,2009-03-02,2,2,acc close/open from RG,Reopen
+5226144,1,2009-03-02,2009-03-02,2,2,acc close/open from RG,Reopen
+1098879,1,2009-02-27,2009-02-27,2,2,acc close/open from RG,Reopen
+2387521,1,2009-02-27,2009-02-27,2,2,acc close/open from RG,Reopen
+4940800,1,2009-02-27,2009-02-27,2,2,acc close/open from RG,Reopen
+5206109,1,2009-02-27,2009-02-27,2,2,acc close/open from RG,Reopen
+1803500,1,2009-02-24,2009-02-24,2,2,acc close/open from RG,Reopen
+1604150,1,2009-02-23,2009-02-23,2,2,acc close/open from RG,Reopen
+5121779,1,2009-02-23,2009-02-23,2,2,acc close/open from RG,Reopen
+1265820,1,2009-02-20,2009-02-20,2,2,acc close/open from RG,Reopen
+1759742,1,2009-02-20,2009-02-20,2,2,acc close/open from RG,Reopen
+3949330,1,2009-02-20,2009-02-20,2,2,acc close/open from RG,Reopen
+6338509,1,2009-02-20,2009-02-20,2,2,acc close/open from RG,Reopen
+3941874,2,2009-02-17,2009-02-20,2,2,acc close/open from RG,Reopen
+3412869,2,2009-02-15,2009-02-20,2,2,acc close/open from RG,Reopen
+2348698,1,2009-02-19,2009-02-19,2,2,acc close/open from RG,Reopen
+3548200,1,2009-02-19,2009-02-19,2,2,acc close/open from RG,Reopen
+1222876,1,2009-02-18,2009-02-18,2,2,acc close/open from RG,Reopen
+3482060,1,2009-02-18,2009-02-18,2,2,acc close/open from RG,Reopen
+5923200,1,2009-02-18,2009-02-18,2,2,acc close/open from RG,Reopen
+1348150,1,2009-02-17,2009-02-17,2,2,acc close/open from RG,Reopen
+6104222,1,2009-02-16,2009-02-16,2,2,acc close/open from RG,Reopen
+836619,1,2009-02-13,2009-02-13,2,2,acc close/open from RG,Reopen
+1289575,1,2009-02-13,2009-02-13,2,2,acc close/open from RG,Reopen
+4754903,1,2009-02-13,2009-02-13,2,2,acc close/open from RG,Reopen
+4800972,1,2009-02-13,2009-02-13,2,2,acc close/open from RG,Reopen
+1356035,1,2009-02-12,2009-02-12,2,2,acc close/open from RG,Reopen
+2479411,1,2009-02-12,2009-02-12,2,2,acc close/open from RG,Reopen
+2515780,1,2009-02-11,2009-02-11,2,2,acc close/open from RG,Reopen
+2101393,1,2009-02-10,2009-02-10,2,2,acc close/open from RG,Reopen
+4165436,1,2009-02-10,2009-02-10,2,2,acc close/open from RG,Reopen
+5678852,1,2009-02-08,2009-02-08,2,2,acc close/open from RG,Reopen
+601929,1,2009-02-06,2009-02-06,2,2,acc close/open from RG,Reopen
+6329080,1,2009-02-05,2009-02-05,2,2,acc close/open from RG,Reopen
+1618935,1,2009-02-04,2009-02-04,2,2,acc close/open from RG,Reopen
+3513036,1,2009-02-04,2009-02-04,2,2,acc close/open from RG,Reopen
+3759377,1,2009-02-04,2009-02-04,2,2,acc close/open from RG,Reopen
+2440555,1,2009-02-03,2009-02-03,2,2,acc close/open from RG,Reopen
+4648529,1,2009-02-03,2009-02-03,2,2,acc close/open from RG,Reopen
+2088451,1,2009-02-02,2009-02-02,2,2,acc close/open from RG,Reopen
+2337250,1,2009-02-02,2009-02-02,2,2,acc close/open from RG,Reopen
+5306717,1,2009-02-02,2009-02-02,2,2,acc close/open from RG,Reopen
+518169,1,2009-01-30,2009-01-30,2,2,acc close/open from RG,Reopen
+1601397,1,2009-01-29,2009-01-29,2,2,acc close/open from RG,Reopen
+2139355,1,2009-01-29,2009-01-29,2,2,acc close/open from RG,Reopen
+845248,1,2009-01-27,2009-01-27,2,2,acc close/open from RG,Reopen
+991634,1,2009-01-27,2009-01-27,2,2,acc close/open from RG,Reopen
+2293781,1,2009-01-27,2009-01-27,2,2,acc close/open from RG,Reopen
+2387631,1,2009-01-27,2009-01-27,2,2,acc close/open from RG,Reopen
+4438598,1,2009-01-27,2009-01-27,2,2,acc close/open from RG,Reopen
+4491415,1,2009-01-27,2009-01-27,2,2,acc close/open from RG,Reopen
+2824087,1,2009-01-26,2009-01-26,2,2,acc close/open from RG,Reopen
+3097696,1,2009-01-26,2009-01-26,2,2,acc close/open from RG,Reopen
+3431103,1,2009-01-26,2009-01-26,2,2,acc close/open from RG,Reopen
+4112499,1,2009-01-26,2009-01-26,2,2,acc close/open from RG,Reopen
+5523407,1,2009-01-26,2009-01-26,2,2,acc close/open from RG,Reopen
+6197462,1,2009-01-26,2009-01-26,2,2,acc close/open from RG,Reopen
+1896830,1,2009-01-25,2009-01-25,2,2,acc close/open from RG,Reopen
+4735150,1,2009-01-23,2009-01-23,2,2,acc close/open from RG,Reopen
+910113,1,2009-01-22,2009-01-22,2,2,acc close/open from RG,Reopen
+2113806,1,2009-01-22,2009-01-22,2,2,acc close/open from RG,Reopen
+1648376,1,2009-01-21,2009-01-21,2,2,acc close/open from RG,Reopen
+4775118,1,2009-01-21,2009-01-21,2,2,acc close/open from RG,Reopen
+671821,2,2009-01-19,2009-01-19,2,2,acc close/open from RG,Reopen
+4423638,1,2009-01-19,2009-01-19,2,2,acc close/open from RG,Reopen
+5803392,2,2009-01-14,2009-01-14,2,2,acc close/open from RG,Reopen
+1330470,1,2009-01-14,2009-01-14,2,2,acc close/open from RG,Reopen
+4867936,1,2009-01-13,2009-01-13,2,2,acc close/open from RG,Reopen
+624243,1,2009-01-12,2009-01-12,2,2,acc close/open from RG,Reopen
+187808,1,2009-01-09,2009-01-09,2,2,acc close/open from RG,Reopen
+2407845,1,2009-01-09,2009-01-09,2,2,acc close/open from RG,Reopen
+3567291,1,2009-01-09,2009-01-09,2,2,acc close/open from RG,Reopen
+1123515,1,2009-01-08,2009-01-08,2,2,acc close/open from RG,Reopen
+1840769,1,2009-01-08,2009-01-08,2,2,acc close/open from RG,Reopen
+1057341,1,2009-01-07,2009-01-07,2,2,acc close/open from RG,Reopen
+1301234,1,2009-01-07,2009-01-07,2,2,acc close/open from RG,Reopen
+2044508,1,2009-01-01,2009-01-01,2,2,acc close/open from RG,Reopen
+4944708,1,2009-01-01,2009-01-01,2,2,acc close/open from RG,Reopen
+1086185,1,2008-12-31,2008-12-31,2,2,acc close/open from RG,Reopen
+1738054,1,2008-12-31,2008-12-31,2,2,acc close/open from RG,Reopen
+4978317,1,2008-12-31,2008-12-31,2,2,acc close/open from RG,Reopen
+618134,1,2008-12-30,2008-12-30,2,2,acc close/open from RG,Reopen
+3756964,1,2008-12-30,2008-12-30,2,2,acc close/open from RG,Reopen
+4318071,1,2008-12-30,2008-12-30,2,2,acc close/open from RG,Reopen
+1940754,1,2008-12-29,2008-12-29,2,2,acc close/open from RG,Reopen
+2653065,1,2008-12-29,2008-12-29,2,2,acc close/open from RG,Reopen
+5044150,1,2008-12-29,2008-12-29,2,2,acc close/open from RG,Reopen
+1325682,1,2008-12-24,2008-12-24,2,2,acc close/open from RG,Reopen
+4725440,1,2008-12-24,2008-12-24,2,2,acc close/open from RG,Reopen
+6333251,1,2008-12-24,2008-12-24,2,2,acc close/open from RG,Reopen
+606833,1,2008-12-23,2008-12-23,2,2,acc close/open from RG,Reopen
+939165,1,2008-12-22,2008-12-22,2,2,acc close/open from RG,Reopen
+5490778,1,2008-12-22,2008-12-22,2,2,acc close/open from RG,Reopen
+1076465,2,2008-12-19,2008-12-22,2,2,acc close/open from RG,Reopen
+2410472,1,2008-12-21,2008-12-21,2,2,acc close/open from RG,Reopen
+3293643,1,2008-12-21,2008-12-21,2,2,acc close/open from RG,Reopen
+3533664,1,2008-12-21,2008-12-21,2,2,acc close/open from RG,Reopen
+4381619,1,2008-12-21,2008-12-21,2,2,acc close/open from RG,Reopen
+4632593,1,2008-12-21,2008-12-21,2,2,acc close/open from RG,Reopen
+5494873,1,2008-12-21,2008-12-21,2,2,acc close/open from RG,Reopen
+3438337,1,2008-12-20,2008-12-20,2,2,acc close/open from RG,Reopen
+2097334,1,2008-12-19,2008-12-19,2,2,acc close/open from RG,Reopen
+622333,1,2008-12-18,2008-12-18,2,2,acc close/open from RG,Reopen
+2617334,1,2008-12-18,2008-12-18,2,2,acc close/open from RG,Reopen
+1738946,1,2008-12-17,2008-12-17,2,2,acc close/open from RG,Reopen
+2619667,1,2008-12-17,2008-12-17,2,2,acc close/open from RG,Reopen
+1200490,1,2008-12-16,2008-12-16,2,2,acc close/open from RG,Reopen
+2226043,1,2008-12-16,2008-12-16,2,2,acc close/open from RG,Reopen
+6050681,1,2008-12-12,2008-12-12,2,2,acc close/open from RG,Reopen
+1898064,1,2008-12-10,2008-12-10,2,2,acc close/open from RG,Reopen
+2820596,1,2008-12-04,2008-12-04,2,2,acc close/open from RG,Reopen
+2840190,1,2008-12-04,2008-12-04,2,2,acc close/open from RG,Reopen
+4002953,1,2008-12-04,2008-12-04,2,2,acc close/open from RG,Reopen
+6052290,1,2008-12-04,2008-12-04,2,2,acc close/open from RG,Reopen
+3374574,1,2008-11-28,2008-11-28,2,2,acc close/open from RG,Reopen
+4789988,1,2008-11-28,2008-11-28,2,2,acc close/open from RG,Reopen
+1989952,1,2008-11-27,2008-11-27,2,2,acc close/open from RG,Reopen
+1504941,1,2008-11-26,2008-11-26,2,2,acc close/open from RG,Reopen
+1700174,1,2008-11-26,2008-11-26,2,2,acc close/open from RG,Reopen
+3510474,1,2008-11-26,2008-11-26,2,2,acc close/open from RG,Reopen
+2080044,1,2008-11-23,2008-11-23,2,2,acc close/open from RG,Reopen
+2312117,1,2008-11-20,2008-11-20,2,2,acc close/open from RG,Reopen
+4781184,1,2008-11-20,2008-11-20,2,2,acc close/open from RG,Reopen
+6053709,1,2008-11-20,2008-11-20,2,2,acc close/open from RG,Reopen
+2449841,1,2008-11-19,2008-11-19,2,2,acc close/open from RG,Reopen
+5233772,1,2008-11-18,2008-11-18,2,2,acc close/open from RG,Reopen
+5429528,1,2008-11-18,2008-11-18,2,2,acc close/open from RG,Reopen
+3240092,1,2008-11-17,2008-11-17,2,2,acc close/open from RG,Reopen
+4252539,1,2008-11-17,2008-11-17,2,2,acc close/open from RG,Reopen
+4610412,1,2008-11-17,2008-11-17,2,2,acc close/open from RG,Reopen
+4645875,1,2008-11-17,2008-11-17,2,2,acc close/open from RG,Reopen
+1420230,1,2008-11-12,2008-11-12,2,2,acc close/open from RG,Reopen
+2209271,1,2008-11-12,2008-11-12,2,2,acc close/open from RG,Reopen
+2368879,1,2008-11-12,2008-11-12,2,2,acc close/open from RG,Reopen
+3092883,1,2008-11-12,2008-11-12,2,2,acc close/open from RG,Reopen
+3722766,1,2008-11-12,2008-11-12,2,2,acc close/open from RG,Reopen
+4544282,1,2008-11-12,2008-11-12,2,2,acc close/open from RG,Reopen
+4580838,1,2008-11-12,2008-11-12,2,2,acc close/open from RG,Reopen
+4599145,1,2008-11-12,2008-11-12,2,2,acc close/open from RG,Reopen
+5128030,1,2008-11-12,2008-11-12,2,2,acc close/open from RG,Reopen
+1362573,1,2008-11-11,2008-11-11,2,2,acc close/open from RG,Reopen
+1446765,1,2008-11-10,2008-11-10,2,2,acc close/open from RG,Reopen
+2668544,1,2008-11-10,2008-11-10,2,2,acc close/open from RG,Reopen
+3616138,1,2008-11-10,2008-11-10,2,2,acc close/open from RG,Reopen
+3985099,1,2008-11-10,2008-11-10,2,2,acc close/open from RG,Reopen
+4255946,1,2008-11-06,2008-11-06,2,2,acc close/open from RG,Reopen
+4220193,1,2008-11-05,2008-11-05,2,2,acc close/open from RG,Reopen
+6360996,1,2008-11-05,2008-11-05,2,2,acc close/open from RG,Reopen
+1318469,1,2008-11-04,2008-11-04,2,2,acc close/open from RG,Reopen
+2130868,1,2008-11-04,2008-11-04,2,2,acc close/open from RG,Reopen
+2633677,1,2008-11-04,2008-11-04,2,2,acc close/open from RG,Reopen
+3636161,1,2008-11-04,2008-11-04,2,2,acc close/open from RG,Reopen
+5691546,1,2008-11-04,2008-11-04,2,2,acc close/open from RG,Reopen
+1292031,1,2008-11-03,2008-11-03,2,2,acc close/open from RG,Reopen
+1316055,1,2008-11-03,2008-11-03,2,2,acc close/open from RG,Reopen
+1600042,1,2008-11-03,2008-11-03,2,2,acc close/open from RG,Reopen
+2760534,1,2008-11-03,2008-11-03,2,2,acc close/open from RG,Reopen
+4267728,1,2008-11-03,2008-11-03,2,2,acc close/open from RG,Reopen
+4346578,1,2008-11-03,2008-11-03,2,2,acc close/open from RG,Reopen
+5659426,1,2008-11-03,2008-11-03,2,2,acc close/open from RG,Reopen
+5950764,1,2008-11-03,2008-11-03,2,2,acc close/open from RG,Reopen
+5070173,1,2008-11-02,2008-11-02,2,2,acc close/open from RG,Reopen
+2418874,1,2009-01-23,2009-01-23,11,1,high deposit,Advice
+7379457,1,2008-12-19,2008-12-19,11,1,high deposit,Advice
+2037459,1,2008-12-18,2008-12-18,11,1,high deposit,Advice
+3229927,1,2008-12-11,2008-12-11,11,1,high deposit,Advice
+4821963,1,2009-11-29,2009-11-29,10,1,Reported Problem,Advice
+6407540,2,2009-05-14,2009-11-29,10,1,Reported Problem,Advice
+4371320,2,2009-10-09,2009-11-26,10,1,Reported Problem,Advice
+6545016,2,2009-11-22,2009-11-25,10,1,Reported Problem,Advice
+6091409,1,2009-11-24,2009-11-24,10,1,Reported Problem,Advice
+9807483,1,2009-11-24,2009-11-24,10,1,Reported Problem,Advice
+9603002,1,2009-11-23,2009-11-23,10,1,Reported Problem,Advice
+5070706,1,2009-11-22,2009-11-22,10,1,Reported Problem,Advice
+9696651,1,2009-11-19,2009-11-19,10,1,Reported Problem,Advice
+4283381,1,2009-11-17,2009-11-17,10,1,Reported Problem,Advice
+1251523,2,2009-04-29,2009-11-17,10,1,Reported Problem,Advice
+9642660,1,2009-11-11,2009-11-11,10,1,Reported Problem,Advice
+9342005,1,2009-11-10,2009-11-10,10,1,Reported Problem,Advice
+5372244,8,2009-07-21,2009-11-09,10,1,Reported Problem,Advice
+380781,3,2009-10-14,2009-11-05,10,1,Reported Problem,Advice
+7459013,1,2009-11-03,2009-11-03,10,1,Reported Problem,Advice
+6727038,1,2009-10-29,2009-10-29,10,1,Reported Problem,Advice
+9366429,1,2009-10-27,2009-10-27,10,1,Reported Problem,Advice
+6899641,1,2009-10-15,2009-10-15,10,1,Reported Problem,Advice
+9484775,1,2009-10-15,2009-10-15,10,1,Reported Problem,Advice
+1475521,1,2009-10-13,2009-10-13,10,1,Reported Problem,Advice
+5198289,1,2009-10-11,2009-10-11,10,1,Reported Problem,Advice
+9285607,1,2009-10-06,2009-10-06,10,1,Reported Problem,Advice
+5875832,1,2009-10-01,2009-10-01,10,1,Reported Problem,Advice
+7192925,1,2009-10-01,2009-10-01,10,1,Reported Problem,Advice
+6553645,1,2009-09-29,2009-09-29,10,1,Reported Problem,Advice
+3914709,1,2009-09-27,2009-09-27,10,1,Reported Problem,Advice
+6521874,1,2009-09-27,2009-09-27,10,1,Reported Problem,Advice
+7084014,1,2009-09-24,2009-09-24,10,1,Reported Problem,Advice
+978164,2,2009-07-07,2009-09-22,10,1,Reported Problem,Advice
+4495603,2,2009-08-11,2009-09-20,10,1,Reported Problem,Advice
+7313441,1,2009-09-13,2009-09-13,10,1,Reported Problem,Advice
+6469369,6,2009-02-01,2009-09-13,10,1,Reported Problem,Advice
+2559605,1,2009-09-07,2009-09-07,10,1,Reported Problem,Advice
+2779571,1,2009-09-07,2009-09-07,10,1,Reported Problem,Advice
+6203853,1,2009-09-07,2009-09-07,10,1,Reported Problem,Advice
+5961786,2,2009-04-09,2009-08-11,10,1,Reported Problem,Advice
+1601073,1,2009-08-09,2009-08-09,10,1,Reported Problem,Advice
+8911179,1,2009-08-09,2009-08-09,10,1,Reported Problem,Advice
+7104968,1,2009-08-04,2009-08-04,10,1,Reported Problem,Advice
+1725647,1,2009-08-02,2009-08-02,10,1,Reported Problem,Advice
+7332704,2,2009-05-26,2009-07-23,10,1,Reported Problem,Advice
+3176106,3,2009-06-24,2009-07-19,10,1,Reported Problem,Advice
+1171028,2,2009-05-28,2009-07-07,10,1,Reported Problem,Advice
+5756589,1,2009-07-06,2009-07-06,10,1,Reported Problem,Advice
+719989,2,2009-02-04,2009-07-06,10,1,Reported Problem,Advice
+7609074,1,2009-06-23,2009-06-23,10,1,Reported Problem,Advice
+7431218,1,2009-06-22,2009-06-22,10,1,Reported Problem,Advice
+8400458,1,2009-06-16,2009-06-16,10,1,Reported Problem,Advice
+1682995,1,2009-06-03,2009-06-03,10,1,Reported Problem,Advice
+6286166,1,2009-05-28,2009-05-28,10,1,Reported Problem,Advice
+5546682,1,2009-05-26,2009-05-26,10,1,Reported Problem,Advice
+8585004,1,2009-05-26,2009-05-26,10,1,Reported Problem,Advice
+3204375,1,2009-05-22,2009-05-22,10,1,Reported Problem,Advice
+7390814,1,2009-05-20,2009-05-20,10,1,Reported Problem,Advice
+7873575,1,2009-05-18,2009-05-18,10,1,Reported Problem,Advice
+1970026,1,2009-05-15,2009-05-15,10,1,Reported Problem,Advice
+1444002,3,2008-11-10,2009-05-14,10,1,Reported Problem,Advice
+7311006,1,2009-05-13,2009-05-13,10,1,Reported Problem,Advice
+7505796,2,2009-04-20,2009-05-12,10,1,Reported Problem,Advice
+3283965,2,2009-03-24,2009-05-11,10,1,Reported Problem,Advice
+6826846,2,2009-04-08,2009-05-06,10,1,Reported Problem,Advice
+2426245,1,2009-05-04,2009-05-04,10,1,Reported Problem,Advice
+2196668,1,2009-04-30,2009-04-30,10,1,Reported Problem,Advice
+2874823,1,2009-04-29,2009-04-29,10,1,Reported Problem,Advice
+2999195,1,2009-04-28,2009-04-28,10,1,Reported Problem,Advice
+6814570,1,2009-04-27,2009-04-27,10,1,Reported Problem,Advice
+8249337,1,2009-04-27,2009-04-27,10,1,Reported Problem,Advice
+3344391,1,2009-04-24,2009-04-24,10,1,Reported Problem,Advice
+5536600,1,2009-04-20,2009-04-20,10,1,Reported Problem,Advice
+2595325,1,2009-04-16,2009-04-16,10,1,Reported Problem,Advice
+7418711,1,2009-04-15,2009-04-15,10,1,Reported Problem,Advice
+691219,2,2008-11-03,2009-04-10,10,1,Reported Problem,Advice
+2067768,1,2009-04-08,2009-04-08,10,1,Reported Problem,Advice
+6416020,1,2009-03-31,2009-03-31,10,1,Reported Problem,Advice
+2183730,1,2009-03-26,2009-03-26,10,1,Reported Problem,Advice
+2606689,1,2009-03-25,2009-03-25,10,1,Reported Problem,Advice
+1908533,1,2009-03-24,2009-03-24,10,1,Reported Problem,Advice
+4241294,1,2009-03-24,2009-03-24,10,1,Reported Problem,Advice
+7015624,1,2009-03-24,2009-03-24,10,1,Reported Problem,Advice
+7823494,1,2009-03-24,2009-03-24,10,1,Reported Problem,Advice
+1830174,1,2009-03-23,2009-03-23,10,1,Reported Problem,Advice
+4361395,1,2009-03-11,2009-03-11,10,1,Reported Problem,Advice
+5345825,1,2009-03-10,2009-03-10,10,1,Reported Problem,Advice
+4754574,1,2009-03-09,2009-03-09,10,1,Reported Problem,Advice
+3758557,1,2009-03-04,2009-03-04,10,1,Reported Problem,Advice
+6872908,1,2009-02-27,2009-02-27,10,1,Reported Problem,Advice
+7950431,1,2009-02-17,2009-02-17,10,1,Reported Problem,Advice
+1097302,1,2009-02-16,2009-02-16,10,1,Reported Problem,Advice
+1188944,1,2009-02-11,2009-02-11,10,1,Reported Problem,Advice
+3186379,1,2009-02-03,2009-02-03,10,1,Reported Problem,Advice
+986289,1,2009-02-01,2009-02-01,10,1,Reported Problem,Advice
+1829513,1,2009-01-30,2009-01-30,10,1,Reported Problem,Advice
+7472343,1,2009-01-27,2009-01-27,10,1,Reported Problem,Advice
+107124,1,2009-01-25,2009-01-25,10,1,Reported Problem,Advice
+6880488,1,2009-01-23,2009-01-23,10,1,Reported Problem,Advice
+6237906,1,2009-01-21,2009-01-21,10,1,Reported Problem,Advice
+3816363,1,2009-01-20,2009-01-20,10,1,Reported Problem,Advice
+5846754,1,2009-01-15,2009-01-15,10,1,Reported Problem,Advice
+5894326,1,2008-12-24,2008-12-24,10,1,Reported Problem,Advice
+6123259,1,2008-12-23,2008-12-23,10,1,Reported Problem,Advice
+4412550,1,2008-12-22,2008-12-22,10,1,Reported Problem,Advice
+6316166,1,2008-12-22,2008-12-22,10,1,Reported Problem,Advice
+6395232,1,2008-12-22,2008-12-22,10,1,Reported Problem,Advice
+7395910,1,2008-12-19,2008-12-19,10,1,Reported Problem,Advice
+7264546,1,2008-11-12,2008-11-12,10,1,Reported Problem,Advice
+6202339,1,2008-11-04,2008-11-04,10,1,Reported Problem,Advice
+6353958,1,2008-11-03,2008-11-03,10,1,Reported Problem,Advice
+7171562,1,2008-11-03,2008-11-03,10,1,Reported Problem,Advice
+5978823,1,2009-03-09,2009-03-09,8,1,Reported as Minor,Advice
+1652164,1,2009-07-02,2009-07-02,7,1,Requested pay method block,Advice
+2896136,1,2009-11-27,2009-11-27,6,1,Heavy Complainer,Advice
+2560163,1,2009-11-25,2009-11-25,6,1,Heavy Complainer,Advice
+5863650,1,2009-11-25,2009-11-25,6,1,Heavy Complainer,Advice
+9138407,1,2009-11-20,2009-11-20,6,1,Heavy Complainer,Advice
+1541799,3,2009-01-08,2009-11-19,6,1,Heavy Complainer,Advice
+551872,1,2009-11-13,2009-11-13,6,1,Heavy Complainer,Advice
+1336704,1,2009-11-08,2009-11-08,6,1,Heavy Complainer,Advice
+6024614,1,2009-11-03,2009-11-03,6,1,Heavy Complainer,Advice
+9407149,1,2009-11-03,2009-11-03,6,1,Heavy Complainer,Advice
+8678849,1,2009-10-29,2009-10-29,6,1,Heavy Complainer,Advice
+3523419,1,2009-10-25,2009-10-25,6,1,Heavy Complainer,Advice
+7670914,2,2009-04-27,2009-10-25,6,1,Heavy Complainer,Advice
+2930403,1,2009-10-22,2009-10-22,6,1,Heavy Complainer,Advice
+6989014,1,2009-10-22,2009-10-22,6,1,Heavy Complainer,Advice
+7456924,1,2009-10-08,2009-10-08,6,1,Heavy Complainer,Advice
+1835689,1,2009-08-21,2009-08-21,6,1,Heavy Complainer,Advice
+8600832,1,2009-07-17,2009-07-17,6,1,Heavy Complainer,Advice
+6790656,1,2009-06-06,2009-06-06,6,1,Heavy Complainer,Advice
+5071236,1,2009-06-02,2009-06-02,6,1,Heavy Complainer,Advice
+7984895,1,2009-03-17,2009-03-17,6,1,Heavy Complainer,Advice
+6507881,1,2009-03-03,2009-03-03,6,1,Heavy Complainer,Advice
+1768666,1,2009-02-17,2009-02-17,6,1,Heavy Complainer,Advice
+4697358,1,2009-01-23,2009-01-23,6,1,Heavy Complainer,Advice
+6278578,1,2008-11-06,2008-11-06,6,1,Heavy Complainer,Advice
+2783309,1,2009-02-03,2009-02-03,4,1,Manually Lowered Limit,Advice
+3359885,1,2009-04-29,2009-04-29,3,1,Cancelled outpayment,Advice
+2251748,2,2009-02-16,2009-11-26,2,1,acc close/open from RG,Advice
+1559015,1,2009-07-06,2009-07-06,2,1,acc close/open from RG,Advice
+7446941,1,2009-01-22,2009-01-22,2,1,acc close/open from RG,Advice
+6663865,1,2009-11-30,2009-11-30,1,1,Family Intervention,Advice
+1476237,1,2009-08-31,2009-08-31,1,1,Family Intervention,Advice
+4385825,2,2009-08-21,2009-08-24,1,1,Family Intervention,Advice
+4996217,1,2009-08-11,2009-08-11,1,1,Family Intervention,Advice
+8223981,3,2009-08-04,2009-08-06,1,1,Family Intervention,Advice
+7199337,1,2009-07-07,2009-07-07,1,1,Family Intervention,Advice
+8615500,2,2009-06-19,2009-06-29,1,1,Family Intervention,Advice
+4083316,2,2008-12-18,2009-06-09,1,1,Family Intervention,Advice
+6132014,1,2009-05-14,2009-05-14,1,1,Family Intervention,Advice
+7821776,2,2009-05-13,2009-05-14,1,1,Family Intervention,Advice
+7081909,1,2009-03-27,2009-03-27,1,1,Family Intervention,Advice
+5133765,1,2009-02-06,2009-02-06,1,1,Family Intervention,Advice
+1806096,1,2009-01-12,2009-01-12,1,1,Family Intervention,Advice
+2426061,1,2009-01-12,2009-01-12,1,1,Family Intervention,Advice
+3970969,1,2009-01-08,2009-01-08,1,1,Family Intervention,Advice
+4633299,1,2009-01-08,2009-01-08,1,1,Family Intervention,Advice
+6239479,1,2009-01-06,2009-01-06,1,1,Family Intervention,Advice
+5223699,1,2008-12-21,2008-12-21,13,-1,Event unknown,Intevention Unknown
+2451840,5,,2009-11-03,12,-1,Two RG events on the day,Intevention Unknown
+9140426,1,2009-08-19,2009-08-19,10,-1,Reported Problem,Intevention Unknown
+2590026,2,2009-08-05,2009-08-06,10,-1,Reported Problem,Intevention Unknown
+1023918,1,2009-04-09,2009-04-09,6,-1,Heavy Complainer,Intevention Unknown
+6691324,1,2008-12-19,2008-12-19,1,-1,Family Intervention,Intevention Unknown

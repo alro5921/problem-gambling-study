@@ -12,6 +12,8 @@ RG_RENAME = {"UserID": "user_id", "RGsumevents" : "events", "RGFirst_Date" : "fi
 
 HAS_HOLD_DATA = [1,2,4,8,17]
 
+ALL_PRODUCTS = [1,2,3,4,5,6,7,8,9,10,14,15,16,17,19,20,21,22,23,24,25]
+
 EVENT_CODE_DICT = {1: "Family Intervention", 2 : "acc close/open from RG", 3 : "Cancelled outpayment", 
                    4: "Manually Lowered Limit", 6: "Heavy Complainer", 7: "Requested pay method block",
                    8: "Reported as Minor", 9: "Request partial block", 10: "Reported Problem", 
@@ -24,3 +26,8 @@ INTERVENTION_CODE_DICT = {-1: "Intevention Unknown", 1: "Advice", 2: "Reopen",
                           11: "Higher deposit denied", 12 : "Higher Deposit Accepted", 13 : "Daily/weekly deposit changed", 
                           14: "Full Block", 15 : "Betting Limit Change", 16: "Remains Blocked", 
                           17 : "Blocked and Reimbursed", 18: "Requested Partial Block Not Possible"}
+
+DEMO_PATH = 'data/demographic.csv'
+RG_PATH = 'data/rg_information.csv'
+GAM_PATH = 'data/gambling.csv'
+
