@@ -91,9 +91,14 @@ if __name__ == '__main__':
     train_model = True
     features = SUMMARY_NAMES + ['weekly_hold', 'weekly_activity', 'weekly_max']
     if train_model:
+        print("Trying just summary variables")
+        X, y, user_ids = preprocessing(months, features=SUMMARY_NAMES)
+        model, gs = train(X, y, RandomForestClassifier(), do_grid=True, grid=RF_GRID, save=True)
+        print("Main event")
         X, y, user_ids = preprocessing(months, features=features)
         model, gs = train(X, y, RandomForestClassifier(), do_grid=True, grid=RF_GRID, save=True)
         #df = pd.DataFrame(gs.cv_results_)
+
 
     run_holdout = False
     seriously = False
