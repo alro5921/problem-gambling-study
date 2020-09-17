@@ -93,7 +93,7 @@ if __name__ == '__main__':
     if train_model:
         X, y, user_ids = preprocessing(months, features=features)
         model, gs = train(X, y, RandomForestClassifier(), do_grid=True, grid=RF_GRID, save=True)
-        df = pd.DataFrame(gs.cv_results_)
+        #df = pd.DataFrame(gs.cv_results_)
 
     run_holdout = False
     seriously = False
