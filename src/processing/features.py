@@ -54,7 +54,7 @@ def to_weekly(frame):
 
 def weekly_max(frame):
     weekly_max = frame.resample(f'7D').max()
-    return weekly_sum['hold'].values
+    return weekly_max['hold'].values
 
 def weekly_hold(frame):
     weekly_sum = to_weekly(frame)
