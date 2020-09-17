@@ -15,29 +15,9 @@ from features import SUMMARY_NAMES, DAILY_NAMES, WEEKLY_NAMES
 
 from pipeline import get_demo_df, get_gam_df, get_rg_df
 from pipeline import sparse_to_ts
+from model_constants import *
 
 from preprocessing import filter_preprocess
-
-RF_GRID = {'max_depth': [3, 5, None],
-                'max_features': ['sqrt', 'log2', None],
-                'min_samples_split': [2, 4, 8],
-                'min_samples_leaf': [1, 5, 10, 20],
-                'bootstrap': [True, False],
-                'n_estimators': [50, 100, 200, 400],
-                'random_state': [1]}
-
-GRAD_BOOST_GRID = {'learning_rate': [0.01, 0.001, 0.0001],
-                                'max_depth': [3, 5],
-                                'min_samples_leaf': [5, 10, 50, 100, 200],
-                                'max_features': [2, 3, 5, 10],
-                                'n_estimators': [150, 300, 500],
-                                'random_state': [1]}
-
-GRAD_GS_GUESS = {'learning_rate': .001, 'n_estimators': 300, 
-                'min_samples_leaf': 5, 'max_features': 5}
-
-RF_GS_GUESS = {'random_state': 1, 'n_estimators': 200, 'min_samples_split': 4, 
-                    'min_samples_leaf': 1, 'max_features': 'sqrt', 'max_depth': None}
 
 def preprocessing(months, user_ids=None, featurizer=None, features=None, prefilter=True, dfs=None):
     if not featurizer and not features:
@@ -58,7 +38,7 @@ def preprocessing(months, user_ids=None, featurizer=None, features=None, prefilt
         user_ids = filter_preprocess(user_ids, months*30, demo_df, rg_df)
     print(f"Constructing model with {months} months of information")
     print(f"Features being used: {features}")
-    X, y = featurize(user_ids, gam_df, featurizer=featurizer, features=features, month_window=months)
+    X, y = featurize(user_ids, gam_df, demo_df, featurizer=featurizer, features=features, month_window=months)
     return X, y, user_ids
 
 def train(X, y, base_model, do_grid=True, grid=None, search_params=None, save=False, verbose=True):
@@ -71,21 +51,20 @@ def train(X, y, base_model, do_grid=True, grid=None, search_params=None, save=Fa
         search_params = {'n_iter' : 100, 'n_jobs' : -1, 'cv' : 5}
     gridsearch = RandomizedSearchCV(base_model, grid, scoring='f1', verbose=verbose, **search_params)
     gridsearch.fit(X, y)
-    
+
     regressor = gridsearch.best_estimator_
     if save:
         now = datetime.now().strftime("%m-%d-%H-%M")
-        #name = base_model.__name__ 
-        gs_path = f'model/grid_results{now}.pkl'
+        gs_path = f'model/grid_results_{now}.pkl'
         with open(gs_path, 'wb') as f:
             pickle.dump(gridsearch, f)
-        model_path = f'model/model{now}.pkl'
+        model_path = f'model/model_{now}.pkl'
         with open(model_path, 'wb') as f:
             pickle.dump(regressor, f)
     print(f'Model CV Score: {gridsearch.best_score_:.3f}')
     return regressor, gridsearch
     
-def predict(model, X, y=None, user_ids=None, store_name="", thres=.5, verbose=True, store=True):
+def predict(model, X, y=None, user_ids=None, store=True, store_name="", thres=.5, verbose=True):
     y_prob = model.predict_proba(X)[:,1]
     if store:
         val_store = pd.DataFrame({"prediction" : y_prob})
@@ -111,9 +90,13 @@ def scores(y_test,y_pred):
 
 if __name__ == '__main__':
     months = 6
+    train_model = True
     features = SUMMARY_NAMES + ['weekly_hold', 'weekly_activity']
-    X, y, user_ids = preprocessing(months, features = features)
-    model, gs = train(X, y, RandomForestClassifier(), do_grid=True, grid=RF_GRID)
+    if train_model:
+        X, y, user_ids = preprocessing(months, features = features)
+        X_train, X_test, y_train, y_test, user_train, user_test = train_test_split(X, y, user_ids)
+        model, gs = train(X_train, y_train, RandomForestClassifier(), do_grid=True, grid=RF_GRID, save=True)
+        predict(model, X_test, y_test, user_test, store_name="validation", store=False)
     #model, gs = train(X, y, GradientBoostingClassifier(), do_grid=True, grid=GRAD_BOOST_GRID)
     # Looks like weekly_hold + weekly_activity is doing well
 
@@ -129,6 +112,10 @@ if __name__ == '__main__':
     run_holdout = False
     seriously = False
     if run_holdout and seriously:
+        print("!!!!Running on holdout!!!!")
+        # model_path = ''
+        # with open(model_path, 'rb') as f:
+        #     model = pickle.load(f)
         HOLD_DEMO_PATH = 'data/holdout/demographic.csv'
         HOLD_RG_PATH = 'data/holdout/rg_information.csv'
         HOLD_GAM_PATH = 'data/holdout/gambling.csv'
@@ -137,4 +124,4 @@ if __name__ == '__main__':
         hold_gam = get_gam_df(HOLD_GAM_PATH)
         dfs = [hold_demo, hold_rg, hold_gam]
         X, y, user_ids = preprocessing(months=months, features=features, dfs=dfs)
-        predict(model, X, y, user_ids)
+        predict(model, X, y, user_ids, store=False)

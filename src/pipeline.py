@@ -7,6 +7,8 @@ from pipeline_constants import ALL_PRODUCTS, HAS_HOLD_DATA
 from pipeline_constants import DEMO_PATH, RG_PATH, GAM_PATH
 from sklearn.model_selection import train_test_split
 
+WEIGHTS = {1: 1.0, 2: 1.9, 3: 1.6735638473207348, 4: 31.13842146476165, 5: 0.37584047124601383, 6: 11.056054972301116, 7: 8.64537708901529, 8: 47.617995276059325, 9: 0.527813110874204, 10: 15.031850760307305, 14: 7.697540618623065, 15: 18.24468154334213, 16: 1.1159477201340313, 17: 14.374133782112049, 19: 2.4441030442308227, 20: 2.8551162436493667, 21: 0.16649220018128694, 22: 0.4018520349820394, 23: 1.0120550412810625, 24: 0.20724743373917726, 25: 15.583412806157366}
+
 def get_demo_df(path=DEMO_PATH):
     df = pd.read_csv(path, index_col='user_id')
     # date_cols = ['registration_date', 'first_deposit_date']
@@ -15,7 +17,7 @@ def get_demo_df(path=DEMO_PATH):
 
 def get_gam_df(path=GAM_PATH):
     df = pd.read_csv(path)
-    df = add_weighted_bets(df)
+    df = apply_weighted_bets(df, w_means=WEIGHTS)
     # Writing to csv reverts the datetime cast
     df['date'] = pd.to_datetime(df['date'])
     return df
@@ -45,6 +47,23 @@ def sparse_to_ts(user_daily, date_start=None, date_end=None, window=None):
     user_ts = date_indexed.reindex(idx, fill_value=0)
     return user_ts
 
+def learn_weighted_bets(gam_df, products=ALL_PRODUCTS):
+    '''Aggregates the 'num_bets' across activities into a weighted one
+    reflecting their actual activity implied'''
+    mask = gam_df['num_bets_1'] > 0
+    mean_1 = gam_df[mask]['num_bets_1'].mean()
+    w_means = {1: mean_1}
+    for prod in products:
+        mask = gam_df[f'num_bets_{prod}'] > 0
+        w_means[prod] = gam_df[mask][f'num_bets_{prod}'].mean()/mean_1
+    return w_means
+
+def apply_weighted_bets(gam_df, w_means, products=ALL_PRODUCTS):
+    gam_df['weighted_bets'] = 0
+    for prod in products:
+        gam_df['weighted_bets'] += gam_df[f'num_bets_{prod}'] / w_means[prod]
+    return gam_df
+
 def add_weighted_bets(gam_df, w_means=None, products=ALL_PRODUCTS):
     '''Aggregates the 'num_bets' across activities into a weighted one
     reflecting their actual activity implied'''
@@ -70,5 +89,7 @@ def oversample(user_ids, demo_df):
     return rg_ids + random.choices(no_rg_ids, k=len(rg_ids))
 
 if __name__ == '__main__':
-    demo_df = get_demo_df(demo_path=DEMO_PATH)
-    breakpoint()
+    demo_df = get_demo_df(path=DEMO_PATH)
+    gam_df = pd.read_csv(GAM_PATH)
+    weights = learn_weighted_bets(gam_df)
+    print(weights)
