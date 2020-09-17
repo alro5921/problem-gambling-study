@@ -1,7 +1,7 @@
-RF_GRID = {'max_depth': [3, 5, None],
+RF_GRID = {'max_depth': [3, 5, 7, None],
                 'max_features': ['sqrt', 'log2', None],
-                'min_samples_split': [2, 4, 8, 16],
-                'min_samples_leaf': [1, 5, 10, 20],
+                'min_samples_split': [2, 4, 8, 16, 32],
+                'min_samples_leaf': [1, 5, 10, 20, 40],
                 'bootstrap': [True, False],
                 'n_estimators': [50, 100, 200, 400],
                 'random_state': [1]}
