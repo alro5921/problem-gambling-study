@@ -6,27 +6,25 @@ import random
 
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.model_selection import train_test_split, RandomizedSearchCV
-from sklearn.linear_model import LogisticRegression
+#from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
 
-from featurizing import featurize
-from Featurizer import Featurizer
-from features import SUMMARY_NAMES, DAILY_NAMES, WEEKLY_NAMES
+from processing.featurizing import featurize
+from processing.Featurizer import Featurizer
+from processing.features import SUMMARY_NAMES, DAILY_NAMES, WEEKLY_NAMES
 
 from pipeline import get_demo_df, get_gam_df, get_rg_df
-from pipeline import sparse_to_ts
+from processing.preprocessing import filter_preprocess
+
 from model_constants import *
 
-from preprocessing import filter_preprocess
-
 def preprocessing(months, user_ids=None, featurizer=None, features=None, prefilter=True, dfs=None):
+    '''Entire pipeline from the raw data to the numpy matrices needed for random forests'''
     if not featurizer and not features:
         print("Need at least one way to get featurizing context!")
         raise ValueError
     if not dfs:
-        demo_df = get_demo_df()
-        rg_df = get_rg_df()
-        gam_df = get_gam_df()
+        demo_df, rg_df, gam_df = get_demo_df(), get_rg_df(), get_gam_df()
     else:
         demo_df, rg_df, gam_df = dfs
     if not user_ids:
@@ -44,11 +42,11 @@ def preprocessing(months, user_ids=None, featurizer=None, features=None, prefilt
 def train(X, y, base_model, do_grid=True, grid=None, search_params=None, save=False, verbose=True):
     if not do_grid:
         print("Not doing a grid search, just using a prior model's hyperparameters.")
-        regressor = RandomForestClassifier(**RF_GS_GUESS)
+        regressor = base_model()
         regressor.fit(X, y)
         return regressor, None
     if not search_params:
-        search_params = {'n_iter' : 100, 'n_jobs' : -1, 'cv' : 5}
+        search_params = {'n_iter' : 100, 'n_jobs' : -1, 'cv' : 3}
     gridsearch = RandomizedSearchCV(base_model, grid, scoring='f1', verbose=verbose, **search_params)
     gridsearch.fit(X, y)
 
@@ -61,7 +59,7 @@ def train(X, y, base_model, do_grid=True, grid=None, search_params=None, save=Fa
         model_path = f'model/model_{now}.pkl'
         with open(model_path, 'wb') as f:
             pickle.dump(regressor, f)
-    print(f'Model CV Score: {gridsearch.best_score_:.3f}')
+    print(f'Model Av F1 Score: {gridsearch.best_score_:.3f}')
     return regressor, gridsearch
     
 def predict(model, X, y=None, user_ids=None, store=True, store_name="", thres=.5, verbose=True):
@@ -94,9 +92,13 @@ if __name__ == '__main__':
     features = SUMMARY_NAMES + ['weekly_hold', 'weekly_activity']
     if train_model:
         X, y, user_ids = preprocessing(months, features = features)
-        X_train, X_test, y_train, y_test, user_train, user_test = train_test_split(X, y, user_ids)
-        model, gs = train(X_train, y_train, RandomForestClassifier(), do_grid=True, grid=RF_GRID, save=True)
-        predict(model, X_test, y_test, user_test, store_name="validation", store=False)
+        model, gs = train(X, y, RandomForestClassifier(), do_grid=True, grid=RF_GRID, save=True)
+        df = pd.DataFrame(gs.cv_results_)
+        sorted_df = df.sort_values(by='rank_test_score')[:20]
+        print(sorted_df[['mean_test_score', 'std_test_score']])
+        breakpoint()
+        #print(model.feature_importances_)
+        #predict(model, X, y, store=False)
     #model, gs = train(X, y, GradientBoostingClassifier(), do_grid=True, grid=GRAD_BOOST_GRID)
     # Looks like weekly_hold + weekly_activity is doing well
 
