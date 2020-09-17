@@ -93,7 +93,7 @@ if __name__ == '__main__':
     if train_model:
         print("Trying just summary variables")
         X, y, user_ids = preprocessing(months, features=SUMMARY_NAMES)
-        model, gs = train(X, y, RandomForestClassifier(), do_grid=True, grid=RF_GRID, save=True)
+        #model, gs = train(X, y, RandomForestClassifier(), do_grid=True, grid=RF_GRID, save=True)
         print("Main event")
         X, y, user_ids = preprocessing(months, features=features)
         model, gs = train(X, y, RandomForestClassifier(), do_grid=True, grid=RF_GRID, save=True)
