@@ -46,7 +46,7 @@ def train(X, y, base_model, do_grid=True, grid=None, search_params=None, save=Fa
         regressor.fit(X, y)
         return regressor, None
     if not search_params:
-        search_params = {'n_iter' : 100, 'n_jobs' : -1, 'cv' : 3}
+        search_params = {'n_iter' : 100, 'n_jobs' : -1, 'cv' : 5}
     gridsearch = RandomizedSearchCV(base_model, grid, scoring='f1', verbose=verbose, **search_params)
     gridsearch.fit(X, y)
 
@@ -89,7 +89,7 @@ def scores(y_test,y_pred):
 if __name__ == '__main__':
     months = 6
     train_model = True
-    features = SUMMARY_NAMES + ['weekly_hold', 'weekly_activity']
+    features = SUMMARY_NAMES + ['weekly_hold', 'weekly_activity', 'weekly_max']
     if train_model:
         X, y, user_ids = preprocessing(months, features=features)
         model, gs = train(X, y, RandomForestClassifier(), do_grid=True, grid=RF_GRID, save=True)
