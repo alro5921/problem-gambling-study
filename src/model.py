@@ -89,19 +89,29 @@ def scores(y_test,y_pred):
 if __name__ == '__main__':
     months = 6
     train_model = True
-    features = SUMMARY_NAMES + ['weekly_hold', 'weekly_max', 'weekly_rolling_activity']
-    if train_model:
-        print("Trying just summary variables")
-        X, y, user_ids = preprocessing(months, features=SUMMARY_NAMES)
-        #model, gs = train(X, y, RandomForestClassifier(), do_grid=True, grid=RF_GRID, save=True)
+    feature_sets = [SUMMARY_NAMES, SUMMARY_NAMES + ['weekly_activity', 'weekly_max'], SUMMARY_NAMES + ['weekly_activity', 'weekly_hold']]
+    features = SUMMARY_NAMES + ['weekly_activity', 'weekly_max']
+    for features in feature_sets:
+        X, y, user_ids = preprocessing(months, features=feature_sets)
+        model, gs = train(X, y, RandomForestClassifier(), do_grid=True, grid=RF_GRID, save=True)
         print("Main event")
         X, y, user_ids = preprocessing(months, features=features)
-        model, gs = train(X, y, RandomForestClassifier(), do_grid=True, grid=RF_GRID, save=True)
+        #model, gs = train(X, y, RandomForestClassifier(), do_grid=True, grid=RF_GRID, save=True)
         #df = pd.DataFrame(gs.cv_results_)
+        print("!!!!Running on holdout!!!!")
+        HOLD_DEMO_PATH = 'data/holdout/demographic.csv'
+        HOLD_RG_PATH = 'data/holdout/rg_information.csv'
+        HOLD_GAM_PATH = 'data/holdout/gambling.csv'
+        hold_demo = get_demo_df(HOLD_DEMO_PATH)
+        hold_rg = get_rg_df(HOLD_RG_PATH)
+        hold_gam = get_gam_df(HOLD_GAM_PATH)
+        dfs = [hold_demo, hold_rg, hold_gam]
+        X, y, user_ids = preprocessing(months=months, features=features, dfs=dfs)
+        predict(model, X, y, user_ids, store=False)
 
 
-    run_holdout = True
-    seriously = True
+    run_holdout = False
+    seriously = False
     if run_holdout and seriously:
         print("!!!!Running on holdout!!!!")
         HOLD_DEMO_PATH = 'data/holdout/demographic.csv'
