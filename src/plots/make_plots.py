@@ -3,18 +3,14 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib import rc, rcParams
 import pipeline
-from plot_helper import (save_image, plot_ts, add_intervention, add_inter_rg,
-                        highlight_weekend_periodicity)
+from plot_helper import *
 from sklearn.metrics import roc_curve
+from pipeline_constants import *
 import imageio
 
-ALL_PRODS = list(range(1,30))
-DEFAULT_CUTOFFS = ['2008-02-01', '2008-04-15', '2008-08-01',
-             '2008-11-01', '2009-02-05', '2009-05-15'] 
-
-demo_df = pipeline.demo_pipeline() # Global vars weee
-gam_df = pipeline.gambling_pipeline()
-rg_info = pipeline.rg_pipeline()
+demo_df = pipeline.get_demo_df() # Global vars weee
+gam_df = pipeline.get_gam_df()
+rg_info = pipeline.get_rg_df()
 
 def background_plot(ax, user_id):
     '''Plots the introductory "Wow people lose a lot on this" graph'''
