@@ -217,5 +217,5 @@ On the final unseen data, the model (predictably) performed modestly worse but s
 
 And extracting this information from even a portion of the appeals would substantially increase the sample size.
 
-* **Feature Engineering:** My feature engineering was rather limited; I'd like to try varying the size of the lookback window (there's no fundamental reason not to use the enter prior history!), try different granularities of the data, try different rolling windows and different metrics in the rolling windows.
+* **Feature Engineering:** My feature engineering was rather limited; I'd like to try varying the size of the lookback window (there's no fundamental reason not to use the entire prior history!), try different granularities of the data, try different rolling windows and different metrics in the rolling windows.
     * I'd particually like to try and featurize [loss chasing](https://www.gamblingtherapy.org/en/chasing-losses), which likely requires finer granularity than the week-wise I used in the model.
