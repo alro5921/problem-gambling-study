@@ -8,6 +8,9 @@ import pipeline
 from .features import total_hold, max_hold, weekly_hold, weekly_rolling_hold
 
 class Featurizer:
+    '''
+    Object that handles varying featurizations combinations
+    '''
     def __init__(self):
         self.features = {}
 
