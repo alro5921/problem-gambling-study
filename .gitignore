@@ -2,6 +2,6 @@
 notebooks/
 __pycache__/
 *.pyc
-data/old
-model/old
+data/old/
+model/old/
 future
