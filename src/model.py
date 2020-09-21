@@ -19,7 +19,7 @@ from processing.preprocessing import filter_preprocess
 from model_constants import *
 
 def preprocessing(months, user_ids=None, featurizer=None, features=None, prefilter=True, dfs=None):
-    '''Entire pipeline from the raw data to the numpy matrices needed for random forests'''
+    '''Entire pipeline from the raw data to the numpy matrices needed for sklearn... learners'''
     if not featurizer and not features:
         print("Need at least one way to get featurizing context!")
         raise ValueError
@@ -41,12 +41,12 @@ def preprocessing(months, user_ids=None, featurizer=None, features=None, prefilt
 
 def train(X, y, base_model, do_grid=True, grid=None, search_params=None, save=False, verbose=True):
     if not do_grid:
-        print("Not doing a grid search, just using a prior model's hyperparameters.")
+        print("Not doing a grid search, just using a base model.")
         regressor = base_model()
         regressor.fit(X, y)
         return regressor, None
     if not search_params:
-        search_params = {'n_iter' : 100, 'n_jobs' : -1, 'cv' : 5}
+        search_params = DEFAULT_GRID_PARAMS
     gridsearch = RandomizedSearchCV(base_model, grid, scoring='f1', verbose=verbose, **search_params)
     gridsearch.fit(X, y)
 
@@ -89,38 +89,14 @@ def scores(y_test,y_pred):
 if __name__ == '__main__':
     months = 6
     train_model = True
-    feature_sets = [SUMMARY_NAMES, SUMMARY_NAMES + ['weekly_activity', 'weekly_max'], 
-                    SUMMARY_NAMES + ['weekly_activity', 'weekly_hold']]
-    #features = SUMMARY_NAMES + ['weekly_activity', 'weekly_max']
+    feature_sets = [SUMMARY_NAMES[:4] + ['weekly_hold', 'weekly_activity']]
     for features in feature_sets:
         X, y, user_ids = preprocessing(months, features=features)
-        model, gs = train(X, y, RandomForestClassifier(), do_grid=True, grid=RF_GRID, save=True)
-        #print("Main event")
-        #X, y, user_ids = preprocessing(months, features=features)
-        #model, gs = train(X, y, RandomForestClassifier(), do_grid=True, grid=RF_GRID, save=True)
-        #df = pd.DataFrame(gs.cv_results_)
-        print("!!!!Running on holdout!!!!")
-        HOLD_DEMO_PATH = 'data/holdout/demographic.csv'
-        HOLD_RG_PATH = 'data/holdout/rg_information.csv'
-        HOLD_GAM_PATH = 'data/holdout/gambling.csv'
-        hold_demo = get_demo_df(HOLD_DEMO_PATH)
-        hold_rg = get_rg_df(HOLD_RG_PATH)
-        hold_gam = get_gam_df(HOLD_GAM_PATH)
-        dfs = [hold_demo, hold_rg, hold_gam]
-        X, y, user_ids = preprocessing(months=months, features=features, dfs=dfs)
-        predict(model, X, y, user_ids, store=False)
-
-
-    run_holdout = False
-    seriously = False
-    if run_holdout and seriously:
-        print("!!!!Running on holdout!!!!")
-        HOLD_DEMO_PATH = 'data/holdout/demographic.csv'
-        HOLD_RG_PATH = 'data/holdout/rg_information.csv'
-        HOLD_GAM_PATH = 'data/holdout/gambling.csv'
-        hold_demo = get_demo_df(HOLD_DEMO_PATH)
-        hold_rg = get_rg_df(HOLD_RG_PATH)
-        hold_gam = get_gam_df(HOLD_GAM_PATH)
-        dfs = [hold_demo, hold_rg, hold_gam]
-        X, y, user_ids = preprocessing(months=months, features=features, dfs=dfs)
-        predict(model, X, y, user_ids, store=False)
+        X_train, X_test, y_train, y_test, user_train, user_test = train_test_split(X, y, user_ids)
+        model, gs = train(X_train, y_train, RandomForestClassifier(), do_grid=True, grid=RF_GRID, save=True)
+        predict(model, X_test, y_test, user_test, store_name="ROC")
+    #     #df = pd.DataFrame(gs.cv_results_)
+    # X, y, user_ids = preprocessing(months, features=SUMMARY_NAMES)
+    # model, gs = train(X, y, RandomForestClassifier(), do_grid=True, grid=RF_GRID, save=True)
+    # print(model.feature_importances_)
+    # [0.23369659 0.15424682 0.24062864 0.29024191 0.07436665 0.00681938]

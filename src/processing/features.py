@@ -12,7 +12,8 @@ def total_activity(frame):
     return frame['weighted_bets'].sum()
 
 def max_diff(frame):
-    '''The max difference between two (non-zero) days'''
+    '''The max difference of hold between two (non-zero) days,
+    trying to capture loss chasing'''
     non_zero = frame[frame.hold > 0]
     hold_diff = non_zero['hold'].diff().dropna()
     if len(hold_diff) == 0:
@@ -27,8 +28,8 @@ def total_fixed_live_ratio(frame):
 
 def total_nonzero_hold_std(frame):
     ''' Gambling behavior is relatively sparse,
-    it seems more useful to look at variance in 
-    the bets thesmelves'''
+    seems more useful to look at variance in 
+    the bets thesmelves.'''
     frame_nonzero = frame[frame['hold'] > 0]
     if len(frame_nonzero) == 0:
         return 0
@@ -76,7 +77,7 @@ def weekly_fixed_live_ratio(frame):
     weekly_sum = to_weekly(frame)
     return weekly_sum['num_bets_2']/(1+weekly_sum['num_bets_1'])
 
-SUMMARY_FEATURES = [total_hold, max_hold, max_diff, total_activity]
+SUMMARY_FEATURES = [total_hold, max_hold, max_diff, total_activity, total_fixed_live_ratio, total_nonzero_hold_std]
 #total_fixed_live_ratio, total_nonzero_hold_std were busts
 SUMMARY_NAMES = [feat.__name__ for feat in SUMMARY_FEATURES]
 
@@ -90,4 +91,4 @@ ALL_FEATURES = SUMMARY_FEATURES + DAILY_FEATURES + WEEKLY_FEATURES
 ALL_NAMES = [feat.__name__ for feat in ALL_FEATURES]
 
 if __name__ == '__main__':
-    print("Testing if all the features work, or at least don't crash")
+    print("Testing if all the features work (or at least compile)")

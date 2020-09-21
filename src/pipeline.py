@@ -33,8 +33,8 @@ def get_user_ids(demo_df):
 def sparse_to_ts(user_daily, date_start=None, date_end=None, window=None):
     '''Converts the user's sparse, daily data into a time series over a specified time window'''
     if not date_start and not date_end:
-        print("Need to specify an anchor point if using a gap")
-        return -1
+        print("Need to specify an anchor point if using a gap.")
+        raise ValueError
     if date_start and not date_end:
         date_end = np.datetime64(date_start) + np.timedelta64(window, 'D')
     if not date_start and date_end:
