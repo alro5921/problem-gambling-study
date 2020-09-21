@@ -21,9 +21,9 @@ def featurize(user_ids, gam_df, demo_df, featurizer=None, features=None, month_w
         user_ids: List of integer user_ids. Note this is NOT neccesarily unique due to oversampling
         gam_df: The sparse gambling data for all the users
         demo_df: The demographic info to pull the user's 
-        featurizer: Optional featurizer object, if none it'll make a default featurizer object
-        features: Optional list of features to use, if none it'll use every feature in the featurizer
-        month_window: How much data from the 
+        featurizer: Optional featurizer object. If None, make a default featurizer object with every feature
+        features: Optional list of features to use. If None, it'll use every feature in the featurizer
+        month_window: How many months ahead from the deposit date to look at.
     Returns:
         X: The featurized rows
         rgs: The label associated with each row
