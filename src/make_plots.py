@@ -43,24 +43,6 @@ def quick_activity_plot(ax, user_id):
     ax.legend()
     save_image(f"activity_plot")
 
-def infer_reopen_plot(ax, user_id, show_infer=False):
-    '''Plots an example of a Reopen ticket, and how it could be inferred if possible'''
-    ts = pipeline.accum_by_date(gam_df, user_id, ALL_PRODS, demographic_df=demo_df)
-    plot_ts(ax, ts, plt_column='weighted_bets')
-    inter_args = {'linestyle' : "--", 'label' : f'Recorded Intervention', 
-                'color' : 'black', 'lw' : 2, 'alpha' : .6}
-    add_inter_rg(ax, rg_info, user_id, line_args = inter_args)
-    ax.set_title(f'Weighted Number of Bets for #{user_id}')
-    ax.set_xlabel("Date")
-    ax.set_ylabel("Daily Weighted #Bets Placed")
-    ax.set_xlim(left=np.datetime64("2008-04-01"), right=np.datetime64("2009-09-01"))
-    if show_infer:
-        line_args = {'linestyle' : "--", 'color' : 'green',
-                    'label' : "Inferred Intervention", 'lw' : 2}
-        add_intervention(ax, date = pd.to_datetime('2008-09-06'), line_args=line_args)
-    ax.legend()
-    save_image(f'RG_reopen{show_infer}')
-
 def show_weekend_periodicity(ax, user_id):
     '''Investigate the weekend periodicity (or lack thereof!)'''
     prods = [1,2]
@@ -72,8 +54,6 @@ def show_weekend_periodicity(ax, user_id):
     highlight_weekend_periodicity(ax, ts)
     save_image("weekend_period")
 
-
-#@from scipy.interpolate import make_interp_spline
 def show_roc_curve(ax, results_path):
     '''Makes a roc curve from the model proba results'''
     df = pd.read_csv(results_path)
@@ -91,32 +71,17 @@ def show_roc_curve(ax, results_path):
     ax.legend()
     save_image("roc_curve")
 
-def grouped_bar_frame(ax, vals, group_names, legend_names, colors, width = .2):
-    '''Plots framework for a grouped bar plot (to be fine tuned in the scope above)'''
-    ind = np.arange(2)
-    arr = np.array(vals)
-    ax.bar(ind - width/2, arr[:,0], width, label = legend_names[0], color = colors[0])
-    ax.bar(ind + width/2, arr[:,1], width, label = legend_names[1], color = colors[1])
-    ax.set_xticks(ind)
-    ax.set_xticklabels(group_names)
-    ax.tick_params(axis="both", labelsize=14)
-    ax.legend(prop=dict(size=15))
-
 def show_feature_importances(importances, labels):
     zipper = list(zip(labels, importances))
     zipper.sort(key = lambda p: p[1], reverse = True)
     labels, importances = [p[0] for p in zipper], [p[1] for p in zipper]
-    ax.tick_params(axis='x', rotation=15, labelsize=14)
-    ax.tick_params(axis='y', labelsize=12)
-    ax.set_title("Summary Feature Importances", size = 20)
-    ax.set_ylabel("Feature Importance", size = 16)
-    line_args = {'linestyle' : "--", 'color' : 'black', 'linewidth' : 1}
+    ax.tick_params(axis='x', rotation=15, labelsize=24)
+    ax.tick_params(axis='y', labelsize=20)
+    ax.set_ylabel("Feature Importance", size=32)
     color_mask = ['#00BA38' if imports > .1 else '#F8766D' 
                 for imports in importances]
-    ax.axhline(.1, **line_args)
     ax.bar(labels, importances, color=color_mask, width=.4)
     save_image("summary_feat")
-
 
 if __name__ == '__main__':
     background = False
@@ -128,50 +93,36 @@ if __name__ == '__main__':
 
     feat_import = False
     if feat_import:
-        fig, ax = plt.subplots(figsize=(10,6))
+        fig, ax = plt.subplots(figsize=(20,14))
         importances = [0.2742573, 0.15426226, 0.20150834, 0.28402445, 0.07970281, 0.00624484]
         feat_labels = ['Total Loss', 'Max Loss', 'Max Difference', 
                     'Total Activity', 'Fixed-Live Ratio', 'Loss Variance']
         show_feature_importances(importances, feat_labels)
         plt.show()
 
-    eda_gam = False
-    if eda_gam:
-        fig, ax = plt.subplots(figsize=(10,6))
-        problem = [19.1, 5.8]
-        non_problem = [6.1, 2.6]
-        group_names = ['Daily Loss (Euros)', 'Daily Bets Placed']
-        names = ['Problem', "Non-Problem"]
-        ax = grouped_bar_frame(ax, [problem, non_problem], group_names, names, colors=['#B22222', '#228B22'])
-        ax.set_title("Daily Gambling Behavior")
-        save_image("daily_eda")
+    eda_three = True
+    if eda_three:
+        daily_loss = [19.1, 6.1]
+        daily_bets = [5.8, 2.6]
+        live_actions = [.36, .22]
+        fig, ax = plt.subplots(figsize=(15,15))
+        plot_compare_bar(ax, daily_loss, "Daily Loss", "Loss (Euros)")
         plt.show()
-
-    eda_product = True
-    if eda_product:
-        fig, ax = plt.subplots(figsize=(10,6))
-        problem = [.36]
-        non_problem = [.22]
-        names = ['Problem Gamblers', 'Non-Problem Gamblers']
-        ax.bar(names, [.35,.20], width=.3, color=['#B22222', '#228B22'])
-        ax.tick_params(axis="both", labelsize=14)
-        ax.set_ylabel("% Live-Action", size=16)
-        ax.set_ylabel("Live-Action Usage", size=16)
-        ax.set_title("Percent Live Action Usage")
-        save_image("live_eda")
+        save_image("daily_loss")
+        fig, ax = plt.subplots(figsize=(15,15))
+        plot_compare_bar(ax, daily_bets, "Daily Bets Placed", "Bets Placed")
+        plt.show()
+        save_image("daily_bet")
+        fig, ax = plt.subplots(figsize=(15,15))
+        plot_compare_bar(ax, live_actions, "Live Action Usage", "% Live Action")
+        plt.show()
+        save_image("live_action")
 
     activity = False
     if activity:
         user_id = 2062223
         fig, ax = plt.subplots(figsize=(8,5))
         quick_activity_plot(ax, user_id)
-
-    reopen_show = False
-    if reopen_show:
-        user_id = 6237129
-        fig, ax = plt.subplots(figsize=(8,5))
-        infer_reopen_plot(ax, user_id, show_infer = True)
-        plt.show()
 
     show_weekend = False
     if show_weekend:

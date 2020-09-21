@@ -13,7 +13,7 @@ GRAD_BOOST_GRID = {'learning_rate': [0.01, 0.001, 0.0001],
                                 'n_estimators': [150, 300, 500],
                                 'random_state': [1]}
 
-GRAD_GS_GUESS = {'learning_rate': .001, 'n_estimators': 300, 
+GRAD_GS_GUESS = {'learning_rate': .001, 'max_depth': 3, 'n_estimators': 300, 
                 'min_samples_leaf': 5, 'max_features': 5}
 
 RF_GS_GUESS = {'random_state': 1, 'n_estimators': 200, 'min_samples_split': 4, 

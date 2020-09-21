@@ -1,6 +1,5 @@
 import numpy as np
 import pandas as pd
-import re
 from datetime import datetime
 from .Featurizer import Featurizer
 from .features import (SUMMARY_FEATURES,ALL_FEATURES)

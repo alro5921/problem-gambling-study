@@ -1,12 +1,10 @@
 import numpy as np
 import pandas as pd
-import random
-import re
-from datetime import datetime
-import pipeline
 from itertools import chain
 from collections.abc import Iterable
 from sklearn.preprocessing import scale
+
+import pipeline
 from .features import total_hold, max_hold, weekly_hold, weekly_rolling_hold
 
 class Featurizer:
