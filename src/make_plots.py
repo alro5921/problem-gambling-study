@@ -6,7 +6,6 @@ from plot_helper import *
 from sklearn.metrics import roc_curve
 import pipeline
 from pipeline_constants import *
-import imageio
 
 rcParams.update({'figure.autolayout': True})
 plt.style.use('ggplot')
@@ -15,22 +14,21 @@ demo_df = pipeline.get_demo_df() # Global vars weee
 gam_df = pipeline.get_gam_df()
 rg_info = pipeline.get_rg_df()
 
-def background_plot(ax, user_id):
+def background_plot(ax, user_id, gam_df, window=30*6):
     '''Plots the introductory "Wow people lose a lot on this" graph'''
     mask = (gam_df['user_id'] == user_id)
     user_daily = gam_df[mask]
     first_deposit = demo_df.loc[user_id, 'first_deposit_date']
-    user_frame = pipeline.sparse_to_ts(user_daily, date_start=first_deposit, window=30*48)
-    ts['cumul_hold'] = ts['hold'].cumsum()
-    ax.set_title(f'Cumulative Loss for User #{user_id}')
-    ax.set_xlabel("Date", fontsize=16)
-    ax.set_ylabel("Loss (Euros)", fontsize=16)
-    ax.tick_params(axis="both", labelsize=14)
-    # ax.set_xlim(left=np.datetime64("2006-01-01"))
-    add_inter_rg(ax, rg_info, user_id)
-    plot_ts(ax, ts, plt_column='cumul_hold')
-    ax.legend()
-    save_image(f"background_plot2")
+    user_frame = pipeline.sparse_to_ts(user_daily, date_start=first_deposit, window=window)
+    user_frame['cumul_hold'] = user_frame['hold'].cumsum()
+    ax.set_title(f'User #{user_id}', fontsize=28)
+    ax.set_xlabel("Date", fontsize=28)
+    ax.set_ylabel("Loss (Euros)", fontsize=28)
+    ax.tick_params(axis="y", labelsize=20)
+    ax.tick_params(axis="x", labelsize=20)
+    plot_ts(ax, user_frame, plt_column='cumul_hold', line_args={'linewidth' : 3})
+    #ax.legend()
+    #save_image(f"background_plot2")
 
 def quick_activity_plot(ax, user_id):
     ts = pipeline.accum_by_date(gam_df, user_id, ALL_PRODS)
@@ -84,11 +82,16 @@ def show_feature_importances(importances, labels):
     save_image("summary_feat")
 
 if __name__ == '__main__':
-    background = False
+    
+    background = True
     if background:
-        user_id = 2062223
-        fig, ax = plt.subplots(figsize=(10,6))
-        background_plot(ax, user_id)
+        user_id = 4083316
+        fig, ax = plt.subplots(figsize=(20,12))
+        background_plot(ax, user_id, gam_df, window=30*26)
+        inter_dt = np.datetime64('2008-12-05')
+        line_args = {'linestyle' : "--", 'label' : "Intervention:\nFamily Contact", 'color' : 'black', 'lw' : 2}
+        #add_intervention(ax, inter_dt, line_args)
+        plt.legend(fontsize=20)
         plt.show()
 
     feat_import = False
@@ -100,23 +103,23 @@ if __name__ == '__main__':
         show_feature_importances(importances, feat_labels)
         plt.show()
 
-    eda_three = True
+    eda_three = False
     if eda_three:
         daily_loss = [19.1, 6.1]
         daily_bets = [5.8, 2.6]
         live_actions = [.36, .22]
-        fig, ax = plt.subplots(figsize=(15,15))
+        fig, ax = plt.subplots(figsize=(10,7))
         plot_compare_bar(ax, daily_loss, "Daily Loss", "Loss (Euros)")
-        plt.show()
         save_image("daily_loss")
-        fig, ax = plt.subplots(figsize=(15,15))
+        plt.show()
+        fig, ax = plt.subplots(figsize=(10,7))
         plot_compare_bar(ax, daily_bets, "Daily Bets Placed", "Bets Placed")
-        plt.show()
         save_image("daily_bet")
-        fig, ax = plt.subplots(figsize=(15,15))
-        plot_compare_bar(ax, live_actions, "Live Action Usage", "% Live Action")
         plt.show()
+        fig, ax = plt.subplots(figsize=(10,7))
+        plot_compare_bar(ax, live_actions, "Live Action Usage", "% Live Action")
         save_image("live_action")
+        plt.show()
 
     activity = False
     if activity:

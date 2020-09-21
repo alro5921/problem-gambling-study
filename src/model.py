@@ -16,8 +16,9 @@ from processing.preprocessing import preprocessing
 from pipeline import get_demo_df, get_gam_df, get_rg_df
 
 def train(X, y, base_model, do_grid=True, grid=None, grid_params=None, save=False):
-    ''' Performs a cross validated gridsearch on a base model, and returns the best model+gridsearch information
-    
+    ''' 
+    Performs a cross validated gridsearch on a base model, and returns the best model+gridsearch information.
+
     Args:
         X: ndarray of all features
         y: ndarray of targets

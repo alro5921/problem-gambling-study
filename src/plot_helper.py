@@ -37,11 +37,11 @@ def dashed_lines_to_point(ax, x, y, line_args=None):
 
 def plot_compare_bar(ax, data, title, ylab):
     names = ["Problem", "Non-Problem"]
-    ax.bar(names, data, width=.9, color=['#B22222', '#228B22'])
-    ax.set_title(title, size=40)
-    ax.set_ylabel(ylab, size=24)
-    ax.tick_params(axis="y", labelsize=16)
-    ax.tick_params(axis="x", labelsize=24)
+    ax.bar(names, data, width=.5, color=['#B22222', '#228B22'])
+    ax.set_title(title, size=40, color='k')
+    ax.set_ylabel(ylab, size=24, color='k')
+    ax.tick_params(axis="y", labelsize=20, color='k')
+    ax.tick_params(axis="x", labelsize=30, color='k')
 
 if __name__ == '__main__':
     pass

@@ -38,8 +38,10 @@ def sparse_to_ts(user_daily, date_start=None, date_end=None, window=None):
     return user_ts
 
 def learn_weighted_bets(gam_df, products=ALL_PRODUCTS):
-    '''Aggregates the 'num_bets' across activities into a weighted one
-    reflecting their actual activity implied'''
+    '''
+    Aggregates the 'num_bets' across activities into a weighted one
+    reflecting their actual activity implied
+    '''
     mask = gam_df['num_bets_1'] > -1
     mean_1 = gam_df[mask]['num_bets_1'].mean()
     w_means = {1: mean_1}

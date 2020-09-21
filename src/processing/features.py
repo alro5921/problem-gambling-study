@@ -27,9 +27,11 @@ def total_fixed_live_ratio(frame):
     return min(live_action_hold/fixed_hold, 10)
 
 def total_nonzero_hold_std(frame):
-    ''' Gambling behavior is relatively sparse,
-    seems more useful to look at variance in 
-    the bets thesmelves.'''
+    ''' 
+    Gambling behavior is relatively sparse,
+    seems potentially useful to look at variance in 
+    the bets thesmelves.
+    '''
     frame_nonzero = frame[frame['hold'] > 0]
     if len(frame_nonzero) == 0:
         return 0
@@ -77,14 +79,15 @@ def weekly_fixed_live_ratio(frame):
     weekly_sum = to_weekly(frame)
     return weekly_sum['num_bets_2']/(1+weekly_sum['num_bets_1'])
 
-SUMMARY_FEATURES = [total_hold, max_hold, max_diff, total_activity, total_fixed_live_ratio, total_nonzero_hold_std]
-#total_fixed_live_ratio, total_nonzero_hold_std were busts
+SUMMARY_FEATURES = [total_hold, max_hold, max_diff,
+                    total_activity, total_fixed_live_ratio, total_nonzero_hold_std]
 SUMMARY_NAMES = [feat.__name__ for feat in SUMMARY_FEATURES]
 
 DAILY_FEATURES = [daily_hold, daily_rolling_hold]
 DAILY_NAMES = [feat.__name__ for feat in DAILY_FEATURES]
 
-WEEKLY_FEATURES = [weekly_hold, weekly_activity, weekly_max, weekly_rolling_hold, weekly_rolling_activity, weekly_fixed_live_ratio]
+WEEKLY_FEATURES = [weekly_hold, weekly_activity, weekly_max, 
+                    weekly_rolling_hold, weekly_rolling_activity, weekly_fixed_live_ratio]
 WEEKLY_NAMES = [feat.__name__ for feat in WEEKLY_FEATURES]
 
 ALL_FEATURES = SUMMARY_FEATURES + DAILY_FEATURES + WEEKLY_FEATURES

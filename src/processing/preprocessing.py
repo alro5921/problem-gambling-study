@@ -6,7 +6,7 @@ from .featurizing import featurize
 from pipeline import get_demo_df, get_gam_df, get_rg_df
 
 def filter_rg_in_frame(users_ids, days_ahead, demo_df, rg_df):
-    print("Filtering out RGs with event in frame")
+    '''Filters a user if their RG event is within the frame looked at'''
     df = demo_df.join(rg_df)
     df['registration_date'] = pd.to_datetime(df['registration_date'])
     df['first_date'] = pd.to_datetime(df['first_date'])
@@ -15,7 +15,8 @@ def filter_rg_in_frame(users_ids, days_ahead, demo_df, rg_df):
     return list(df[~mask].index)
 
 def sample_adjust(user_ids, demo_df):
-    '''Balances the sample while preserving all RG events,
+    ''' 
+    Balances the sample while preserving all RG events,
     i.e over/undersample the non-RG users as needed
     '''
     print("Rebalancing classes")
@@ -37,7 +38,23 @@ def prefilters(user_ids, days_ahead, demo_df, rg_df):
     return user_ids
 
 def preprocessing(months, user_ids=None, featurizer=None, features=None, prefilter=True, dfs=None):
-    '''Entire pipeline from the raw data to the numpy matrices needed for sklearn... learners'''
+    ''' 
+    Takes a list of users_id, creates the relevant window from their first deposit date
+    and featurizes within it.
+
+    Args:
+        months: Number of months ahead the frame looks from the first deposit date 
+        user_ids: List of integer user_ids to use in this sample
+        demo_df: The demographic info to pull the user's 
+        featurizer: Optional featurizer object
+        features: Optional list of features to use, if none it'll use every feature in the featurizer
+        prefilter: Whether to apply prefilters such as activity threshold and rg-frame filtering
+        dfs: The information associated with the users
+    Returns:
+        X: ndarray of the the featurized rows
+        y: Labels associated with each row of X
+        user_ids: The user_ids associated with each row of X 
+    '''
     if not featurizer and not features:
         print("Need at least one way to get featurizing context!")
         raise ValueError
@@ -49,7 +66,7 @@ def preprocessing(months, user_ids=None, featurizer=None, features=None, prefilt
         user_ids = list(demo_df.index)
 
     days = months * 30
-    if(prefilter):
+    if prefilter:
         print("Applying prefilters")
         user_ids = prefilters(user_ids, months*30, demo_df, rg_df)
     print(f"Constructing model with {months} months of information")
