@@ -6,7 +6,7 @@ from .featurizing import featurize
 from pipeline import get_demo_df, get_gam_df, get_rg_df
 
 def filter_rg_in_frame(users_ids, days_ahead, demo_df, rg_df):
-    '''Filters a user if their RG event is within the frame looked at'''
+    '''Filters a user if their RG event is within the time window'''
     df = demo_df.join(rg_df)
     df['registration_date'] = pd.to_datetime(df['registration_date'])
     df['first_date'] = pd.to_datetime(df['first_date'])

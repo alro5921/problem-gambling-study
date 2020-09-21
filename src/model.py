@@ -36,19 +36,22 @@ def train(X, y, base_model, do_grid=True, grid=None, grid_params=None, save=Fals
     gridsearch = RandomizedSearchCV(base_model, grid, scoring='f1', verbose=verbose, **search_params)
     gridsearch.fit(X, y)
     regressor = gridsearch.best_estimator_
-    
     if save:
-        now = datetime.now().strftime("%m-%d-%H-%M")
+        save_model(regressor, gridsearch)
+    print(f'Model Avg F1 Score: {gridsearch.best_score_:.3f}')
+    return regressor, gridsearch
+    
+def save_model(regressor, gridsearch):
+    '''Saves the trained model and gridsearch'''
+    now = datetime.now().strftime("%m-%d-%H-%M")
         gs_path = f'model/grid_results_{now}.pkl'
         with open(gs_path, 'wb') as f:
             pickle.dump(gridsearch, f)
         model_path = f'model/model_{now}.pkl'
         with open(model_path, 'wb') as f:
             pickle.dump(regressor, f)
-    
-    print(f'Model Av F1 Score: {gridsearch.best_score_:.3f}')
-    return regressor, gridsearch
-    
+
+
 def predict(model, X, y=None, user_ids=None, store=True, store_name="", thres=.5, verbose=True):
     ''' Predicts on an existing model, given a featurized X array
     
@@ -66,20 +69,24 @@ def predict(model, X, y=None, user_ids=None, store=True, store_name="", thres=.5
     '''
     y_prob = model.predict_proba(X)[:,1]
     if store:
-        val_store = pd.DataFrame({"prediction" : y_prob})
-        if y:
-            val_store["actual"] = y
-        if user_ids:
-            val_store["id"] = user_ids
-        now = datetime.now()
-        val_store.to_csv(f'data/model_results/{store_name}_prediction_results{now}.csv')
+        store_predictions(y_prob, y, user_ids)
     if verbose and y:
         y_pred = (y_prob >= thres).astype(int)
         scores(y,y_pred)
     return y_prob
 
+def store_predictions(y_prob, y=None, user_ids=None):
+    '''Helper for predict, stores the predictions and possible associated labels+user_ids'''
+    val_store = pd.DataFrame({"prediction" : y_prob})
+    if y:
+        val_store["actual"] = y
+    if user_ids:
+        val_store["id"] = user_ids
+    now = datetime.now()
+    val_store.to_csv(f'data/model_results/{store_name}_prediction_results{now}.csv')
+
 def scores(y_test,y_pred):
-    '''Helper for predict, showing the predict scores'''
+    '''Helper for predict, shows the prediction scores'''
     confus = confusion_matrix(y_test,y_pred)
     tn, fp, fn, tp = confus.ravel()
     print(f'True Neg {tn}, False Pos {fp}, False Neg {fn}, True Positive {tp}')
