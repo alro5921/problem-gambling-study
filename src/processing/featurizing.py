@@ -51,4 +51,3 @@ if __name__ == '__main__':
     rg_df = get_rg_df()
     user_ids = list(demo_df.index)
     print(len(user_ids))
-    #print(len(filter_rg_in_frame(user_ids, 180)))
