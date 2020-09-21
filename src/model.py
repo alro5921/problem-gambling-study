@@ -3,7 +3,6 @@ import pandas as pd
 from datetime import datetime
 import pickle
 import random
-from model_constants import *
 
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.model_selection import train_test_split, RandomizedSearchCV
@@ -14,6 +13,7 @@ from processing.features import SUMMARY_NAMES, DAILY_NAMES, WEEKLY_NAMES
 from processing.preprocessing import preprocessing
 
 from pipeline import get_demo_df, get_gam_df, get_rg_df
+from model_constants import *
 
 def train(X, y, base_model, do_grid=True, grid=None, grid_params=None, save=False):
     ''' 
