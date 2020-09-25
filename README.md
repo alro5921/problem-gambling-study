@@ -105,8 +105,6 @@ The Previous RG appeals are unfortunately problematic for this analysis; they de
 
 ![](images/RG_reopenFalse.png)
 
-I end up discarding these users, which unfortunately accounts for almost half my RG-flagged users.
-
 ## Further EDA 
 
 ### Gambling Quantity
@@ -137,6 +135,8 @@ When RG-flagged users bet on sports, they played proportionally much more _live-
 It seems worthwhile to specifically track the Live Action activity of a user, or at least keep the summary statistic of how much fixed gambling to live action gambling a patron does. I featurize the latter in my model.
 
 ## Modelling
+
+**NOTE: This section is currently outdated: I initially did a _lookback_ from the RG intervention event, but felt that was less intereptable and useful than a _look-foward_ from the user's initial deposit date. I'll leave this for posterity, but not accurate!*
 
 Our ultimate goal is to have useful predictive power about whether a user will experience or request an RG in the future, hopefully in a timeframe that's useful. Here the goal is to predict whether there's an RG event a year out, given the previous two years of data.
 
