@@ -1,4 +1,5 @@
 # Predicting Early Behaviors of Problem Gambling
+<meta property="og:image" content="images/mauirecovery-banner-sports-gambling.jpg" />
 <img src="images/mauirecovery-banner-sports-gambling.jpg" width="850" height="425" />
 <!---
 Credit: https://mauirecovery.com/
