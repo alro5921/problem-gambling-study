@@ -1,5 +1,5 @@
+<meta property="og:image" content="https://github.com/alro5921/problem-gambling-study/blob/master/images/mauirecovery-banner-sports-gambling.jpg" />
 # Predicting Early Behaviors of Problem Gambling
-<meta property="og:image" content="images/mauirecovery-banner-sports-gambling.jpg" />
 <img src="images/mauirecovery-banner-sports-gambling.jpg" width="850" height="425" />
 <!---
 Credit: https://mauirecovery.com/
