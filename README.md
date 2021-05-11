@@ -40,7 +40,7 @@ This table contained demographic information on each subscriber.
 
 ### Gambling Behavior
 
-This table has the gambling behavior of between May 2000 and November 2010. Each row contains a user's gambling behavior with a product on a given day, and include information such as the number of bets placed and the amount gambled and lost (the `turnover` and `hold` respectively) that day on that activity.
+This table has the gambling behavior of users between May 2000 and November 2010. Each row contains a user's gambling behavior with a product on a given day, and include information such as the number of bets placed and the amount gambled and lost (the `turnover` and `hold` respectively) that day on that activity.
 
 | Variable name     | Data type | Description                             |
 |-------------------|-----------|-------------------------------------------------------|
@@ -74,7 +74,7 @@ Simple activity plot here?
 -->
 ### Responsible Gaming Intervention Information
 
-This table held the the information on the Responsible Gambling interventions for the flagged subscribers.
+This table held information on the Responsible Gambling interventions for the flagged subscribers.
 
 | Variable name     | Data type | Description                             |
 |-------------------|-----------|-------------------------------------------------------|
