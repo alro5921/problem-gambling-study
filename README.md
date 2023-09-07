@@ -66,7 +66,7 @@ The five most frequently played products, in terms of user days where at least o
 
 Unfortunately, many of the bwin's third party products lacked turnover and hold data due to a data transfer error, most notably Poker. This accounted for roughly 20% of the gambling activity rows, and while monetary patterns are vital I'd like to at least try and catch problematic activity amongst e.g poker players with an activity metric.
 
-Although the activity level "number of bets" implies varies wildly between products; we'd expect more individual "bets" from an online poker player, who could play dozens of hands an hour, than a fixed-odds sports better placing a handful of bets on a game. I attempt to standardize across products by weighting each product to its average bets per day in the dataset, which allows for a more meaningful aggregated activity metric than a sum that'd be dominated by the higher frequency products.
+The activity level "number of bets" implies varies wildly between products; we'd expect more individual "bets" from an online poker player, who could play dozens of hands an hour, than a fixed-odds sports better placing a handful of bets on a game. I attempt to standardize across products by weighting each product to its average bets per day in the dataset, which allows for a more meaningful aggregated activity metric than a sum that'd be dominated by the higher frequency products.
 
 ![](images/activity_plot.png)
 <!---
